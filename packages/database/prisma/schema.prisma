@@ -1,0 +1,488 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User Management
+model User {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  name             String?
+  avatar           String?
+  emailVerified    DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  role             Role     @default(USER)
+  
+  // User Profile
+  profile          UserProfile?
+  
+  // Relations
+  accounts         Account[]
+  sessions         Session[]
+  leads            Lead[]
+  bookmarks        Bookmark[]
+  reviews          Review[]
+  blogPosts        BlogPost[]
+  
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model UserProfile {
+  id                    String   @id @default(cuid())
+  userId                String   @unique
+  phone                 String?
+  dateOfBirth           DateTime?
+  nationality           String?
+  currentEducation      String?
+  interestedCountries   String[] // JSON array
+  interestedFields      String[] // JSON array
+  budgetRange           String?
+  englishProficiency    String?
+  workExperience        Int?     // Years
+  gpa                   Float?
+  testScores            Json?    // IELTS, TOEFL, GRE, GMAT, etc.
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_profiles")
+}
+
+// Core Academic Entities
+model Country {
+  id            String   @id @default(cuid())
+  name          String   @unique
+  code          String   @unique // ISO country code
+  flag          String?  // Flag emoji or URL
+  description   String?
+  currency      String?
+  language      String?
+  timezone      String?
+  costOfLiving  Json?    // Living expenses data
+  visaInfo      Json?    // Visa requirements
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  colleges College[]
+
+  @@map("countries")
+}
+
+model College {
+  id                String   @id @default(cuid())
+  name              String
+  slug              String   @unique
+  description       String?
+  shortDescription  String?
+  website           String?
+  email             String?
+  phone             String?
+  address           String?
+  city              String?
+  state             String?
+  countryId         String
+  postalCode        String?
+  
+  // Media
+  logo              String?
+  images            String[] // Array of image URLs
+  virtualTour       String?  // Virtual tour URL
+  
+  // Academic Information
+  establishedYear   Int?
+  type              CollegeType
+  accreditation     String[]
+  rankings          Json?     // Various ranking data
+  
+  // Admission Information
+  applicationFee    Float?
+  currency          String?
+  applicationDeadlines Json?  // Multiple deadlines
+  
+  // Financial Information
+  tuitionFees       Json?     // Fee structure
+  scholarships      Json?     // Available scholarships
+  
+  // Additional Information
+  campusSize        String?
+  studentCount      Int?
+  facultyCount      Int?
+  internationalStudentRatio Float?
+  
+  // SEO & Content
+  metaTitle         String?
+  metaDescription   String?
+  featured          Boolean  @default(false)
+  status            Status   @default(ACTIVE)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  country           Country  @relation(fields: [countryId], references: [id])
+  courses           Course[]
+  leads             Lead[]
+  bookmarks         Bookmark[]
+  reviews           Review[]
+
+  @@index([countryId])
+  @@index([slug])
+  @@index([featured])
+  @@index([status])
+  @@map("colleges")
+}
+
+model Course {
+  id                String   @id @default(cuid())
+  name              String
+  slug              String   @unique
+  description       String?
+  shortDescription  String?
+  
+  // Academic Information
+  degree            DegreeType
+  level             CourseLevel
+  duration          Int      // Duration in months
+  credits           Int?     // Credit hours
+  language          String   @default("English")
+  
+  // Admission Requirements
+  eligibility       Json?    // Eligibility criteria
+  documentsRequired String[]
+  
+  // Financial Information
+  tuitionFee        Float?
+  applicationFee    Float?
+  currency          String?
+  
+  // Career Information
+  careerProspects   Json?    // Career data
+  averageSalary     Json?    // Salary information
+  
+  // SEO & Content
+  metaTitle         String?
+  metaDescription   String?
+  featured          Boolean  @default(false)
+  status            Status   @default(ACTIVE)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  collegeId         String
+  college           College  @relation(fields: [collegeId], references: [id])
+  specializations   Specialization[]
+  leads             Lead[]
+  bookmarks         Bookmark[]
+
+  @@index([collegeId])
+  @@index([slug])
+  @@index([degree])
+  @@index([level])
+  @@index([featured])
+  @@index([status])
+  @@map("courses")
+}
+
+model Specialization {
+  id                String   @id @default(cuid())
+  name              String
+  slug              String   @unique
+  description       String?
+  shortDescription  String?
+  
+  // Academic Information
+  credits           Int?
+  prerequisites     String[]
+  
+  // Career Information
+  careerPaths       String[]
+  averageSalary     Json?
+  jobDemand         String?  // HIGH, MEDIUM, LOW
+  
+  // SEO & Content
+  metaTitle         String?
+  metaDescription   String?
+  featured          Boolean  @default(false)
+  status            Status   @default(ACTIVE)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  courseId          String
+  course            Course   @relation(fields: [courseId], references: [id])
+  leads             Lead[]
+
+  @@index([courseId])
+  @@index([slug])
+  @@index([featured])
+  @@index([status])
+  @@map("specializations")
+}
+
+// Lead Management
+model Lead {
+  id                String   @id @default(cuid())
+  userId            String?
+  
+  // Contact Information
+  name              String
+  email             String
+  phone             String?
+  country           String?
+  
+  // Interest Information
+  collegeId         String?
+  courseId          String?
+  specializationId  String?
+  interestedCountries String[]
+  budgetRange       String?
+  studyLevel        CourseLevel?
+  
+  // Lead Management
+  source            String?  // Website form, social media, etc.
+  status            LeadStatus @default(NEW)
+  priority          Priority   @default(MEDIUM)
+  assignedTo        String?   // Admin user ID
+  notes             String?
+  followUpDate      DateTime?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  user              User?           @relation(fields: [userId], references: [id])
+  college           College?        @relation(fields: [collegeId], references: [id])
+  course            Course?         @relation(fields: [courseId], references: [id])
+  specialization    Specialization? @relation(fields: [specializationId], references: [id])
+
+  @@index([userId])
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@map("leads")
+}
+
+// User Interactions
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  collegeId String?
+  courseId  String?
+  type      BookmarkType
+  createdAt DateTime @default(now())
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  college College? @relation(fields: [collegeId], references: [id])
+  course  Course?  @relation(fields: [courseId], references: [id])
+
+  @@unique([userId, collegeId, courseId])
+  @@map("bookmarks")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  collegeId String
+  rating    Int      // 1-5 stars
+  title     String?
+  content   String
+  verified  Boolean  @default(false)
+  helpful   Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  college College @relation(fields: [collegeId], references: [id])
+
+  @@index([collegeId])
+  @@index([rating])
+  @@map("reviews")
+}
+
+// Blog System
+model BlogPost {
+  id              String   @id @default(cuid())
+  title           String
+  slug            String   @unique
+  excerpt         String?
+  content         String   // Rich text content (JSON)
+  featuredImage   String?
+  
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  
+  // Publishing
+  published       Boolean  @default(false)
+  publishedAt     DateTime?
+  
+  // Author
+  authorId        String
+  
+  // Categories and Tags
+  categories      String[]
+  tags            String[]
+  
+  // Blog specific fields
+  readingTime     Int?     // Estimated reading time in minutes
+  featured        Boolean  @default(false)
+  
+  // Stats
+  viewCount       Int      @default(0)
+  likeCount       Int      @default(0)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  author User @relation(fields: [authorId], references: [id])
+
+  @@index([slug])
+  @@index([published])
+  @@index([publishedAt])
+  @@index([featured])
+  @@map("blog_posts")
+}
+
+// Analytics and Tracking
+model SearchLog {
+  id          String   @id @default(cuid())
+  query       String
+  filters     Json?    // Search filters applied
+  results     Int      @default(0) // Number of results
+  userId      String?
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+
+  @@index([query])
+  @@index([createdAt])
+  @@map("search_logs")
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  userId    String?
+  ipAddress String?
+  userAgent String?
+  referrer  String?
+  createdAt DateTime @default(now())
+
+  @@index([path])
+  @@index([createdAt])
+  @@map("page_views")
+}
+
+// Enums
+enum Role {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum CollegeType {
+  UNIVERSITY
+  COLLEGE
+  INSTITUTE
+  SCHOOL
+}
+
+enum DegreeType {
+  CERTIFICATE
+  DIPLOMA
+  ASSOCIATE
+  BACHELOR
+  MASTER
+  DOCTORATE
+  POST_DOCTORATE
+}
+
+enum CourseLevel {
+  UNDERGRADUATE
+  POSTGRADUATE
+  DOCTORATE
+  CERTIFICATE
+  DIPLOMA
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+  PENDING
+  ARCHIVED
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  PROPOSAL_SENT
+  NEGOTIATING
+  CONVERTED
+  LOST
+  FOLLOW_UP
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum BookmarkType {
+  COLLEGE
+  COURSE
+}
