@@ -1,0 +1,131 @@
+// This is your Prisma schema file
+// Learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Simple user authentication (admin managed)
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String?  @unique
+  password  String   // Hashed password
+  fullName  String?  @map("full_name")
+  phone     String?
+  role      String   @default("user") // "admin", "user", "viewer"
+  isActive  Boolean  @default(true) @map("is_active")
+  lastLogin DateTime? @map("last_login")
+  isSample  Boolean  @default(false) @map("is_sample")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  
+  // Admin who created this user
+  createdById Int?    @map("created_by_id")
+  createdBy   User?   @relation("UserCreatedBy", fields: [createdById], references: [id])
+  usersCreated User[] @relation("UserCreatedBy")
+  
+  leads     Lead[]
+  
+  @@map("users")
+}
+
+// Colleges/Universities
+model College {
+  id              Int      @id @default(autoincrement())
+  name            String
+  slug            String   @unique
+  about           String?  @db.Text // About the college
+  description     String?  @db.Text // Brief description
+  location        String?
+  country         String?
+  ranking         Int?
+  acceptanceRate  Float?   @map("acceptance_rate")
+  imageUrl        String?  @map("image_url")
+  website         String?
+  notableAlumni   Json?    @map("notable_alumni") // [{image: "", name: "", currentRole: ""}]
+  facilities      Json?    // ["Library", "Sports Complex", "Labs", etc.]
+  accreditations  Json?    // ["NAAC A+", "NBA", etc.]
+  isSample        Boolean  @default(false) @map("is_sample")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  
+  courses         Course[]
+  
+  @@map("colleges")
+}
+
+// Courses offered by colleges (e.g., M.Sc, B.Tech, MBA)
+model Course {
+  id           Int      @id @default(autoincrement())
+  collegeId    Int      @map("college_id")
+  name         String   // e.g., "Master of Science", "Bachelor of Technology"
+  shortName    String?  @map("short_name") // e.g., "M.Sc", "B.Tech", "MBA"
+  degreeType   String?  @map("degree_type") // "Bachelor's", "Master's", "PhD"
+  duration     String?  // e.g., "2 years", "4 years"
+  totalSeats   Int?     @map("total_seats") // Total intake capacity
+  fees         Int?     // Annual fees in USD
+  description  String?  @db.Text
+  eligibility  String?  @db.Text // Eligibility criteria
+  admissionProcess String? @map("admission_process") @db.Text
+  isSample     Boolean  @default(false) @map("is_sample")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  
+  college         College           @relation(fields: [collegeId], references: [id])
+  specializations Specialization[]
+  
+  @@map("courses")
+}
+
+// Specializations within courses (e.g., Mathematics, Computer Science, Physics)
+model Specialization {
+  id              Int      @id @default(autoincrement())
+  courseId        Int      @map("course_id")
+  name            String   // e.g., "Mathematics", "Computer Science", "Physics"
+  code            String?  // e.g., "CS", "MATH", "PHY"
+  about           String?  @db.Text // Detailed about section
+  description     String?  @db.Text // Brief description
+  requirements    String?  @db.Text // Specific requirements for this specialization
+  careerProspects String?  @map("career_prospects") @db.Text
+  syllabus        Json?    // Course structure as JSON
+  placementRate   Float?   @map("placement_rate") // Placement percentage (0-100)
+  avgPackage      Int?     @map("avg_package") // Average salary package in USD
+  topRecruiters   Json?    @map("top_recruiters") // ["Google", "Microsoft", "Amazon", etc.]
+  researchAreas   Json?    @map("research_areas") // ["AI", "Machine Learning", "Data Science"]
+  labFacilities   Json?    @map("lab_facilities") // ["AI Lab", "Robotics Lab", etc.]
+  isSample        Boolean  @default(false) @map("is_sample")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  
+  course          Course   @relation(fields: [courseId], references: [id])
+  leads           Lead[]   // Students can inquire about specific specializations
+  
+  @@map("specializations")
+}
+
+// Leads/Inquiries from students
+model Lead {
+  id                 Int      @id @default(autoincrement())
+  userId             Int?     @map("user_id") // Reference to User table
+  name               String
+  email              String
+  phone              String?
+  specializationId   Int?     @map("specialization_id")
+  message            String?  @db.Text
+  status             String   @default("new") // "new", "contacted", "enrolled", "rejected"
+  source             String?  // "website", "google", "referral", etc.
+  isSample           Boolean  @default(false) @map("is_sample")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+  
+  user               User?           @relation(fields: [userId], references: [id])
+  specialization     Specialization? @relation(fields: [specializationId], references: [id])
+  
+  @@map("leads")
+}
