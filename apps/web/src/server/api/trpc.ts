@@ -1,34 +1,62 @@
 import { initTRPC, TRPCError } from '@trpc/server'
 import { type CreateNextContextOptions } from '@trpc/server/adapters/next'
-import { type Session } from 'next-auth'
-import { getServerSession } from 'next-auth/next'
+import jwt from 'jsonwebtoken'
 import superjson from 'superjson'
 import { ZodError } from 'zod'
 
 import { prisma } from '@/lib/prisma'
-// import { authOptions } from '@/server/auth' // We'll create this later
+
+interface User {
+  id: string
+  username: string
+  role: string
+}
 
 interface CreateContextOptions {
-  session: Session | null
+  user: User | null
 }
 
 const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
-    session: opts.session,
+    user: opts.user,
     prisma,
   }
 }
 
 export const createTRPCContext = async (opts: CreateNextContextOptions) => {
-  const { req, res } = opts
+  const { req } = opts
 
-  // Get the session from the server using the getServerSession wrapper function
-  const session = await getServerSession(req, res)
-  // TODO: Replace with actual authOptions when NextAuth is configured
-  // const session = await getServerSession(req, res, authOptions)
+  // Get user from JWT token in cookies
+  let user: User | null = null
+  
+  try {
+    const cookieHeader = req.headers.cookie
+    if (cookieHeader) {
+      const cookies = cookieHeader.split(';').reduce((acc, cookie) => {
+        const [key, value] = cookie.trim().split('=')
+        acc[key] = value
+        return acc
+      }, {} as Record<string, string>)
+      
+      const sessionCookieName = process.env.SESSION_COOKIE_NAME || 'admitverse_session'
+      const token = cookies[sessionCookieName]
+      
+      if (token && process.env.JWT_SECRET) {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET) as any
+        user = {
+          id: decoded.id,
+          username: decoded.username,
+          role: decoded.role
+        }
+      }
+    }
+  } catch (error) {
+    // Token invalid or expired
+    console.warn('Invalid JWT token:', error)
+  }
 
   return createInnerTRPCContext({
-    session,
+    user,
   })
 }
 
@@ -51,34 +79,32 @@ export const createTRPCRouter = t.router
 export const publicProcedure = t.procedure
 
 const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
-  if (!ctx.session || !ctx.session.user) {
+  if (!ctx.user) {
     throw new TRPCError({ code: 'UNAUTHORIZED' })
   }
   return next({
     ctx: {
-      session: { ...ctx.session, user: ctx.session.user },
+      user: ctx.user,
+      prisma: ctx.prisma,
     },
   })
 })
 
 const enforceUserIsAdmin = t.middleware(({ ctx, next }) => {
-  if (!ctx.session?.user) {
+  if (!ctx.user) {
     throw new TRPCError({ code: 'UNAUTHORIZED' })
   }
   
-  // TODO: Check user role when user model is properly set up
-  // const user = await ctx.prisma.user.findUnique({
-  //   where: { id: ctx.session.user.id },
-  //   select: { role: true }
-  // })
-  
-  // if (!user || (user.role !== 'ADMIN' && user.role !== 'SUPER_ADMIN')) {
-  //   throw new TRPCError({ code: 'FORBIDDEN' })
-  // }
+  // Check if user has admin role (for now, all authenticated users are admin)
+  // Later we can add role-based checking here
+  if (!ctx.user.role || ctx.user.role !== 'admin') {
+    throw new TRPCError({ code: 'FORBIDDEN' })
+  }
 
   return next({
     ctx: {
-      session: ctx.session,
+      user: ctx.user,
+      prisma: ctx.prisma,
     },
   })
 })
