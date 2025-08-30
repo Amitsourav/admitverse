@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Bell, Search, Menu, LogOut, User, Settings, ChevronDown } from 'lucide-react'
-import { toast } from 'react-hot-toast'
 
 interface AdminHeaderProps {
   user: {
@@ -17,19 +16,33 @@ export default function AdminHeader({ user }: AdminHeaderProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [showDropdown, setShowDropdown] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
   const router = useRouter()
 
   const handleLogout = async () => {
+    if (isLoggingOut) return // Prevent multiple logout requests
+    
+    setIsLoggingOut(true)
     try {
       const response = await fetch('/api/admin/auth/logout', {
         method: 'POST',
       })
 
       if (response.ok) {
-        router.push('/admin')
+        // Clear any client-side state/cache
+        setShowDropdown(false)
+        
+        // Immediately redirect to login
+        window.location.href = '/auth/login'
+      } else {
+        console.error('Logout failed:', response.statusText)
+        alert('Logout failed. Please try again.')
+        setIsLoggingOut(false)
       }
     } catch (error) {
       console.error('Logout error:', error)
+      alert('Network error during logout')
+      setIsLoggingOut(false)
     }
   }
 
@@ -49,20 +62,28 @@ export default function AdminHeader({ user }: AdminHeaderProps) {
   }
 
   return (
-    <div style={{
-      position: 'sticky',
-      top: 0,
-      zIndex: 40,
-      display: 'flex',
-      height: '64px',
-      alignItems: 'center',
-      borderBottom: '1px solid #e5e7eb',
-      backgroundColor: '#ffffff',
-      padding: '0 32px',
-      gap: '24px',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-    }}>
-      {/* Mobile menu button - Hidden on desktop */}
+    <>
+      <style jsx>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+      
+      <div style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 40,
+        display: 'flex',
+        height: '64px',
+        alignItems: 'center',
+        borderBottom: '1px solid #e5e7eb',
+        backgroundColor: '#ffffff',
+        padding: '0 32px',
+        gap: '24px',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+      }}>
+        {/* Mobile menu button - Hidden on desktop */}
       <button
         type="button"
         style={{
@@ -331,6 +352,7 @@ export default function AdminHeader({ user }: AdminHeaderProps) {
               }}>
                 <button
                   onClick={handleLogout}
+                  disabled={isLoggingOut}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -341,16 +363,21 @@ export default function AdminHeader({ user }: AdminHeaderProps) {
                     backgroundColor: 'transparent',
                     borderRadius: '6px',
                     fontSize: '14px',
-                    color: '#dc2626',
-                    cursor: 'pointer',
+                    color: isLoggingOut ? '#9ca3af' : '#dc2626',
+                    cursor: isLoggingOut ? 'not-allowed' : 'pointer',
                     transition: 'background-color 0.2s',
-                    textAlign: 'left'
+                    textAlign: 'left',
+                    opacity: isLoggingOut ? 0.7 : 1
                   }}
-                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#fef2f2'}
-                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                  onMouseOver={(e) => !isLoggingOut && (e.currentTarget.style.backgroundColor = '#fef2f2')}
+                  onMouseOut={(e) => !isLoggingOut && (e.currentTarget.style.backgroundColor = 'transparent')}
                 >
-                  <LogOut style={{ height: '16px', width: '16px' }} />
-                  <span>Log out</span>
+                  <LogOut style={{ 
+                    height: '16px', 
+                    width: '16px',
+                    animation: isLoggingOut ? 'spin 1s linear infinite' : 'none'
+                  }} />
+                  <span>{isLoggingOut ? 'Logging out...' : 'Log out'}</span>
                 </button>
               </div>
             </div>
@@ -375,6 +402,7 @@ export default function AdminHeader({ user }: AdminHeaderProps) {
           }}
         />
       )}
-    </div>
+      </div>
+    </>
   )
 }

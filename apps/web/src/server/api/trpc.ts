@@ -1,5 +1,4 @@
 import { initTRPC, TRPCError } from '@trpc/server'
-import { type CreateNextContextOptions } from '@trpc/server/adapters/next'
 import jwt from 'jsonwebtoken'
 import superjson from 'superjson'
 import { ZodError } from 'zod'
@@ -23,14 +22,14 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
   }
 }
 
-export const createTRPCContext = async (opts: CreateNextContextOptions) => {
+export const createTRPCContext = async (opts: { req: Request }) => {
   const { req } = opts
 
   // Get user from JWT token in cookies
   let user: User | null = null
   
   try {
-    const cookieHeader = req.headers.cookie
+    const cookieHeader = req.headers.get('cookie')
     if (cookieHeader) {
       const cookies = cookieHeader.split(';').reduce((acc, cookie) => {
         const [key, value] = cookie.trim().split('=')

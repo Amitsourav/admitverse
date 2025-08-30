@@ -34,17 +34,12 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith('/admin')) {
     const token = request.cookies.get('admitverse_session')?.value
 
-    // Redirect /admin to /auth/login
-    if (pathname === '/admin' || pathname === '/admin/') {
-      return NextResponse.redirect(new URL('/auth/login', request.url))
-    }
-
-    // For all admin routes, check authentication
+    // For ALL admin routes, check authentication
     if (!token) {
       return NextResponse.redirect(new URL('/auth/login', request.url))
     }
 
-    // Token exists, allow access
+    // Token exists, allow access (JWT validation happens in layout)
     return NextResponse.next()
   }
 
