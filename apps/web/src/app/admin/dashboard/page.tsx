@@ -15,8 +15,8 @@ interface DashboardStats {
   totalCourses: number
   totalSpecializations: number
   totalLeads: number
-  todayLeads: number
-  thisWeekLeads: number
+  todaysLeads: number
+  weeklyLeads: number
 }
 
 export default function AdminDashboard() {
@@ -25,20 +25,65 @@ export default function AdminDashboard() {
     totalCourses: 0,
     totalSpecializations: 0,
     totalLeads: 0,
-    todayLeads: 0,
-    thisWeekLeads: 0
+    todaysLeads: 0,
+    weeklyLeads: 0
   })
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    // Mock data for now - will be replaced with real API calls
-    setStats({
-      totalColleges: 15,
-      totalCourses: 87,
-      totalSpecializations: 156,
-      totalLeads: 342,
-      todayLeads: 12,
-      thisWeekLeads: 67
-    })
+    const fetchDashboardStats = async () => {
+      try {
+        console.log('📊 Fetching dashboard stats from API...')
+        setLoading(true)
+        setError(null)
+
+        const response = await fetch('/api/admin/stats', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        }
+
+        const result = await response.json()
+        console.log('📊 API Response:', result)
+
+        if (result.success) {
+          setStats({
+            totalColleges: result.data.totalColleges || 0,
+            totalCourses: result.data.totalCourses || 0, 
+            totalSpecializations: result.data.totalSpecializations || 0,
+            totalLeads: result.data.totalLeads || 0,
+            todaysLeads: result.data.todaysLeads || 0,
+            weeklyLeads: result.data.weeklyLeads || 0
+          })
+          console.log('✅ Dashboard stats updated successfully')
+        } else {
+          throw new Error(result.error || 'Failed to fetch stats')
+        }
+      } catch (error) {
+        console.error('❌ Dashboard stats error:', error)
+        setError(error instanceof Error ? error.message : 'Unknown error')
+        
+        // Fallback to mock data if API fails
+        setStats({
+          totalColleges: 15,
+          totalCourses: 87,
+          totalSpecializations: 156,
+          totalLeads: 342,
+          todaysLeads: 12,
+          weeklyLeads: 67
+        })
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchDashboardStats()
   }, [])
 
   const statsCards = [
@@ -76,7 +121,7 @@ export default function AdminDashboard() {
     },
     {
       title: 'Today\'s Leads',
-      value: stats.todayLeads,
+      value: stats.todaysLeads,
       icon: Calendar,
       color: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
       bgColor: 'rgba(239, 68, 68, 0.1)',
@@ -84,7 +129,7 @@ export default function AdminDashboard() {
     },
     {
       title: 'This Week',
-      value: stats.thisWeekLeads,
+      value: stats.weeklyLeads,
       icon: TrendingUp,
       color: 'linear-gradient(135deg, #6366f1 0%, #4338ca 100%)',
       bgColor: 'rgba(99, 102, 241, 0.1)',
@@ -101,20 +146,45 @@ export default function AdminDashboard() {
     }}>
       {/* Header */}
       <div>
-        <h1 style={{
-          fontSize: '36px',
-          fontWeight: 'bold',
-          color: '#111827',
-          marginBottom: '8px'
-        }}>
-          Dashboard
-        </h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <h1 style={{
+            fontSize: '36px',
+            fontWeight: 'bold',
+            color: '#111827',
+            marginBottom: '8px'
+          }}>
+            Dashboard
+          </h1>
+          {loading && (
+            <div style={{
+              width: '20px',
+              height: '20px',
+              border: '2px solid #f3f4f6',
+              borderTop: '2px solid #3b82f6',
+              borderRadius: '50%',
+              animation: 'spin 1s linear infinite'
+            }}></div>
+          )}
+        </div>
         <p style={{
           fontSize: '16px',
           color: '#6b7280'
         }}>
           Welcome to AdmitVerse Admin Panel. Here's your overview.
         </p>
+        {error && (
+          <div style={{
+            backgroundColor: '#fef2f2',
+            color: '#dc2626',
+            padding: '12px 16px',
+            borderRadius: '8px',
+            marginTop: '12px',
+            fontSize: '14px',
+            border: '1px solid #fecaca'
+          }}>
+            ⚠️ Error loading dashboard: {error}
+          </div>
+        )}
       </div>
 
       {/* Stats Grid */}
@@ -330,6 +400,14 @@ export default function AdminDashboard() {
           ))}
         </div>
       </div>
+
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   )
 }

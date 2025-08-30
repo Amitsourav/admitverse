@@ -40,6 +40,18 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   
+  // Enable debug mode
+  generateBuildId: async () => {
+    return 'debug-build'
+  },
+  
+  // Enable logging in development
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+  
   // Image optimization
   images: {
     domains: [
