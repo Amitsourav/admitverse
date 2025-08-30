@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  username     String    @unique
+  email        String?   @unique
+  password     String
+  fullName     String?   @map("full_name")
+  phone        String?
+  role         String    @default("user")
+  isActive     Boolean   @default(true) @map("is_active")
+  lastLogin    DateTime? @map("last_login")
+  isSample     Boolean   @default(false) @map("is_sample")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  createdById  Int?      @map("created_by_id")
+  leads        Lead[]
+  createdBy    User?     @relation("UserCreatedBy", fields: [createdById], references: [id])
+  usersCreated User[]    @relation("UserCreatedBy")
+
+  @@map("users")
+}
+
+model College {
+  id             Int      @id @default(autoincrement())
+  name           String
+  slug           String   @unique
+  about          String?
+  description    String?
+  location       String?
+  country        String?
+  ranking        Int?
+  acceptanceRate Float?   @map("acceptance_rate")
+  imageUrl       String?  @map("image_url")
+  website        String?
+  notableAlumni  Json?    @map("notable_alumni")
+  facilities     Json?
+  accreditations Json?
+  createdAt      DateTime @default(now()) @map("created_at")
+  isSample       Boolean  @default(false) @map("is_sample")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+  courses        Course[]
+
+  @@map("colleges")
+}
+
+model Course {
+  id               Int              @id @default(autoincrement())
+  collegeId        Int              @map("college_id")
+  name             String
+  shortName        String?          @map("short_name")
+  degreeType       String?          @map("degree_type")
+  duration         String?
+  totalSeats       Int?             @map("total_seats")
+  fees             Int?
+  description      String?
+  eligibility      String?
+  admissionProcess String?          @map("admission_process")
+  createdAt        DateTime         @default(now()) @map("created_at")
+  isSample         Boolean          @default(false) @map("is_sample")
+  updatedAt        DateTime         @updatedAt @map("updated_at")
+  college          College          @relation(fields: [collegeId], references: [id])
+  specializations  Specialization[]
+
+  @@map("courses")
+}
+
+model Specialization {
+  id              Int      @id @default(autoincrement())
+  courseId        Int      @map("course_id")
+  name            String
+  code            String?
+  about           String?
+  description     String?
+  requirements    String?
+  careerProspects String?  @map("career_prospects")
+  syllabus        Json?
+  placementRate   Float?   @map("placement_rate")
+  avgPackage      Int?     @map("avg_package")
+  topRecruiters   Json?    @map("top_recruiters")
+  researchAreas   Json?    @map("research_areas")
+  labFacilities   Json?    @map("lab_facilities")
+  createdAt       DateTime @default(now()) @map("created_at")
+  isSample        Boolean  @default(false) @map("is_sample")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  leads           Lead[]
+  course          Course   @relation(fields: [courseId], references: [id])
+
+  @@map("specializations")
+}
+
+model Lead {
+  id               Int             @id @default(autoincrement())
+  name             String
+  email            String
+  phone            String?
+  specializationId Int?            @map("specialization_id")
+  message          String?
+  status           String          @default("new")
+  source           String?
+  createdAt        DateTime        @default(now()) @map("created_at")
+  isSample         Boolean         @default(false) @map("is_sample")
+  updatedAt        DateTime        @updatedAt @map("updated_at")
+  userId           Int?            @map("user_id")
+  specialization   Specialization? @relation(fields: [specializationId], references: [id])
+  user             User?           @relation(fields: [userId], references: [id])
+
+  @@map("leads")
+}

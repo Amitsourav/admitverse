@@ -1,0 +1,26 @@
+{
+  "name": "admitverse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Your Gateway to International Education",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "node scripts/pre-run.js turbo run dev",
+    "dev:safe": "turbo run dev",
+    "build": "node scripts/pre-run.js turbo run build",
+    "lint": "turbo run lint",
+    "setup": "node scripts/setup.js",
+    "check": "node scripts/check-requirements.js",
+    "preinstall": "node scripts/check-requirements.js || true"
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "packageManager": "npm@9.8.1"
+}
