@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
       },
       process.env.JWT_SECRET || 'fallback-secret-key',
       { 
-        expiresIn: `${process.env.SESSION_TIMEOUT_HOURS || '24'}h` 
+        expiresIn: '24h'
       }
     )
 

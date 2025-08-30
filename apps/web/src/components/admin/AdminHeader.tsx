@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Bell, Search, Menu, LogOut, User, Settings, ChevronDown } from 'lucide-react'
+import { toast } from 'react-hot-toast'
 
 interface AdminHeaderProps {
   user: {

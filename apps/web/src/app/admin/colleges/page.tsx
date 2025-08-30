@@ -2,6 +2,25 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { 
   Plus, 
   Search, 
@@ -23,6 +42,15 @@ import {
   Grid,
   List
 } from 'lucide-react'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+// import { api } from '@/lib/trpc' // Temporarily disabled due to version compatibility
+import { toast } from 'react-hot-toast'
 
 const mockColleges = [
   {
@@ -119,6 +147,18 @@ const mockColleges = [
   }
 ]
 
+const statusColors = {
+  ACTIVE: 'bg-green-500',
+  INACTIVE: 'bg-red-500',
+  DRAFT: 'bg-yellow-500',
+}
+
+const statusLabels = {
+  ACTIVE: 'Active',
+  INACTIVE: 'Inactive',
+  DRAFT: 'Draft',
+}
+
 export default function CollegesPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
@@ -150,6 +190,39 @@ export default function CollegesPage() {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount)
+  }
+
+  // Mock mutations - replace with actual API calls later
+  const toggleFeaturedMutation = {
+    mutate: (data: any) => {
+      console.log('Toggle featured:', data)
+      toast.success('Featured status updated')
+    }
+  }
+
+  const deleteMutation = {
+    mutate: (data: any) => {
+      console.log('Delete college:', data)
+      toast.success('College deleted successfully')
+    }
+  }
+
+  const handleToggleFeatured = async (id: string) => {
+    try {
+      toggleFeaturedMutation.mutate({ id })
+    } catch (error) {
+      // Error handled in mutation
+    }
+  }
+
+  const handleDelete = async (id: string, name: string) => {
+    if (window.confirm(`Are you sure you want to delete "${name}"? This action cannot be undone.`)) {
+      try {
+        deleteMutation.mutate({ id })
+      } catch (error) {
+        // Error handled in mutation
+      }
+    }
   }
 
   return (
@@ -618,603 +691,107 @@ export default function CollegesPage() {
 
         {/* Table View */}
         {selectedView === 'table' && (
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <thead>
-                <tr style={{ backgroundColor: '#fafafa' }}>
-                  <th style={{
-                    padding: '16px 24px',
-                    textAlign: 'left',
-                    fontSize: '12px',
-                    fontWeight: '600',
-                    color: '#374151',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px'
-                  }}>Institution</th>
-                  <th style={{
-                    padding: '16px 24px',
-                    textAlign: 'left',
-                    fontSize: '12px',
-                    fontWeight: '600',
-                    color: '#374151',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px'
-                  }}>Location & Type</th>
-                  <th style={{
-                    padding: '16px 24px',
-                    textAlign: 'center',
-                    fontSize: '12px',
-                    fontWeight: '600',
-                    color: '#374151',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px'
-                  }}>Rankings</th>
-                  <th style={{
-                    padding: '16px 24px',
-                    textAlign: 'center',
-                    fontSize: '12px',
-                    fontWeight: '600',
-                    color: '#374151',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px'
-                  }}>Students & Courses</th>
-                  <th style={{
-                    padding: '16px 24px',
-                    textAlign: 'center',
-                    fontSize: '12px',
-                    fontWeight: '600',
-                    color: '#374151',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px'
-                  }}>Status</th>
-                  <th style={{
-                    padding: '16px 24px',
-                    textAlign: 'center',
-                    fontSize: '12px',
-                    fontWeight: '600',
-                    color: '#374151',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                    width: '100px'
-                  }}>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredColleges.map((college, index) => (
-                  <tr key={college.id} style={{
-                    borderBottom: index < filteredColleges.length - 1 ? '1px solid #f3f4f6' : 'none',
-                    transition: 'background-color 0.2s'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.backgroundColor = '#fafbfc'
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.backgroundColor = 'white'
-                  }}>
-                    
-                    {/* Institution */}
-                    <td style={{ padding: '24px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <div style={{
-                          width: '56px',
-                          height: '56px',
-                          borderRadius: '12px',
-                          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: 'white',
-                          fontSize: '20px',
-                          fontWeight: '700',
-                          boxShadow: '0 4px 8px rgba(102, 126, 234, 0.2)'
-                        }}>
-                          {college.shortName.charAt(0)}
-                        </div>
-                        <div>
-                          <h3 style={{
-                            fontSize: '16px',
-                            fontWeight: '600',
-                            color: '#111827',
-                            margin: '0 0 6px 0'
-                          }}>{college.name}</h3>
-                          <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            marginBottom: '4px'
-                          }}>
-                            <Globe style={{ height: '14px', width: '14px', color: '#6b7280' }} />
-                            <a 
-                              href={`https://${college.website}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{
-                                fontSize: '13px',
-                                color: '#6366f1',
-                                textDecoration: 'none'
-                              }}
-                              onMouseOver={(e) => (e.target as HTMLElement).style.textDecoration = 'underline'}
-                              onMouseOut={(e) => (e.target as HTMLElement).style.textDecoration = 'none'}
-                            >
-                              {college.website}
-                            </a>
-                          </div>
-                          <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '4px'
-                          }}>
-                            <Calendar style={{ height: '12px', width: '12px', color: '#9ca3af' }} />
-                            <span style={{
-                              fontSize: '12px',
-                              color: '#9ca3af'
-                            }}>
-                              Est. {college.establishedYear}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-
-                    {/* Location & Type */}
-                    <td style={{ padding: '24px' }}>
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        marginBottom: '8px'
-                      }}>
-                        <MapPin style={{ height: '14px', width: '14px', color: '#6b7280' }} />
-                        <span style={{
-                          fontSize: '14px',
-                          color: '#111827',
-                          fontWeight: '500'
-                        }}>
-                          {college.location}
-                        </span>
-                      </div>
-                      <div style={{
-                        fontSize: '13px',
-                        color: '#6b7280'
-                      }}>
-                        {college.type}
-                      </div>
-                    </td>
-
-                    {/* Rankings */}
-                    <td style={{ padding: '24px', textAlign: 'center' }}>
-                      <div style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '8px'
-                      }}>
-                        <div style={{
-                          padding: '6px 12px',
-                          backgroundColor: '#dbeafe',
-                          color: '#1d4ed8',
-                          borderRadius: '16px',
-                          fontSize: '12px',
-                          fontWeight: '600'
-                        }}>
-                          Global #{college.ranking.global}
-                        </div>
-                        <div style={{
-                          fontSize: '11px',
-                          color: '#6b7280'
-                        }}>
-                          National #{college.ranking.national}
-                        </div>
-                      </div>
-                    </td>
-
-                    {/* Students & Courses */}
-                    <td style={{ padding: '24px', textAlign: 'center' }}>
-                      <div style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '8px'
-                      }}>
-                        <div style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: '6px'
-                        }}>
-                          <Users style={{ height: '14px', width: '14px', color: '#6b7280' }} />
-                          <span style={{
-                            fontSize: '13px',
-                            fontWeight: '500',
-                            color: '#111827'
-                          }}>
-                            {college.stats.students.toLocaleString()}
-                          </span>
-                        </div>
-                        <div style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: '6px'
-                        }}>
-                          <GraduationCap style={{ height: '14px', width: '14px', color: '#6b7280' }} />
-                          <span style={{
-                            fontSize: '13px',
-                            color: '#6b7280'
-                          }}>
-                            {college.stats.courses} courses
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-
-                    {/* Status */}
-                    <td style={{ padding: '24px', textAlign: 'center' }}>
-                      <div style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        gap: '8px'
-                      }}>
-                        <span style={{
-                          padding: '6px 12px',
-                          fontSize: '12px',
-                          fontWeight: '600',
-                          borderRadius: '16px',
-                          backgroundColor: getStatusColor(college.status),
-                          color: 'white'
-                        }}>
-                          {college.status}
-                        </span>
-                        {college.featured && (
-                          <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '4px'
-                          }}>
-                            <Star style={{
-                              height: '12px',
-                              width: '12px',
-                              color: '#fbbf24',
-                              fill: '#fbbf24'
-                            }} />
-                            <span style={{
-                              fontSize: '11px',
-                              color: '#92400e',
-                              fontWeight: '500'
-                            }}>
-                              Featured
-                            </span>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>College</TableHead>
+                  <TableHead>Location</TableHead>
+                  <TableHead>Type</TableHead>
+                  <TableHead>Courses</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead>Featured</TableHead>
+                  <TableHead className="w-[50px]">Actions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {filteredColleges.map((college) => (
+                  <TableRow key={college.id}>
+                    <TableCell>
+                      <div className="space-y-1">
+                        <div className="font-medium">{college.name}</div>
+                        {college.establishedYear && (
+                          <div className="text-sm text-gray-500">
+                            Est. {college.establishedYear}
                           </div>
                         )}
                       </div>
-                    </td>
-
-                    {/* Actions */}
-                    <td style={{ padding: '24px', textAlign: 'center' }}>
-                      <div style={{
-                        display: 'flex',
-                        gap: '4px',
-                        justifyContent: 'center'
-                      }}>
-                        <button style={{
-                          padding: '8px',
-                          borderRadius: '6px',
-                          border: 'none',
-                          backgroundColor: '#f0f9ff',
-                          color: '#0369a1',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s'
-                        }}
-                        onMouseOver={(e) => {
-                          e.currentTarget.style.backgroundColor = '#e0f2fe'
-                        }}
-                        onMouseOut={(e) => {
-                          e.currentTarget.style.backgroundColor = '#f0f9ff'
-                        }}>
-                          <Eye style={{ height: '14px', width: '14px' }} />
-                        </button>
-                        
-                        <button style={{
-                          padding: '8px',
-                          borderRadius: '6px',
-                          border: 'none',
-                          backgroundColor: '#f0fdf4',
-                          color: '#15803d',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s'
-                        }}
-                        onMouseOver={(e) => {
-                          e.currentTarget.style.backgroundColor = '#dcfce7'
-                        }}
-                        onMouseOut={(e) => {
-                          e.currentTarget.style.backgroundColor = '#f0fdf4'
-                        }}>
-                          <Edit style={{ height: '14px', width: '14px' }} />
-                        </button>
-                        
-                        <button style={{
-                          padding: '8px',
-                          borderRadius: '6px',
-                          border: 'none',
-                          backgroundColor: '#fef2f2',
-                          color: '#dc2626',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s'
-                        }}
-                        onMouseOver={(e) => {
-                          e.currentTarget.style.backgroundColor = '#fee2e2'
-                        }}
-                        onMouseOut={(e) => {
-                          e.currentTarget.style.backgroundColor = '#fef2f2'
-                        }}>
-                          <Trash2 style={{ height: '14px', width: '14px' }} />
-                        </button>
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-1">
+                        <MapPin className="h-4 w-4 text-gray-400" />
+                        <span className="text-sm">
+                          {college.location}
+                        </span>
                       </div>
-                    </td>
-                  </tr>
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant="outline">
+                        {college.type}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <div className="text-sm">
+                        {college.stats.courses} course{college.stats.courses !== 1 ? 's' : ''}
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <Badge 
+                        variant="secondary" 
+                        className={`text-white ${statusColors[college.status as keyof typeof statusColors]}`}
+                      >
+                        {statusLabels[college.status as keyof typeof statusLabels]}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <button
+                        onClick={() => handleToggleFeatured(college.id)}
+                        className="p-1 hover:bg-gray-100 rounded"
+                      >
+                        <Star 
+                          className={`h-4 w-4 ${
+                            college.featured 
+                              ? 'fill-yellow-400 text-yellow-400' 
+                              : 'text-gray-400'
+                          }`} 
+                        />
+                      </button>
+                    </TableCell>
+                    <TableCell>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" className="h-8 w-8 p-0">
+                            <MoreHorizontal className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem asChild>
+                            <Link href={`/admin/colleges/${college.id}`}>
+                              <Eye className="mr-2 h-4 w-4" />
+                              View
+                            </Link>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem asChild>
+                            <Link href={`/admin/colleges/${college.id}/edit`}>
+                              <Edit className="mr-2 h-4 w-4" />
+                              Edit
+                            </Link>
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem
+                            className="text-red-600"
+                            onClick={() => handleDelete(college.id, college.name)}
+                          >
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            Delete
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </TableCell>
+                  </TableRow>
                 ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-
-        {/* Grid View */}
-        {selectedView === 'grid' && (
-          <div style={{
-            padding: '24px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))',
-            gap: '24px'
-          }}>
-            {filteredColleges.map((college) => (
-              <div key={college.id} style={{
-                border: '1px solid #e5e7eb',
-                borderRadius: '12px',
-                padding: '20px',
-                backgroundColor: 'white',
-                transition: 'all 0.2s',
-                cursor: 'pointer'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.08)'
-                e.currentTarget.style.borderColor = '#d1d5db'
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.boxShadow = 'none'
-                e.currentTarget.style.borderColor = '#e5e7eb'
-              }}>
-                
-                {/* College Header */}
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  justifyContent: 'space-between',
-                  marginBottom: '16px'
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '10px',
-                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                      fontSize: '18px',
-                      fontWeight: '700'
-                    }}>
-                      {college.shortName.charAt(0)}
-                    </div>
-                    <div>
-                      <h3 style={{
-                        fontSize: '16px',
-                        fontWeight: '600',
-                        color: '#111827',
-                        margin: '0 0 4px 0'
-                      }}>{college.name}</h3>
-                      <p style={{
-                        fontSize: '13px',
-                        color: '#6b7280',
-                        margin: 0
-                      }}>Est. {college.establishedYear}</p>
-                    </div>
-                  </div>
-                  
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    {college.featured && (
-                      <Star style={{
-                        height: '16px',
-                        width: '16px',
-                        color: '#fbbf24',
-                        fill: '#fbbf24'
-                      }} />
-                    )}
-                    <span style={{
-                      padding: '4px 8px',
-                      fontSize: '11px',
-                      fontWeight: '600',
-                      borderRadius: '12px',
-                      backgroundColor: getStatusColor(college.status),
-                      color: 'white'
-                    }}>
-                      {college.status}
-                    </span>
-                  </div>
-                </div>
-
-                {/* College Info */}
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '12px',
-                  marginBottom: '16px'
-                }}>
-                  <div style={{
-                    padding: '12px',
-                    backgroundColor: '#f8fafc',
-                    borderRadius: '8px'
-                  }}>
-                    <div style={{
-                      fontSize: '20px',
-                      fontWeight: '700',
-                      color: '#111827',
-                      marginBottom: '2px'
-                    }}>
-                      #{college.ranking.global}
-                    </div>
-                    <div style={{
-                      fontSize: '12px',
-                      color: '#6b7280'
-                    }}>
-                      Global Ranking
-                    </div>
-                  </div>
-                  
-                  <div style={{
-                    padding: '12px',
-                    backgroundColor: '#f8fafc',
-                    borderRadius: '8px'
-                  }}>
-                    <div style={{
-                      fontSize: '20px',
-                      fontWeight: '700',
-                      color: '#111827',
-                      marginBottom: '2px'
-                    }}>
-                      {college.stats.courses}
-                    </div>
-                    <div style={{
-                      fontSize: '12px',
-                      color: '#6b7280'
-                    }}>
-                      Active Courses
-                    </div>
-                  </div>
-                </div>
-
-                {/* Additional Stats */}
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  marginBottom: '16px',
-                  padding: '12px 0',
-                  borderTop: '1px solid #f3f4f6',
-                  borderBottom: '1px solid #f3f4f6'
-                }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{
-                      fontSize: '14px',
-                      fontWeight: '600',
-                      color: '#111827'
-                    }}>
-                      {college.stats.students.toLocaleString()}
-                    </div>
-                    <div style={{
-                      fontSize: '11px',
-                      color: '#6b7280'
-                    }}>
-                      Students
-                    </div>
-                  </div>
-                  
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{
-                      fontSize: '14px',
-                      fontWeight: '600',
-                      color: '#111827'
-                    }}>
-                      {college.stats.acceptanceRate}%
-                    </div>
-                    <div style={{
-                      fontSize: '11px',
-                      color: '#6b7280'
-                    }}>
-                      Acceptance
-                    </div>
-                  </div>
-                  
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{
-                      fontSize: '14px',
-                      fontWeight: '600',
-                      color: '#111827'
-                    }}>
-                      {formatCurrency(college.stats.avgTuition)}
-                    </div>
-                    <div style={{
-                      fontSize: '11px',
-                      color: '#6b7280'
-                    }}>
-                      Avg. Tuition
-                    </div>
-                  </div>
-                </div>
-
-                {/* Actions */}
-                <div style={{
-                  display: 'flex',
-                  gap: '8px'
-                }}>
-                  <Link
-                    href={`/admin/colleges/${college.id}`}
-                    style={{
-                      flex: 1,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px',
-                      padding: '8px',
-                      backgroundColor: '#f0f9ff',
-                      color: '#0369a1',
-                      borderRadius: '6px',
-                      fontSize: '13px',
-                      fontWeight: '500',
-                      textDecoration: 'none',
-                      transition: 'all 0.2s'
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.backgroundColor = '#dbeafe'
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.backgroundColor = '#f0f9ff'
-                    }}
-                  >
-                    <Eye style={{ height: '14px', width: '14px' }} />
-                    View
-                  </Link>
-                  
-                  <Link
-                    href={`/admin/colleges/${college.id}/edit`}
-                    style={{
-                      flex: 1,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px',
-                      padding: '8px',
-                      backgroundColor: '#f0fdf4',
-                      color: '#15803d',
-                      borderRadius: '6px',
-                      fontSize: '13px',
-                      fontWeight: '500',
-                      textDecoration: 'none',
-                      transition: 'all 0.2s'
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.backgroundColor = '#dcfce7'
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.backgroundColor = '#f0fdf4'
-                    }}
-                  >
-                    <Edit style={{ height: '14px', width: '14px' }} />
-                    Edit
-                  </Link>
-                </div>
-              </div>
-            ))}
+              </TableBody>
+            </Table>
           </div>
         )}
 
