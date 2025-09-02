@@ -135,7 +135,7 @@ async function main() {
 
   const createdSpecializations = []
   for (const course of createdCourses) {
-    const specializations = specializationTemplates[course.name] || ['General Studies']
+    const specializations = specializationTemplates[course.name as keyof typeof specializationTemplates] || ['General Studies']
     
     for (const spec of specializations) {
       const created = await prisma.specialization.create({

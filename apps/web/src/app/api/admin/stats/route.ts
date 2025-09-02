@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { supabaseOperations } from '@/lib/supabase-admin'
+import { fallbackStorage } from '@/lib/fallback-storage'
 
 export async function GET() {
   try {
@@ -14,45 +13,40 @@ export async function GET() {
 
     console.log('📅 Date ranges:', { todayStart, weekStart })
 
-    // Parallel queries for better performance
-    const [
-      totalColleges,
-      totalCourses, 
-      totalSpecializations,
-      totalLeads,
-      todaysLeads,
-      weeklyLeads
-    ] = await Promise.all([
-      // Total colleges count (including sample data for now)
-      prisma.college.count(),
+    let totalColleges, totalCourses, totalSpecializations, totalLeads, todaysLeads, weeklyLeads
+
+    try {
+      // Try Supabase REST API first
+      const supabaseStats = await supabaseOperations.getStats()
       
-      // Total courses count (including sample data for now)
-      prisma.course.count(),
+      // Get fallback storage stats
+      const fallbackStats = await fallbackStorage.getStats()
       
-      // Total specializations count (including sample data for now)
-      prisma.specialization.count(),
+      // Combine both sources (Supabase + fallback storage)
+      totalColleges = supabaseStats.totalColleges + fallbackStats.totalColleges
+      totalCourses = supabaseStats.totalCourses + fallbackStats.totalCourses
+      totalSpecializations = supabaseStats.totalSpecializations + fallbackStats.totalSpecializations
+      totalLeads = supabaseStats.totalLeads + fallbackStats.totalLeads
+      todaysLeads = supabaseStats.todaysLeads + fallbackStats.todaysLeads
+      weeklyLeads = supabaseStats.weeklyLeads + fallbackStats.weeklyLeads
       
-      // Total leads count (including sample data for now)
-      prisma.lead.count(),
-      
-      // Today's leads count
-      prisma.lead.count({
-        where: {
-          createdAt: {
-            gte: todayStart
-          }
-        }
-      }),
-      
-      // This week's leads count
-      prisma.lead.count({
-        where: {
-          createdAt: {
-            gte: weekStart
-          }
-        }
+      console.log('📊 Combined stats:', {
+        supabase: supabaseStats,
+        fallback: fallbackStats,
+        total: { totalColleges, totalCourses, totalSpecializations, totalLeads }
       })
-    ])
+    } catch (dbError) {
+      console.warn('⚠️ Database connection failed, using fallback storage only:', dbError)
+      
+      // Use fallback storage when DB is unavailable
+      const fallbackStats = await fallbackStorage.getStats()
+      totalColleges = fallbackStats.totalColleges
+      totalCourses = fallbackStats.totalCourses
+      totalSpecializations = fallbackStats.totalSpecializations
+      totalLeads = fallbackStats.totalLeads
+      todaysLeads = fallbackStats.todaysLeads
+      weeklyLeads = fallbackStats.weeklyLeads
+    }
 
     const stats = {
       totalColleges,
@@ -82,7 +76,5 @@ export async function GET() {
       },
       { status: 500 }
     )
-  } finally {
-    await prisma.$disconnect()
   }
 }

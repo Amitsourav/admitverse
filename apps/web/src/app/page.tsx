@@ -30,8 +30,8 @@ export default function AdminLoginPage() {
       const result = await response.json()
 
       if (response.ok) {
-        // Redirect to admin dashboard
-        router.push('/admin/dashboard')
+        // Redirect to admin colleges page
+        router.push('/admin/colleges')
         router.refresh()
       } else {
         setError(result.error || 'Login failed')
