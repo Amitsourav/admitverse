@@ -22,6 +22,7 @@ import {
   Upload,
   Download
 } from 'lucide-react'
+import { toast } from 'react-hot-toast'
 
 interface Course {
   id: number
@@ -91,21 +92,31 @@ export default function CoursesPage() {
   const handleDelete = async (id: number, name: string) => {
     if (window.confirm(`Are you sure you want to delete "${name}"?`)) {
       try {
+        console.log('Attempting to delete course:', id, name)
         const response = await fetch(`/api/admin/courses?id=${id}`, {
-          method: 'DELETE'
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
         })
         
+        console.log('Delete response status:', response.status)
         const result = await response.json()
+        console.log('Delete response:', result)
         
         if (result.success) {
+          toast.success('Course deleted successfully')
           fetchCourses()
         } else {
-          alert('Failed to delete course')
+          toast.error(result.error || 'Failed to delete course')
+          console.error('Delete failed:', result.error)
         }
       } catch (error) {
         console.error('Error deleting course:', error)
-        alert('Failed to delete course')
+        toast.error('Failed to delete course')
       }
+    } else {
+      console.log('Delete cancelled by user')
     }
   }
 
@@ -205,7 +216,72 @@ export default function CoursesPage() {
                 e.currentTarget.style.borderColor = '#e5e7eb'
                 e.currentTarget.style.transform = 'translateY(0)'
               }}
-              onClick={() => alert('Import functionality coming soon!')}
+              onClick={() => {
+                const input = document.createElement('input')
+                input.type = 'file'
+                input.accept = '.csv'
+                input.onchange = async (e) => {
+                  const file = (e.target as HTMLInputElement).files?.[0]
+                  if (!file) return
+                  
+                  const text = await file.text()
+                  const lines = text.split('\n').filter(line => line.trim())
+                  const headers = lines[0].split(',').map(h => h.trim())
+                  
+                  if (lines.length < 2) {
+                    toast.error('CSV file must contain at least one data row')
+                    return
+                  }
+                  
+                  const courses = lines.slice(1).map(line => {
+                    const values = line.split(',').map(v => v.trim())
+                    const course: any = {}
+                    headers.forEach((header, index) => {
+                      if (values[index]) {
+                        switch(header.toLowerCase()) {
+                          case 'name': course.name = values[index]; break
+                          case 'short name': course.short_name = values[index]; break
+                          case 'college id': course.college_id = parseInt(values[index]); break
+                          case 'degree type': course.degree_type = values[index]; break
+                          case 'duration': course.duration = values[index]; break
+                          case 'total seats': course.total_seats = parseInt(values[index]); break
+                          case 'fees': course.fees = parseInt(values[index]); break
+                          case 'description': course.description = values[index]; break
+                          case 'category': course.category = values[index]; break
+                          case 'mode': course.mode = values[index]; break
+                          case 'course code': course.course_code = values[index]; break
+                          case 'credits': course.credits = parseInt(values[index]); break
+                          case 'featured': course.featured = values[index].toLowerCase() === 'true'; break
+                        }
+                      }
+                    })
+                    return course
+                  }).filter(c => c.name && c.college_id)
+                  
+                  if (courses.length === 0) {
+                    toast.error('No valid courses found in CSV')
+                    return
+                  }
+                  
+                  toast.success(`Found ${courses.length} courses. Importing...`)
+                  
+                  for (const course of courses) {
+                    try {
+                      await fetch('/api/admin/courses', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(course)
+                      })
+                    } catch (error) {
+                      console.error('Error importing course:', error)
+                    }
+                  }
+                  
+                  toast.success('Import completed!')
+                  window.location.reload()
+                }
+                input.click()
+              }}
             >
               <Upload style={{ width: '16px', height: '16px' }} />
               Import
@@ -815,63 +891,60 @@ export default function CoursesPage() {
                         <td style={{ padding: '20px', textAlign: 'center' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
                             <button
-                              onClick={() => router.push(`/admin/courses/${course.id}`)}
+                              onClick={(e) => {
+                                e.preventDefault()
+                                e.stopPropagation()
+                                router.push(`/admin/courses/${course.id}`)
+                              }}
                               style={{
                                 padding: '6px 10px',
                                 borderRadius: '6px',
-                                border: '1px solid #e5e7eb',
-                                backgroundColor: 'white',
-                                color: '#3b82f6',
+                                border: '2px solid #3b82f6',
+                                backgroundColor: '#3b82f6',
+                                color: 'white',
                                 fontSize: '12px',
                                 fontWeight: '500',
                                 cursor: 'pointer',
-                                transition: 'all 0.2s ease',
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '4px'
-                              }}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = '#eff6ff'
-                                e.currentTarget.style.borderColor = '#3b82f6'
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = 'white'
-                                e.currentTarget.style.borderColor = '#e5e7eb'
+                                gap: '4px',
+                                zIndex: 10,
+                                position: 'relative'
                               }}
                             >
                               <Eye style={{ width: '12px', height: '12px' }} />
                               View
                             </button>
                             <button
-                              onClick={() => router.push(`/admin/courses/${course.id}/edit`)}
+                              onClick={(e) => {
+                                e.preventDefault()
+                                e.stopPropagation()
+                                router.push(`/admin/courses/${course.id}/edit`)
+                              }}
                               style={{
                                 padding: '6px 10px',
                                 borderRadius: '6px',
-                                border: '1px solid #e5e7eb',
-                                backgroundColor: 'white',
-                                color: '#f59e0b',
+                                border: '2px solid #f59e0b',
+                                backgroundColor: '#f59e0b',
+                                color: 'white',
                                 fontSize: '12px',
                                 fontWeight: '500',
                                 cursor: 'pointer',
-                                transition: 'all 0.2s ease',
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '4px'
-                              }}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = '#fffbeb'
-                                e.currentTarget.style.borderColor = '#f59e0b'
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = 'white'
-                                e.currentTarget.style.borderColor = '#e5e7eb'
+                                gap: '4px',
+                                zIndex: 10,
+                                position: 'relative'
                               }}
                             >
                               <Edit3 style={{ width: '12px', height: '12px' }} />
                               Edit
                             </button>
                             <button
-                              onClick={() => handleDelete(course.id, course.name)}
+                              onClick={() => {
+                                console.log('Delete button clicked for:', course.name)
+                                handleDelete(course.id, course.name)
+                              }}
                               style={{
                                 padding: '6px 10px',
                                 borderRadius: '6px',
@@ -1039,7 +1112,10 @@ export default function CoursesPage() {
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <button
-                          onClick={() => router.push(`/admin/courses/${course.id}`)}
+                          onClick={() => {
+                            console.log('Grid View button clicked')
+                            toast('Course detail view coming soon!')
+                          }}
                           style={{
                             display: 'flex',
                             alignItems: 'center',
@@ -1067,7 +1143,10 @@ export default function CoursesPage() {
                           View
                         </button>
                         <button
-                          onClick={() => router.push(`/admin/courses/${course.id}/edit`)}
+                          onClick={() => {
+                            console.log('Grid Edit button clicked')
+                            toast('Course edit page coming soon!')
+                          }}
                           style={{
                             display: 'flex',
                             alignItems: 'center',
@@ -1095,7 +1174,10 @@ export default function CoursesPage() {
                           Edit
                         </button>
                         <button
-                          onClick={() => handleDelete(course.id, course.name)}
+                          onClick={() => {
+                            console.log('Grid Delete button clicked for:', course.name)
+                            handleDelete(course.id, course.name)
+                          }}
                           style={{
                             display: 'flex',
                             alignItems: 'center',

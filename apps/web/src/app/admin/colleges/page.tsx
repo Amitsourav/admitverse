@@ -351,7 +351,67 @@ export default function CollegesPage() {
                 e.currentTarget.style.borderColor = '#e5e7eb'
                 e.currentTarget.style.transform = 'translateY(0)'
               }}
-              onClick={() => alert('Import functionality coming soon!')}
+              onClick={() => {
+                const input = document.createElement('input')
+                input.type = 'file'
+                input.accept = '.csv'
+                input.onchange = async (e) => {
+                  const file = (e.target as HTMLInputElement).files?.[0]
+                  if (!file) return
+                  
+                  const text = await file.text()
+                  const lines = text.split('\n').filter(line => line.trim())
+                  const headers = lines[0].split(',').map(h => h.trim())
+                  
+                  if (lines.length < 2) {
+                    toast.error('CSV file must contain at least one data row')
+                    return
+                  }
+                  
+                  const colleges = lines.slice(1).map(line => {
+                    const values = line.split(',').map(v => v.trim())
+                    const college: any = {}
+                    headers.forEach((header, index) => {
+                      if (values[index]) {
+                        switch(header.toLowerCase()) {
+                          case 'name': college.name = values[index]; break
+                          case 'location': college.location = values[index]; break
+                          case 'country': college.country = values[index]; break
+                          case 'website': college.website = values[index]; break
+                          case 'ranking': college.ranking = parseInt(values[index]); break
+                          case 'acceptance rate': college.acceptance_rate = parseFloat(values[index]); break
+                          case 'description': college.description = values[index]; break
+                          case 'featured': college.featured = values[index].toLowerCase() === 'true'; break
+                        }
+                      }
+                    })
+                    return college
+                  }).filter(c => c.name)
+                  
+                  if (colleges.length === 0) {
+                    toast.error('No valid colleges found in CSV')
+                    return
+                  }
+                  
+                  toast.success(`Found ${colleges.length} colleges. Importing...`)
+                  
+                  for (const college of colleges) {
+                    try {
+                      await fetch('/api/admin/colleges', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(college)
+                      })
+                    } catch (error) {
+                      console.error('Error importing college:', error)
+                    }
+                  }
+                  
+                  toast.success('Import completed!')
+                  window.location.reload()
+                }
+                input.click()
+              }}
             >
               <Upload style={{ width: '16px', height: '16px' }} />
               Import
