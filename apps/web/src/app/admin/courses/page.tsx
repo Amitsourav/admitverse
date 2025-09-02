@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { 
   BookOpen, 
   Plus, 
@@ -17,152 +18,105 @@ import {
   Trash2,
   Eye,
   TrendingUp,
-  Calendar
+  Calendar,
+  Upload,
+  Download
 } from 'lucide-react'
 
+interface Course {
+  id: number
+  name: string
+  short_name?: string
+  college_id: number
+  degree_type?: string
+  duration?: string
+  total_seats?: number
+  fees?: number
+  description?: string
+  eligibility?: string
+  admission_process?: string
+  status: string
+  featured: boolean
+  category?: string
+  intake_dates?: string[]
+  application_deadline?: string
+  acceptance_rate?: number
+  ranking?: number
+  students_enrolled: number
+  max_capacity?: number
+  course_code?: string
+  credits?: number
+  mode?: string
+  specializations?: string[]
+  colleges?: {
+    name: string
+    location?: string
+    country?: string
+  }
+  created_at: string
+  updated_at?: string
+}
+
 export default function CoursesPage() {
+  const router = useRouter()
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedStatus, setSelectedStatus] = useState('all')
   const [selectedDegree, setSelectedDegree] = useState('all')
   const [viewMode, setViewMode] = useState<'table' | 'grid'>('table')
+  const [courses, setCourses] = useState<Course[]>([])
+  const [loading, setLoading] = useState(true)
 
-  // Enhanced mock data for courses
-  const courses = [
-    {
-      id: '1',
-      name: 'Computer Science',
-      college: 'Massachusetts Institute of Technology',
-      collegeAbbr: 'MIT',
-      duration: '4 years',
-      degree: 'Bachelor of Science',
-      category: 'Technology',
-      students: 1200,
-      capacity: 1500,
-      tuitionFee: '$58,240',
-      ranking: 1,
-      acceptance: '7%',
-      status: 'Active',
-      description: 'Comprehensive computer science program covering algorithms, software engineering, AI, and machine learning.',
-      startDate: 'September 2024',
-      applicationDeadline: 'January 15, 2024'
-    },
-    {
-      id: '2',
-      name: 'Business Administration',
-      college: 'Harvard Business School',
-      collegeAbbr: 'HBS',
-      duration: '2 years',
-      degree: 'Master of Business Administration',
-      category: 'Business',
-      students: 800,
-      capacity: 900,
-      tuitionFee: '$73,440',
-      ranking: 2,
-      acceptance: '9%',
-      status: 'Active',
-      description: 'World-renowned MBA program developing global leaders in business and management.',
-      startDate: 'September 2024',
-      applicationDeadline: 'April 15, 2024'
-    },
-    {
-      id: '3',
-      name: 'Medicine',
-      college: 'University of Oxford',
-      collegeAbbr: 'Oxford',
-      duration: '6 years',
-      degree: 'Bachelor of Medicine, Bachelor of Surgery',
-      category: 'Medicine',
-      students: 500,
-      capacity: 550,
-      tuitionFee: '£37,510',
-      ranking: 3,
-      acceptance: '5%',
-      status: 'Active',
-      description: 'Rigorous medical program combining theoretical knowledge with practical clinical experience.',
-      startDate: 'October 2024',
-      applicationDeadline: 'October 15, 2023'
-    },
-    {
-      id: '4',
-      name: 'Engineering',
-      college: 'Stanford University',
-      collegeAbbr: 'Stanford',
-      duration: '4 years',
-      degree: 'Bachelor of Engineering',
-      category: 'Technology',
-      students: 1500,
-      capacity: 1800,
-      tuitionFee: '$61,731',
-      ranking: 2,
-      acceptance: '4%',
-      status: 'Active',
-      description: 'Innovative engineering program focusing on cutting-edge technology and sustainable solutions.',
-      startDate: 'September 2024',
-      applicationDeadline: 'January 2, 2024'
-    },
-    {
-      id: '5',
-      name: 'Law',
-      college: 'Yale Law School',
-      collegeAbbr: 'Yale',
-      duration: '3 years',
-      degree: 'Juris Doctor',
-      category: 'Law',
-      students: 600,
-      capacity: 650,
-      tuitionFee: '$69,916',
-      ranking: 1,
-      acceptance: '6%',
-      status: 'Active',
-      description: 'Premier law program training future legal leaders and constitutional scholars.',
-      startDate: 'August 2024',
-      applicationDeadline: 'February 28, 2024'
-    },
-    {
-      id: '6',
-      name: 'Psychology',
-      college: 'University of California, Berkeley',
-      collegeAbbr: 'UC Berkeley',
-      duration: '4 years',
-      degree: 'Bachelor of Arts',
-      category: 'Social Sciences',
-      students: 950,
-      capacity: 1000,
-      tuitionFee: '$45,196',
-      ranking: 4,
-      acceptance: '17%',
-      status: 'Draft',
-      description: 'Comprehensive psychology program exploring human behavior, cognition, and mental processes.',
-      startDate: 'August 2024',
-      applicationDeadline: 'November 30, 2023'
-    },
-    {
-      id: '7',
-      name: 'Fine Arts',
-      college: 'Rhode Island School of Design',
-      collegeAbbr: 'RISD',
-      duration: '4 years',
-      degree: 'Bachelor of Fine Arts',
-      category: 'Arts',
-      students: 350,
-      capacity: 400,
-      tuitionFee: '$56,435',
-      ranking: 1,
-      acceptance: '19%',
-      status: 'Inactive',
-      description: 'Leading fine arts program fostering creative expression across multiple artistic disciplines.',
-      startDate: 'September 2024',
-      applicationDeadline: 'February 1, 2024'
+  useEffect(() => {
+    fetchCourses()
+  }, [])
+
+  const fetchCourses = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch('/api/admin/courses')
+      const result = await response.json()
+      
+      if (result.success) {
+        setCourses(result.data)
+      } else {
+        console.error('Failed to fetch courses:', result.error)
+      }
+    } catch (error) {
+      console.error('Error fetching courses:', error)
+    } finally {
+      setLoading(false)
     }
-  ]
+  }
+
+  const handleDelete = async (id: number, name: string) => {
+    if (window.confirm(`Are you sure you want to delete "${name}"?`)) {
+      try {
+        const response = await fetch(`/api/admin/courses?id=${id}`, {
+          method: 'DELETE'
+        })
+        
+        const result = await response.json()
+        
+        if (result.success) {
+          fetchCourses()
+        } else {
+          alert('Failed to delete course')
+        }
+      } catch (error) {
+        console.error('Error deleting course:', error)
+        alert('Failed to delete course')
+      }
+    }
+  }
 
   const filteredCourses = courses.filter(course => {
+    const collegeName = course.colleges?.name || ''
     const matchesSearch = course.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         course.college.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         course.degree.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         course.category.toLowerCase().includes(searchQuery.toLowerCase())
+                         collegeName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         (course.degree_type || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         (course.category || '').toLowerCase().includes(searchQuery.toLowerCase())
     const matchesStatus = selectedStatus === 'all' || course.status.toLowerCase() === selectedStatus.toLowerCase()
-    const matchesDegree = selectedDegree === 'all' || course.degree.toLowerCase().includes(selectedDegree.toLowerCase())
+    const matchesDegree = selectedDegree === 'all' || (course.degree_type || '').toLowerCase().includes(selectedDegree.toLowerCase())
     return matchesSearch && matchesStatus && matchesDegree
   })
 
@@ -225,35 +179,128 @@ export default function CoursesPage() {
             </div>
           </div>
           
-          <button 
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '12px 24px',
-              borderRadius: '10px',
-              border: 'none',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-              boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.4)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)'
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)'
-            }}
-            onClick={() => alert('Add New Course functionality coming soon!')}
-          >
-            <Plus style={{ width: '18px', height: '18px' }} />
-            Add New Course
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <button 
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 20px',
+                borderRadius: '8px',
+                border: '1px solid #e5e7eb',
+                background: 'white',
+                color: '#374151',
+                fontSize: '14px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#f9fafb'
+                e.currentTarget.style.borderColor = '#d1d5db'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'white'
+                e.currentTarget.style.borderColor = '#e5e7eb'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+              onClick={() => alert('Import functionality coming soon!')}
+            >
+              <Upload style={{ width: '16px', height: '16px' }} />
+              Import
+            </button>
+            
+            <button 
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 20px',
+                borderRadius: '8px',
+                border: '1px solid #e5e7eb',
+                background: 'white',
+                color: '#374151',
+                fontSize: '14px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#f9fafb'
+                e.currentTarget.style.borderColor = '#d1d5db'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'white'
+                e.currentTarget.style.borderColor = '#e5e7eb'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+              onClick={() => {
+                if (courses.length === 0) {
+                  alert('No courses to export')
+                  return
+                }
+                const csvData = courses.map(course => ({
+                  Name: course.name,
+                  'Short Name': course.short_name || '',
+                  College: course.colleges?.name || '',
+                  'Degree Type': course.degree_type || '',
+                  Duration: course.duration || '',
+                  'Total Seats': course.total_seats || '',
+                  Fees: course.fees || '',
+                  Category: course.category || '',
+                  Mode: course.mode || '',
+                  Credits: course.credits || '',
+                  'Students Enrolled': course.students_enrolled || 0,
+                  'Max Capacity': course.max_capacity || '',
+                  'Acceptance Rate': course.acceptance_rate || '',
+                  Ranking: course.ranking || '',
+                  Status: course.status
+                }))
+                const csvContent = 'data:text/csv;charset=utf-8,' + 
+                  Object.keys(csvData[0] || {}).join(',') + '\n' +
+                  csvData.map(row => Object.values(row).join(',')).join('\n')
+                const link = document.createElement('a')
+                link.href = encodeURI(csvContent)
+                link.download = `courses_${new Date().toISOString().split('T')[0]}.csv`
+                link.click()
+              }}
+            >
+              <Download style={{ width: '16px', height: '16px' }} />
+              Export
+            </button>
+
+            <button 
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                padding: '12px 24px',
+                borderRadius: '10px',
+                border: 'none',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                fontSize: '14px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.4)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)'
+              }}
+              onClick={() => router.push('/admin/courses/new')}
+            >
+              <Plus style={{ width: '18px', height: '18px' }} />
+              Add New Course
+            </button>
+          </div>
         </div>
 
         {/* Stats Cards */}
@@ -282,7 +329,7 @@ export default function CoursesPage() {
             },
             { 
               title: 'Total Students', 
-              value: courses.reduce((sum, c) => sum + c.students, 0).toLocaleString(), 
+              value: courses.reduce((sum, c) => sum + (c.students_enrolled || 0), 0).toLocaleString(), 
               subtitle: 'Enrolled across all courses',
               icon: Users,
               color: '#8b5cf6',
@@ -290,7 +337,7 @@ export default function CoursesPage() {
             },
             { 
               title: 'Institutions', 
-              value: new Set(courses.map(c => c.college)).size.toString(), 
+              value: new Set(courses.map(c => c.colleges?.name || 'Unknown')).size.toString(), 
               subtitle: 'Partner universities',
               icon: GraduationCap,
               color: '#f59e0b',
@@ -522,7 +569,26 @@ export default function CoursesPage() {
         </div>
 
         {/* Content Area */}
-        {filteredCourses.length === 0 ? (
+        {loading ? (
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '16px',
+            padding: '64px 32px',
+            textAlign: 'center',
+            border: '1px solid #e5e7eb'
+          }}>
+            <div style={{
+              width: '16px',
+              height: '16px',
+              border: '2px solid #e5e7eb',
+              borderTop: '2px solid #3b82f6',
+              borderRadius: '50%',
+              animation: 'spin 1s linear infinite',
+              margin: '0 auto 16px'
+            }} />
+            <p style={{ color: '#6b7280', margin: 0 }}>Loading courses...</p>
+          </div>
+        ) : filteredCourses.length === 0 ? (
           <div style={{
             backgroundColor: 'white',
             borderRadius: '16px',
@@ -688,7 +754,7 @@ export default function CoursesPage() {
                                 margin: 0,
                                 lineHeight: '1.2'
                               }}>
-                                {course.degree} • {course.duration}
+                                {course.degree_type || 'N/A'} • {course.duration || 'N/A'}
                               </p>
                             </div>
                           </div>
@@ -701,14 +767,14 @@ export default function CoursesPage() {
                               color: '#111827',
                               margin: '0 0 2px 0'
                             }}>
-                              {course.collegeAbbr}
+                              {course.colleges?.name || 'Unknown'}
                             </p>
                             <p style={{
                               fontSize: '13px',
                               color: '#6b7280',
                               margin: 0
                             }}>
-                              Ranking #{course.ranking}
+                              {course.ranking ? `Ranking #${course.ranking}` : 'Unranked'}
                             </p>
                           </div>
                         </td>
@@ -716,10 +782,10 @@ export default function CoursesPage() {
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <Users style={{ width: '16px', height: '16px', color: '#6b7280' }} />
                             <span style={{ fontSize: '14px', fontWeight: '500', color: '#111827' }}>
-                              {course.students.toLocaleString()}
+                              {(course.students_enrolled || 0).toLocaleString()}
                             </span>
                             <span style={{ fontSize: '13px', color: '#6b7280' }}>
-                              / {course.capacity.toLocaleString()}
+                              / {(course.max_capacity || course.total_seats || 0).toLocaleString()}
                             </span>
                           </div>
                         </td>
@@ -729,7 +795,7 @@ export default function CoursesPage() {
                             fontWeight: '600',
                             color: '#111827'
                           }}>
-                            {course.tuitionFee}
+                            {course.fees ? `$${course.fees.toLocaleString()}` : 'N/A'}
                           </span>
                         </td>
                         <td style={{ padding: '20px' }}>
@@ -747,30 +813,90 @@ export default function CoursesPage() {
                           </span>
                         </td>
                         <td style={{ padding: '20px', textAlign: 'center' }}>
-                          <div style={{ position: 'relative', display: 'inline-block' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
                             <button
+                              onClick={() => router.push(`/admin/courses/${course.id}`)}
                               style={{
-                                width: '36px',
-                                height: '36px',
-                                borderRadius: '8px',
+                                padding: '6px 10px',
+                                borderRadius: '6px',
                                 border: '1px solid #e5e7eb',
                                 backgroundColor: 'white',
+                                color: '#3b82f6',
+                                fontSize: '12px',
+                                fontWeight: '500',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease',
                                 display: 'flex',
                                 alignItems: 'center',
-                                justifyContent: 'center',
-                                cursor: 'pointer',
-                                transition: 'all 0.2s ease'
+                                gap: '4px'
                               }}
                               onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = '#f9fafb'
-                                e.currentTarget.style.borderColor = '#6b7280'
+                                e.currentTarget.style.backgroundColor = '#eff6ff'
+                                e.currentTarget.style.borderColor = '#3b82f6'
                               }}
                               onMouseLeave={(e) => {
                                 e.currentTarget.style.backgroundColor = 'white'
                                 e.currentTarget.style.borderColor = '#e5e7eb'
                               }}
                             >
-                              <MoreHorizontal style={{ width: '16px', height: '16px', color: '#6b7280' }} />
+                              <Eye style={{ width: '12px', height: '12px' }} />
+                              View
+                            </button>
+                            <button
+                              onClick={() => router.push(`/admin/courses/${course.id}/edit`)}
+                              style={{
+                                padding: '6px 10px',
+                                borderRadius: '6px',
+                                border: '1px solid #e5e7eb',
+                                backgroundColor: 'white',
+                                color: '#f59e0b',
+                                fontSize: '12px',
+                                fontWeight: '500',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '4px'
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor = '#fffbeb'
+                                e.currentTarget.style.borderColor = '#f59e0b'
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = 'white'
+                                e.currentTarget.style.borderColor = '#e5e7eb'
+                              }}
+                            >
+                              <Edit3 style={{ width: '12px', height: '12px' }} />
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => handleDelete(course.id, course.name)}
+                              style={{
+                                padding: '6px 10px',
+                                borderRadius: '6px',
+                                border: '1px solid #e5e7eb',
+                                backgroundColor: 'white',
+                                color: '#ef4444',
+                                fontSize: '12px',
+                                fontWeight: '500',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '4px'
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor = '#fef2f2'
+                                e.currentTarget.style.borderColor = '#ef4444'
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = 'white'
+                                e.currentTarget.style.borderColor = '#e5e7eb'
+                              }}
+                            >
+                              <Trash2 style={{ width: '12px', height: '12px' }} />
+                              Delete
                             </button>
                           </div>
                         </td>
@@ -840,7 +966,7 @@ export default function CoursesPage() {
                             color: '#6b7280',
                             margin: 0
                           }}>
-                            {course.collegeAbbr}
+                            {course.colleges?.name || 'Unknown'}
                           </p>
                         </div>
                       </div>
@@ -865,7 +991,7 @@ export default function CoursesPage() {
                       margin: '0 0 16px 0',
                       lineHeight: '1.4'
                     }}>
-                      {course.description}
+                      {course.description || 'No description available'}
                     </p>
 
                     <div style={{
@@ -878,28 +1004,28 @@ export default function CoursesPage() {
                         <Award style={{ width: '16px', height: '16px', color: '#6b7280' }} />
                         <div>
                           <p style={{ fontSize: '11px', color: '#6b7280', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Degree</p>
-                          <p style={{ fontSize: '13px', fontWeight: '500', color: '#111827', margin: 0 }}>{course.degree}</p>
+                          <p style={{ fontSize: '13px', fontWeight: '500', color: '#111827', margin: 0 }}>{course.degree_type || 'N/A'}</p>
                         </div>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <Clock style={{ width: '16px', height: '16px', color: '#6b7280' }} />
                         <div>
                           <p style={{ fontSize: '11px', color: '#6b7280', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Duration</p>
-                          <p style={{ fontSize: '13px', fontWeight: '500', color: '#111827', margin: 0 }}>{course.duration}</p>
+                          <p style={{ fontSize: '13px', fontWeight: '500', color: '#111827', margin: 0 }}>{course.duration || 'N/A'}</p>
                         </div>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <Users style={{ width: '16px', height: '16px', color: '#6b7280' }} />
                         <div>
                           <p style={{ fontSize: '11px', color: '#6b7280', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Students</p>
-                          <p style={{ fontSize: '13px', fontWeight: '500', color: '#111827', margin: 0 }}>{course.students.toLocaleString()}</p>
+                          <p style={{ fontSize: '13px', fontWeight: '500', color: '#111827', margin: 0 }}>{(course.students_enrolled || 0).toLocaleString()}</p>
                         </div>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <Calendar style={{ width: '16px', height: '16px', color: '#6b7280' }} />
                         <div>
-                          <p style={{ fontSize: '11px', color: '#6b7280', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Tuition</p>
-                          <p style={{ fontSize: '13px', fontWeight: '500', color: '#111827', margin: 0 }}>{course.tuitionFee}</p>
+                          <p style={{ fontSize: '11px', color: '#6b7280', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Fees</p>
+                          <p style={{ fontSize: '13px', fontWeight: '500', color: '#111827', margin: 0 }}>{course.fees ? `$${course.fees.toLocaleString()}` : 'N/A'}</p>
                         </div>
                       </div>
                     </div>
@@ -911,8 +1037,9 @@ export default function CoursesPage() {
                       paddingTop: '16px',
                       borderTop: '1px solid #f3f4f6'
                     }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <button
+                          onClick={() => router.push(`/admin/courses/${course.id}`)}
                           style={{
                             display: 'flex',
                             alignItems: 'center',
@@ -921,15 +1048,15 @@ export default function CoursesPage() {
                             borderRadius: '8px',
                             border: '1px solid #e5e7eb',
                             backgroundColor: 'white',
-                            color: '#374151',
+                            color: '#3b82f6',
                             fontSize: '12px',
                             fontWeight: '500',
                             cursor: 'pointer',
                             transition: 'all 0.2s ease'
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = '#f9fafb'
-                            e.currentTarget.style.borderColor = '#d1d5db'
+                            e.currentTarget.style.backgroundColor = '#eff6ff'
+                            e.currentTarget.style.borderColor = '#3b82f6'
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.backgroundColor = 'white'
@@ -940,6 +1067,7 @@ export default function CoursesPage() {
                           View
                         </button>
                         <button
+                          onClick={() => router.push(`/admin/courses/${course.id}/edit`)}
                           style={{
                             display: 'flex',
                             alignItems: 'center',
@@ -948,15 +1076,15 @@ export default function CoursesPage() {
                             borderRadius: '8px',
                             border: '1px solid #e5e7eb',
                             backgroundColor: 'white',
-                            color: '#374151',
+                            color: '#f59e0b',
                             fontSize: '12px',
                             fontWeight: '500',
                             cursor: 'pointer',
                             transition: 'all 0.2s ease'
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = '#f9fafb'
-                            e.currentTarget.style.borderColor = '#d1d5db'
+                            e.currentTarget.style.backgroundColor = '#fffbeb'
+                            e.currentTarget.style.borderColor = '#f59e0b'
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.backgroundColor = 'white'
@@ -966,9 +1094,37 @@ export default function CoursesPage() {
                           <Edit3 style={{ width: '14px', height: '14px' }} />
                           Edit
                         </button>
+                        <button
+                          onClick={() => handleDelete(course.id, course.name)}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            padding: '8px 14px',
+                            borderRadius: '8px',
+                            border: '1px solid #e5e7eb',
+                            backgroundColor: 'white',
+                            color: '#ef4444',
+                            fontSize: '12px',
+                            fontWeight: '500',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#fef2f2'
+                            e.currentTarget.style.borderColor = '#ef4444'
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'white'
+                            e.currentTarget.style.borderColor = '#e5e7eb'
+                          }}
+                        >
+                          <Trash2 style={{ width: '14px', height: '14px' }} />
+                          Delete
+                        </button>
                       </div>
                       <div style={{ fontSize: '12px', color: '#6b7280' }}>
-                        Ranking #{course.ranking}
+                        {course.ranking ? `Ranking #${course.ranking}` : 'Unranked'}
                       </div>
                     </div>
                   </div>

@@ -325,36 +325,116 @@ export default function CollegesPage() {
             </div>
           </div>
           
-          <button 
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '12px 24px',
-              borderRadius: '10px',
-              border: 'none',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-              boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
-              textDecoration: 'none'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.4)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)'
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)'
-            }}
-            onClick={() => window.location.href = '/admin/colleges/new'}
-          >
-            <Plus style={{ width: '18px', height: '18px' }} />
-            Add New College
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <button 
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 20px',
+                borderRadius: '8px',
+                border: '1px solid #e5e7eb',
+                background: 'white',
+                color: '#374151',
+                fontSize: '14px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#f9fafb'
+                e.currentTarget.style.borderColor = '#d1d5db'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'white'
+                e.currentTarget.style.borderColor = '#e5e7eb'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+              onClick={() => alert('Import functionality coming soon!')}
+            >
+              <Upload style={{ width: '16px', height: '16px' }} />
+              Import
+            </button>
+            
+            <button 
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 20px',
+                borderRadius: '8px',
+                border: '1px solid #e5e7eb',
+                background: 'white',
+                color: '#374151',
+                fontSize: '14px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#f9fafb'
+                e.currentTarget.style.borderColor = '#d1d5db'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'white'
+                e.currentTarget.style.borderColor = '#e5e7eb'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+              onClick={() => {
+                const csvData = colleges.map(college => ({
+                  Name: college.name,
+                  Location: college.location || '',
+                  Country: college.country || '',
+                  Ranking: college.ranking || '',
+                  'Acceptance Rate': college.acceptanceRate || '',
+                  Status: college.status || 'ACTIVE'
+                }))
+                const csvContent = 'data:text/csv;charset=utf-8,' + 
+                  Object.keys(csvData[0] || {}).join(',') + '\n' +
+                  csvData.map(row => Object.values(row).join(',')).join('\n')
+                const link = document.createElement('a')
+                link.href = encodeURI(csvContent)
+                link.download = `colleges_${new Date().toISOString().split('T')[0]}.csv`
+                link.click()
+              }}
+            >
+              <Download style={{ width: '16px', height: '16px' }} />
+              Export
+            </button>
+
+            <button 
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                padding: '12px 24px',
+                borderRadius: '10px',
+                border: 'none',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                fontSize: '14px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
+                textDecoration: 'none'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.4)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)'
+              }}
+              onClick={() => window.location.href = '/admin/colleges/new'}
+            >
+              <Plus style={{ width: '18px', height: '18px' }} />
+              Add New College
+            </button>
+          </div>
         </div>
 
         {/* Stats Cards */}
