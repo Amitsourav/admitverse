@@ -2,147 +2,65 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { useParams, useRouter } from 'next/navigation'
-import { ArrowLeft, Save, BookOpen, Building, Globe, Award, TrendingUp, Edit2, Star, Info, CheckCircle, AlertCircle, Clock, Plus, X } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { ArrowLeft, Save, Users, Plus, Target, BookOpen, Building, Mail, Phone, MessageSquare, Info, CheckCircle, AlertCircle, User, Clock } from 'lucide-react'
 import { toast } from 'react-hot-toast'
-import RichTextEditor from '@/components/RichTextEditor'
 
-interface Course {
+interface Specialization {
   id: number
   name: string
-  short_name?: string
-  college_id: number
-  degree_type?: string
-  duration?: string
-  total_seats?: number
-  fees?: number
-  description?: string
-  eligibility?: string
-  admission_process?: string
-  status: string
-  featured: boolean
-  category?: string
-  intake_dates?: string[]
-  application_deadline?: string
-  acceptance_rate?: number
-  ranking?: number
-  students_enrolled: number
-  max_capacity?: number
-  course_code?: string
-  credits?: number
-  mode?: string
-  specializations?: string[]
-  colleges?: {
+  course: {
+    id: number
     name: string
-    location?: string
-    country?: string
+    college: {
+      id: number
+      name: string
+    }
   }
 }
 
-interface College {
-  id: number
-  name: string
-  location?: string
-  country?: string
-}
+const leadStatuses = [
+  { value: 'new', label: 'New', color: '#3b82f6' },
+  { value: 'contacted', label: 'Contacted', color: '#f59e0b' },
+  { value: 'qualified', label: 'Qualified', color: '#10b981' },
+  { value: 'converted', label: 'Converted', color: '#8b5cf6' },
+  { value: 'lost', label: 'Lost', color: '#ef4444' }
+]
 
-export default function EditCoursePage() {
-  const params = useParams()
+const leadSources = ['Website', 'Social Media', 'Email Campaign', 'Referral', 'Direct', 'Advertisement', 'Event', 'Other']
+
+export default function NewLeadPage() {
   const router = useRouter()
-  const [course, setCourse] = useState<Course | null>(null)
-  const [colleges, setColleges] = useState<College[]>([])
+  const [specializations, setSpecializations] = useState<Specialization[]>([])
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
 
   // Form state
   const [formData, setFormData] = useState({
     name: '',
-    short_name: '',
-    college_id: '',
-    degree_type: '',
-    duration: '',
-    total_seats: '',
-    fees: '',
-    description: '',
-    eligibility: '',
-    admission_process: '',
-    status: 'ACTIVE',
-    featured: false,
-    category: '',
-    intake_dates: [''],
-    application_deadline: '',
-    acceptance_rate: '',
-    ranking: '',
-    students_enrolled: '',
-    max_capacity: '',
-    course_code: '',
-    credits: '',
-    mode: '',
-    specializations: ['']
+    email: '',
+    phone: '',
+    message: '',
+    status: 'new',
+    source: '',
+    specializationId: ''
   })
 
   useEffect(() => {
-    Promise.all([
-      fetchCourse(),
-      fetchColleges()
-    ])
-  }, [params.id])
+    fetchSpecializations()
+  }, [])
 
-  const fetchCourse = async () => {
+  const fetchSpecializations = async () => {
     try {
-      const response = await fetch('/api/admin/courses')
+      const response = await fetch('/api/admin/specializations')
       const result = await response.json()
       
       if (result.success) {
-        const foundCourse = result.data.find((c: Course) => c.id.toString() === params.id)
-        if (foundCourse) {
-          setCourse(foundCourse)
-          setFormData({
-            name: foundCourse.name || '',
-            short_name: foundCourse.short_name || '',
-            college_id: foundCourse.college_id?.toString() || '',
-            degree_type: foundCourse.degree_type || '',
-            duration: foundCourse.duration || '',
-            total_seats: foundCourse.total_seats?.toString() || '',
-            fees: foundCourse.fees?.toString() || '',
-            description: foundCourse.description || '',
-            eligibility: foundCourse.eligibility || '',
-            admission_process: foundCourse.admission_process || '',
-            status: foundCourse.status || 'ACTIVE',
-            featured: foundCourse.featured || false,
-            category: foundCourse.category || '',
-            intake_dates: foundCourse.intake_dates?.length ? foundCourse.intake_dates : [''],
-            application_deadline: foundCourse.application_deadline || '',
-            acceptance_rate: foundCourse.acceptance_rate?.toString() || '',
-            ranking: foundCourse.ranking?.toString() || '',
-            students_enrolled: foundCourse.students_enrolled?.toString() || '0',
-            max_capacity: foundCourse.max_capacity?.toString() || '',
-            course_code: foundCourse.course_code || '',
-            credits: foundCourse.credits?.toString() || '',
-            mode: foundCourse.mode || '',
-            specializations: foundCourse.specializations?.length ? foundCourse.specializations : ['']
-          })
-        } else {
-          toast.error('Course not found')
-          router.push('/admin/courses')
-        }
+        setSpecializations(result.data)
       }
     } catch (error) {
-      console.error('Error fetching course:', error)
-      toast.error('Failed to load course')
-    }
-  }
-
-  const fetchColleges = async () => {
-    try {
-      const response = await fetch('/api/admin/colleges')
-      const result = await response.json()
-      
-      if (result.success) {
-        setColleges(result.data)
-      }
-    } catch (error) {
-      console.error('Error fetching colleges:', error)
+      console.error('Error fetching specializations:', error)
+      toast.error('Failed to load specializations')
     } finally {
       setLoading(false)
     }
@@ -155,34 +73,10 @@ export default function EditCoursePage() {
     }))
   }
 
-  const handleArrayChange = (field: 'intake_dates' | 'specializations', index: number, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: prev[field].map((item, i) => i === index ? value : item)
-    }))
-  }
-
-  const addArrayItem = (field: 'intake_dates' | 'specializations') => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: [...prev[field], '']
-    }))
-  }
-
-  const removeArrayItem = (field: 'intake_dates' | 'specializations', index: number) => {
-    if (formData[field].length > 1) {
-      setFormData(prev => ({
-        ...prev,
-        [field]: prev[field].filter((_, i) => i !== index)
-      }))
-    }
-  }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('🔄 Course form submitted with data:', formData)
     
-    if (!formData.name || !formData.college_id) {
+    if (!formData.name || !formData.email) {
       toast.error('Please fill in all required fields')
       return
     }
@@ -190,42 +84,30 @@ export default function EditCoursePage() {
     setSaving(true)
     
     try {
-      const updateData = {
-        id: course!.id,
+      const leadData = {
         ...formData,
-        college_id: parseInt(formData.college_id),
-        total_seats: formData.total_seats ? parseInt(formData.total_seats) : null,
-        fees: formData.fees ? parseInt(formData.fees) : null,
-        acceptance_rate: formData.acceptance_rate ? parseFloat(formData.acceptance_rate) : null,
-        ranking: formData.ranking ? parseInt(formData.ranking) : null,
-        students_enrolled: formData.students_enrolled ? parseInt(formData.students_enrolled) : 0,
-        max_capacity: formData.max_capacity ? parseInt(formData.max_capacity) : null,
-        credits: formData.credits ? parseInt(formData.credits) : null,
-        intake_dates: formData.intake_dates.filter(date => date.trim() !== ''),
-        specializations: formData.specializations.filter(spec => spec.trim() !== '')
+        specializationId: formData.specializationId ? parseInt(formData.specializationId) : null
       }
 
-      const response = await fetch('/api/admin/courses', {
-        method: 'PUT',
+      const response = await fetch('/api/admin/leads', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updateData),
+        body: JSON.stringify(leadData),
       })
 
       const result = await response.json()
-      console.log('📡 Course API Response:', result)
 
       if (result.success) {
-        toast.success('Course updated successfully!')
-        router.push(`/admin/courses/${course!.id}`)
+        toast.success('Lead created successfully!')
+        router.push(`/admin/leads/${result.data.id}`)
       } else {
-        console.error('❌ Course update failed:', result)
-        toast.error(result.error || 'Failed to update course')
+        toast.error(result.error || 'Failed to create lead')
       }
     } catch (error) {
-      console.error('Error updating course:', error)
-      toast.error('Failed to update course')
+      console.error('Error creating lead:', error)
+      toast.error('Failed to create lead')
     } finally {
       setSaving(false)
     }
@@ -234,42 +116,7 @@ export default function EditCoursePage() {
   if (loading) {
     return (
       <div style={{ padding: '32px', textAlign: 'center' }}>
-        Loading course details...
-      </div>
-    )
-  }
-
-  if (!course) {
-    return (
-      <div style={{ padding: '32px', textAlign: 'center' }}>
-        <h1>Course not found</h1>
-        <Link href="/admin/courses">
-          <button style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '12px 24px',
-            backgroundColor: '#6366f1',
-            color: 'white',
-            border: 'none',
-            borderRadius: '10px',
-            fontSize: '14px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            textDecoration: 'none',
-            transition: 'all 0.2s'
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = '#5856eb'
-            e.currentTarget.style.transform = 'translateY(-1px)'
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = '#6366f1'
-            e.currentTarget.style.transform = 'translateY(0)'
-          }}>
-            Back to Courses
-          </button>
-        </Link>
+        Loading form...
       </div>
     )
   }
@@ -289,7 +136,7 @@ export default function EditCoursePage() {
         color: 'white'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
-          <Link href={`/admin/courses/${course.id}`}>
+          <Link href="/admin/leads">
             <button style={{
               display: 'flex',
               alignItems: 'center',
@@ -312,7 +159,7 @@ export default function EditCoursePage() {
               e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
             }}>
               <ArrowLeft style={{ height: '16px', width: '16px' }} />
-              Back to Course Details
+              Back to Leads
             </button>
           </Link>
         </div>
@@ -323,7 +170,7 @@ export default function EditCoursePage() {
             backgroundColor: 'rgba(255, 255, 255, 0.2)',
             borderRadius: '12px'
           }}>
-            <Edit2 style={{
+            <Plus style={{
               height: '28px',
               width: '28px',
               color: 'white'
@@ -336,11 +183,11 @@ export default function EditCoursePage() {
               margin: '0 0 8px 0',
               letterSpacing: '-1px'
             }}>
-              Edit Course
+              Add New Lead
             </h1>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <BookOpen style={{ height: '16px', width: '16px' }} />
-              <span style={{ fontSize: '16px', opacity: 0.9 }}>{course.name}</span>
+              <Users style={{ height: '16px', width: '16px' }} />
+              <span style={{ fontSize: '16px', opacity: 0.9 }}>Create a new lead record</span>
             </div>
           </div>
         </div>
@@ -381,20 +228,20 @@ export default function EditCoursePage() {
                     backgroundColor: 'rgba(255, 255, 255, 0.2)',
                     borderRadius: '10px'
                   }}>
-                    <Building style={{ height: '20px', width: '20px' }} />
+                    <User style={{ height: '20px', width: '20px' }} />
                   </div>
                   <h2 style={{
                     fontSize: '20px',
                     fontWeight: '700',
                     margin: 0
                   }}>
-                    Basic Information
+                    Contact Information
                   </h2>
                 </div>
               </div>
               <div style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 
-                {/* Course Name */}
+                {/* Name */}
                 <div>
                   <label style={{ 
                     display: 'flex',
@@ -410,16 +257,16 @@ export default function EditCoursePage() {
                       backgroundColor: '#eff6ff',
                       borderRadius: '6px'
                     }}>
-                      <BookOpen style={{ height: '14px', width: '14px', color: '#3b82f6' }} />
+                      <User style={{ height: '14px', width: '14px', color: '#3b82f6' }} />
                     </div>
-                    Course Name
+                    Full Name
                     <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     required
-                    placeholder="Enter course name"
+                    placeholder="Enter full name"
                     style={{
                       width: '100%',
                       padding: '14px 18px',
@@ -443,7 +290,7 @@ export default function EditCoursePage() {
                   />
                 </div>
 
-                {/* College */}
+                {/* Email */}
                 <div>
                   <label style={{ 
                     display: 'flex',
@@ -459,15 +306,17 @@ export default function EditCoursePage() {
                       backgroundColor: '#f0fdf4',
                       borderRadius: '6px'
                     }}>
-                      <Building style={{ height: '14px', width: '14px', color: '#10b981' }} />
+                      <Mail style={{ height: '14px', width: '14px', color: '#10b981' }} />
                     </div>
-                    College
+                    Email Address
                     <span style={{ color: '#ef4444' }}>*</span>
                   </label>
-                  <select
-                    value={formData.college_id}
-                    onChange={(e) => handleInputChange('college_id', e.target.value)}
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
                     required
+                    placeholder="Enter email address"
                     style={{
                       width: '100%',
                       padding: '14px 18px',
@@ -488,17 +337,10 @@ export default function EditCoursePage() {
                       e.target.style.backgroundColor = '#f9fafb'
                       e.target.style.boxShadow = 'none'
                     }}
-                  >
-                    <option value="">Select college</option>
-                    {colleges.map((college) => (
-                      <option key={college.id} value={college.id.toString()}>
-                        {college.name}
-                      </option>
-                    ))}
-                  </select>
+                  />
                 </div>
 
-                {/* Degree Type */}
+                {/* Phone */}
                 <div>
                   <label style={{ 
                     display: 'flex',
@@ -514,13 +356,15 @@ export default function EditCoursePage() {
                       backgroundColor: '#fef3c7',
                       borderRadius: '6px'
                     }}>
-                      <Award style={{ height: '14px', width: '14px', color: '#f59e0b' }} />
+                      <Phone style={{ height: '14px', width: '14px', color: '#f59e0b' }} />
                     </div>
-                    Degree Type
+                    Phone Number
                   </label>
-                  <select
-                    value={formData.degree_type}
-                    onChange={(e) => handleInputChange('degree_type', e.target.value)}
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    placeholder="Enter phone number"
                     style={{
                       width: '100%',
                       padding: '14px 18px',
@@ -541,62 +385,12 @@ export default function EditCoursePage() {
                       e.target.style.backgroundColor = '#f9fafb'
                       e.target.style.boxShadow = 'none'
                     }}
-                  >
-                    <option value="">Select degree type</option>
-                    <option value="Bachelor">Bachelor</option>
-                    <option value="Master">Master</option>
-                    <option value="PhD">PhD</option>
-                    <option value="Diploma">Diploma</option>
-                    <option value="Certificate">Certificate</option>
-                  </select>
-                </div>
-
-                {/* Featured Toggle */}
-                <div style={{ 
-                  padding: '20px',
-                  background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
-                  borderRadius: '12px',
-                  border: '1px solid #fbbf24'
-                }}>
-                  <label style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '16px',
-                    cursor: 'pointer'
-                  }}>
-                    <input
-                      type="checkbox"
-                      checked={formData.featured}
-                      onChange={(e) => handleInputChange('featured', e.target.checked)}
-                      style={{ 
-                        width: '20px', 
-                        height: '20px',
-                        accentColor: '#f59e0b',
-                        cursor: 'pointer'
-                      }}
-                    />
-                    <div style={{ flex: 1 }}>
-                      <div style={{ 
-                        fontSize: '15px', 
-                        fontWeight: '600', 
-                        color: '#92400e',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                      }}>
-                        <Star style={{ height: '16px', width: '16px' }} />
-                        Feature this course
-                      </div>
-                      <div style={{ fontSize: '13px', color: '#b45309', marginTop: '4px' }}>
-                        Featured courses appear on the homepage
-                      </div>
-                    </div>
-                  </label>
+                  />
                 </div>
               </div>
             </div>
 
-            {/* Course Details Card */}
+            {/* Lead Details Card */}
             <div style={{
               backgroundColor: 'white',
               borderRadius: '16px',
@@ -624,20 +418,20 @@ export default function EditCoursePage() {
                     backgroundColor: 'rgba(255, 255, 255, 0.2)',
                     borderRadius: '10px'
                   }}>
-                    <Info style={{ height: '20px', width: '20px' }} />
+                    <Target style={{ height: '20px', width: '20px' }} />
                   </div>
                   <h2 style={{
                     fontSize: '20px',
                     fontWeight: '700',
                     margin: 0
                   }}>
-                    Course Details
+                    Lead Details
                   </h2>
                 </div>
               </div>
               <div style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 
-                {/* Duration & Fees Grid */}
+                {/* Status & Source Grid */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
                   <div>
                     <label style={{ 
@@ -654,14 +448,13 @@ export default function EditCoursePage() {
                         backgroundColor: '#f3e8ff',
                         borderRadius: '6px'
                       }}>
-                        <Clock style={{ height: '14px', width: '14px', color: '#9333ea' }} />
+                        <CheckCircle style={{ height: '14px', width: '14px', color: '#9333ea' }} />
                       </div>
-                      Duration
+                      Initial Status
                     </label>
-                    <input
-                      value={formData.duration}
-                      onChange={(e) => handleInputChange('duration', e.target.value)}
-                      placeholder="e.g., 4 years"
+                    <select
+                      value={formData.status}
+                      onChange={(e) => handleInputChange('status', e.target.value)}
                       style={{
                         width: '100%',
                         padding: '14px 18px',
@@ -682,7 +475,13 @@ export default function EditCoursePage() {
                         e.target.style.backgroundColor = '#f9fafb'
                         e.target.style.boxShadow = 'none'
                       }}
-                    />
+                    >
+                      {leadStatuses.map((status) => (
+                        <option key={status.value} value={status.value}>
+                          {status.label}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div>
@@ -700,15 +499,13 @@ export default function EditCoursePage() {
                         backgroundColor: '#fee2e2',
                         borderRadius: '6px'
                       }}>
-                        <TrendingUp style={{ height: '14px', width: '14px', color: '#ef4444' }} />
+                        <Info style={{ height: '14px', width: '14px', color: '#ef4444' }} />
                       </div>
-                      Annual Fees (USD)
+                      Lead Source
                     </label>
-                    <input
-                      type="number"
-                      value={formData.fees}
-                      onChange={(e) => handleInputChange('fees', e.target.value)}
-                      placeholder="e.g., 25000"
+                    <select
+                      value={formData.source}
+                      onChange={(e) => handleInputChange('source', e.target.value)}
                       style={{
                         width: '100%',
                         padding: '14px 18px',
@@ -729,13 +526,73 @@ export default function EditCoursePage() {
                         e.target.style.backgroundColor = '#f9fafb'
                         e.target.style.boxShadow = 'none'
                       }}
-                    />
+                    >
+                      <option value="">Select source</option>
+                      {leadSources.map((source) => (
+                        <option key={source} value={source}>
+                          {source}
+                        </option>
+                      ))}
+                    </select>
                   </div>
+                </div>
+
+                {/* Specialization */}
+                <div>
+                  <label style={{ 
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '14px', 
+                    fontWeight: '600', 
+                    color: '#111827',
+                    marginBottom: '10px' 
+                  }}>
+                    <div style={{
+                      padding: '6px',
+                      backgroundColor: '#f0fdf4',
+                      borderRadius: '6px'
+                    }}>
+                      <Target style={{ height: '14px', width: '14px', color: '#10b981' }} />
+                    </div>
+                    Interested Specialization
+                  </label>
+                  <select
+                    value={formData.specializationId}
+                    onChange={(e) => handleInputChange('specializationId', e.target.value)}
+                    style={{
+                      width: '100%',
+                      padding: '14px 18px',
+                      border: '2px solid #e5e7eb',
+                      borderRadius: '10px',
+                      fontSize: '15px',
+                      outline: 'none',
+                      transition: 'all 0.2s',
+                      backgroundColor: '#f9fafb'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#10b981'
+                      e.target.style.backgroundColor = 'white'
+                      e.target.style.boxShadow = '0 0 0 4px rgba(16, 185, 129, 0.1)'
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#e5e7eb'
+                      e.target.style.backgroundColor = '#f9fafb'
+                      e.target.style.boxShadow = 'none'
+                    }}
+                  >
+                    <option value="">No specific specialization</option>
+                    {specializations.map((spec) => (
+                      <option key={spec.id} value={spec.id.toString()}>
+                        {spec.name} - {spec.course?.name || 'Unknown Course'} ({spec.course?.college?.name || 'Unknown College'})
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>
 
-            {/* Course Description Card */}
+            {/* Message Card */}
             <div style={{
               backgroundColor: 'white',
               borderRadius: '16px',
@@ -763,22 +620,44 @@ export default function EditCoursePage() {
                     backgroundColor: 'rgba(255, 255, 255, 0.2)',
                     borderRadius: '10px'
                   }}>
-                    <Info style={{ height: '20px', width: '20px' }} />
+                    <MessageSquare style={{ height: '20px', width: '20px' }} />
                   </div>
                   <h2 style={{
                     fontSize: '20px',
                     fontWeight: '700',
                     margin: 0
                   }}>
-                    Course Description
+                    Initial Message
                   </h2>
                 </div>
               </div>
               <div style={{ padding: '32px' }}>
-                <RichTextEditor
-                  value={formData.description}
-                  onChange={(content) => handleInputChange('description', content)}
-                  placeholder="Write a detailed course description..."
+                <textarea
+                  value={formData.message}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  placeholder="Any initial message or inquiry from the lead..."
+                  rows={4}
+                  style={{
+                    width: '100%',
+                    padding: '14px 18px',
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '10px',
+                    fontSize: '15px',
+                    outline: 'none',
+                    transition: 'all 0.2s',
+                    backgroundColor: '#f9fafb',
+                    resize: 'vertical'
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = '#ef4444'
+                    e.target.style.backgroundColor = 'white'
+                    e.target.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.1)'
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = '#e5e7eb'
+                    e.target.style.backgroundColor = '#f9fafb'
+                    e.target.style.boxShadow = 'none'
+                  }}
                 />
               </div>
             </div>
@@ -787,7 +666,7 @@ export default function EditCoursePage() {
           {/* Right Column - Preview & Actions */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             
-            {/* Course Preview Card */}
+            {/* Lead Preview Card */}
             <div style={{
               backgroundColor: 'white',
               borderRadius: '16px',
@@ -815,7 +694,7 @@ export default function EditCoursePage() {
                     fontWeight: '700',
                     margin: 0
                   }}>
-                    Preview
+                    Lead Preview
                   </h2>
                 </div>
               </div>
@@ -833,65 +712,60 @@ export default function EditCoursePage() {
                     color: '#111827',
                     margin: '0 0 12px 0'
                   }}>
-                    {formData.name || 'Course Name'}
+                    {formData.name || 'Lead Name'}
                   </h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {formData.college_id && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <Mail style={{ height: '14px', width: '14px', color: '#6b7280' }} />
+                      <span style={{ fontSize: '14px', color: '#6b7280' }}>
+                        {formData.email || 'email@example.com'}
+                      </span>
+                    </div>
+                    {formData.phone && (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Building style={{ height: '14px', width: '14px', color: '#6b7280' }} />
+                        <Phone style={{ height: '14px', width: '14px', color: '#6b7280' }} />
+                        <span style={{ fontSize: '14px', color: '#6b7280' }}>{formData.phone}</span>
+                      </div>
+                    )}
+                    {formData.specializationId && (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <Target style={{ height: '14px', width: '14px', color: '#6b7280' }} />
                         <span style={{ fontSize: '14px', color: '#6b7280' }}>
-                          {colleges.find(c => c.id.toString() === formData.college_id)?.name || 'College'}
+                          {specializations.find(s => s.id.toString() === formData.specializationId)?.name || 'Specialization'}
                         </span>
                       </div>
                     )}
-                    {formData.degree_type && (
+                    {formData.source && (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Award style={{ height: '14px', width: '14px', color: '#6b7280' }} />
-                        <span style={{ fontSize: '14px', color: '#6b7280' }}>{formData.degree_type}</span>
-                      </div>
-                    )}
-                    {formData.duration && (
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Clock style={{ height: '14px', width: '14px', color: '#6b7280' }} />
-                        <span style={{ fontSize: '14px', color: '#6b7280' }}>{formData.duration}</span>
+                        <Info style={{ height: '14px', width: '14px', color: '#6b7280' }} />
+                        <span style={{ fontSize: '14px', color: '#6b7280' }}>Source: {formData.source}</span>
                       </div>
                     )}
                   </div>
                 </div>
 
-                {/* Status Indicators */}
+                {/* Status Preview */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px' }}>
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
                     padding: '12px',
-                    backgroundColor: formData.featured ? '#fef3c7' : '#f3f4f6',
+                    backgroundColor: leadStatuses.find(s => s.value === formData.status)?.color + '20',
                     borderRadius: '8px'
                   }}>
-                    <Star style={{ 
+                    <CheckCircle style={{ 
                       height: '16px', 
                       width: '16px', 
-                      color: formData.featured ? '#f59e0b' : '#9ca3af' 
+                      color: leadStatuses.find(s => s.value === formData.status)?.color || '#10b981'
                     }} />
                     <span style={{ 
                       fontSize: '14px', 
-                      color: formData.featured ? '#92400e' : '#6b7280' 
+                      color: leadStatuses.find(s => s.value === formData.status)?.color || '#10b981',
+                      fontWeight: '600'
                     }}>
-                      {formData.featured ? 'Featured Course' : 'Not Featured'}
+                      Status: {leadStatuses.find(s => s.value === formData.status)?.label || 'New'}
                     </span>
-                  </div>
-                  
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    padding: '12px',
-                    backgroundColor: '#ecfdf5',
-                    borderRadius: '8px'
-                  }}>
-                    <CheckCircle style={{ height: '16px', width: '16px', color: '#10b981' }} />
-                    <span style={{ fontSize: '14px', color: '#065f46' }}>Active Status</span>
                   </div>
                 </div>
 
@@ -905,7 +779,7 @@ export default function EditCoursePage() {
                   <div style={{ display: 'flex', gap: '12px' }}>
                     <AlertCircle style={{ height: '16px', width: '16px', color: '#3b82f6', flexShrink: 0, marginTop: '2px' }} />
                     <div style={{ fontSize: '13px', color: '#1e40af' }}>
-                      <strong>Tip:</strong> Make sure to fill all required fields marked with a red asterisk (*). Featured courses will appear on the homepage.
+                      <strong>Tip:</strong> Fill in the required fields (name and email) to create the lead. Other fields are optional but help with lead qualification.
                     </div>
                   </div>
                 </div>
@@ -961,10 +835,10 @@ export default function EditCoursePage() {
               }}
             >
               <Save style={{ height: '18px', width: '18px' }} />
-              {saving ? 'Saving Changes...' : 'Save Changes'}
+              {saving ? 'Creating Lead...' : 'Create Lead'}
             </button>
             
-            <Link href={`/admin/courses/${course.id}`}>
+            <Link href="/admin/leads">
               <button 
                 type="button"
                 style={{
@@ -998,7 +872,7 @@ export default function EditCoursePage() {
             </Link>
           </div>
 
-          {/* Last Saved Info */}
+          {/* Info */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
@@ -1006,8 +880,8 @@ export default function EditCoursePage() {
             color: '#6b7280',
             fontSize: '14px'
           }}>
-            <Info style={{ height: '16px', width: '16px' }} />
-            <span>All changes are saved automatically</span>
+            <Clock style={{ height: '16px', width: '16px' }} />
+            <span>Lead will be created with current timestamp</span>
           </div>
         </div>
       </form>

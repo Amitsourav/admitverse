@@ -16,7 +16,6 @@ interface College {
   ranking: number | null
   acceptance_rate: number | null
   description: string | null
-  featured: boolean
 }
 
 export default function EditCollegePage() {
@@ -33,7 +32,6 @@ export default function EditCollegePage() {
     ranking: '',
     acceptanceRate: '',
     description: '',
-    featured: false
   })
 
   useEffect(() => {
@@ -54,7 +52,6 @@ export default function EditCollegePage() {
               ranking: foundCollege.ranking?.toString() || '',
               acceptanceRate: foundCollege.acceptance_rate?.toString() || '',
               description: foundCollege.description || '',
-              featured: foundCollege.featured || false
             })
           } else {
             toast.error('College not found')
@@ -73,6 +70,22 @@ export default function EditCollegePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    console.log('🔄 Form submitted with data:', formData)
+    
+    // Validate required fields
+    if (!formData.name.trim()) {
+      toast.error('College name is required')
+      return
+    }
+    if (!formData.location.trim()) {
+      toast.error('Location is required')
+      return
+    }
+    if (!formData.country.trim()) {
+      toast.error('Country is required')
+      return
+    }
+    
     setIsSaving(true)
 
     try {
@@ -88,17 +101,18 @@ export default function EditCollegePage() {
           ranking: formData.ranking ? parseInt(formData.ranking) : null,
           acceptance_rate: formData.acceptanceRate ? parseFloat(formData.acceptanceRate) : null,
           description: formData.description || null,
-          featured: formData.featured
         })
       })
 
       const result = await response.json()
+      console.log('📡 API Response:', result)
       
       if (result.success) {
         toast.success('College updated successfully')
         router.push(`/admin/colleges/${params.id}`)
       } else {
-        toast.error('Failed to update college')
+        console.error('❌ Update failed:', result)
+        toast.error(result.error || 'Failed to update college')
       }
     } catch (error) {
       console.error('Error updating college:', error)
@@ -383,7 +397,7 @@ export default function EditCollegePage() {
                     <input
                       type="checkbox"
                       checked={formData.featured}
-                      onChange={(e) => setFormData(prev => ({ ...prev, featured: e.target.checked }))}
+                      disabled
                       style={{ 
                         width: '20px', 
                         height: '20px',
@@ -779,19 +793,19 @@ export default function EditCollegePage() {
                     alignItems: 'center',
                     gap: '12px',
                     padding: '12px',
-                    backgroundColor: formData.featured ? '#fef3c7' : '#f3f4f6',
+                    backgroundColor: '#f3f4f6',
                     borderRadius: '8px'
                   }}>
                     <Star style={{ 
                       height: '16px', 
                       width: '16px', 
-                      color: formData.featured ? '#f59e0b' : '#9ca3af' 
+                      color: '#9ca3af' 
                     }} />
                     <span style={{ 
                       fontSize: '14px', 
-                      color: formData.featured ? '#92400e' : '#6b7280' 
+                      color: '#6b7280' 
                     }}>
-                      {formData.featured ? 'Featured College' : 'Not Featured'}
+                      Featured status unavailable
                     </span>
                   </div>
                   

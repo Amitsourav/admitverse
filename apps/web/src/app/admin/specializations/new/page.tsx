@@ -198,8 +198,10 @@ export default function AddSpecializationPage() {
         <div className="w-full bg-secondary rounded-full h-2">
           <div 
             className="h-2 rounded-full transition-all duration-300"
-            style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}
-            style={{ width: `${progressPercentage}%` }}
+            style={{ 
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              width: `${progressPercentage}%`
+            }}
           />
         </div>
         <p className="text-sm text-muted-foreground mt-2">

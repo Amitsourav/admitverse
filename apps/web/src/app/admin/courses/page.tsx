@@ -126,13 +126,13 @@ export default function CoursesPage() {
                          collegeName.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          (course.degree_type || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
                          (course.category || '').toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesStatus = selectedStatus === 'all' || course.status.toLowerCase() === selectedStatus.toLowerCase()
+    const matchesStatus = selectedStatus === 'all' || (course.status || '').toLowerCase() === selectedStatus.toLowerCase()
     const matchesDegree = selectedDegree === 'all' || (course.degree_type || '').toLowerCase().includes(selectedDegree.toLowerCase())
     return matchesSearch && matchesStatus && matchesDegree
   })
 
   const getStatusColor = (status: string) => {
-    switch (status.toLowerCase()) {
+    switch ((status || '').toLowerCase()) {
       case 'active':
         return { bg: '#dcfce7', color: '#166534', border: '#bbf7d0' }
       case 'draft':

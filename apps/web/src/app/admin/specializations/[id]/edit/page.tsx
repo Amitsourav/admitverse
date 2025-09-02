@@ -112,6 +112,7 @@ export default function EditSpecializationPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    console.log('🔄 Specialization form submitted with data:', formData)
     
     if (!formData.name || !formData.course_id) {
       toast.error('Please fill in all required fields')
@@ -138,11 +139,13 @@ export default function EditSpecializationPage() {
       })
 
       const result = await response.json()
+      console.log('📡 Specialization API Response:', result)
 
       if (result.success) {
         toast.success('Specialization updated successfully!')
         router.push(`/admin/specializations/${specialization!.id}`)
       } else {
+        console.error('❌ Specialization update failed:', result)
         toast.error(result.error || 'Failed to update specialization')
       }
     } catch (error) {

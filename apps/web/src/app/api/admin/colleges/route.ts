@@ -172,7 +172,6 @@ export async function PUT(request: NextRequest) {
     if (updateData.ranking !== undefined) cleanUpdateData.ranking = updateData.ranking
     if (updateData.acceptance_rate !== undefined) cleanUpdateData.acceptance_rate = updateData.acceptance_rate
     if (updateData.description !== undefined) cleanUpdateData.description = updateData.description
-    if (updateData.featured !== undefined) cleanUpdateData.featured = updateData.featured
 
     const { data, error } = await supabaseAdmin
       .from('colleges')

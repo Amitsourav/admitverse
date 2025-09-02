@@ -86,7 +86,23 @@ export default function CollegeViewPage() {
       <div style={{ padding: '32px', textAlign: 'center' }}>
         <h1>College not found</h1>
         <Link href="/admin/colleges">
-          <Button>Back to Colleges</Button>
+          <button style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '12px 24px',
+            backgroundColor: '#6366f1',
+            color: 'white',
+            border: 'none',
+            borderRadius: '10px',
+            fontSize: '14px',
+            fontWeight: '600',
+            cursor: 'pointer',
+            textDecoration: 'none',
+            transition: 'all 0.2s'
+          }}>
+            Back to Colleges
+          </button>
         </Link>
       </div>
     )

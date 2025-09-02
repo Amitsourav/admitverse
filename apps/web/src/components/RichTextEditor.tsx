@@ -128,7 +128,7 @@ export default function RichTextEditor({ value, onChange, placeholder }: RichTex
             )
           }
 
-          const Icon = button.icon
+          const IconComponent = button.icon as React.ComponentType<any>
           return (
             <button
               key={index}
@@ -138,7 +138,7 @@ export default function RichTextEditor({ value, onChange, placeholder }: RichTex
                 if (button.command === 'link') {
                   insertLink(e)
                 } else {
-                  formatText(e, button.command, button.value)
+                  formatText(e, button.command || '', button.value || '')
                 }
               }}
               title={button.title}
@@ -160,7 +160,7 @@ export default function RichTextEditor({ value, onChange, placeholder }: RichTex
                 e.currentTarget.style.backgroundColor = 'transparent'
               }}
             >
-              <Icon style={{ height: '16px', width: '16px', color: '#374151' }} />
+              <IconComponent style={{ height: '16px', width: '16px', color: '#374151' }} />
             </button>
           )
         })}

@@ -235,7 +235,7 @@ export default function AdminSidebar() {
                       }}>
                         {item.name}
                       </span>
-                      {item.badge && (
+                      {'badge' in item && item.badge && (
                         <span style={{
                           padding: '4px 10px',
                           fontSize: '12px',
@@ -249,7 +249,7 @@ export default function AdminSidebar() {
                           textAlign: 'center',
                           transition: 'all 0.2s ease'
                         }}>
-                          {item.badge}
+                          {'badge' in item ? item.badge : 0}
                         </span>
                       )}
                       {isHovered && !isActive && (
