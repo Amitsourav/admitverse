@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import '@/styles/rich-text.css'
+import { ToastProvider } from '@/components/Toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -76,9 +77,11 @@ export default function RootLayout({
         <meta name="theme-color" content="#667eea" />
       </head>
       <body className={inter.className}>
-        <div className="min-h-screen bg-background">
-          {children}
-        </div>
+        <ToastProvider>
+          <div className="min-h-screen bg-background">
+            {children}
+          </div>
+        </ToastProvider>
       </body>
     </html>
   )
