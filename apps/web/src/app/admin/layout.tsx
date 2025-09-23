@@ -4,6 +4,9 @@ import jwt from 'jsonwebtoken'
 import AdminSidebar from '@/components/admin/AdminSidebar'
 import AdminHeader from '@/components/admin/AdminHeader'
 
+// Force dynamic rendering for admin routes
+export const dynamic = 'force-dynamic'
+
 async function getUser() {
   try {
     const cookieStore = cookies()

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { Suspense, useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Search, Globe, TrendingUp, Users, ChevronRight, Sparkles, ArrowRight, Award, Star, Target, Zap, Heart, BarChart, FileText, Video, GraduationCap, Menu, X, Play, Pause, Volume2, VolumeX, ChevronDown, BookOpen, Phone } from 'lucide-react'
@@ -12,7 +12,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 
-export default function HomePage() {
+function HomePageContent() {
   const { showToast } = useToast()
   const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
@@ -1401,5 +1401,22 @@ export default function HomePage() {
         <FloatingActions />
       </div>
     </div>
+  )
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
+        <Navigation />
+        <div className="flex justify-center items-center min-h-[60vh]">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+        </div>
+        <Footer />
+        <FloatingActions />
+      </div>
+    }>
+      <HomePageContent />
+    </Suspense>
   )
 }

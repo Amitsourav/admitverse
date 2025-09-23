@@ -4,6 +4,9 @@ import jwt from 'jsonwebtoken'
 import AdminSidebar from '@/components/admin/AdminSidebar'
 import AdminHeader from '@/components/admin/AdminHeader'
 
+// Force dynamic rendering for dashboard routes
+export const dynamic = 'force-dynamic'
+
 async function getUser() {
   const cookieStore = cookies()
   const token = cookieStore.get('admitverse_session')?.value
