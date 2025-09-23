@@ -33,7 +33,7 @@ interface StorageData {
 
 class FallbackStorage {
   private static instance: FallbackStorage
-  private dataFile = '/Users/sumanprasad/Downloads/admitverse-main/apps/web/storage.json'
+  private dataFile = './storage.json'
   private data: StorageData = {
     colleges: [],
     courses: [],
