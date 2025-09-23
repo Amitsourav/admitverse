@@ -44,6 +44,7 @@ interface College {
   name: string
   location?: string
   country?: string
+  featured?: boolean
 }
 
 export default function EditCoursePage() {

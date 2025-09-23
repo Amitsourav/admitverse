@@ -9,6 +9,7 @@ import RichTextEditor from '@/components/RichTextEditor'
 interface College {
   id: number
   name: string
+  featured?: boolean
 }
 
 export default function AddCoursePage() {
