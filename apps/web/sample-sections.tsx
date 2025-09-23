@@ -1,5 +1,7 @@
 // Sample sections to replace leadership team - Choose your favorite!
 
+import { motion } from 'framer-motion'
+
 // OPTION 1: Success Stories Showcase
 const SuccessStoriesShowcase = () => {
   const successStories = [
