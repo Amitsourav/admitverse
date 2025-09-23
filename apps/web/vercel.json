@@ -1,6 +1,5 @@
 {
-  "buildCommand": "cd ../.. && npx turbo run build --filter=admitverse-website",
+  "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "framework": "nextjs",
-  "installCommand": "cd ../.. && npm install"
+  "framework": "nextjs"
 }
