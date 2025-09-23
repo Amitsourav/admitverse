@@ -18,7 +18,31 @@ export default function AddCoursePage() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [colleges, setColleges] = useState<College[]>([])
   
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    name: string
+    short_name: string
+    college_id: string
+    degree_type: string
+    duration: string
+    total_seats: string
+    fees: string
+    description: string
+    eligibility: string
+    admission_process: string
+    status: string
+    featured: boolean
+    category: string
+    intake_dates: string
+    application_deadline: string
+    acceptance_rate: string
+    ranking: string
+    students_enrolled: string
+    max_capacity: string
+    course_code: string
+    credits: string
+    mode: string
+    specializations: string
+  }>({
     name: '',
     short_name: '',
     college_id: '',
