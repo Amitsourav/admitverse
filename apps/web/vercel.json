@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npx prisma generate && SKIP_ENV_VALIDATION=true next build",
+  "buildCommand": "npx prisma generate && DATABASE_URL='postgresql://fake:fake@fake:5432/fake' SKIP_ENV_VALIDATION=true next build",
   "outputDirectory": ".next",
   "framework": "nextjs",
   "installCommand": "npm install && npx prisma generate",
