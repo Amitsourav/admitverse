@@ -328,64 +328,136 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
-            <p className="text-xl text-gray-600">The principles that guide everything we do</p>
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Our{" "}
+              <motion.span
+                className="bg-gradient-to-r from-emerald-500 to-green-600 bg-clip-text text-transparent"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                Core Values
+              </motion.span>
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-gray-600 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              The principles that{" "}
+              <motion.span
+                className="font-semibold text-emerald-600"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                viewport={{ once: true }}
+              >
+                guide everything we do
+              </motion.span>
+            </motion.p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div
                 key={index}
-                className="group cursor-pointer"
+                className="group cursor-pointer relative"
               >
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:scale-105 relative z-10">
                   {/* Header Section - Always Visible */}
                   <div className="p-6 bg-gradient-to-r from-emerald-500 to-green-600 text-white">
                     <div className="flex items-center mb-3">
-                      <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
+                      <motion.div 
+                        className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4"
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
+                      >
                         {value.icon}
-                      </div>
-                      <h3 className="text-lg font-bold">{value.title}</h3>
+                      </motion.div>
+                      <motion.h3 
+                        className="text-lg font-bold"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        {value.title}
+                      </motion.h3>
                     </div>
-                    <p className="text-emerald-100 text-sm">
+                    <motion.p 
+                      className="text-emerald-100 text-sm"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                    >
                       {value.description}
-                    </p>
+                    </motion.p>
                   </div>
 
                   {/* Compact Footer - Default State */}
                   <div className="px-6 py-4 text-center bg-white group-hover:hidden">
-                    <div className="text-emerald-600 text-sm font-medium">
+                    <motion.div 
+                      className="text-emerald-600 text-sm font-medium"
+                      animate={{ 
+                        opacity: [1, 0.7, 1],
+                        scale: [1, 1.02, 1]
+                      }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
                       Hover to learn more ↗
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Expanded Content - Overlay on Hover */}
+                <div className="absolute top-0 left-0 w-full bg-white rounded-xl shadow-2xl border border-emerald-200 p-6 opacity-0 invisible scale-95 group-hover:opacity-100 group-hover:visible group-hover:scale-100 transition-all duration-300 transform-gpu z-20">
+                  {/* Header Section */}
+                  <div className="mb-4">
+                    <div className="flex items-center mb-2">
+                      <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-lg flex items-center justify-center text-white mr-3">
+                        {value.icon}
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900">{value.title}</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm">{value.description}</p>
+                  </div>
+                  
+                  <p className="text-gray-700 text-sm mb-4 leading-relaxed">
+                    {value.expandedContent.details}
+                  </p>
+                  
+                  <div className="mb-4">
+                    <h4 className="text-sm font-bold text-gray-800 mb-3 flex items-center">
+                      <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></span>
+                      Key Features:
+                    </h4>
+                    <div className="space-y-2">
+                      {value.expandedContent.benefits.slice(0, 2).map((benefit, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center p-2 bg-gray-50 rounded-lg hover:bg-emerald-50 transition-colors duration-200"
+                        >
+                          <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3 flex-shrink-0"></div>
+                          <span className="text-xs text-gray-700 font-medium">{benefit}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
-
-                  {/* Expanded Content - Hover State */}
-                  <div className="p-6 bg-white hidden group-hover:block">
-                    <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-                      {value.expandedContent.details}
-                    </p>
-                    
-                    <div className="mb-4">
-                      <h4 className="text-sm font-bold text-gray-800 mb-3 flex items-center">
-                        <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></span>
-                        Key Features:
-                      </h4>
-                      <div className="space-y-2">
-                        {value.expandedContent.benefits.slice(0, 2).map((benefit, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center p-2 bg-gray-50 rounded-lg hover:bg-emerald-50 transition-colors duration-200"
-                          >
-                            <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3 flex-shrink-0"></div>
-                            <span className="text-xs text-gray-700 font-medium">{benefit}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-lg p-3 border border-emerald-200 text-center">
-                      <div className="text-emerald-800 font-bold text-sm">{value.expandedContent.impact}</div>
-                      <div className="text-emerald-600 text-xs">Our Achievement</div>
-                    </div>
+                  
+                  <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-lg p-3 border border-emerald-200 text-center">
+                    <div className="text-emerald-800 font-bold text-sm">{value.expandedContent.impact}</div>
+                    <div className="text-emerald-600 text-xs">Our Achievement</div>
                   </div>
                 </div>
               </div>
