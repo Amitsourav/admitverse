@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { Search, Globe, TrendingUp, Users, ChevronRight, Sparkles, ArrowRight, Award, Star, Target, Zap, Heart, BarChart, FileText, Video, GraduationCap, Menu, X, Play, Pause, Volume2, VolumeX, ChevronDown } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { Search, Globe, TrendingUp, Users, ChevronRight, Sparkles, ArrowRight, Award, Star, Target, Zap, Heart, BarChart, FileText, Video, GraduationCap, Menu, X, Play, Pause, Volume2, VolumeX, ChevronDown, BookOpen, Phone } from 'lucide-react'
 import { useToast } from '@/components/Toast'
 import { useSearchParams } from 'next/navigation'
 import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion'
@@ -13,8 +14,19 @@ import FloatingActions from '@/components/FloatingActions'
 
 export default function HomePage() {
   const { showToast } = useToast()
+  const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
+  const [showSuggestions, setShowSuggestions] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [placeholderIndex, setPlaceholderIndex] = useState(0)
+  const [isTyping, setIsTyping] = useState(false)
+
+  const placeholders = [
+    "Search universities, courses, or countries...",
+    "Try 'Harvard', 'Computer Science', 'UK'...",
+    "Find your dream university...",
+    "Discover top programs worldwide..."
+  ]
   const [isVideoPlaying, setIsVideoPlaying] = useState(true)
   const [isVideoMuted, setIsVideoMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -55,6 +67,74 @@ export default function HomePage() {
   }
 
   const currentDesign = designVariants[design as keyof typeof designVariants] || designVariants['forest-premium']
+
+  // Search suggestions data with keywords for better matching
+  const searchSuggestions = [
+    { type: 'university', name: 'Harvard University', country: 'USA', keywords: ['harvard', 'ivy league'] },
+    { type: 'university', name: 'Stanford University', country: 'USA', keywords: ['stanford', 'silicon valley'] },
+    { type: 'university', name: 'MIT', country: 'USA', keywords: ['mit', 'massachusetts', 'technology'] },
+    { type: 'university', name: 'Oxford University', country: 'UK', keywords: ['oxford', 'uk'] },
+    { type: 'university', name: 'Cambridge University', country: 'UK', keywords: ['cambridge', 'uk'] },
+    { type: 'course', name: 'Computer Science', programs: '1,200+ programs', keywords: ['cs', 'programming', 'coding', 'software', 'tech'] },
+    { type: 'course', name: 'Business Administration', programs: '800+ programs', keywords: ['mba', 'business', 'management', 'administration'] },
+    { type: 'course', name: 'Engineering', programs: '1,500+ programs', keywords: ['engineer', 'mechanical', 'electrical', 'civil'] },
+    { type: 'course', name: 'Medicine', programs: '400+ programs', keywords: ['medical', 'doctor', 'mbbs', 'healthcare'] },
+    { type: 'country', name: 'United States', universities: '500+ universities', keywords: ['usa', 'us', 'america'] },
+    { type: 'country', name: 'United Kingdom', universities: '300+ universities', keywords: ['uk', 'britain', 'england'] },
+    { type: 'country', name: 'Canada', universities: '200+ universities', keywords: ['canadian'] },
+    { type: 'country', name: 'Australia', universities: '150+ universities', keywords: ['aussie', 'aus'] },
+  ]
+
+  // Filter suggestions based on search term - now checks both name and keywords
+  const filteredSuggestions = searchSuggestions.filter(suggestion => {
+    const searchLower = searchTerm.toLowerCase()
+    return suggestion.name.toLowerCase().includes(searchLower) ||
+           suggestion.keywords.some(keyword => keyword.includes(searchLower))
+  }).slice(0, 8) // Increased to 8 to show more options
+
+  // Handle search submission
+  const handleSearch = (term: string = searchTerm) => {
+    if (term.trim()) {
+      router.push(`/search?q=${encodeURIComponent(term.trim())}`)
+    }
+  }
+
+  // Handle search input change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setSearchTerm(value)
+    setShowSuggestions(value.length > 0)
+  }
+
+  // Handle suggestion click
+  const handleSuggestionClick = (suggestion: any) => {
+    setSearchTerm(suggestion.name)
+    setShowSuggestions(false)
+    handleSearch(suggestion.name)
+  }
+
+  // Close suggestions when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setShowSuggestions(false)
+    }
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [])
+
+  // Rotate placeholders for dynamic effect
+  useEffect(() => {
+    if (searchTerm === '') {
+      const interval = setInterval(() => {
+        setIsTyping(true)
+        setTimeout(() => {
+          setPlaceholderIndex((prev) => (prev + 1) % placeholders.length)
+          setIsTyping(false)
+        }, 300)
+      }, 3000)
+      return () => clearInterval(interval)
+    }
+  }, [searchTerm, placeholders.length])
 
   // Success Stories data
   const successStories = [
@@ -240,9 +320,9 @@ export default function HomePage() {
             transition={{ duration: 1 }}
           >
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 text-white leading-tight">
-              Your Gateway to
+              Your Complete
               <span className={`block bg-gradient-to-r ${currentDesign.accentGradient} bg-clip-text text-transparent`}>
-                Global Education
+                Admission Journey
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
@@ -255,18 +335,138 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="relative max-w-2xl mx-auto mb-12"
+            className="relative max-w-2xl mx-auto mb-12 z-[1000]"
+            onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative">
-              <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400" />
-              <input
+            <motion.div 
+              className="relative"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <motion.div
+                animate={{ 
+                  x: showSuggestions ? [0, 5, 0] : 0,
+                  scale: showSuggestions ? 1.1 : 1
+                }}
+                transition={{ duration: 0.3 }}
+                className="absolute left-6 top-1/2 transform -translate-y-1/2"
+              >
+                <Search className="w-6 h-6 text-gray-400" />
+              </motion.div>
+              <motion.input
                 type="text"
-                placeholder="Search universities, courses, or countries..."
+                placeholder={placeholders[placeholderIndex]}
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-16 pr-6 py-6 text-lg rounded-2xl bg-white/95 backdrop-blur-sm border-2 border-transparent focus:border-emerald-500 focus:outline-none shadow-2xl"
+                onChange={handleSearchChange}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSearch()
+                  }
+                }}
+                onFocus={() => searchTerm && setShowSuggestions(true)}
+                whileFocus={{ 
+                  scale: 1.02,
+                  boxShadow: "0 25px 50px -12px rgba(16, 185, 129, 0.3)"
+                }}
+                animate={{
+                  opacity: isTyping ? 0.7 : 1,
+                }}
+                transition={{ duration: 0.3 }}
+                className="w-full pl-16 pr-6 py-6 text-lg rounded-2xl bg-white/95 backdrop-blur-sm border-2 border-transparent focus:border-emerald-500 focus:outline-none shadow-2xl transition-all duration-300"
               />
-            </div>
+              
+              {/* Search Suggestions */}
+              <AnimatePresence>
+                {showSuggestions && filteredSuggestions.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-[9999]"
+                  >
+                    {filteredSuggestions.map((suggestion, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, x: 0, scale: 1 }}
+                        transition={{ 
+                          delay: index * 0.08,
+                          duration: 0.4,
+                          type: "spring",
+                          stiffness: 100
+                        }}
+                        whileHover={{ 
+                          scale: 1.02,
+                          x: 10,
+                          backgroundColor: "rgba(16, 185, 129, 0.1)",
+                          transition: { duration: 0.2 }
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        className="px-6 py-4 hover:bg-emerald-50 cursor-pointer border-b border-gray-50 last:border-b-0 flex items-center group"
+                      >
+                        <motion.div 
+                          className={`w-10 h-10 rounded-lg flex items-center justify-center mr-4 ${
+                            suggestion.type === 'university' ? 'bg-blue-100 text-blue-600' :
+                            suggestion.type === 'course' ? 'bg-purple-100 text-purple-600' :
+                            'bg-green-100 text-green-600'
+                          }`}
+                          whileHover={{ 
+                            scale: 1.1,
+                            rotate: [0, -10, 10, 0],
+                            transition: { duration: 0.3 }
+                          }}
+                        >
+                          {suggestion.type === 'university' ? <GraduationCap className="w-5 h-5" /> :
+                           suggestion.type === 'course' ? <BookOpen className="w-5 h-5" /> :
+                           <Globe className="w-5 h-5" />}
+                        </motion.div>
+                        <div className="flex-1">
+                          <div className="font-semibold text-gray-900">{suggestion.name}</div>
+                          <div className="text-sm text-gray-500">
+                            {suggestion.type === 'university' ? (suggestion as any).country :
+                             suggestion.type === 'course' ? (suggestion as any).programs :
+                             (suggestion as any).universities}
+                          </div>
+                        </div>
+                        <div className="text-xs text-gray-400 capitalize">
+                          {suggestion.type}
+                        </div>
+                      </motion.div>
+                    ))}
+                    
+                    {/* View All Results */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: filteredSuggestions.length * 0.08 + 0.2 }}
+                      whileHover={{ 
+                        scale: 1.02,
+                        backgroundColor: "rgba(16, 185, 129, 0.15)",
+                        transition: { duration: 0.2 }
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleSearch()}
+                      className="px-6 py-4 bg-emerald-50 hover:bg-emerald-100 cursor-pointer text-center text-emerald-600 font-semibold"
+                    >
+                      <motion.span
+                        whileHover={{ x: [0, 5, 0] }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        View all results for "{searchTerm}"
+                      </motion.span>
+                      <motion.div
+                        className="inline-block ml-2"
+                        whileHover={{ x: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        →
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           </motion.div>
 
           {/* CTA Buttons */}
@@ -277,17 +477,21 @@ export default function HomePage() {
             className="flex flex-col sm:flex-row gap-6 justify-center"
           >
             <Link
-              href="/universities"
+              href="/colleges"
               className={`group px-10 py-5 bg-gradient-to-r ${currentDesign.primaryGradient} text-white font-bold text-lg rounded-2xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center`}
             >
-              Explore Universities
+              Find Colleges
               <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href="/contact"
+              href="#profile-evaluation"
               className="px-10 py-5 bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 font-bold text-lg rounded-2xl hover:bg-white/30 transition-all duration-300 flex items-center justify-center"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('profile-evaluation')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
-              Get Free Consultation
+              Get Free Profile Evaluation
             </Link>
           </motion.div>
         </div>
@@ -301,6 +505,200 @@ export default function HomePage() {
           <ChevronDown className="w-8 h-8 text-white/70" />
         </motion.div>
       </motion.section>
+
+      {/* Quick Highlights Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Quick Highlights
+            </h2>
+            <p className="text-lg text-gray-600">Your journey starts with these simple steps</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Search className="w-8 h-8" />,
+                title: "1. Discover",
+                description: "Search and explore 500+ universities worldwide",
+                color: "from-blue-500 to-indigo-600"
+              },
+              {
+                icon: <Target className="w-8 h-8" />,
+                title: "2. Match",
+                description: "Get AI-powered recommendations tailored for you",
+                color: "from-emerald-500 to-green-600"
+              },
+              {
+                icon: <Award className="w-8 h-8" />,
+                title: "3. Apply",
+                description: "Expert guidance through your entire application",
+                color: "from-purple-500 to-pink-600"
+              }
+            ].map((highlight, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative group"
+              >
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${highlight.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform`}>
+                    {highlight.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{highlight.title}</h3>
+                  <p className="text-gray-600">{highlight.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <Link
+              href="/contact"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            >
+              Start Your Journey Today
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Free Counseling Section */}
+      <section className="py-20 bg-gradient-to-r from-emerald-500 to-green-600">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-3xl shadow-2xl overflow-hidden"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {/* Left Side - Information */}
+              <div className="p-8 md:p-10">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  Free Expert Counseling
+                </h2>
+                <p className="text-lg text-gray-700 mb-6">
+                  Transform your dreams into reality with personalized guidance from our certified education counselors.
+                </p>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">How It Works:</h3>
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <span className="text-emerald-600 font-bold mr-3">1.</span>
+                        <p className="text-gray-700">Schedule a free 30-minute consultation call</p>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-emerald-600 font-bold mr-3">2.</span>
+                        <p className="text-gray-700">Discuss your academic goals and preferences</p>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-emerald-600 font-bold mr-3">3.</span>
+                        <p className="text-gray-700">Get personalized university recommendations</p>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-emerald-600 font-bold mr-3">4.</span>
+                        <p className="text-gray-700">Receive a customized action plan</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Available Times:</h3>
+                    <p className="text-gray-700 mb-2">Monday - Friday: 9 AM - 8 PM EST</p>
+                    <p className="text-gray-700 mb-2">Saturday: 10 AM - 6 PM EST</p>
+                    <p className="text-gray-700">Sunday: 12 PM - 5 PM EST</p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                    <button
+                      onClick={() => {
+                        document.getElementById('book-counseling')?.scrollIntoView({ 
+                          behavior: 'smooth',
+                          block: 'start'
+                        })
+                      }}
+                      className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                    >
+                      Book Free Session
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </button>
+                    <a
+                      href="tel:+15551234567"
+                      className="inline-flex items-center justify-center px-6 py-3 border-2 border-emerald-600 text-emerald-600 font-bold rounded-lg hover:bg-emerald-50 transition-colors"
+                    >
+                      <Phone className="mr-2 w-5 h-5" />
+                      Call Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Right Side - Benefits */}
+              <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-8 md:p-10">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                  What You'll Get:
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    { icon: '✓', text: 'Personalized University Recommendations' },
+                    { icon: '✓', text: 'Application Strategy & Timeline' },
+                    { icon: '✓', text: 'Scholarship Opportunities' },
+                    { icon: '✓', text: 'Visa Guidance Overview' },
+                    { icon: '✓', text: 'Career Path Discussion' },
+                    { icon: '✓', text: 'Q&A Session with Expert' }
+                  ].map((benefit, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-start space-x-3"
+                    >
+                      <span className="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">
+                        {benefit.icon}
+                      </span>
+                      <p className="text-gray-700">{benefit.text}</p>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="mt-8 p-4 bg-white rounded-xl">
+                  <div className="flex items-center space-x-3 mb-2">
+                    <Users className="w-5 h-5 text-emerald-600" />
+                    <span className="text-sm font-semibold text-gray-900">10,000+ Students Counseled</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Star className="w-5 h-5 text-yellow-400" />
+                    <span className="text-sm text-gray-600">4.9/5 Average Rating</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Stats Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">

@@ -10,6 +10,7 @@ export default function Navigation() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
     { href: '/universities', label: 'Universities' },
     { href: '/courses', label: 'Courses' },
     { href: '/countries', label: 'Countries' },
@@ -45,7 +46,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 hover:text-emerald-600 font-medium transition-colors duration-200"
+                className="text-gray-700 hover:text-emerald-600 font-semibold transition-colors duration-200"
               >
                 {link.label}
               </Link>
@@ -86,7 +87,7 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block text-gray-700 hover:text-emerald-600 font-medium py-2"
+                  className="block text-gray-700 hover:text-emerald-600 font-semibold py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
