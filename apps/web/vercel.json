@@ -1,5 +1,14 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npx prisma generate && next build",
   "outputDirectory": ".next",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "installCommand": "npm install && npx prisma generate",
+  "env": {
+    "PRISMA_CLI_BINARY_TARGETS": "native,rhel-openssl-1.0.x"
+  },
+  "functions": {
+    "app/**": {
+      "includeFiles": "node_modules/.prisma/**"
+    }
+  }
 }
