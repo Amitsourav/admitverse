@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
@@ -9,6 +10,40 @@ import Link from 'next/link'
 import AnimatedCounter from '@/components/AnimatedCounter'
 
 export default function AboutPage() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const [isManualClick, setIsManualClick] = useState(false)
+  const [slideDirection, setSlideDirection] = useState(1) // 1 for right-to-left, -1 for left-to-right
+
+  useEffect(() => {
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        setIsManualClick(false)
+        setSlideDirection(1) // Auto progression always goes forward
+        setCurrentSlide((prev) => (prev + 1) % whyChooseUs.length)
+      }, 4000) // 4 seconds per slide
+
+      return () => clearInterval(interval)
+    }
+  }, [isPaused])
+
+  const handleSlideClick = (index: number) => {
+    if (index === currentSlide) return // Don't change if same slide
+    
+    setIsManualClick(true)
+    // Set direction FIRST, then change slide
+    if (index > currentSlide) {
+      setSlideDirection(1) // Going forward (right-to-left)
+    } else {
+      setSlideDirection(-1) // Going backward (left-to-right)
+    }
+    
+    // Small delay to ensure direction is set before slide change
+    setTimeout(() => {
+      setCurrentSlide(index)
+    }, 10)
+  }
+
   const stats = [
     { value: '25000', label: 'Students Guided', suffix: '+' },
     { value: '500', label: 'Partner Universities', suffix: '+' },
@@ -204,12 +239,54 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23059669' fill-opacity='0.1'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
+      <section className="py-20 bg-gradient-to-br from-emerald-50 via-gray-50 to-green-50 relative overflow-hidden">
+        {/* Animated Geometric Background */}
+        <div className="absolute inset-0">
+          {/* Flowing Lines */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={`line-${i}`}
+              className="absolute h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent"
+              style={{
+                width: `${Math.random() * 600 + 200}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                x: [-1000, 1000],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: Math.random() * 8 + 4,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "linear"
+              }}
+            />
+          ))}
+          
+          {/* Glowing Orbs */}
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={`orb-${i}`}
+              className="absolute w-2 h-2 bg-emerald-400 rounded-full shadow-lg shadow-emerald-400/50"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                scale: [1, 2, 1],
+                opacity: [0.3, 1, 0.3],
+                x: [0, Math.random() * 200 - 100],
+                y: [0, Math.random() * 200 - 100],
+              }}
+              transition={{
+                duration: Math.random() * 6 + 3,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+              }}
+            />
+          ))}
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -220,67 +297,184 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Our Foundation
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Our{" "}
+              <motion.span
+                className="bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                Foundation
+              </motion.span>
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
               Built on strong principles and driven by a clear vision for the future
-            </p>
+            </motion.p>
           </motion.div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Mission - Tilted Perspective Card */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+              initial={{ opacity: 0, rotateY: -30, x: -100 }}
+              whileInView={{ opacity: 1, rotateY: 0, x: 0 }}
+              transition={{ duration: 1, type: "spring", stiffness: 100 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
               className="group relative"
+              style={{ perspective: "1000px" }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-green-400/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
-              <div className="relative bg-gradient-to-br from-emerald-50 to-green-50 p-8 md:p-10 rounded-3xl border border-emerald-100 shadow-lg hover:shadow-2xl transition-all duration-500">
+              <motion.div
+                className="relative bg-white/90 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-emerald-200 shadow-2xl overflow-hidden"
+                whileHover={{ 
+                  rotateY: 5,
+                  rotateX: -5,
+                  scale: 1.02
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Glowing Border Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-transparent to-green-500/20 rounded-3xl"></div>
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-400/10 rounded-full blur-3xl"></div>
+                
                 <motion.div 
-                  className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg"
-                  whileHover={{ rotate: 360 }}
+                  className="relative z-10 w-20 h-20 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-2xl flex items-center justify-center text-black mb-6 shadow-lg shadow-emerald-400/30"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.8 }}
                 >
                   <Target className="w-10 h-10" />
                 </motion.div>
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Mission</h3>
-                <p className="text-gray-700 text-lg leading-relaxed">
+                
+                <motion.h3 
+                  className="relative z-10 text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  Our Mission
+                </motion.h3>
+                
+                <motion.p 
+                  className="relative z-10 text-gray-700 text-lg leading-relaxed mb-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
                   To democratize access to international education by providing comprehensive, 
                   personalized guidance that empowers every student to pursue their academic 
-                  dreams, regardless of their background or circumstances. We strive to make 
-                  the complex admission process simple, transparent, and achievable for all.
-                </p>
-              </div>
+                  dreams, regardless of their background or circumstances.
+                </motion.p>
+                
+                {/* Glowing Key Points */}
+                <motion.div 
+                  className="relative z-10 space-y-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  {['Comprehensive guidance', 'Personalized approach', 'Equal opportunities'].map((point, i) => (
+                    <motion.div 
+                      key={i} 
+                      className="flex items-center group/item"
+                      whileHover={{ x: 10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="w-3 h-3 bg-emerald-400 rounded-full mr-4 shadow-lg shadow-emerald-400/50 group-hover/item:shadow-emerald-400/80 transition-all"></div>
+                      <span className="text-gray-600 group-hover/item:text-emerald-600 transition-colors">{point}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
             </motion.div>
 
+            {/* Vision - Tilted Perspective Card */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, type: "spring", stiffness: 100, delay: 0.2 }}
+              initial={{ opacity: 0, rotateY: 30, x: 100 }}
+              whileInView={{ opacity: 1, rotateY: 0, x: 0 }}
+              transition={{ duration: 1, type: "spring", stiffness: 100, delay: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
               className="group relative"
+              style={{ perspective: "1000px" }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
-              <div className="relative bg-gradient-to-br from-teal-50 to-cyan-50 p-8 md:p-10 rounded-3xl border border-teal-100 shadow-lg hover:shadow-2xl transition-all duration-500">
+              <motion.div
+                className="relative bg-white/90 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-green-200 shadow-2xl overflow-hidden"
+                whileHover={{ 
+                  rotateY: -5,
+                  rotateX: -5,
+                  scale: 1.02
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Glowing Border Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-transparent to-teal-500/20 rounded-3xl"></div>
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-green-400/10 rounded-full blur-3xl"></div>
+                
                 <motion.div 
-                  className="w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg"
-                  whileHover={{ rotate: 360 }}
+                  className="relative z-10 w-20 h-20 bg-gradient-to-br from-green-400 to-teal-400 rounded-2xl flex items-center justify-center text-black mb-6 shadow-lg shadow-green-400/30"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.8 }}
                 >
                   <Rocket className="w-10 h-10" />
                 </motion.div>
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Vision</h3>
-                <p className="text-gray-700 text-lg leading-relaxed">
+                
+                <motion.h3 
+                  className="relative z-10 text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  Our Vision
+                </motion.h3>
+                
+                <motion.p 
+                  className="relative z-10 text-gray-700 text-lg leading-relaxed mb-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                  viewport={{ once: true }}
+                >
                   To become the world's most trusted education consultancy, recognized for 
                   transforming lives through education. We envision a future where every 
-                  deserving student has equal opportunities to access quality education at 
-                  top universities worldwide, creating global leaders and change-makers.
-                </p>
-              </div>
+                  deserving student has equal opportunities to access quality education.
+                </motion.p>
+                
+                {/* Glowing Key Points */}
+                <motion.div 
+                  className="relative z-10 space-y-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  {['Global recognition', 'Life transformation', 'Creating leaders'].map((point, i) => (
+                    <motion.div 
+                      key={i} 
+                      className="flex items-center group/item"
+                      whileHover={{ x: 10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="w-3 h-3 bg-green-400 rounded-full mr-4 shadow-lg shadow-green-400/50 group-hover/item:shadow-green-400/80 transition-all"></div>
+                      <span className="text-gray-600 group-hover/item:text-green-600 transition-colors">{point}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -467,37 +661,123 @@ export default function AboutPage() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose AdmitVerse?</h2>
             <p className="text-xl text-gray-600">What sets us apart from the rest</p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {whyChooseUs.map((reason, index) => (
+          
+          {/* Single Position Sliding Slides */}
+          <div 
+            className="relative h-[550px] lg:h-[450px]"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <AnimatePresence mode="wait">
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="group"
+                key={currentSlide}
+                initial={{ 
+                  x: slideDirection === 1 ? "100%" : "-100%", 
+                  opacity: 0 
+                }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ 
+                  x: slideDirection === 1 ? "-100%" : "100%", 
+                  opacity: 0 
+                }}
+                transition={{ 
+                  duration: isManualClick ? 0.4 : 0.8, 
+                  ease: "easeInOut" 
+                }}
+                className="absolute inset-0 w-full"
               >
-                <div className="bg-gray-50 p-8 rounded-2xl hover:bg-emerald-50 transition-colors">
-                  <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
-                    {reason.icon}
+                {whyChooseUs[currentSlide] && (
+                  <div className="bg-gradient-to-r from-emerald-50 via-white to-green-50 rounded-3xl shadow-xl overflow-hidden border border-emerald-100 h-full">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 h-full">
+                      {/* Image Section */}
+                      <div className="relative bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center min-h-[220px] lg:min-h-full">
+                        <div className="absolute inset-0 bg-black/10"></div>
+                        <motion.div 
+                          className="relative z-10 w-24 h-24 lg:w-32 lg:h-32 bg-white/20 rounded-3xl flex items-center justify-center backdrop-blur-sm"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="text-white text-4xl lg:text-6xl">
+                            {whyChooseUs[currentSlide].icon}
+                          </div>
+                        </motion.div>
+                        
+                        {/* Decorative Elements */}
+                        <div className="absolute top-4 right-4 lg:top-8 lg:right-8 w-12 h-12 lg:w-20 lg:h-20 bg-white/10 rounded-full"></div>
+                        <div className="absolute bottom-6 left-6 lg:bottom-12 lg:left-12 w-8 h-8 lg:w-16 lg:h-16 bg-white/10 rounded-full"></div>
+                        <div className="absolute top-1/2 left-4 lg:left-8 w-3 h-3 lg:w-4 lg:h-4 bg-white/20 rounded-full"></div>
+                      </div>
+                      
+                      {/* Content Section */}
+                      <div className="p-6 lg:p-8 xl:p-10 flex flex-col justify-center h-full relative">
+                        {/* Watermark Number */}
+                        <div className="absolute top-2 right-2 lg:top-4 lg:right-4">
+                          <span className="text-8xl lg:text-9xl font-black text-emerald-200 select-none pointer-events-none opacity-60">
+                            {currentSlide + 1}
+                          </span>
+                        </div>
+                        
+                        <h3 className="text-lg lg:text-xl xl:text-2xl font-bold text-gray-900 mb-3 lg:mb-4 leading-tight relative z-10">
+                          {whyChooseUs[currentSlide].title}
+                        </h3>
+                        
+                        <p className="text-sm lg:text-base text-gray-600 leading-relaxed mb-4 lg:mb-6">
+                          {whyChooseUs[currentSlide].description}
+                        </p>
+                        
+                        {/* Additional Benefits */}
+                        <div className="space-y-2 mb-4 lg:mb-6 flex-shrink-0">
+                          <div className="flex items-start">
+                            <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                            <span className="text-xs lg:text-sm text-gray-700">
+                              Proven track record with {currentSlide === 0 ? '15+ years' : currentSlide === 1 ? '500+ universities' : currentSlide === 2 ? 'personalized approach' : currentSlide === 3 ? 'comprehensive support' : currentSlide === 4 ? 'thousands of success stories' : 'cutting-edge technology'}
+                            </span>
+                          </div>
+                          <div className="flex items-start">
+                            <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                            <span className="text-xs lg:text-sm text-gray-700">Available 24/7 for your success</span>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-auto pt-4">
+                          <div className="inline-flex items-center px-4 py-2 lg:px-6 lg:py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl shadow-lg text-sm lg:text-base hover:shadow-xl transition-shadow cursor-pointer">
+                            <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
+                            Learn More
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{reason.title}</h3>
-                  <p className="text-gray-600">{reason.description}</p>
-                </div>
+                )}
               </motion.div>
-            ))}
+            </AnimatePresence>
+            
+            {/* Slide Indicators */}
+            <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+              {whyChooseUs.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSlideClick(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                    currentSlide === index 
+                      ? 'bg-emerald-500 scale-125' 
+                      : 'bg-emerald-200 hover:bg-emerald-300'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
