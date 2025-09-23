@@ -1,11 +1,7 @@
 {
   "framework": "nextjs",
-  "buildCommand": "SKIP_DB_VALIDATION=true npm run build",
   "outputDirectory": ".next",
   "installCommand": "npm install",
-  "env": {
-    "SKIP_DB_VALIDATION": "true"
-  },
   "functions": {
     "app/**": {
       "includeFiles": "node_modules/.prisma/**"
