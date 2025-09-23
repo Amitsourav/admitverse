@@ -16,6 +16,7 @@ interface College {
   ranking: number | null
   acceptance_rate: number | null
   description: string | null
+  featured: boolean
 }
 
 export default function EditCollegePage() {
@@ -32,6 +33,7 @@ export default function EditCollegePage() {
     ranking: '',
     acceptanceRate: '',
     description: '',
+    featured: false,
   })
 
   useEffect(() => {
@@ -52,6 +54,7 @@ export default function EditCollegePage() {
               ranking: foundCollege.ranking?.toString() || '',
               acceptanceRate: foundCollege.acceptance_rate?.toString() || '',
               description: foundCollege.description || '',
+              featured: foundCollege.featured || false,
             })
           } else {
             toast.error('College not found')

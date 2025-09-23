@@ -38,7 +38,10 @@ export default function ContactPage() {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 2000))
       
-      showToast('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.', 'success')
+      showToast({ 
+        type: 'success', 
+        title: 'Thank you! Your message has been sent successfully. We will get back to you within 24 hours.' 
+      })
       
       // Reset form
       setFormData({
@@ -53,7 +56,10 @@ export default function ContactPage() {
         preferredTime: ''
       })
     } catch (error) {
-      showToast('Something went wrong. Please try again.', 'error')
+      showToast({ 
+        type: 'error', 
+        title: 'Something went wrong. Please try again.' 
+      })
     } finally {
       setIsSubmitting(false)
     }

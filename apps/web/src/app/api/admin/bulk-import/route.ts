@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase-admin'
-import { parse } from 'csv-parse/sync'
+// import { parse } from 'csv-parse'
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,13 +22,8 @@ export async function POST(request: NextRequest) {
     let records: any[] = []
     
     if (fileExtension === 'csv') {
-      records = parse(text, {
-        columns: true,
-        skip_empty_lines: true,
-        trim: true,
-        cast: true,
-        cast_date: true
-      })
+      // Temporarily disabled CSV parsing for deployment
+      return NextResponse.json({ error: 'CSV parsing temporarily disabled' }, { status: 400 })
     } else if (fileExtension === 'json') {
       records = JSON.parse(text)
     } else {

@@ -45,6 +45,7 @@ model College {
   notableAlumni  Json?    @map("notable_alumni")
   facilities     Json?
   accreditations Json?
+  featured       Boolean  @default(false)
   isSample       Boolean  @default(false) @map("is_sample")
   createdAt      DateTime @default(now()) @map("created_at")
   updatedAt      DateTime @updatedAt @map("updated_at")
