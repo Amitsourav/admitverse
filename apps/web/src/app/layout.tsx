@@ -4,6 +4,10 @@ import './globals.css'
 import '@/styles/rich-text.css'
 import { ToastProvider } from '@/components/Toast'
 
+// Force dynamic rendering to prevent static generation issues with Framer Motion
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
