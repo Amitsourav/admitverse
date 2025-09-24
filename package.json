@@ -60,8 +60,6 @@
     "@trpc/server": "^10.45.0",
     "@types/bcrypt": "^6.0.0",
     "@types/jsonwebtoken": "^9.0.10",
-    "@vercel/analytics": "^1.1.2",
-    "@vercel/speed-insights": "^1.0.2",
     "bcrypt": "^6.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -111,8 +109,7 @@
     "prisma": "^5.8.1",
     "tailwindcss": "^3.4.1",
     "tsx": "^4.7.0",
-    "typescript": "^5.3.3",
-    "vercel": "^48.1.1"
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=18.17.0",

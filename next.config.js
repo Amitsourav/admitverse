@@ -134,12 +134,7 @@ const nextConfig = {
     },
     // Optimize package imports
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
-    // Force dynamic rendering for all pages
-    dynamicIO: false,
   },
-
-  // Disable static optimization completely
-  generateStaticParams: false,
 
   // TypeScript
   typescript: {
