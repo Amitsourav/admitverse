@@ -1,0 +1,79 @@
+{
+  "colleges": [
+    {
+      "id": "1",
+      "name": "Harvard University",
+      "slug": "harvard-university",
+      "description": "Premier Ivy League institution",
+      "city": "Cambridge",
+      "country": "USA",
+      "status": "ACTIVE",
+      "featured": true,
+      "createdAt": "2025-09-02T07:22:35.752Z",
+      "updatedAt": "2025-09-02T07:22:35.752Z"
+    },
+    {
+      "id": "2",
+      "name": "MIT",
+      "slug": "mit",
+      "description": "Leading technology institute",
+      "city": "Cambridge",
+      "country": "USA",
+      "status": "ACTIVE",
+      "featured": true,
+      "createdAt": "2025-09-02T07:22:35.752Z",
+      "updatedAt": "2025-09-02T07:22:35.752Z"
+    },
+    {
+      "id": "1756797778485",
+      "name": "Amit Kumar Sourav1",
+      "slug": "amit-kumar-sourav1",
+      "description": null,
+      "city": "Ranchi",
+      "country": "India",
+      "status": "ACTIVE",
+      "featured": false,
+      "createdAt": "2025-09-02T07:22:58.485Z",
+      "updatedAt": "2025-09-02T07:22:58.485Z"
+    },
+    {
+      "id": "1756797855832",
+      "name": "Test College Supabase",
+      "slug": "test-college-supabase",
+      "description": "Testing direct Supabase connection",
+      "city": "Mumbai",
+      "country": "India",
+      "status": "ACTIVE",
+      "featured": false,
+      "createdAt": "2025-09-02T07:24:15.832Z",
+      "updatedAt": "2025-09-02T07:24:15.832Z"
+    },
+    {
+      "id": "1756798009344",
+      "name": "Amit Kumar Sourav 2",
+      "slug": "amit-kumar-sourav-2",
+      "description": null,
+      "city": "Ranchi",
+      "country": "India",
+      "status": "ACTIVE",
+      "featured": false,
+      "createdAt": "2025-09-02T07:26:49.344Z",
+      "updatedAt": "2025-09-02T07:26:49.344Z"
+    },
+    {
+      "id": "1756798394339",
+      "name": "Real Supabase Test",
+      "slug": "real-supabase-test",
+      "description": "Testing after env fix",
+      "city": "Bangalore",
+      "country": "India",
+      "status": "ACTIVE",
+      "featured": false,
+      "createdAt": "2025-09-02T07:33:14.339Z",
+      "updatedAt": "2025-09-02T07:33:14.339Z"
+    }
+  ],
+  "courses": [],
+  "specializations": [],
+  "leads": []
+}
