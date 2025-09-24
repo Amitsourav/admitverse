@@ -147,7 +147,7 @@ const nextConfig = {
   },
 
   // Output
-  output: 'standalone',
+  // output: 'standalone', // Commented out to fix deployment issues
 
   // Trailing slash
   trailingSlash: false,
