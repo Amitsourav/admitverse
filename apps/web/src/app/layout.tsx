@@ -4,7 +4,7 @@ import './globals.css'
 import '@/styles/rich-text.css'
 import { ToastProvider } from '@/components/Toast'
 
-// Force dynamic rendering to prevent static generation issues with Framer Motion
+// Force dynamic rendering for better compatibility with deployment platforms
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 

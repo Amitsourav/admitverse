@@ -134,7 +134,12 @@ const nextConfig = {
     },
     // Optimize package imports
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    // Force dynamic rendering for all pages
+    dynamicIO: false,
   },
+
+  // Disable static optimization completely
+  generateStaticParams: false,
 
   // TypeScript
   typescript: {
@@ -146,8 +151,8 @@ const nextConfig = {
     ignoreDuringBuilds: false,
   },
 
-  // Output
-  // output: 'standalone', // Commented out to fix deployment issues
+  // Output configuration (standalone disabled for platform compatibility)
+  // output: 'standalone',
 
   // Trailing slash
   trailingSlash: false,

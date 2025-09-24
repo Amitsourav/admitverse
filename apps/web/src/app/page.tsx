@@ -1,6 +1,6 @@
 'use client'
 
-// Force dynamic rendering to prevent static generation issues
+// Force dynamic rendering for deployment compatibility
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
