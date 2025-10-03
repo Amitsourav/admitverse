@@ -22,37 +22,102 @@ function SearchContent() {
     setSearchTerm(query)
   }, [query])
 
+  // All available data
+  const allUniversities = [
+    {
+      name: 'Harvard University',
+      location: 'Cambridge, MA, USA',
+      rating: 4.9,
+      students: '23,000+',
+      image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=400',
+      programs: ['Medicine', 'Business', 'Law', 'Engineering'],
+      tuition: '$54,000/year'
+    },
+    {
+      name: 'Stanford University', 
+      location: 'Stanford, CA, USA',
+      rating: 4.8,
+      students: '17,000+',
+      image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=400',
+      programs: ['Computer Science', 'Business', 'Engineering', 'Medicine'],
+      tuition: '$56,000/year'
+    },
+    {
+      name: 'MIT',
+      location: 'Cambridge, MA, USA', 
+      rating: 4.9,
+      students: '11,000+',
+      image: 'https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=400',
+      programs: ['Engineering', 'Computer Science', 'Physics', 'Mathematics'],
+      tuition: '$55,000/year'
+    },
+    {
+      name: 'Oxford University',
+      location: 'Oxford, UK',
+      rating: 4.8,
+      students: '24,000+',
+      image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400',
+      programs: ['Philosophy', 'Politics', 'Economics', 'Medicine'],
+      tuition: '£38,000/year'
+    },
+    {
+      name: 'Cambridge University',
+      location: 'Cambridge, UK',
+      rating: 4.8,
+      students: '23,000+',
+      image: 'https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=400',
+      programs: ['Natural Sciences', 'Engineering', 'Mathematics', 'History'],
+      tuition: '£38,000/year'
+    },
+    {
+      name: 'Yale University',
+      location: 'New Haven, CT, USA',
+      rating: 4.7,
+      students: '13,000+',
+      image: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=400',
+      programs: ['Law', 'Drama', 'Medicine', 'Business'],
+      tuition: '$57,000/year'
+    },
+    {
+      name: 'Princeton University',
+      location: 'Princeton, NJ, USA',
+      rating: 4.8,
+      students: '8,000+',
+      image: 'https://images.unsplash.com/photo-1610878180933-123728745d22?w=400',
+      programs: ['Public Affairs', 'Engineering', 'Mathematics', 'Physics'],
+      tuition: '$56,000/year'
+    },
+    {
+      name: 'University of Toronto',
+      location: 'Toronto, Canada',
+      rating: 4.5,
+      students: '97,000+',
+      image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400',
+      programs: ['Medicine', 'Engineering', 'Business', 'Arts'],
+      tuition: 'CAD $60,000/year'
+    },
+    {
+      name: 'McGill University',
+      location: 'Montreal, Canada',
+      rating: 4.4,
+      students: '40,000+',
+      image: 'https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=400',
+      programs: ['Medicine', 'Law', 'Engineering', 'Science'],
+      tuition: 'CAD $50,000/year'
+    }
+  ]
+
+  // Filter results based on search query
+  const filteredUniversities = allUniversities.filter(uni => 
+    query ? uni.name.toLowerCase().includes(query.toLowerCase()) ||
+            uni.location.toLowerCase().includes(query.toLowerCase()) ||
+            uni.programs.some(p => p.toLowerCase().includes(query.toLowerCase()))
+          : false
+  )
+
   // Mock search results data
   const mockResults = {
-    universities: [
-      {
-        name: 'Harvard University',
-        location: 'Cambridge, MA, USA',
-        rating: 4.9,
-        students: '23,000+',
-        image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=400',
-        programs: ['Medicine', 'Business', 'Law', 'Engineering'],
-        tuition: '$54,000/year'
-      },
-      {
-        name: 'Stanford University', 
-        location: 'Stanford, CA, USA',
-        rating: 4.8,
-        students: '17,000+',
-        image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=400',
-        programs: ['Computer Science', 'Business', 'Engineering', 'Medicine'],
-        tuition: '$56,000/year'
-      },
-      {
-        name: 'MIT',
-        location: 'Cambridge, MA, USA', 
-        rating: 4.9,
-        students: '11,000+',
-        image: 'https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=400',
-        programs: ['Engineering', 'Computer Science', 'Physics', 'Mathematics'],
-        tuition: '$55,000/year'
-      }
-    ],
+    universities: filteredUniversities,
     courses: [
       {
         name: 'Computer Science',
@@ -67,8 +132,24 @@ function SearchContent() {
         avgSalary: '$85,000',
         duration: '2 years',
         type: 'Master\'s'
+      },
+      {
+        name: 'Engineering',
+        universities: '1,500+ universities',
+        avgSalary: '$92,000',
+        duration: '4 years',
+        type: 'Bachelor\'s'
+      },
+      {
+        name: 'Medicine',
+        universities: '400+ universities',
+        avgSalary: '$120,000',
+        duration: '6 years',
+        type: 'MD'
       }
-    ],
+    ].filter(course => 
+      query ? course.name.toLowerCase().includes(query.toLowerCase()) : false
+    ),
     countries: [
       {
         name: 'United States',
@@ -81,8 +162,22 @@ function SearchContent() {
         universities: '300+ universities',
         students: '500K+ international students', 
         flag: '🇬🇧'
+      },
+      {
+        name: 'Canada',
+        universities: '200+ universities',
+        students: '700K+ international students',
+        flag: '🇨🇦'
+      },
+      {
+        name: 'Australia',
+        universities: '150+ universities',
+        students: '500K+ international students',
+        flag: '🇦🇺'
       }
-    ]
+    ].filter(country => 
+      query ? country.name.toLowerCase().includes(query.toLowerCase()) : false
+    )
   }
 
   const handleSearch = (e: React.FormEvent) => {
@@ -138,6 +233,27 @@ function SearchContent() {
           {query ? (
             <div className="space-y-12">
               
+              {/* No Results Message */}
+              {mockResults.universities.length === 0 && 
+               mockResults.courses.length === 0 && 
+               mockResults.countries.length === 0 && (
+                <div className="text-center py-16">
+                  <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Search className="h-10 w-10 text-gray-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">No results found for "{query}"</h3>
+                  <p className="text-gray-600 mb-6">Try searching with different keywords or browse our categories</p>
+                  <div className="flex gap-4 justify-center">
+                    <Link href="/universities" className="px-6 py-3 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors">
+                      Browse Universities
+                    </Link>
+                    <Link href="/courses" className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors">
+                      Browse Courses
+                    </Link>
+                  </div>
+                </div>
+              )}
+
               {/* Universities Results */}
               {mockResults.universities.length > 0 && (
                 <div>

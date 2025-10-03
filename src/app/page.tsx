@@ -15,9 +15,14 @@ import AnimatedCounter from '@/components/AnimatedCounter'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
+import MobileNumberPopup from '@/components/MobileNumberPopup'
+import { useMobilePopup } from '@/hooks/useMobilePopup'
 
 function HomePageContent() {
   const { showToast } = useToast()
+  
+  // Mobile popup hook
+  const { isPopupOpen, mobileSubmitted, closePopup, submitMobile } = useMobilePopup()
   const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
@@ -114,7 +119,21 @@ function HomePageContent() {
   const handleSuggestionClick = (suggestion: any) => {
     setSearchTerm(suggestion.name)
     setShowSuggestions(false)
-    handleSearch(suggestion.name)
+    
+    // Navigate based on suggestion type
+    if (suggestion.type === 'university') {
+      // For universities, navigate to universities page with a filter or search
+      router.push(`/universities?search=${encodeURIComponent(suggestion.name)}`)
+    } else if (suggestion.type === 'course') {
+      // For courses, navigate to courses page with the course filter
+      router.push(`/courses?search=${encodeURIComponent(suggestion.name)}`)
+    } else if (suggestion.type === 'country') {
+      // For countries, navigate to countries page or universities filtered by country
+      router.push(`/universities?country=${encodeURIComponent(suggestion.name)}`)
+    } else {
+      // Default to search page
+      handleSearch(suggestion.name)
+    }
   }
 
   // Close suggestions when clicking outside
@@ -584,125 +603,6 @@ function HomePageContent() {
         </div>
       </section>
 
-      {/* Free Counseling Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-500 to-green-600">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-3xl shadow-2xl overflow-hidden"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              {/* Left Side - Information */}
-              <div className="p-8 md:p-10">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Free Expert Counseling
-                </h2>
-                <p className="text-lg text-gray-700 mb-6">
-                  Transform your dreams into reality with personalized guidance from our certified education counselors.
-                </p>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">How It Works:</h3>
-                    <div className="space-y-3">
-                      <div className="flex items-start">
-                        <span className="text-emerald-600 font-bold mr-3">1.</span>
-                        <p className="text-gray-700">Schedule a free 30-minute consultation call</p>
-                      </div>
-                      <div className="flex items-start">
-                        <span className="text-emerald-600 font-bold mr-3">2.</span>
-                        <p className="text-gray-700">Discuss your academic goals and preferences</p>
-                      </div>
-                      <div className="flex items-start">
-                        <span className="text-emerald-600 font-bold mr-3">3.</span>
-                        <p className="text-gray-700">Get personalized university recommendations</p>
-                      </div>
-                      <div className="flex items-start">
-                        <span className="text-emerald-600 font-bold mr-3">4.</span>
-                        <p className="text-gray-700">Receive a customized action plan</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Available Times:</h3>
-                    <p className="text-gray-700 mb-2">Monday - Friday: 9 AM - 8 PM EST</p>
-                    <p className="text-gray-700 mb-2">Saturday: 10 AM - 6 PM EST</p>
-                    <p className="text-gray-700">Sunday: 12 PM - 5 PM EST</p>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                    <button
-                      onClick={() => {
-                        document.getElementById('book-counseling')?.scrollIntoView({ 
-                          behavior: 'smooth',
-                          block: 'start'
-                        })
-                      }}
-                      className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
-                    >
-                      Book Free Session
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </button>
-                    <a
-                      href="tel:+15551234567"
-                      className="inline-flex items-center justify-center px-6 py-3 border-2 border-emerald-600 text-emerald-600 font-bold rounded-lg hover:bg-emerald-50 transition-colors"
-                    >
-                      <Phone className="mr-2 w-5 h-5" />
-                      Call Now
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Right Side - Benefits */}
-              <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-8 md:p-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  What You'll Get:
-                </h3>
-                <div className="space-y-4">
-                  {[
-                    { icon: '✓', text: 'Personalized University Recommendations' },
-                    { icon: '✓', text: 'Application Strategy & Timeline' },
-                    { icon: '✓', text: 'Scholarship Opportunities' },
-                    { icon: '✓', text: 'Visa Guidance Overview' },
-                    { icon: '✓', text: 'Career Path Discussion' },
-                    { icon: '✓', text: 'Q&A Session with Expert' }
-                  ].map((benefit, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-start space-x-3"
-                    >
-                      <span className="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">
-                        {benefit.icon}
-                      </span>
-                      <p className="text-gray-700">{benefit.text}</p>
-                    </motion.div>
-                  ))}
-                </div>
-                
-                <div className="mt-8 p-4 bg-white rounded-xl">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <Users className="w-5 h-5 text-emerald-600" />
-                    <span className="text-sm font-semibold text-gray-900">10,000+ Students Counseled</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Star className="w-5 h-5 text-yellow-400" />
-                    <span className="text-sm text-gray-600">4.9/5 Average Rating</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Stats Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
@@ -747,7 +647,7 @@ function HomePageContent() {
               className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.3 }}
             >
               Why Choose Us
             </motion.h2>
@@ -755,7 +655,7 @@ function HomePageContent() {
               className="text-emerald-700 text-base lg:text-lg font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
             >
               Complete support for your educational journey
             </motion.p>
@@ -782,8 +682,8 @@ function HomePageContent() {
                   scale: [0.5, 1.2, 0.5],
                 }}
                 transition={{
-                  duration: 8 + Math.random() * 6,
-                  delay: Math.random() * 8,
+                  duration: 3 + Math.random() * 2,
+                  delay: Math.random() * 3,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
@@ -797,23 +697,23 @@ function HomePageContent() {
             const sectionStart = index / totalSections
             const sectionEnd = (index + 1) / totalSections
             
-            // Use freeze scroll progress with extended visibility
+            // Use freeze scroll progress with faster transitions
             const opacity = useTransform(
               freezeScrollProgress,
-              [sectionStart, sectionStart + 0.05, sectionEnd - 0.05, sectionEnd],
+              [sectionStart, sectionStart + 0.02, sectionEnd - 0.02, sectionEnd],
               [0, 1, 1, 0]
             )
             
             const y = useTransform(
               freezeScrollProgress,
-              [sectionStart, sectionStart + 0.05, sectionEnd - 0.05, sectionEnd],
-              [30, 0, 0, -30]
+              [sectionStart, sectionStart + 0.02, sectionEnd - 0.02, sectionEnd],
+              [20, 0, 0, -20]
             )
             
             const scale = useTransform(
               freezeScrollProgress,
-              [sectionStart, sectionStart + 0.05, sectionEnd - 0.05, sectionEnd],
-              [0.95, 1, 1, 0.95]
+              [sectionStart, sectionStart + 0.02, sectionEnd - 0.02, sectionEnd],
+              [0.97, 1, 1, 0.97]
             )
 
             return (
@@ -831,7 +731,7 @@ function HomePageContent() {
                       className={`${index % 2 === 1 ? 'lg:col-start-2' : ''} text-gray-800 space-y-6`}
                       initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.8, delay: 0.2 }}
+                      transition={{ duration: 0.4, delay: 0.1 }}
                     >
                       {/* Large Icon with Animation */}
                       <motion.div 
@@ -841,7 +741,7 @@ function HomePageContent() {
                           scale: [1, 1.1, 1]
                         }}
                         transition={{
-                          duration: 4,
+                          duration: 2,
                           repeat: Infinity,
                           ease: "easeInOut"
                         }}
@@ -879,7 +779,7 @@ function HomePageContent() {
                             className="px-4 py-2 bg-emerald-200/60 border border-emerald-400/50 rounded-full text-emerald-700 text-sm font-semibold"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 + tagIndex * 0.1 }}
+                            transition={{ delay: 0.2 + tagIndex * 0.05 }}
                           >
                             {highlight}
                           </motion.span>
@@ -913,7 +813,7 @@ function HomePageContent() {
                       className={`${index % 2 === 1 ? 'lg:col-start-1' : ''} flex items-center justify-center`}
                       initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.8, delay: 0.4 }}
+                      transition={{ duration: 0.4, delay: 0.2 }}
                     >
                       <div className="relative">
                         {/* Background Glow Effects */}
@@ -1403,6 +1303,13 @@ function HomePageContent() {
         </div>
         <Footer />
         <FloatingActions />
+        
+        {/* Mobile Number Popup */}
+        <MobileNumberPopup
+          isOpen={isPopupOpen}
+          onClose={closePopup}
+          onSubmit={submitMobile}
+        />
       </div>
     </div>
   )
