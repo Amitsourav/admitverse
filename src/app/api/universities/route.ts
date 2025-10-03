@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST /api/universities - Add new university (for admin panel)
+// POST /api/universities - Add new university
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()

@@ -28,7 +28,7 @@ export async function GET(
   }
 }
 
-// PUT /api/universities/[slug] - Update university (for admin panel)
+// PUT /api/universities/[slug] - Update university
 export async function PUT(
   request: NextRequest,
   { params }: { params: { slug: string } }
@@ -59,7 +59,7 @@ export async function PUT(
   }
 }
 
-// DELETE /api/universities/[slug] - Delete university (for admin panel)
+// DELETE /api/universities/[slug] - Delete university
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { slug: string } }
