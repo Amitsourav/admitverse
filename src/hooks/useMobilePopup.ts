@@ -24,10 +24,10 @@ export function useMobilePopup() {
   useEffect(() => {
     if (mobileSubmitted) return
 
-    // Show popup after 8 seconds initially
+    // Show popup after 2 seconds initially (reduced for testing)
     const initialTimer = setTimeout(() => {
       setIsPopupOpen(true)
-    }, 8000)
+    }, 2000)
 
     // Setup recurring popup timer
     let nextTimer: NodeJS.Timeout

@@ -115,5 +115,12 @@
     "timestamp": "2025-10-04T08:49:10.241Z",
     "page": "/contact",
     "sessionId": "session_1759566656292_ebmw70qr4"
+  },
+  {
+    "type": "mobile_popup",
+    "mobile": "7004428198",
+    "timestamp": "2025-10-04T17:24:34.316Z",
+    "page": "/",
+    "sessionId": "session_1759598674317_bg1sh25kd"
   }
 ]

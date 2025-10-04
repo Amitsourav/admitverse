@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Mobile Formspree</title>
+</head>
+<body>
+    <h1>Test Mobile Popup Submission to Formspree</h1>
+    
+    <form action="https://formspree.io/f/mdkwdnnb" method="POST">
+        <p><strong>This simulates what the mobile popup sends:</strong></p>
+        
+        <label>Name (auto-filled):<br>
+            <input type="text" name="name" value="Mobile Popup User" readonly>
+        </label><br><br>
+        
+        <label>Email (auto-generated):<br>
+            <input type="email" name="email" value="mobile_9876543210@placeholder.com" readonly>
+        </label><br><br>
+        
+        <label>Phone Number:<br>
+            <input type="tel" name="phone" value="9876543210" required>
+        </label><br><br>
+        
+        <label>Message (auto-filled):<br>
+            <textarea name="message" readonly>Mobile number submitted via popup: 9876543210</textarea>
+        </label><br><br>
+        
+        <input type="hidden" name="type" value="mobile_popup">
+        <input type="hidden" name="timestamp" value="2025-01-01T00:00:00Z">
+        <input type="hidden" name="page" value="/test">
+        
+        <button type="submit">Submit to Formspree</button>
+    </form>
+    
+    <hr>
+    
+    <h2>Test with minimal fields</h2>
+    <form action="https://formspree.io/f/mdkwdnnb" method="POST">
+        <label>Phone Only:<br>
+            <input type="tel" name="phone" placeholder="Enter phone number" required>
+        </label><br><br>
+        
+        <button type="submit">Submit Phone Only</button>
+    </form>
+</body>
+</html>

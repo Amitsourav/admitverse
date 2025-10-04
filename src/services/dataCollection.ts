@@ -142,10 +142,40 @@ class DataCollectionService {
       
       // Convert to FormData for Formspree
       const formData = new FormData()
-      formData.append('name', (submissionData as any).name || '')
-      formData.append('email', (submissionData as any).email || '')
-      formData.append('phone', (submissionData as any).phone || '')
-      formData.append('message', (submissionData as any).message || '')
+      
+      // For mobile popup, create name and email placeholders
+      if (submissionData.type === 'mobile_popup') {
+        const mobileData = submissionData as MobilePopupData
+        console.log('Mobile popup data:', mobileData)
+        console.log('Mobile number being sent:', mobileData.mobile)
+        
+        // Ensure mobile number exists
+        const phoneNumber = mobileData.mobile || ''
+        if (!phoneNumber) {
+          console.error('WARNING: No mobile number found in mobile popup data!')
+        }
+        
+        formData.append('name', 'Mobile Popup User')
+        formData.append('email', phoneNumber ? `mobile_${phoneNumber}@placeholder.com` : 'mobile_unknown@placeholder.com')
+        formData.append('phone', phoneNumber)
+        formData.append('message', `Mobile number submitted via popup: ${phoneNumber}`)
+        
+        // Log what we're sending
+        console.log('FormData entries:')
+        for (let [key, value] of formData.entries()) {
+          console.log(`  ${key}: ${value}`)
+        }
+      } else {
+        formData.append('name', (submissionData as any).name || '')
+        formData.append('email', (submissionData as any).email || '')
+        
+        // Handle phone number field - mobile popup uses 'mobile', others use 'phone'
+        const phoneNumber = (submissionData as any).phone || (submissionData as any).mobile || ''
+        formData.append('phone', phoneNumber)
+        
+        formData.append('message', (submissionData as any).message || '')
+      }
+      
       formData.append('type', submissionData.type)
       formData.append('timestamp', submissionData.timestamp)
       formData.append('page', submissionData.page)
