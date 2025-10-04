@@ -681,24 +681,26 @@ export default function UniversityDetailPage() {
                 className="grid grid-cols-1 lg:grid-cols-3 gap-8"
               >
                 <div className="lg:col-span-2 space-y-8">
-                  <div className="bg-white rounded-xl shadow-sm p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">University Highlights</h3>
-                    <div className="space-y-4">
-                      {university.highlights.map((highlight, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                          className="flex items-start"
-                        >
-                          <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700">{highlight}</span>
-                        </motion.div>
-                      ))}
+                  {university.highlights && university.highlights.length > 0 && (
+                    <div className="bg-white rounded-xl shadow-sm p-8">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">University Highlights</h3>
+                      <div className="space-y-4">
+                        {university.highlights.map((highlight, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                            className="flex items-start"
+                          >
+                            <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                            <span className="text-gray-700">{highlight}</span>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   <div className="bg-white rounded-xl shadow-sm p-8">
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">About {university.name}</h3>
@@ -711,27 +713,29 @@ export default function UniversityDetailPage() {
                 </div>
 
                 <div className="space-y-6">
-                  <div className="bg-white rounded-xl shadow-sm p-6">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h4>
-                    <div className="space-y-3">
-                      <div className="flex items-center">
-                        <Mail className="w-5 h-5 text-emerald-500 mr-3" />
-                        <span className="text-gray-700">{university.contact.email}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Phone className="w-5 h-5 text-emerald-500 mr-3" />
-                        <span className="text-gray-700">{university.contact.phone}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Globe className="w-5 h-5 text-emerald-500 mr-3" />
-                        <span className="text-gray-700">{university.contact.website}</span>
-                      </div>
-                      <div className="flex items-start">
-                        <MapPin className="w-5 h-5 text-emerald-500 mr-3 mt-0.5" />
-                        <span className="text-gray-700">{university.contact.address}</span>
+                  {university.contact && (
+                    <div className="bg-white rounded-xl shadow-sm p-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h4>
+                      <div className="space-y-3">
+                        <div className="flex items-center">
+                          <Mail className="w-5 h-5 text-emerald-500 mr-3" />
+                          <span className="text-gray-700">{university.contact.email}</span>
+                        </div>
+                        <div className="flex items-center">
+                          <Phone className="w-5 h-5 text-emerald-500 mr-3" />
+                          <span className="text-gray-700">{university.contact.phone}</span>
+                        </div>
+                        <div className="flex items-center">
+                          <Globe className="w-5 h-5 text-emerald-500 mr-3" />
+                          <span className="text-gray-700">{university.contact.website}</span>
+                        </div>
+                        <div className="flex items-start">
+                          <MapPin className="w-5 h-5 text-emerald-500 mr-3 mt-0.5" />
+                          <span className="text-gray-700">{university.contact.address}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
 
                   <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl p-6 border border-emerald-100">
                     <h4 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h4>
@@ -761,23 +765,29 @@ export default function UniversityDetailPage() {
                 <div className="bg-white rounded-xl shadow-sm p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">Academic Programs</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {university.programs.map((program, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="p-4 border border-gray-200 rounded-lg hover:border-emerald-300 hover:shadow-md transition-all duration-300 cursor-pointer group"
-                      >
-                        <div className="flex items-center">
-                          <GraduationCap className="w-5 h-5 text-emerald-500 mr-3 group-hover:scale-110 transition-transform" />
-                          <span className="font-medium text-gray-900 group-hover:text-emerald-600 transition-colors">
-                            {program}
-                          </span>
-                        </div>
-                      </motion.div>
-                    ))}
+                    {Array.isArray(university.programs) ? (
+                      university.programs.map((program, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                          className="p-4 border border-gray-200 rounded-lg hover:border-emerald-300 hover:shadow-md transition-all duration-300 cursor-pointer group"
+                        >
+                          <div className="flex items-center">
+                            <GraduationCap className="w-5 h-5 text-emerald-500 mr-3 group-hover:scale-110 transition-transform" />
+                            <span className="font-medium text-gray-900 group-hover:text-emerald-600 transition-colors">
+                              {program}
+                            </span>
+                          </div>
+                        </motion.div>
+                      ))
+                    ) : (
+                      <div className="text-gray-600">
+                        {university.programs}+ Programs Available
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -796,7 +806,7 @@ export default function UniversityDetailPage() {
                   <div className="bg-white rounded-xl shadow-sm p-8">
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">Admission Requirements</h3>
                     <div className="space-y-3">
-                      {university.admissions.requirements.map((requirement, index) => (
+                      {university.admissions?.requirements?.map((requirement, index) => (
                         <motion.div
                           key={index}
                           initial={{ opacity: 0, x: -20 }}
@@ -815,7 +825,7 @@ export default function UniversityDetailPage() {
                   <div className="bg-white rounded-xl shadow-sm p-8">
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">Application Deadlines</h3>
                     <div className="space-y-4">
-                      {Object.entries(university.admissions.deadlines).map(([type, deadline], index) => (
+                      {university.admissions?.deadlines && Object.entries(university.admissions.deadlines).map(([type, deadline], index) => (
                         <motion.div
                           key={index}
                           initial={{ opacity: 0, y: 20 }}
@@ -835,7 +845,7 @@ export default function UniversityDetailPage() {
                 <div className="bg-white rounded-xl shadow-sm p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">Scholarships & Financial Aid</h3>
                   <div className="space-y-4">
-                    {university.scholarships.map((scholarship, index) => (
+                    {university.scholarships?.map((scholarship, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, x: 20 }}
@@ -866,7 +876,7 @@ export default function UniversityDetailPage() {
                 <div className="bg-white rounded-xl shadow-sm p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">Campus Facilities</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {university.facilities.map((facility, index) => (
+                    {university.facilities?.map((facility, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, scale: 0.9 }}

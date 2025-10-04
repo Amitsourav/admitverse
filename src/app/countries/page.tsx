@@ -179,7 +179,7 @@ const mockCountries: Country[] = [
     visa: 'Student Visa (VLS-TS)',
     workPermit: 'APS (up to 2 years)',
     description: 'Rich cultural heritage with world-class institutions. Low tuition fees at public universities and strong programs in arts, business, and engineering.',
-    image: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&h=300&fit=crop',
     stats: {
       universities: 380,
       students: '370K',

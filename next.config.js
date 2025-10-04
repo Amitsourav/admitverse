@@ -29,7 +29,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' blob: data: https: *.supabase.co",
       "font-src 'self' data:",
-      "connect-src 'self' *.supabase.co wss://*.supabase.co *.google-analytics.com *.googletagmanager.com https://api.openai.com",
+      "connect-src 'self' *.supabase.co wss://*.supabase.co *.google-analytics.com *.googletagmanager.com https://api.openai.com https://formspree.io",
       "media-src 'self' *.supabase.co",
       "frame-src 'self'"
     ].join('; ')

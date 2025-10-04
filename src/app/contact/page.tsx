@@ -35,8 +35,9 @@ export default function ContactPage() {
     setIsSubmitting(true)
 
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      // Use data collection service
+      const { submitContactForm } = await import('@/services/dataCollection')
+      const success = await submitContactForm(formData)
       
       showToast({ 
         type: 'success', 
@@ -55,7 +56,12 @@ export default function ContactPage() {
         message: '',
         preferredTime: ''
       })
+
+      if (!success) {
+        console.log('Data stored locally as backup')
+      }
     } catch (error) {
+      console.error('Contact form submission error:', error)
       showToast({ 
         type: 'error', 
         title: 'Something went wrong. Please try again.' 

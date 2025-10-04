@@ -74,7 +74,7 @@ export function useMobilePopup() {
     localStorage.setItem('popup_last_closed', now.toString())
   }, [])
 
-  const submitMobile = useCallback((mobile: string) => {
+  const submitMobile = useCallback(async (mobile: string) => {
     // Store in localStorage
     localStorage.setItem('user_mobile', mobile)
     localStorage.setItem('mobile_submitted', 'true')
@@ -83,15 +83,17 @@ export function useMobilePopup() {
     setMobileSubmitted(true)
     setIsPopupOpen(false)
     
-    // You can also send to analytics or API here
-    console.log('Mobile number submitted:', mobile)
-    
-    // Optional: Send to your backend API
-    // fetch('/api/submit-mobile', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ mobile, timestamp: new Date().toISOString() })
-    // })
+    try {
+      // Use data collection service
+      const { submitMobilePopup } = await import('@/services/dataCollection')
+      const success = await submitMobilePopup(mobile)
+      
+      if (!success) {
+        console.log('Mobile data stored locally as backup')
+      }
+    } catch (error) {
+      console.error('Mobile popup submission error:', error)
+    }
   }, [])
 
   return {

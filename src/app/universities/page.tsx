@@ -703,18 +703,18 @@ export default function UniversitiesPage() {
                               <DollarSign className="w-4 h-4 mr-1 text-emerald-500" />
                               {university.tuition}
                             </div>
-                            {university.acceptanceRate && (
+                            {university.acceptance && (
                               <div className="flex items-center">
                                 <TrendingUp className="w-4 h-4 mr-1 text-emerald-500" />
-                                {university.acceptanceRate} Acceptance
+                                {university.acceptance} Acceptance
                               </div>
                             )}
                           </div>
                           
                           {/* Programs */}
-                          {university.programs && university.programs.length > 0 && (
+                          {university.programs && Array.isArray(university.programs) && university.programs.length > 0 && (
                             <div className="flex flex-wrap gap-2 mb-3">
-                              {university.programs.slice(0, 4).map((program, idx) => (
+                              {university.programs.slice(0, 4).map((program: string, idx: number) => (
                                 <span 
                                   key={idx}
                                   className="px-2 py-1 bg-emerald-50 text-emerald-700 rounded-full text-xs font-medium"

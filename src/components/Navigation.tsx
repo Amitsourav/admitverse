@@ -2,11 +2,13 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Menu, X, GraduationCap } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const router = useRouter()
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -20,10 +22,14 @@ export default function Navigation() {
   const scrollToCounseling = () => {
     const counselingSection = document.getElementById('book-counseling')
     if (counselingSection) {
+      // If on homepage, scroll to form
       counselingSection.scrollIntoView({ 
         behavior: 'smooth',
         block: 'start'
       })
+    } else {
+      // If not on homepage, redirect to homepage with hash
+      router.push('/#book-counseling')
     }
     setMobileMenuOpen(false)
   }
