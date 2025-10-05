@@ -535,7 +535,7 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 text-white leading-tight">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 text-white" style={{ lineHeight: '1.3' }}>
                 Your Complete
                 <span className="block bg-gradient-to-r from-emerald-400 to-green-300 bg-clip-text text-transparent">
                   Admission Journey

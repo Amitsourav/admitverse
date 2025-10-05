@@ -105,12 +105,13 @@ export default function MobileNumberPopup({ isOpen, onClose, onSubmit }: MobileN
                     console.log('Close button clicked')
                     onClose()
                   }}
-                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/20 transition-colors z-[10000] cursor-pointer"
+                  className="absolute top-3 right-3 p-3 rounded-full bg-white/20 hover:bg-white/30 transition-colors z-[10000] cursor-pointer touch-manipulation"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   type="button"
+                  aria-label="Close popup"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-6 h-6 text-white" />
                 </motion.button>
                 
                 <div className="flex items-center space-x-3">
