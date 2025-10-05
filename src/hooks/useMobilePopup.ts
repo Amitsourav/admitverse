@@ -24,10 +24,10 @@ export function useMobilePopup() {
   useEffect(() => {
     if (mobileSubmitted) return
 
-    // Show popup after 8 seconds initially
+    // Show popup after 30 seconds initially
     const initialTimer = setTimeout(() => {
       setIsPopupOpen(true)
-    }, 8000)
+    }, 30000)
 
     // Setup recurring popup timer
     let nextTimer: NodeJS.Timeout
@@ -44,21 +44,21 @@ export function useMobilePopup() {
         return
       }
       
-      // Random interval between 10-15 seconds (10000-15000ms)
-      const randomDelay = Math.random() * 5000 + 10000
+      // Fixed 10 second interval for subsequent popups
+      const delay = 10000
       
       nextTimer = setTimeout(() => {
         if (!mobileSubmitted) {
           setIsPopupOpen(true)
           scheduleNextPopup() // Schedule the next one
         }
-      }, randomDelay)
+      }, delay)
     }
 
-    // Start the recurring popup cycle after initial popup
+    // Start the recurring popup cycle after initial popup (30s + 10s = 40s total)
     const startRecurringTimer = setTimeout(() => {
       scheduleNextPopup()
-    }, 8000 + 5000) // After initial popup + 5 seconds
+    }, 30000 + 10000) // After initial popup + 10 seconds
 
     return () => {
       clearTimeout(initialTimer)
