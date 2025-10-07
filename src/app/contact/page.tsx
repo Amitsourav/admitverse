@@ -75,57 +75,36 @@ export default function ContactPage() {
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Phone',
-      details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
-      description: 'Mon-Fri: 9AM-6PM EST'
+      details: ['+91 99826 27466'],
+      description: 'Mon-Fri: 9AM-6PM IST'
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email',
-      details: ['info@admitverse.com', 'support@admitverse.com'],
+      details: ['admission@admitverse.com'],
       description: 'We reply within 24 hours'
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Address',
-      details: ['123 Education Avenue', 'New York, NY 10001, USA'],
+      details: ['WorkWorm Co-working Space, NHPC Chowk', 'Block A, DLF Industrial Area, Sector 32', 'Faridabad, Haryana 121003, India'],
       description: 'Visit us by appointment'
     },
     {
       icon: <Clock className="w-6 h-6" />,
       title: 'Office Hours',
       details: ['Monday - Friday: 9AM - 6PM', 'Saturday: 10AM - 4PM'],
-      description: 'EST (Eastern Standard Time)'
+      description: 'IST (Indian Standard Time)'
     }
   ]
 
   const offices = [
     {
-      city: 'New York',
-      country: 'USA',
-      address: '123 Education Avenue, NY 10001',
-      phone: '+1 (555) 123-4567',
-      email: 'ny@admitverse.com'
-    },
-    {
-      city: 'London',
-      country: 'UK',
-      address: '456 Academic Street, London EC1A 1BB',
-      phone: '+44 20 7123 4567',
-      email: 'london@admitverse.com'
-    },
-    {
-      city: 'Dubai',
-      country: 'UAE',
-      address: '789 Knowledge Village, Dubai',
-      phone: '+971 4 123 4567',
-      email: 'dubai@admitverse.com'
-    },
-    {
-      city: 'Singapore',
-      country: 'Singapore',
-      address: '321 Education Hub, Singapore 138547',
-      phone: '+65 6123 4567',
-      email: 'singapore@admitverse.com'
+      city: 'Faridabad',
+      country: 'India',
+      address: 'WorkWorm Co-working Space, NHPC Chowk, Block A, DLF Industrial Area, Sector 32, Faridabad, Haryana 121003',
+      phone: '+91 99826 27466',
+      email: 'admission@admitverse.com'
     }
   ]
 
@@ -543,8 +522,8 @@ export default function ContactPage() {
                 
                 <div className="space-y-4 relative z-10">
                   {[
-                    { href: "tel:+15551234567", icon: <Phone className="w-6 h-6 text-emerald-600 mr-3" />, text: "Call us now", type: "link" },
-                    { href: "mailto:info@admitverse.com", icon: <Mail className="w-6 h-6 text-emerald-600 mr-3" />, text: "Send us an email", type: "link" },
+                    { href: "tel:+919982627466", icon: <Phone className="w-6 h-6 text-emerald-600 mr-3" />, text: "Call us now", type: "link" },
+                    { href: "mailto:admission@admitverse.com", icon: <Mail className="w-6 h-6 text-emerald-600 mr-3" />, text: "Send us an email", type: "link" },
                     { icon: <MessageCircle className="w-6 h-6 text-emerald-600 mr-3" />, text: "Start live chat", type: "button" },
                     { icon: <Calendar className="w-6 h-6 text-emerald-600 mr-3" />, text: "Schedule a consultation", type: "button" }
                   ].map((action, index) => (

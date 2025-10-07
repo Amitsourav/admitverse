@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { GraduationCap, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { GraduationCap, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -34,10 +34,10 @@ export default function Footer() {
   }
 
   const socialLinks = [
-    { href: '#', icon: Facebook, label: 'Facebook' },
-    { href: '#', icon: Twitter, label: 'Twitter' },
-    { href: '#', icon: Instagram, label: 'Instagram' },
-    { href: '#', icon: Linkedin, label: 'LinkedIn' },
+    { href: 'https://www.facebook.com/profile.php?id=61580553196191', icon: Facebook, label: 'Facebook' },
+    { href: 'https://www.instagram.com/admitverse?igsh=MWlxaGJkZzVtdTZiag==', icon: Instagram, label: 'Instagram' },
+    { href: 'https://www.linkedin.com/company/admitverse/', icon: Linkedin, label: 'LinkedIn' },
+    { href: 'https://www.youtube.com/channel/UCa5z_WlUX5xKRX7O6BI6ZBA', icon: Youtube, label: 'YouTube' },
   ]
 
   return (
@@ -61,15 +61,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-emerald-400" />
-                <span className="text-sm text-gray-300">info@admitverse.com</span>
+                <span className="text-sm text-gray-300">admission@admitverse.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-emerald-400" />
-                <span className="text-sm text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-sm text-gray-300">+91 99826 27466</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-emerald-400" />
-                <span className="text-sm text-gray-300">New York, NY 10001</span>
+              <div className="flex items-start space-x-3">
+                <MapPin className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-300">WorkWorm Co-working Space, NHPC Chowk, Block A, DLF Industrial Area, Sector 32, Faridabad, Haryana 121003</span>
               </div>
             </div>
           </div>
@@ -111,6 +111,8 @@ export default function Footer() {
                 <Link
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition-colors duration-200"
                   aria-label={social.label}
                 >
