@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import { useUniversities } from '@/hooks/useUniversities'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -55,6 +55,7 @@ export default function UniversitiesPage() {
   const [internationalStudents, setInternationalStudents] = useState('all')
   const [studentFacultyRatio, setStudentFacultyRatio] = useState('all')
   const [specializations, setSpecializations] = useState('all')
+  const [universityType, setUniversityType] = useState('all') // all, domestic, international
   
   // University carousel images
   const carouselImages = [
@@ -75,11 +76,23 @@ export default function UniversitiesPage() {
   }, [])
   
   // Use dynamic university data from API
-  const { universities: filteredUniversities, loading, error } = useUniversities({
+  const { universities: allUniversities, loading, error } = useUniversities({
     search: searchTerm,
     country: selectedCountry,
     ranking: selectedRanking
   })
+
+  // Apply domestic/international filtering
+  const filteredUniversities = useMemo(() => {
+    if (universityType === 'all') {
+      return allUniversities
+    } else if (universityType === 'domestic') {
+      return allUniversities.filter(university => university.country === 'India')
+    } else if (universityType === 'international') {
+      return allUniversities.filter(university => university.country !== 'India')
+    }
+    return allUniversities
+  }, [allUniversities, universityType])
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -275,7 +288,7 @@ export default function UniversitiesPage() {
                   </h2>
                   {(selectedCountry !== 'all' || selectedRanking !== 'all' || tuitionRange !== 'all' || acceptanceRate !== 'all' || 
                     campusSize !== 'all' || studentSize !== 'all' || researchOutput !== 'all' || internationalStudents !== 'all' || 
-                    specializations !== 'all') && (
+                    specializations !== 'all' || universityType !== 'all') && (
                     <motion.span 
                       className="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full font-medium"
                       initial={{ scale: 0 }}
@@ -291,7 +304,8 @@ export default function UniversitiesPage() {
                         studentSize !== 'all',
                         researchOutput !== 'all',
                         internationalStudents !== 'all',
-                        specializations !== 'all'
+                        specializations !== 'all',
+                        universityType !== 'all'
                       ].filter(Boolean).length} Active
                     </motion.span>
                   )}
@@ -569,6 +583,7 @@ export default function UniversitiesPage() {
                     setInternationalStudents('all')
                     setStudentFacultyRatio('all')
                     setSpecializations('all')
+                    setUniversityType('all')
                     setSearchTerm('')
                   }}
                   className="w-full px-4 py-2 text-sm text-emerald-600 bg-emerald-50 hover:bg-emerald-100 rounded-lg font-medium transition-colors"
@@ -587,35 +602,77 @@ export default function UniversitiesPage() {
             {/* Right Content Area */}
             <div className="flex-1">
               {/* Top Bar with View Toggle and Results Count */}
-              <div className="bg-white rounded-xl shadow-sm p-4 mb-6 flex items-center justify-between">
-                <p className="text-sm text-gray-600 font-medium">
-                  Showing <span className="text-gray-900 font-semibold">{filteredUniversities.length}</span> universities
-                </p>
+              <div className="bg-white rounded-xl shadow-sm p-4 mb-6">
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-sm text-gray-600 font-medium">
+                    Showing <span className="text-gray-900 font-semibold">{filteredUniversities.length}</span> universities
+                  </p>
+                  
+                  {/* View Toggle */}
+                  <div className="flex bg-gray-100 rounded-lg p-1">
+                    <button
+                      onClick={() => setViewType('row')}
+                      className={`flex items-center px-3 py-1.5 rounded-md transition-colors text-sm ${
+                        viewType === 'row' 
+                          ? 'bg-white text-emerald-600 shadow-sm' 
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      <List className="w-4 h-4 mr-1" />
+                      List
+                    </button>
+                    <button
+                      onClick={() => setViewType('grid')}
+                      className={`flex items-center px-3 py-1.5 rounded-md transition-colors text-sm ${
+                        viewType === 'grid' 
+                          ? 'bg-white text-emerald-600 shadow-sm' 
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      <Grid3x3 className="w-4 h-4 mr-1" />
+                      Grid
+                    </button>
+                  </div>
+                </div>
                 
-                {/* View Toggle */}
-                <div className="flex bg-gray-100 rounded-lg p-1">
-                  <button
-                    onClick={() => setViewType('row')}
-                    className={`flex items-center px-3 py-1.5 rounded-md transition-colors text-sm ${
-                      viewType === 'row' 
-                        ? 'bg-white text-emerald-600 shadow-sm' 
-                        : 'text-gray-600 hover:text-gray-900'
+                {/* Domestic/International Filter */}
+                <div className="flex gap-2">
+                  <motion.button
+                    onClick={() => setUniversityType('all')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      universityType === 'all'
+                        ? 'bg-emerald-500 text-white shadow-md'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <List className="w-4 h-4 mr-1" />
-                    List
-                  </button>
-                  <button
-                    onClick={() => setViewType('grid')}
-                    className={`flex items-center px-3 py-1.5 rounded-md transition-colors text-sm ${
-                      viewType === 'grid' 
-                        ? 'bg-white text-emerald-600 shadow-sm' 
-                        : 'text-gray-600 hover:text-gray-900'
+                    All Universities
+                  </motion.button>
+                  <motion.button
+                    onClick={() => setUniversityType('domestic')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      universityType === 'domestic'
+                        ? 'bg-emerald-500 text-white shadow-md'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Grid3x3 className="w-4 h-4 mr-1" />
-                    Grid
-                  </button>
+                    🇮🇳 Domestic
+                  </motion.button>
+                  <motion.button
+                    onClick={() => setUniversityType('international')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      universityType === 'international'
+                        ? 'bg-emerald-500 text-white shadow-md'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    🌍 International
+                  </motion.button>
                 </div>
               </div>
 

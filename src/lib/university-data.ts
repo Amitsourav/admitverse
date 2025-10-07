@@ -431,6 +431,201 @@ let universities: University[] = [
       website: 'https://www.utoronto.ca',
       address: '27 King\'s College Circle, Toronto, ON M5S 1A1, Canada'
     }
+  },
+  {
+    id: 7,
+    name: 'Indian Institute of Technology Delhi',
+    slug: 'iit-delhi',
+    location: 'New Delhi',
+    country: 'India',
+    established: 1961,
+    rating: 4.6,
+    ranking: 185,
+    students: '10,000+',
+    internationalStudents: '5%',
+    acceptance: '2.5%',
+    tuition: '₹2,50,000/year',
+    programs: [
+      'Computer Science & Engineering',
+      'Electrical Engineering',
+      'Mechanical Engineering',
+      'Chemical Engineering',
+      'Civil Engineering',
+      'Mathematics & Computing',
+      'Physics',
+      'Chemistry'
+    ],
+    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800',
+    description: 'IIT Delhi is one of India\'s premier technical institutions, known for excellence in engineering, technology, and research.',
+    highlights: [
+      'Top engineering institution in India',
+      'Strong industry connections',
+      'World-class research facilities',
+      'Distinguished alumni network'
+    ],
+    facilities: [
+      'Central Library',
+      'Advanced computing facilities',
+      'Research laboratories',
+      'Sports complex',
+      'Hostels for students',
+      'Medical center'
+    ],
+    admissions: {
+      requirements: [
+        'JEE Advanced qualification',
+        'Class 12 with 75% marks',
+        'Age limit requirements',
+        'Medical fitness certificate'
+      ],
+      deadlines: {
+        'JEE Main': 'March',
+        'JEE Advanced': 'May',
+        'Counselling': 'June-July'
+      }
+    },
+    scholarships: [
+      'Merit-cum-Means Scholarship',
+      'Institute Scholarship',
+      'SC/ST/OBC Fee Waiver',
+      'International Exchange Programs'
+    ],
+    contact: {
+      email: 'admissions@admin.iitd.ac.in',
+      phone: '+91-11-2659-1785',
+      website: 'https://www.iitd.ac.in',
+      address: 'Hauz Khas, New Delhi - 110016'
+    }
+  },
+  {
+    id: 8,
+    name: 'Indian Institute of Science Bangalore',
+    slug: 'iisc-bangalore',
+    location: 'Bangalore',
+    country: 'India',
+    established: 1909,
+    rating: 4.7,
+    ranking: 155,
+    students: '3,500+',
+    internationalStudents: '8%',
+    acceptance: '3.5%',
+    tuition: '₹50,000/year',
+    programs: [
+      'Aerospace Engineering',
+      'Biological Sciences',
+      'Chemical Engineering',
+      'Computer Science & Automation',
+      'Electrical Communication Engineering',
+      'Physics',
+      'Mathematics',
+      'Management'
+    ],
+    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800',
+    description: 'IISc Bangalore is India\'s leading institution for advanced scientific and technological research and education.',
+    highlights: [
+      'Highest ranked Indian institution globally',
+      'Research-intensive environment',
+      'Top faculty from around the world',
+      'Strong PhD and Masters programs'
+    ],
+    facilities: [
+      'J.R.D. Tata Memorial Library',
+      'Super computing facility',
+      'Advanced research labs',
+      'Hostel accommodation',
+      'Gym and sports facilities',
+      'Medical center'
+    ],
+    admissions: {
+      requirements: [
+        'GATE/NET qualification (for Masters)',
+        'Entrance exam for PhD',
+        'Bachelor\'s degree in relevant field',
+        'Academic excellence record'
+      ],
+      deadlines: {
+        'GATE Score': 'March',
+        'Application': 'April-May',
+        'Interview': 'May-June'
+      }
+    },
+    scholarships: [
+      'Institute Fellowship',
+      'INSPIRE Fellowship',
+      'CSIR/UGC Fellowship',
+      'International student support'
+    ],
+    contact: {
+      email: 'regr@iisc.ac.in',
+      phone: '+91-80-2293-2001',
+      website: 'https://www.iisc.ac.in',
+      address: 'C V Raman Avenue, Bangalore - 560012'
+    }
+  },
+  {
+    id: 9,
+    name: 'Jawaharlal Nehru University',
+    slug: 'jnu-delhi',
+    location: 'New Delhi',
+    country: 'India',
+    established: 1969,
+    rating: 4.3,
+    ranking: 801,
+    students: '8,500+',
+    internationalStudents: '12%',
+    acceptance: '8%',
+    tuition: '₹1,00,000/year',
+    programs: [
+      'International Relations',
+      'Economics',
+      'History',
+      'Political Science',
+      'Languages & Literature',
+      'Life Sciences',
+      'Physical Sciences',
+      'Computer Science'
+    ],
+    image: 'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800',
+    description: 'JNU is a premier research university known for its academic excellence in humanities, social sciences, and sciences.',
+    highlights: [
+      'Top university for social sciences in India',
+      'Diverse international community',
+      'Strong research focus',
+      'Beautiful campus with modern facilities'
+    ],
+    facilities: [
+      'Central Library with vast collection',
+      'Computer centers',
+      'Hostels for all students',
+      'Health center',
+      'Sports complex',
+      'Cultural activity centers'
+    ],
+    admissions: {
+      requirements: [
+        'JNU Entrance Examination (JNUEE)',
+        'Bachelor\'s degree for Masters',
+        'Masters degree for PhD',
+        'English proficiency'
+      ],
+      deadlines: {
+        'Application': 'March-April',
+        'Entrance Exam': 'May',
+        'Admission': 'July'
+      }
+    },
+    scholarships: [
+      'Merit Scholarship',
+      'UGC Fellowship',
+      'International Student Scholarship',
+      'Research Assistantship'
+    ],
+    contact: {
+      email: 'registrar@mail.jnu.ac.in',
+      phone: '+91-11-2670-4019',
+      website: 'https://www.jnu.ac.in',
+      address: 'New Mehrauli Road, New Delhi - 110067'
+    }
   }
 ]
 
