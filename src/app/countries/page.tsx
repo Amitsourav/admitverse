@@ -8,6 +8,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 import { Search, MapPin, Users, GraduationCap, DollarSign, Globe, Zap, Star, TrendingUp, Award } from 'lucide-react'
+import { countries } from '@/data/countries'
 
 interface Country {
   id: number
@@ -39,7 +40,7 @@ const heroImages = [
   'https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=1920&h=1080&fit=crop',
   'https://images.unsplash.com/photo-1554072675-66db59dba46f?w=1920&h=1080&fit=crop',
   'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=1080&fit=crop',
-  'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=1080&fit=crop'
+  'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&h=1080&fit=crop'
 ]
 
 const mockCountries: Country[] = [
@@ -533,7 +534,7 @@ export default function CountriesPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedContinent, setSelectedContinent] = useState('All')
   const [selectedRanking, setSelectedRanking] = useState('All')
-  const [filteredCountries, setFilteredCountries] = useState(mockCountries)
+  const [filteredCountries, setFilteredCountries] = useState(countries)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -544,7 +545,7 @@ export default function CountriesPage() {
   }, [])
 
   useEffect(() => {
-    let filtered = mockCountries
+    let filtered = countries
 
     if (searchTerm) {
       filtered = filtered.filter(country =>

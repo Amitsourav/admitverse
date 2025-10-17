@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
@@ -62,6 +63,7 @@ export default function CoursesPage() {
     {
       id: 1,
       name: 'Computer Science',
+      slug: 'computer-science',
       level: 'Bachelor',
       duration: '4 years',
       field: 'Technology',
@@ -76,6 +78,7 @@ export default function CoursesPage() {
     {
       id: 2,
       name: 'Business Administration (MBA)',
+      slug: 'business-administration',
       level: 'Master',
       duration: '2 years',
       field: 'Business',
@@ -90,6 +93,7 @@ export default function CoursesPage() {
     {
       id: 3,
       name: 'Data Science',
+      slug: 'data-science',
       level: 'Master',
       duration: '2 years',
       field: 'Technology',
@@ -104,6 +108,7 @@ export default function CoursesPage() {
     {
       id: 4,
       name: 'Medicine (MD)',
+      slug: 'medicine',
       level: 'Doctorate',
       duration: '4-6 years',
       field: 'Healthcare',
@@ -118,6 +123,7 @@ export default function CoursesPage() {
     {
       id: 5,
       name: 'Mechanical Engineering',
+      slug: 'mechanical-engineering',
       level: 'Bachelor',
       duration: '4 years',
       field: 'Engineering',
@@ -132,6 +138,7 @@ export default function CoursesPage() {
     {
       id: 6,
       name: 'Psychology',
+      slug: 'psychology',
       level: 'Bachelor',
       duration: '3-4 years',
       field: 'Social Sciences',
@@ -146,6 +153,7 @@ export default function CoursesPage() {
     {
       id: 7,
       name: 'Artificial Intelligence',
+      slug: 'artificial-intelligence',
       level: 'Master',
       duration: '2 years',
       field: 'Technology',
@@ -562,33 +570,35 @@ export default function CoursesPage() {
                     </div>
                     
                     {/* Action Button */}
-                    <motion.button 
-                      className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 relative overflow-hidden group/btn"
-                      whileHover={{ 
-                        scale: 1.05,
-                        y: -2,
-                        boxShadow: "0 10px 25px rgba(16, 185, 129, 0.3)"
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                    >
-                      <motion.span 
-                        className="relative z-10"
-                        initial={{ x: 0 }}
-                        whileHover={{ x: 3 }}
-                        transition={{ duration: 0.2 }}
+                    <Link href={`/courses/${course.slug}`}>
+                      <motion.button 
+                        className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 relative overflow-hidden group/btn"
+                        whileHover={{ 
+                          scale: 1.05,
+                          y: -2,
+                          boxShadow: "0 10px 25px rgba(16, 185, 129, 0.3)"
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
                       >
-                        View Programs
-                      </motion.span>
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg"
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileHover={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    </motion.button>
+                        <motion.span 
+                          className="relative z-10"
+                          initial={{ x: 0 }}
+                          whileHover={{ x: 3 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          View Programs
+                        </motion.span>
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg"
+                          initial={{ scale: 0, opacity: 0 }}
+                          whileHover={{ scale: 1, opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </motion.button>
+                    </Link>
                   </div>
                 </motion.div>
               ))}

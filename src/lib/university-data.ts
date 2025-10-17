@@ -455,7 +455,7 @@ let universities: University[] = [
       'Physics',
       'Chemistry'
     ],
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800',
+    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800',
     description: 'IIT Delhi is one of India\'s premier technical institutions, known for excellence in engineering, technology, and research.',
     highlights: [
       'Top engineering institution in India',
