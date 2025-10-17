@@ -122,5 +122,12 @@
     "timestamp": "2025-10-04T17:24:34.316Z",
     "page": "/",
     "sessionId": "session_1759598674317_bg1sh25kd"
+  },
+  {
+    "type": "mobile_popup",
+    "mobile": "9876543210",
+    "timestamp": "2025-10-17T12:20:39.896Z",
+    "page": "/",
+    "sessionId": "session_1760703639896_2ye6w2mva"
   }
 ]

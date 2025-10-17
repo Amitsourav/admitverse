@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Search, Globe, TrendingUp, Users, ChevronRight, Sparkles, ArrowRight, Award, Star, Target, Zap, Heart, BarChart, FileText, Video, GraduationCap, Menu, X, Play, Pause, Volume2, VolumeX, ChevronDown, BookOpen, Phone } from 'lucide-react'
+import { Search, Globe, TrendingUp, Users, ChevronRight, Sparkles, ArrowRight, Award, Star, Target, Zap, Heart, BarChart, FileText, Video, GraduationCap, Menu, X, Play, Pause, Volume2, VolumeX, ChevronDown, BookOpen, Phone, Check, XCircle } from 'lucide-react'
 import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -253,36 +253,32 @@ export default function HomePage() {
   // Success Stories data - reduced to 4 for cleaner layout
   const successStories = [
     {
-      name: "Sarah Chen",
-      university: "Stanford University",
-      program: "Computer Science MS",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop",
-      flag: "🇨🇦",
-      quote: "AdmitVerse made my dream of studying at Stanford a reality. Their guidance was invaluable!"
+      name: "Riya Sharma",
+      university: "NMIMS University",
+      program: "MBA",
+      flag: "🇮🇳",
+      quote: "AdmitVerse helped me shortlist colleges in India and abroad with clarity. Their education loan team got me approval in 3 days!"
     },
     {
       name: "Raj Patel", 
       university: "MIT",
-      program: "Data Science PhD",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+      program: "PhD, Data Science",
       flag: "🇮🇳",
-      quote: "The personalized support helped me secure full funding at MIT."
+      quote: "The personalized guidance and essay reviews helped me secure full funding at MIT."
     },
     {
       name: "Maria Rodriguez",
       university: "Oxford University", 
-      program: "Business MBA",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+      program: "MBA",
       flag: "🇲🇽",
-      quote: "From prep to visa assistance, AdmitVerse was with me every step."
+      quote: "From SOP prep to visa and forex help, AdmitVerse was with me till the end."
     },
     {
-      name: "David Kim",
-      university: "Harvard University",
-      program: "Medicine MD",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
-      flag: "🇰🇷",
-      quote: "Expert counselors helped me craft a compelling application that stood out."
+      name: "Ankit Verma",
+      university: "Chandigarh University",
+      program: "B.Tech",
+      flag: "🇮🇳",
+      quote: "Got admission, loan, and hostel support — all from one platform!"
     }
   ]
 
@@ -290,9 +286,9 @@ export default function HomePage() {
   const features = [
     {
       icon: <Globe className="w-8 h-8" />,
-      title: 'Global Universities',
-      description: 'Access comprehensive information about 500+ top-ranked universities across 50+ countries with detailed program listings, admission requirements, deadlines, and scholarship opportunities all in one place.',
-      highlights: ['500+ Universities', '50+ Countries', 'Real-time Updates', 'Detailed Rankings'],
+      title: 'Global & Domestic Universities',
+      description: 'Explore 500+ universities across 50+ countries and 200+ reputed Indian institutions. Get course details, admission criteria, fee structures, deadlines, and scholarship options — all in one place.',
+      highlights: ['500+ Global Universities', '200+ Indian Colleges', '50+ Countries', 'Real-time Updates'],
       stats: '99% of our students get accepted to their top 3 choices',
       imageSrc: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       ctaText: 'Explore Universities',
@@ -300,9 +296,9 @@ export default function HomePage() {
     },
     {
       icon: <Target className="w-8 h-8" />,
-      title: 'AI-Powered Matching',
-      description: 'Our advanced AI algorithm analyzes your academic profile, career goals, budget, and preferences to recommend the perfect universities and programs tailored specifically for your success.',
-      highlights: ['Smart Algorithm', 'Personalized Results', '95% Accuracy', 'Instant Matching'],
+      title: 'AI-Powered Matching Engine',
+      description: 'Our proprietary AI system curates the best-fit programs based on your profile, career aspirations, and affordability — whether you aim for an IIM, ISB, Delhi University, or Oxford.',
+      highlights: ['🎯 Smart Recommendations', '95% Accuracy', 'Instant Results', 'Global & Indian Unis'],
       stats: 'Over 10,000 successful matches made',
       imageSrc: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       ctaText: 'Find Your Match',
@@ -310,9 +306,9 @@ export default function HomePage() {
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: 'Expert Guidance',
-      description: 'Connect with certified education counselors and admission experts who have helped thousands of students. Get personalized support for applications, essays, interviews, and every step of your journey.',
-      highlights: ['Certified Counselors', '24/7 Support', 'Application Help', 'Interview Prep'],
+      title: 'Personalized Guidance',
+      description: 'Work 1-on-1 with experienced counselors who specialize in MBA, MS, MBBS, B.Tech, Nursing, and Online Education admissions.',
+      highlights: ['Certified Counselors', '24/7 Support', 'Application & SOP Help', 'Interview Prep'],
       stats: '15+ years average counselor experience',
       imageSrc: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       ctaText: 'Book Consultation',
@@ -320,9 +316,9 @@ export default function HomePage() {
     },
     {
       icon: <Award className="w-8 h-8" />,
-      title: 'Scholarship Support',
-      description: 'Unlock millions in scholarship opportunities with our comprehensive database. We help you find, apply for, and secure financial aid, grants, and merit-based scholarships to fund your dreams.',
-      highlights: ['$50M+ in Scholarships', 'Merit & Need-based', 'Application Assistance', 'Success Strategies'],
+      title: 'Education Loan Support',
+      description: 'Get guaranteed low-interest rates with our tie-ups across government banks, private banks, and NBFCs. From profile-based approvals to 100% digital processing — we make financing your education easy.',
+      highlights: ['Lowest Interest', 'Fast Approvals', 'Collateral & Non-Collateral Options', 'Digital Processing'],
       stats: '85% of students receive financial aid',
       imageSrc: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       ctaText: 'Find Scholarships',
@@ -330,13 +326,23 @@ export default function HomePage() {
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
-      title: 'Career Planning',
-      description: 'Build your future with strategic career planning. From internship opportunities to job placements, we connect you with industry partners and provide career development resources for long-term success.',
-      highlights: ['Career Counseling', 'Industry Connections', 'Resume Building', 'Job Placement'],
+      title: 'Career Planning & Placement',
+      description: 'Get guided career roadmaps, internship tie-ups, resume building, and job placement assistance.',
+      highlights: ['Industry Connections', '92% Placement Rate', 'Global Network', 'Resume Building'],
       stats: '92% employed within 6 months of graduation',
       imageSrc: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       ctaText: 'Plan Your Career',
       ctaHref: '/contact'
+    },
+    {
+      icon: <BookOpen className="w-8 h-8" />,
+      title: 'Online & Distance Degrees',
+      description: 'Earn accredited degrees from India\'s top UGC-approved universities and international partners — fully online, flexible, and placement-supported.',
+      highlights: ['MBA, BCA, MCA, BBA', 'UGC-Approved', 'EMI & Loan Options', 'Placement Support'],
+      stats: '100% online with placement assistance',
+      imageSrc: 'https://images.unsplash.com/photo-1588702547919-26089e690ecc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      ctaText: 'Explore Online Degrees',
+      ctaHref: '/courses'
     }
   ]
 
@@ -541,8 +547,13 @@ export default function HomePage() {
                   Admission Journey
                 </span>
               </h1>
+              <div className="flex items-center justify-center gap-3 mb-8">
+                <span className="text-emerald-300 font-medium text-lg md:text-xl">in India</span>
+                <span className="text-white/60">•</span>
+                <span className="text-green-300 font-medium text-lg md:text-xl">and Abroad</span>
+              </div>
               <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Discover top universities worldwide. Get personalized recommendations, expert guidance, and make your dream of studying abroad a reality.
+                Discover top universities worldwide. Get personalized recommendations, expert guidance, and make your dream of studying a reality.
               </p>
             </motion.div>
 
@@ -663,7 +674,7 @@ export default function HomePage() {
                 How AdmitVerse Works
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Your journey to international education made simple with our proven 4-step process
+                Your 4-Step Path to Admission Success
               </p>
             </motion.div>
 
@@ -672,28 +683,28 @@ export default function HomePage() {
                 {
                   step: "01",
                   title: "Profile Assessment",
-                  description: "Complete your academic profile and tell us about your goals, preferences, and budget.",
+                  description: "Share your academic background, career goals, and budget — we'll evaluate your profile to find your best-fit options.",
                   icon: <FileText className="w-8 h-8" />,
                   color: "bg-emerald-100 text-emerald-600"
                 },
                 {
                   step: "02", 
                   title: "AI Matching",
-                  description: "Our advanced AI analyzes your profile and matches you with the best universities and programs.",
+                  description: "Our intelligent algorithm instantly matches your profile with top universities, domestic and international, along with scholarships and loan options.",
                   icon: <Target className="w-8 h-8" />,
                   color: "bg-emerald-100 text-emerald-600"
                 },
                 {
                   step: "03",
-                  title: "Expert Guidance",
-                  description: "Get personalized advice from our counselors on applications, essays, and documentation.",
+                  title: "Personalized Guidance",
+                  description: "Connect with our admission experts for personalized guidance — from SOPs, essays, and applications to visa and loan support.",
                   icon: <Users className="w-8 h-8" />,
                   color: "bg-emerald-100 text-emerald-600"
                 },
                 {
                   step: "04",
                   title: "Application Success",
-                  description: "Submit strong applications and receive ongoing support until you reach your dream university.",
+                  description: "Receive your offer letter, secure your loan, and access post-admission support for housing, forex, or online learning resources.",
                   icon: <Award className="w-8 h-8" />,
                   color: "bg-emerald-100 text-emerald-600"
                 }
@@ -765,7 +776,7 @@ export default function HomePage() {
                 Why Choose AdmitVerse?
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Your trusted partner in achieving your international education dreams with comprehensive support at every step
+                One Platform. Endless Admission Possibilities.
               </p>
             </motion.div>
 
@@ -846,6 +857,279 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Why Choose AdmitVerse Over Others - Comparison Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Why AdmitVerse Stands Out
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                See how we compare with traditional consultants and other online platforms
+              </p>
+            </motion.div>
+
+            {/* Comparison Table */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="overflow-x-auto"
+            >
+              <div className="min-w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-gradient-to-r from-emerald-600 to-green-600 text-white">
+                      <th className="px-6 py-5 text-left text-lg font-semibold">Features</th>
+                      <th className="px-6 py-5 text-center">
+                        <div className="flex flex-col items-center">
+                          <span className="text-lg font-bold">AdmitVerse</span>
+                          <span className="text-xs text-emerald-100 mt-1">✨ Recommended</span>
+                        </div>
+                      </th>
+                      <th className="px-6 py-5 text-center text-lg">Traditional Consultants</th>
+                      <th className="px-6 py-5 text-center text-lg">Other Online Platforms</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {[
+                      {
+                        feature: "University & College Coverage",
+                        admitverse: "500+ Global + 200+ Indian",
+                        traditional: "Limited Options",
+                        others: "Mostly International"
+                      },
+                      {
+                        feature: "AI-Powered Matching",
+                        admitverse: true,
+                        traditional: false,
+                        others: "Basic Filters Only"
+                      },
+                      {
+                        feature: "Education Loan Support",
+                        admitverse: "₹50 Cr+ Facilitated",
+                        traditional: "Limited Partners",
+                        others: false
+                      },
+                      {
+                        feature: "1-on-1 Expert Counseling",
+                        admitverse: true,
+                        traditional: true,
+                        others: false
+                      },
+                      {
+                        feature: "SOP & Essay Review",
+                        admitverse: "Unlimited Revisions",
+                        traditional: "2-3 Revisions",
+                        others: "AI Generated Only"
+                      },
+                      {
+                        feature: "Visa Assistance",
+                        admitverse: true,
+                        traditional: true,
+                        others: "Documentation Only"
+                      },
+                      {
+                        feature: "24/7 Support",
+                        admitverse: true,
+                        traditional: false,
+                        others: "Chatbot Only"
+                      },
+                      {
+                        feature: "Career Planning",
+                        admitverse: "Pre & Post Admission",
+                        traditional: "Limited",
+                        others: false
+                      },
+                      {
+                        feature: "Scholarship Database",
+                        admitverse: "10,000+ Options",
+                        traditional: "Few Options",
+                        others: "Basic List"
+                      },
+                      {
+                        feature: "Transparent Pricing",
+                        admitverse: "Free to ₹25,000",
+                        traditional: "₹50,000 - ₹2,00,000",
+                        others: "Hidden Fees"
+                      },
+                      {
+                        feature: "Success Rate",
+                        admitverse: "95%",
+                        traditional: "70-80%",
+                        others: "Not Disclosed"
+                      },
+                      {
+                        feature: "Online Degree Options",
+                        admitverse: true,
+                        traditional: false,
+                        others: "Limited"
+                      }
+                    ].map((row, index) => (
+                      <motion.tr
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.05 }}
+                        viewport={{ once: true }}
+                        className="hover:bg-gray-50 transition-colors duration-200"
+                      >
+                        <td className="px-6 py-4 text-gray-900 font-medium">{row.feature}</td>
+                        <td className="px-6 py-4 text-center bg-emerald-50/50">
+                          {typeof row.admitverse === 'boolean' ? (
+                            row.admitverse ? (
+                              <motion.div
+                                initial={{ scale: 0 }}
+                                whileInView={{ scale: 1 }}
+                                transition={{ duration: 0.3, delay: index * 0.05 }}
+                                viewport={{ once: true }}
+                                className="inline-flex items-center justify-center"
+                              >
+                                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center">
+                                  <Check className="w-5 h-5 text-white" />
+                                </div>
+                              </motion.div>
+                            ) : (
+                              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mx-auto">
+                                <XCircle className="w-5 h-5 text-gray-400" />
+                              </div>
+                            )
+                          ) : (
+                            <span className="text-emerald-600 font-semibold">{row.admitverse}</span>
+                          )}
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          {typeof row.traditional === 'boolean' ? (
+                            row.traditional ? (
+                              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                                <Check className="w-5 h-5 text-white" />
+                              </div>
+                            ) : (
+                              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mx-auto">
+                                <XCircle className="w-5 h-5 text-gray-400" />
+                              </div>
+                            )
+                          ) : (
+                            <span className="text-gray-600">{row.traditional}</span>
+                          )}
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          {typeof row.others === 'boolean' ? (
+                            row.others ? (
+                              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                                <Check className="w-5 h-5 text-white" />
+                              </div>
+                            ) : (
+                              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mx-auto">
+                                <XCircle className="w-5 h-5 text-gray-400" />
+                              </div>
+                            )
+                          ) : (
+                            <span className="text-gray-600">{row.others}</span>
+                          )}
+                        </td>
+                      </motion.tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </motion.div>
+
+            {/* Key Advantages */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
+            >
+              <motion.div
+                className="bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl p-6 text-white"
+                whileHover={{ scale: 1.02, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
+                    <TrendingUp className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold">10x</div>
+                    <div className="text-emerald-100 text-sm">More Affordable</div>
+                  </div>
+                </div>
+                <p className="text-emerald-50">
+                  Save up to ₹1,75,000 compared to traditional consultants with better results
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl p-6 text-white"
+                whileHover={{ scale: 1.02, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
+                    <Zap className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold">3x</div>
+                    <div className="text-teal-100 text-sm">Faster Process</div>
+                  </div>
+                </div>
+                <p className="text-teal-50">
+                  Get matched with universities in minutes, not weeks. Complete applications 3x faster
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white"
+                whileHover={{ scale: 1.02, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
+                    <Award className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold">95%</div>
+                    <div className="text-green-100 text-sm">Success Rate</div>
+                  </div>
+                </div>
+                <p className="text-green-50">
+                  Highest admission success rate with personalized support at every step
+                </p>
+              </motion.div>
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mt-12"
+            >
+              <Link href="/contact">
+                <motion.button
+                  className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Experience the AdmitVerse Difference
+                  <ArrowRight className="w-5 h-5 ml-2 inline" />
+                </motion.button>
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Success Stories */}
         <section className="py-20 bg-emerald-50/20">
           <div className="max-w-6xl mx-auto px-6">
@@ -858,7 +1142,7 @@ export default function HomePage() {
             >
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Success Stories</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Hear from students who achieved their dreams with AdmitVerse
+                Students Who Turned Their Dreams Into Reality
               </p>
             </motion.div>
 
@@ -872,12 +1156,10 @@ export default function HomePage() {
                   viewport={{ once: true }}
                   className="bg-gray-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
                 >
-                  <div className="flex items-center mb-6">
-                    <img
-                      src={story.image}
-                      alt={story.name}
-                      className="w-16 h-16 rounded-full object-cover mr-4"
-                    />
+                  <div className="flex items-start mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-green-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-2xl">{story.flag}</span>
+                    </div>
                     <div>
                       <h4 className="font-bold text-gray-900">{story.name} {story.flag}</h4>
                       <p className="text-emerald-600 font-semibold">{story.university}</p>
@@ -897,43 +1179,69 @@ export default function HomePage() {
 
 
         {/* Stats Section */}
-        <section className="py-20 bg-emerald-600">
+        <section className="py-16 bg-emerald-600">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <StatCard 
-                number={500} 
-                suffix="+" 
-                label="Universities" 
-                icon={<GraduationCap className="w-8 h-8" />} 
-                delay={0}
-                useCountAnimation={useCountAnimation}
-              />
-              <StatCard 
-                number={50} 
-                suffix="+" 
-                label="Countries" 
-                icon={<Globe className="w-8 h-8" />} 
-                delay={0.1}
-                useCountAnimation={useCountAnimation}
-              />
-              <StatCard 
-                number={10000} 
-                suffix="+" 
-                label="Students Placed" 
-                icon={<Users className="w-8 h-8" />} 
-                delay={0.2}
-                useCountAnimation={useCountAnimation}
-                format="K"
-              />
-              <StatCard 
-                number={95} 
-                suffix="%" 
-                label="Success Rate" 
-                icon={<Star className="w-8 h-8" />} 
-                delay={0.3}
-                useCountAnimation={useCountAnimation}
-              />
-            </div>
+            {(() => {
+              // Create animation hooks for each stat
+              const studentsAnimation = useCountAnimation(10000, 2000)
+              const successAnimation = useCountAnimation(95, 2000)
+              const loansAnimation = useCountAnimation(50, 2000)
+              
+              return (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
+                    <motion.div
+                      ref={studentsAnimation.ref}
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-center gap-2 text-white"
+                    >
+                      <Users className="w-6 h-6 text-emerald-200" />
+                      <span className="text-2xl md:text-3xl font-bold">{studentsAnimation.count.toLocaleString()}+</span>
+                      <span className="text-lg md:text-xl text-emerald-100">Students Guided</span>
+                    </motion.div>
+                    
+                    <span className="text-emerald-300 text-2xl hidden md:block">•</span>
+                    
+                    <motion.div
+                      ref={successAnimation.ref}
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      viewport={{ once: true }}
+                      className="flex items-center gap-2 text-white"
+                    >
+                      <Award className="w-6 h-6 text-emerald-200" />
+                      <span className="text-2xl md:text-3xl font-bold">{successAnimation.count}%</span>
+                      <span className="text-lg md:text-xl text-emerald-100">Admission Success</span>
+                    </motion.div>
+                    
+                    <span className="text-emerald-300 text-2xl hidden md:block">•</span>
+                    
+                    <motion.div
+                      ref={loansAnimation.ref}
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      viewport={{ once: true }}
+                      className="flex items-center gap-2 text-white"
+                    >
+                      <TrendingUp className="w-6 h-6 text-emerald-200" />
+                      <span className="text-2xl md:text-3xl font-bold">₹{loansAnimation.count} Cr+</span>
+                      <span className="text-lg md:text-xl text-emerald-100">Loans Facilitated</span>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )
+            })()}
           </div>
         </section>
 
@@ -964,7 +1272,7 @@ export default function HomePage() {
                 Book Your Free Consultation
               </h2>
               <p className="text-lg text-emerald-100 max-w-2xl mx-auto">
-                Get personalized guidance from our education experts
+                Get Personalized Guidance from Experts Who've Helped Thousands
               </p>
             </motion.div>
 
@@ -1063,15 +1371,15 @@ export default function HomePage() {
                   <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-600">
                     <div className="flex items-center">
                       <Award className="w-3 h-3 text-emerald-600 mr-1" />
-                      Free consultation
+                      Free Consultation
                     </div>
                     <div className="flex items-center">
                       <Target className="w-3 h-3 text-emerald-600 mr-1" />
-                      Expert guidance
+                      Expert Guidance
                     </div>
                     <div className="flex items-center">
-                      <Users className="w-3 h-3 text-emerald-600 mr-1" />
-                      24/7 support
+                      <TrendingUp className="w-3 h-3 text-emerald-600 mr-1" />
+                      Loan & Scholarship Help
                     </div>
                   </div>
                 </div>

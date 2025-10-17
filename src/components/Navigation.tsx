@@ -19,6 +19,7 @@ export default function Navigation() {
     { href: '/universities', label: 'Universities' },
     { href: '/courses', label: 'Courses' },
     { href: '/countries', label: 'Countries' },
+    { href: '/career', label: 'Career' },
     { href: '/contact', label: 'Contact' },
   ]
 
