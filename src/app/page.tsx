@@ -3,9 +3,10 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Search, Globe, TrendingUp, Users, ChevronRight, Sparkles, ArrowRight, Award, Star, Target, Zap, Heart, BarChart, FileText, Video, GraduationCap, Menu, X, Play, Pause, Volume2, VolumeX, ChevronDown, BookOpen, Phone, Check, XCircle } from 'lucide-react'
+import { Search, Globe, TrendingUp, Users, ChevronRight, Sparkles, ArrowRight, Award, Star, Target, Zap, Heart, BarChart, FileText, Video, GraduationCap, Menu, X, Play, Pause, Volume2, VolumeX, ChevronDown, BookOpen, Phone, Check, XCircle, Facebook, Instagram, Youtube, MessageCircle, Send, Calculator, Clock, FileCheck, DollarSign, Percent, BookOpenCheck } from 'lucide-react'
 import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 import MobileNumberPopup from '@/components/MobileNumberPopup'
@@ -460,6 +461,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <TopBanner />
       <Navigation />
       <div ref={containerRef} className="min-h-screen">
         
@@ -1130,6 +1132,367 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Free Tools & Resources Section */}
+        <section className="py-20 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 relative overflow-hidden">
+          {/* Animated background elements */}
+          <motion.div
+            className="absolute top-20 left-10 w-72 h-72 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+            animate={{
+              x: [0, 30, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              repeatType: "reverse"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-10 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+            animate={{
+              x: [0, -30, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              repeatType: "reverse"
+            }}
+          />
+          
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="inline-block mb-4"
+              >
+                <span className="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-semibold">
+                  ✨ Exclusive Resources
+                </span>
+              </motion.div>
+              <motion.h2 
+                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                Free Tools & Resources
+              </motion.h2>
+              <motion.p 
+                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                Empower your study abroad journey with our exclusive tools and resources
+              </motion.p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+              {/* SOP Review Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-100 group relative overflow-hidden"
+              >
+                <motion.div 
+                  className="absolute top-0 right-0 bg-gradient-to-bl from-emerald-500 to-transparent w-20 h-20 opacity-10"
+                  whileHover={{ scale: 2, opacity: 0.2 }}
+                  transition={{ duration: 0.4 }}
+                />
+                <div className="flex justify-center mb-6">
+                  <div className="w-28 h-28 bg-gradient-to-br from-teal-100 to-emerald-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <FileCheck className="w-14 h-14 text-teal-600" />
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">SOP Review</h3>
+                  <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-4">Professional Guidance</p>
+                  <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
+                    Get a comprehensive review of your Statement of Purpose within 48 hours from our expert admission counselors.
+                  </p>
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      Expert feedback
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      Grammar & structure check
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      University-specific tips
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    Get SOP Review
+                  </motion.button>
+                </div>
+              </motion.div>
+
+              {/* CV Review Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.1,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-100 group relative overflow-hidden"
+              >
+                <motion.div 
+                  className="absolute top-0 right-0 bg-gradient-to-bl from-green-500 to-transparent w-20 h-20 opacity-10"
+                  whileHover={{ scale: 2, opacity: 0.2 }}
+                  transition={{ duration: 0.4 }}
+                />
+                <div className="flex justify-center mb-6">
+                  <div className="w-28 h-28 bg-gradient-to-br from-green-100 to-emerald-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <FileText className="w-14 h-14 text-green-600" />
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">CV Review</h3>
+                  <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-4">Career Enhancement</p>
+                  <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
+                    Transform your CV into a powerful tool that stands out. Get detailed tips from our study abroad coaches.
+                  </p>
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      ATS optimization
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      Industry standards
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      Achievement highlights
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    Review My CV
+                  </motion.button>
+                </div>
+              </motion.div>
+
+              {/* Cost of Living Calculator Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.2,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-100 group relative overflow-hidden"
+              >
+                <motion.div 
+                  className="absolute top-0 right-0 bg-gradient-to-bl from-teal-500 to-transparent w-20 h-20 opacity-10"
+                  whileHover={{ scale: 2, opacity: 0.2 }}
+                  transition={{ duration: 0.4 }}
+                />
+                <div className="flex justify-center mb-6">
+                  <div className="w-28 h-28 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <DollarSign className="w-14 h-14 text-emerald-600" />
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Cost Calculator</h3>
+                  <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-4">Financial Planning</p>
+                  <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
+                    Plan your budget accurately. Calculate living expenses for your dream study destination worldwide.
+                  </p>
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      150+ cities covered
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      Real-time data
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      Student lifestyle costs
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    Calculate Now
+                  </motion.button>
+                </div>
+              </motion.div>
+
+              {/* SGPA to CGPA Converter Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.3,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-100 group relative overflow-hidden"
+              >
+                <motion.div 
+                  className="absolute top-0 right-0 bg-gradient-to-bl from-emerald-500 to-transparent w-20 h-20 opacity-10"
+                  whileHover={{ scale: 2, opacity: 0.2 }}
+                  transition={{ duration: 0.4 }}
+                />
+                <div className="flex justify-center mb-6">
+                  <div className="w-28 h-28 bg-gradient-to-br from-teal-100 to-green-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <Calculator className="w-14 h-14 text-teal-600" />
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">SGPA to CGPA</h3>
+                  <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-4">Grade Converter</p>
+                  <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
+                    Convert your semester grades to cumulative GPA instantly with our accurate calculation tool.
+                  </p>
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      All university scales
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      Instant results
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      100% accurate
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    Convert Grade
+                  </motion.button>
+                </div>
+              </motion.div>
+
+              {/* CGPA - Percentage Converter Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.4,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-100 group relative overflow-hidden"
+              >
+                <motion.div 
+                  className="absolute top-0 right-0 bg-gradient-to-bl from-green-500 to-transparent w-20 h-20 opacity-10"
+                  whileHover={{ scale: 2, opacity: 0.2 }}
+                  transition={{ duration: 0.4 }}
+                />
+                <div className="flex justify-center mb-6">
+                  <div className="w-28 h-28 bg-gradient-to-br from-green-100 to-teal-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <Percent className="w-14 h-14 text-green-600" />
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">CGPA to %</h3>
+                  <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-4">Quick Conversion</p>
+                  <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
+                    Convert between CGPA and percentage instantly. Support for multiple grading systems worldwide.
+                  </p>
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      4.0, 5.0, 10.0 scales
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      Reverse calculation
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-gray-500">
+                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      Download report
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    Start Converting
+                  </motion.button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Success Stories */}
         <section className="py-20 bg-emerald-50/20">
           <div className="max-w-6xl mx-auto px-6">
@@ -1276,15 +1639,17 @@ export default function HomePage() {
               </p>
             </motion.div>
 
-            {/* Form Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="max-w-xl mx-auto"
-            >
-              <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl border border-white/20">
+            {/* Form and Social Media Section */}
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                {/* Form Card - Left Side */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl border border-white/20">
                 <div className="text-center mb-6">
                   <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <Phone className="w-6 h-6 text-white" />
@@ -1384,7 +1749,143 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+                </motion.div>
+                
+                {/* Social Media Section - Right Side */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="bg-emerald-800/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 h-full">
+                    <div className="text-center lg:text-left mb-6">
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Join Our Community</h3>
+                      <p className="text-emerald-100">Connect with 50,000+ students worldwide</p>
+                    </div>
+                  
+                  <div className="space-y-4">
+                    {/* Facebook Button */}
+                    <motion.a
+                      href="https://facebook.com/admitverse"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl p-5 transition-all duration-300 border border-white/20 group"
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                          <Facebook className="w-6 h-6 text-white fill-white" />
+                        </div>
+                        <div className="text-left">
+                          <h4 className="font-bold text-white">Join our Community</h4>
+                          <p className="text-sm text-emerald-100">Daily tips & updates</p>
+                        </div>
+                      </div>
+                      <ChevronRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
+                    </motion.a>
+                    
+                    {/* Instagram Button */}
+                    <motion.a
+                      href="https://instagram.com/admitverse"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl p-5 transition-all duration-300 border border-white/20 group"
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
+                          <Instagram className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="text-left">
+                          <h4 className="font-bold text-white">Follow Us</h4>
+                          <p className="text-sm text-emerald-100">Success stories & more</p>
+                        </div>
+                      </div>
+                      <ChevronRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
+                    </motion.a>
+                    
+                    {/* YouTube Button */}
+                    <motion.a
+                      href="https://youtube.com/@admitverse"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl p-5 transition-all duration-300 border border-white/20 group"
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                          <Youtube className="w-6 h-6 text-white fill-white" />
+                        </div>
+                        <div className="text-left">
+                          <h4 className="font-bold text-white">Subscribe</h4>
+                          <p className="text-sm text-emerald-100">Free webinars & guides</p>
+                        </div>
+                      </div>
+                      <ChevronRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
+                    </motion.a>
+                    
+                    {/* WhatsApp Button */}
+                    <motion.a
+                      href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20join%20AdmitVerse%20WhatsApp%20Group"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl p-5 transition-all duration-300 border border-white/20 group"
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                          <MessageCircle className="w-6 h-6 text-white fill-white" />
+                        </div>
+                        <div className="text-left">
+                          <h4 className="font-bold text-white">Join Now</h4>
+                          <p className="text-sm text-emerald-100">WhatsApp community</p>
+                        </div>
+                      </div>
+                      <motion.span
+                        className="bg-green-400 text-green-900 px-3 py-1 rounded-full text-sm font-bold"
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 1, repeat: Infinity }}
+                      >
+                        5K+ Members
+                      </motion.span>
+                    </motion.a>
+                    
+                    {/* Telegram Button */}
+                    <motion.a
+                      href="https://t.me/admitverse"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl p-5 transition-all duration-300 border border-white/20 group"
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-sky-600 rounded-full flex items-center justify-center">
+                          <Send className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="text-left">
+                          <h4 className="font-bold text-white">Join Now</h4>
+                          <p className="text-sm text-emerald-100">Telegram channel</p>
+                        </div>
+                      </div>
+                      <motion.span
+                        className="bg-sky-400 text-sky-900 px-3 py-1 rounded-full text-sm font-bold"
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 1, repeat: Infinity, delay: 0.5 }}
+                      >
+                        3K+ Members
+                      </motion.span>
+                    </motion.a>
+                  </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
 
             {/* Trust Indicators */}
             <motion.div

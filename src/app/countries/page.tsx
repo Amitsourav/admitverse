@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 import { Search, MapPin, Users, GraduationCap, DollarSign, Globe, Zap, Star, TrendingUp, Award } from 'lucide-react'
@@ -598,6 +599,7 @@ export default function CountriesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <TopBanner />
       <Navigation />
 
       {/* Hero Section */}

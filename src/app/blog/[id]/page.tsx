@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 import { 
@@ -591,6 +592,7 @@ export default function BlogPostPage() {
 
   return (
     <>
+      <TopBanner />
       <Navigation />
       <FloatingActions />
       

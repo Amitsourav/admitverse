@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 import { useSearchParams } from 'next/navigation'
@@ -213,6 +214,7 @@ export default function CoursesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <TopBanner />
       <Navigation />
 
       {/* Hero Section with Carousel */}

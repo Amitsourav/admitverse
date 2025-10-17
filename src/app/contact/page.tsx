@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 import { useToast } from '@/components/Toast'
@@ -110,6 +111,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <TopBanner />
       <Navigation />
 
       {/* Hero Section */}

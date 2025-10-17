@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, Clock, DollarSign, Users, BookOpen, TrendingUp, Award, MapPin, Star, CheckCircle, GraduationCap, Briefcase, Target, Heart, Share2 } from 'lucide-react'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import { CourseDetail, getCourseDetailBySlug } from '@/data/courses'
 
@@ -41,6 +42,7 @@ export default function CourseDetailPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <TopBanner />
       <Navigation />
       
       {/* Hero Section */}

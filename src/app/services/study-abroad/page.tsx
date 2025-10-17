@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 import AnimatedCounter from '@/components/AnimatedCounter'
@@ -105,6 +106,7 @@ export default function StudyAbroadPage() {
 
   return (
     <>
+      <TopBanner />
       <Navigation />
       <FloatingActions />
     <div className="min-h-screen bg-gradient-to-b from-white to-emerald-50/30 pt-20 relative overflow-hidden">

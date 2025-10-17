@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowLeft, MapPin, Users, GraduationCap, DollarSign, Clock, Globe, Star, TrendingUp, CheckCircle, ExternalLink, Heart, Share2 } from 'lucide-react'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import { CountryDetail, getCountryDetailBySlug } from '@/data/countries'
 
@@ -40,6 +41,7 @@ export default function CountryDetailPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <TopBanner />
       <Navigation />
       
       {/* Hero Section */}

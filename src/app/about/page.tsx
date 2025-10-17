@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 import { Award, Users, Globe, Target, Heart, Shield, Zap, Star, BookOpen, Rocket, ArrowRight } from 'lucide-react'
@@ -150,6 +151,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <TopBanner />
       <Navigation />
 
       {/* Hero Section */}

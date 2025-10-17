@@ -8,6 +8,7 @@ import { Suspense, useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 import { Search, Filter, MapPin, Star, Users, BookOpen, GraduationCap, Globe } from 'lucide-react'
@@ -188,6 +189,7 @@ function SearchContent() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <TopBanner />
       <Navigation />
 
       {/* Search Header */}
@@ -428,6 +430,7 @@ export default function SearchPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
+        <TopBanner />
         <Navigation />
         <div className="flex justify-center items-center min-h-[60vh]">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>

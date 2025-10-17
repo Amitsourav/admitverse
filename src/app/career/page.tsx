@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
+import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import { 
   Briefcase, 
@@ -200,6 +201,7 @@ export default function CareerPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <TopBanner />
       <Navigation />
       
       {/* Hero Section */}
