@@ -37,15 +37,20 @@ export default function TopBanner() {
             <span className="text-sm md:text-base font-medium">
               Join our community for exclusive tips, updates & scholarships! 🎓
             </span>
-            <motion.div
-              className="hidden lg:flex items-center gap-2 ml-3 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full"
+            <motion.a
+              href="#" // Replace # with your PDF link later, e.g., "/mba-guide.pdf" or external URL
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex items-center gap-2 ml-3 px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full transition-all duration-300 cursor-pointer"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <FileText className="w-4 h-4 text-yellow-300" />
               <span className="text-sm font-semibold text-yellow-100">Free PDF with all MBA queries</span>
-            </motion.div>
+            </motion.a>
           </div>
 
           {/* Right side - Buttons */}
