@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useAISearch } from '@/hooks/useAISearch'
 import { Search, Globe, TrendingUp, Users, ChevronRight, Sparkles, ArrowRight, Award, Star, Target, Zap, Heart, BarChart, FileText, Video, GraduationCap, Menu, X, Play, Pause, Volume2, VolumeX, ChevronDown, BookOpen, Phone, Check, XCircle, Facebook, Instagram, Youtube, MessageCircle, Send, Calculator, Clock, FileCheck, DollarSign, Percent, BookOpenCheck } from 'lucide-react'
 import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
@@ -57,6 +58,7 @@ export default function HomePage() {
   const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
+  const { searchWithAI, isSearching, searchResults } = useAISearch()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [placeholderIndex, setPlaceholderIndex] = useState(0)
   const [isTyping, setIsTyping] = useState(false)
@@ -162,34 +164,44 @@ export default function HomePage() {
            suggestion.keywords.some(keyword => keyword.includes(searchLower))
   }).slice(0, 8) // Increased to 8 to show more options
 
-  // Handle search submission
-  const handleSearch = (term: string = searchTerm) => {
+  // Handle search submission with AI
+  const handleSearch = async (term: string = searchTerm) => {
     if (term.trim()) {
       setShowSuggestions(false)
-      setSearchTerm('')
       
-      // Determine search type and redirect accordingly
-      const suggestion = filteredSuggestions.find(s => 
-        s.name.toLowerCase() === term.toLowerCase()
-      )
+      // Use AI search if available
+      const aiResults = await searchWithAI(term)
       
-      if (suggestion) {
-        switch (suggestion.type) {
-          case 'university':
-            router.push(`/universities?search=${encodeURIComponent(term)}`)
-            break
-          case 'course':
-            router.push(`/courses?search=${encodeURIComponent(term)}`)
-            break
-          case 'country':
-            router.push(`/countries?search=${encodeURIComponent(term)}`)
-            break
-          default:
-            router.push(`/universities?search=${encodeURIComponent(term)}`)
-        }
+      if (aiResults && aiResults.success) {
+        // Store AI results in sessionStorage for the search results page
+        sessionStorage.setItem('aiSearchResults', JSON.stringify(aiResults))
+        router.push(`/search?q=${encodeURIComponent(term)}&ai=true`)
       } else {
-        router.push(`/universities?search=${encodeURIComponent(term)}`)
+        // Fallback to traditional search
+        const suggestion = filteredSuggestions.find(s => 
+          s.name.toLowerCase() === term.toLowerCase()
+        )
+        
+        if (suggestion) {
+          switch (suggestion.type) {
+            case 'university':
+              router.push(`/universities?search=${encodeURIComponent(term)}`)
+              break
+            case 'course':
+              router.push(`/courses?search=${encodeURIComponent(term)}`)
+              break
+            case 'country':
+              router.push(`/countries?search=${encodeURIComponent(term)}`)
+              break
+            default:
+              router.push(`/universities?search=${encodeURIComponent(term)}`)
+          }
+        } else {
+          router.push(`/universities?search=${encodeURIComponent(term)}`)
+        }
       }
+      
+      setSearchTerm('')
     }
   }
 
@@ -588,9 +600,20 @@ export default function HomePage() {
                 />
                 <button
                   onClick={() => handleSearch()}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 px-8 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
+                  disabled={isSearching}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 px-8 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
-                  Search
+                  {isSearching ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      <span>AI Searching...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-4 h-4" />
+                      <span>AI Search</span>
+                    </>
+                  )}
                 </button>
               </motion.div>
 
@@ -647,6 +670,15 @@ export default function HomePage() {
                   whileTap={{ scale: 0.98 }}
                 >
                   Explore Universities
+                </motion.button>
+              </Link>
+              <Link href="/dev-features/b-school">
+                <motion.button 
+                  className="px-8 py-4 bg-gradient-to-r from-purple-600/80 to-indigo-600/80 backdrop-blur-sm text-white font-semibold rounded-xl border border-purple-500/50 hover:from-purple-700/80 hover:to-indigo-700/80 transition-all duration-300 shadow-lg"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  B-School Zone
                 </motion.button>
               </Link>
               <Link href="/contact">

@@ -67,6 +67,7 @@ export default function AIMatchingPage() {
   const [matches, setMatches] = useState<UniversityMatch[]>([])
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [showResults, setShowResults] = useState(false)
+  const [aiAnalysis, setAiAnalysis] = useState<any>(null)
 
   const steps = [
     'Academic Background',
@@ -101,12 +102,48 @@ export default function AIMatchingPage() {
     'Industry Connections', 'Scholarship Availability'
   ]
 
-  // Mock AI matching algorithm
-  const generateMatches = async (studentProfile: StudentProfile): Promise<UniversityMatch[]> => {
-    // Simulate AI processing time
-    await new Promise(resolve => setTimeout(resolve, 3000))
+  // AI-powered matching algorithm using OpenAI
+  const generateMatches = async (studentProfile: StudentProfile): Promise<{matches: UniversityMatch[], analysis?: any}> => {
+    try {
+      const response = await fetch('/api/ai-match', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(studentProfile)
+      })
 
-    const mockUniversities: UniversityMatch[] = [
+      const data = await response.json()
+      
+      if (data.success && data.matches) {
+        // Transform the response to match our interface
+        const matches = data.matches.map((match: any) => ({
+          id: match.id,
+          name: match.name,
+          location: match.location,
+          country: match.country,
+          ranking: match.ranking,
+          matchScore: match.matchScore,
+          tuitionFee: match.tuitionFee,
+          programs: match.programs || [],
+          highlights: match.highlights || match.reasons || [],
+          admissionChance: match.admissionChance,
+          imageUrl: match.image || '/universities/default.jpg'
+        }))
+        
+        return {
+          matches,
+          analysis: data.analysis || null
+        }
+      }
+      
+      // Fallback to mock data if API fails
+      throw new Error('API failed, using fallback')
+    } catch (error) {
+      console.error('Error fetching AI matches:', error)
+      
+      // Fallback mock universities
+      const mockUniversities: UniversityMatch[] = [
       {
         id: '1',
         name: 'Stanford University',
@@ -171,6 +208,14 @@ export default function AIMatchingPage() {
       ...uni,
       matchScore: Math.max(70, uni.matchScore - Math.random() * 15)
     })).sort((a, b) => b.matchScore - a.matchScore)
+    
+      return {
+        matches: mockUniversities,
+        analysis: null
+      }
+    }
+    
+    return { matches: [], analysis: null }
   }
 
   const handleNext = async () => {
@@ -178,8 +223,11 @@ export default function AIMatchingPage() {
       if (currentStep === steps.length - 2) {
         // Last step before results
         setIsAnalyzing(true)
-        const results = await generateMatches(profile)
-        setMatches(results)
+        const { matches, analysis } = await generateMatches(profile)
+        setMatches(matches)
+        if (analysis) {
+          setAiAnalysis(analysis)
+        }
         setIsAnalyzing(false)
         setShowResults(true)
       }
@@ -562,6 +610,69 @@ export default function AIMatchingPage() {
                 </p>
               </motion.div>
 
+              {/* AI Analysis Insights */}
+              {aiAnalysis && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-2xl p-6 mb-8"
+                >
+                  <div className="flex items-start space-x-3 mb-4">
+                    <div className="p-2 bg-purple-100 rounded-lg">
+                      <Bot className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">AI-Powered Analysis</h3>
+                      <p className="text-gray-700">{aiAnalysis.overall}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-4 mt-6">
+                    {aiAnalysis.recommendations && aiAnalysis.recommendations.length > 0 && (
+                      <div>
+                        <h4 className="font-medium text-gray-900 mb-2 flex items-center">
+                          <Target className="w-4 h-4 text-purple-500 mr-2" />
+                          Key Recommendations
+                        </h4>
+                        <ul className="space-y-1">
+                          {aiAnalysis.recommendations.slice(0, 3).map((rec: string, idx: number) => (
+                            <li key={idx} className="text-sm text-gray-600 flex items-start">
+                              <CheckCircle className="w-3 h-3 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                              <span>{rec}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    
+                    {aiAnalysis.nextSteps && aiAnalysis.nextSteps.length > 0 && (
+                      <div>
+                        <h4 className="font-medium text-gray-900 mb-2 flex items-center">
+                          <Zap className="w-4 h-4 text-purple-500 mr-2" />
+                          Next Steps
+                        </h4>
+                        <ul className="space-y-1">
+                          {aiAnalysis.nextSteps.slice(0, 3).map((step: string, idx: number) => (
+                            <li key={idx} className="text-sm text-gray-600 flex items-start">
+                              <ArrowRight className="w-3 h-3 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
+                              <span>{step}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {aiAnalysis.alternatives && aiAnalysis.alternatives.length > 0 && (
+                    <div className="mt-4 pt-4 border-t border-purple-100">
+                      <p className="text-sm text-gray-600">
+                        <span className="font-medium">Alternative options to consider:</span> {aiAnalysis.alternatives.join(', ')}
+                      </p>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+
               <div className="grid gap-6">
                 {matches.map((match, index) => (
                   <motion.div
@@ -664,6 +775,7 @@ export default function AIMatchingPage() {
                     setCurrentStep(0)
                     setShowResults(false)
                     setMatches([])
+                    setAiAnalysis(null)
                     setProfile({
                       academicScore: 0,
                       preferredCountries: [],

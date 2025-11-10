@@ -4,3 +4,8 @@ node_modules
 .next
 dist
 build
+
+# Local Development Features (not ready for production)
+/src/app/dev-features/
+*.dev.tsx
+*.local.tsx
