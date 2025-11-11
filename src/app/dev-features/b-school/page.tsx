@@ -45,7 +45,7 @@ export default function BSchoolPage() {
   const toggleSection = (section: string) => {
     setExpandedSections(prev => ({
       ...prev,
-      [section]: !prev[section]
+      [section]: !prev[section as keyof typeof prev]
     }));
   };
 
@@ -271,7 +271,7 @@ export default function BSchoolPage() {
                     <item.icon className="w-4 h-4 text-emerald-600 group-hover:text-emerald-700" />
                     <span className="font-medium text-gray-800">{item.label}</span>
                   </div>
-                  <ChevronDown className={`w-4 h-4 text-emerald-600 transition-transform duration-300 ${expandedSections[item.section] ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 text-emerald-600 transition-transform duration-300 ${expandedSections[item.section as keyof typeof expandedSections] ? 'rotate-180' : ''}`} />
                 </button>
               </motion.div>
             ))}

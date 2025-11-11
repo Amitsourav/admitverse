@@ -199,7 +199,7 @@ export default function AIMatchingPage() {
     ]
 
     // Simple matching logic based on profile
-    return mockUniversities.filter(uni => {
+    const filteredMatches = mockUniversities.filter(uni => {
       if (studentProfile.preferredCountries.length > 0) {
         return studentProfile.preferredCountries.includes(uni.country)
       }
@@ -208,14 +208,12 @@ export default function AIMatchingPage() {
       ...uni,
       matchScore: Math.max(70, uni.matchScore - Math.random() * 15)
     })).sort((a, b) => b.matchScore - a.matchScore)
-    
-      return {
-        matches: mockUniversities,
-        analysis: null
-      }
+
+    return {
+      matches: filteredMatches,
+      analysis: null
     }
-    
-    return { matches: [], analysis: null }
+    }
   }
 
   const handleNext = async () => {
