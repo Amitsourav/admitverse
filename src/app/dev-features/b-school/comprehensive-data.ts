@@ -4422,6 +4422,270 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "September 19", round2: "November 14", round3: "January 16" },
     scholarships: ["Merit scholarships", "Need-based aid", "Diversity scholarships", "ISB Trust scholarships"],
     campusLife: { housing: true, studentClubs: 60, internationalism: "High" }
+  },
+
+  // XLRI Jamshedpur
+  {
+    id: 53,
+    name: "Xavier Labour Relations Institute",
+    shortName: "XLRI",
+    location: "Jamshedpur",
+    country: "India",
+    region: "Asia",
+    established: 1949,
+    ranking: { global: 65, regional: 12, qsGlobal: 95 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "25,30,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "18,50,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 650 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 350,
+      internationalStudents: "4%",
+      femaleStudents: "30%",
+      averageAge: 23,
+      classSize: 350
+    },
+    outcomes: {
+      employmentRate: "98%",
+      averageSalary: { amount: 2900000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "260%",
+      topRecruiters: ["Aditya Birla", "Tata", "Godrej", "ITC", "HUL"]
+    },
+    highlights: ["HR specialization pioneer", "Jesuit values", "Strong alumni network", "Ethics focus"],
+    specializations: ["Human Resources", "Finance", "Marketing", "Operations", "Rural Management"],
+    image: "/business-schools/xlri-jamshedpur.jpg",
+    website: "https://www.xlri.ac.in",
+    applicationDeadlines: { round1: "November 30", round2: "January 31", final: "March 31" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Minority scholarships"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Low" }
+  },
+
+  // FMS Delhi
+  {
+    id: 54,
+    name: "Faculty of Management Studies",
+    shortName: "FMS Delhi",
+    location: "New Delhi",
+    country: "India",
+    region: "Asia",
+    established: 1954,
+    ranking: { global: 70, regional: 15, qsGlobal: 100 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "19,500", currency: "INR" },
+      masters: ["MBA", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 680 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 220,
+      internationalStudents: "2%",
+      femaleStudents: "25%",
+      averageAge: 22,
+      classSize: 220
+    },
+    outcomes: {
+      employmentRate: "100%",
+      averageSalary: { amount: 3200000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "400%",
+      topRecruiters: ["Goldman Sachs", "McKinsey", "BCG", "Bain", "JP Morgan"]
+    },
+    highlights: ["Low fees", "High ROI", "Delhi University affiliation", "Finance strength"],
+    specializations: ["Finance", "Marketing", "Operations", "Strategy", "International Business"],
+    image: "/business-schools/fms-delhi.jpg",
+    website: "https://www.fms.edu",
+    applicationDeadlines: { round1: "December 31", final: "December 31" },
+    scholarships: ["Merit scholarships", "SC/ST reservations", "EWS quotas"],
+    campusLife: { housing: false, studentClubs: 15, internationalism: "Low" }
+  },
+
+  // JBIMS Mumbai
+  {
+    id: 55,
+    name: "Jamnalal Bajaj Institute of Management Studies",
+    shortName: "JBIMS",
+    location: "Mumbai",
+    country: "India",
+    region: "Asia",
+    established: 1965,
+    ranking: { global: 75, regional: 18, qsGlobal: 105 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "6,25,000", currency: "INR" },
+      masters: ["MMS", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 670 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 240,
+      internationalStudents: "3%",
+      femaleStudents: "28%",
+      averageAge: 22,
+      classSize: 240
+    },
+    outcomes: {
+      employmentRate: "100%",
+      averageSalary: { amount: 2800000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "350%",
+      topRecruiters: ["HDFC", "Kotak", "Bajaj", "L&T", "Reliance"]
+    },
+    highlights: ["Mumbai location", "Finance focus", "Industry connections", "Value for money"],
+    specializations: ["Finance", "Marketing", "HR", "Operations", "Systems"],
+    image: "/business-schools/jbims-mumbai.jpg",
+    website: "https://www.jbims.edu",
+    applicationDeadlines: { round1: "January 31", final: "January 31" },
+    scholarships: ["Merit scholarships", "State reservations", "Need-based aid"],
+    campusLife: { housing: false, studentClubs: 20, internationalism: "Low" }
+  },
+
+  // Batch 1: More Indian B-Schools (IDs 56-65)
+  
+  // IIM Lucknow
+  {
+    id: 56,
+    name: "Indian Institute of Management Lucknow",
+    shortName: "IIM-L",
+    location: "Lucknow",
+    country: "India",
+    region: "Asia",
+    established: 1984,
+    ranking: { global: 60, regional: 10, qsGlobal: 90 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "19,25,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "20,00,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 630 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 460,
+      internationalStudents: "5%",
+      femaleStudents: "32%",
+      averageAge: 23,
+      classSize: 460
+    },
+    outcomes: {
+      employmentRate: "97%",
+      averageSalary: { amount: 2650000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "240%",
+      topRecruiters: ["Wipro", "TCS", "Infosys", "Cognizant", "HCL"]
+    },
+    highlights: ["Established IIM", "Strong alumni network", "Industry connections", "Research focus"],
+    specializations: ["IT Management", "Finance", "Marketing", "Operations", "Strategy"],
+    image: "/business-schools/iim-lucknow.jpg",
+    website: "https://www.iiml.ac.in",
+    applicationDeadlines: { round1: "November 15", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Medium" }
+  },
+
+  // MDI Gurgaon
+  {
+    id: 57,
+    name: "Management Development Institute",
+    shortName: "MDI Gurgaon",
+    location: "Gurgaon",
+    country: "India",
+    region: "Asia",
+    established: 1973,
+    ranking: { global: 80, regional: 20, qsGlobal: 110 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "21,50,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "18,00,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 660 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 420,
+      internationalStudents: "6%",
+      femaleStudents: "35%",
+      averageAge: 23,
+      classSize: 420
+    },
+    outcomes: {
+      employmentRate: "98%",
+      averageSalary: { amount: 2750000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "250%",
+      topRecruiters: ["Amazon", "Microsoft", "Google", "Deloitte", "PwC"]
+    },
+    highlights: ["HR specialization", "Industry partnerships", "International programs", "Research excellence"],
+    specializations: ["Human Resources", "Finance", "Marketing", "Operations", "International Management"],
+    image: "/business-schools/mdi-gurgaon.jpg",
+    website: "https://www.mdi.ac.in",
+    applicationDeadlines: { round1: "December 15", round2: "February 15", final: "March 31" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Women diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Medium" }
+  },
+
+  // SP Jain Mumbai
+  {
+    id: 58,
+    name: "S.P. Jain Institute of Management and Research",
+    shortName: "SPJIMR",
+    location: "Mumbai",
+    country: "India",
+    region: "Asia",
+    established: 1981,
+    ranking: { global: 85, regional: 22, qsGlobal: 115 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "19,50,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "16,50,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 650 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 360,
+      internationalStudents: "8%",
+      femaleStudents: "38%",
+      averageAge: 23,
+      classSize: 360
+    },
+    outcomes: {
+      employmentRate: "96%",
+      averageSalary: { amount: 2600000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "230%",
+      topRecruiters: ["Bajaj", "Mahindra", "Tata Motors", "Asian Paints", "Godrej"]
+    },
+    highlights: ["Family business focus", "Innovation labs", "Industry immersion", "Ethics emphasis"],
+    specializations: ["Finance", "Marketing", "Operations", "Information Management", "Family Business"],
+    image: "/business-schools/spjimr-mumbai.jpg",
+    website: "https://www.spjimr.org",
+    applicationDeadlines: { round1: "November 30", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Minority scholarships"],
+    campusLife: { housing: false, studentClubs: 20, internationalism: "Medium" }
   }
 ]
 
