@@ -5435,6 +5435,426 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "October 6", round2: "January 12", round3: "March 30" },
     scholarships: ["HEC Foundation scholarships", "Need-based aid", "Diversity scholarships"],
     campusLife: { housing: true, studentClubs: 35, internationalism: "Extremely High" }
+  },
+  {
+    id: 76,
+    name: "NYU Stern School of Business",
+    shortName: "NYU Stern",
+    location: "New York City",
+    country: "United States",
+    region: "North America",
+    established: 1900,
+    ranking: { global: 26, ftGlobal: 26, qsGlobal: 30 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "249,792", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "270,000", currency: "USD" },
+      masters: ["MS in Finance", "MS in Business Analytics", "MS in Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 732, minScore: 600 },
+      gre: { accepted: true, averageScore: 327 },
+      workExperience: { required: true, averageYears: 5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 406,
+      internationalStudents: "42%",
+      femaleStudents: "44%",
+      averageAge: 28,
+      classSize: 406
+    },
+    outcomes: {
+      employmentRate: "96%",
+      averageSalary: { amount: 175000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "93%",
+      topRecruiters: ["Goldman Sachs", "McKinsey", "BCG", "JPMorgan", "Google"]
+    },
+    highlights: ["NYC location advantage", "Finance industry connections", "Tech recruitment", "Entrepreneurship hub"],
+    specializations: ["Finance", "Consulting", "Technology", "Entrepreneurship", "Marketing"],
+    image: "/business-schools/nyu-stern.jpg",
+    website: "https://www.stern.nyu.edu",
+    applicationDeadlines: { round1: "September 15", round2: "November 15", round3: "January 15" },
+    scholarships: ["Merit scholarships", "Diversity fellowships", "Need-based aid"],
+    campusLife: { housing: true, studentClubs: 90, internationalism: "High" }
+  },
+  {
+    id: 77,
+    name: "Indian Institute of Management Raipur",
+    shortName: "IIM Raipur",
+    location: "Raipur",
+    country: "India",
+    region: "Asia",
+    established: 2010,
+    ranking: { global: 85, ftGlobal: 85, qsGlobal: 90 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "20,50,000", currency: "INR" },
+      emba: { available: true, duration: "24 months", tuitionFee: "15,00,000", currency: "INR" },
+      masters: ["Fellow Program in Management (FPM)"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 650, minScore: 600 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 90, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 480,
+      internationalStudents: "8%",
+      femaleStudents: "35%",
+      averageAge: 23,
+      classSize: 240
+    },
+    outcomes: {
+      employmentRate: "95%",
+      averageSalary: { amount: 1800000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "250%",
+      topRecruiters: ["TCS", "Infosys", "Deloitte", "PwC", "Aditya Birla Group"]
+    },
+    highlights: ["Young IIM with modern curriculum", "Strong industry partnerships", "Focus on innovation", "Growing alumni network"],
+    specializations: ["General Management", "Finance", "Marketing", "Operations", "HR"],
+    image: "/business-schools/iim-raipur.jpg",
+    website: "https://www.iimraipur.ac.in",
+    applicationDeadlines: { round1: "CAT Result based", round2: "WAT-PI based", round3: "Final List" },
+    scholarships: ["Government scholarships", "Merit-based aid", "Need-based scholarships"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Medium" }
+  },
+  {
+    id: 78,
+    name: "ESADE Business School",
+    shortName: "ESADE",
+    location: "Barcelona",
+    country: "Spain",
+    region: "Europe",
+    established: 1958,
+    ranking: { global: 27, ftGlobal: 27, qsGlobal: 25 },
+    accreditation: ["AACSB", "EQUIS", "AMBA"],
+    programs: {
+      mba: { available: true, duration: "15 months", tuitionFee: "89,500", currency: "EUR" },
+      emba: { available: true, duration: "18 months", tuitionFee: "98,000", currency: "EUR" },
+      masters: ["Master in Finance", "Master in Marketing"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 680, minScore: 550 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 5, minYears: 3 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 200,
+      internationalStudents: "89%",
+      femaleStudents: "38%",
+      averageAge: 29,
+      classSize: 200
+    },
+    outcomes: {
+      employmentRate: "88%",
+      averageSalary: { amount: 105000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "78%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Amazon", "Google"]
+    },
+    highlights: ["Barcelona location", "Strong European network", "Innovation focus", "Entrepreneurship excellence"],
+    specializations: ["Strategy", "Innovation", "Entrepreneurship", "Finance", "Marketing"],
+    image: "/business-schools/esade.jpg",
+    website: "https://www.esade.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 15", round3: "February 15" },
+    scholarships: ["ESADE Excellence scholarships", "Diversity scholarships", "Need-based aid"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "Very High" }
+  },
+  {
+    id: 79,
+    name: "AGSM at UNSW Business School",
+    shortName: "AGSM Sydney",
+    location: "Sydney",
+    country: "Australia",
+    region: "Asia-Pacific",
+    established: 1977,
+    ranking: { global: 42, ftGlobal: 42, qsGlobal: 45 },
+    accreditation: ["AACSB", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "16 months", tuitionFee: "120,000", currency: "AUD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "150,000", currency: "AUD" },
+      masters: ["Master of Finance", "Master of Business Analytics"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 670, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 6, minYears: 4 },
+      englishTest: { toefl: 94, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 150,
+      internationalStudents: "70%",
+      femaleStudents: "40%",
+      averageAge: 31,
+      classSize: 150
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 120000, currency: "AUD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "65%",
+      topRecruiters: ["Deloitte", "PwC", "Commonwealth Bank", "Westpac", "BHP"]
+    },
+    highlights: ["Sydney location", "Asia-Pacific focus", "Strong alumni network", "Industry partnerships"],
+    specializations: ["General Management", "Finance", "Strategy", "Leadership", "Innovation"],
+    image: "/business-schools/agsm-sydney.jpg",
+    website: "https://www.agsm.edu.au",
+    applicationDeadlines: { round1: "August 31", round2: "October 31", round3: "December 15" },
+    scholarships: ["AGSM scholarships", "Diversity scholarships", "Merit-based aid"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Very High" }
+  },
+  {
+    id: 80,
+    name: "Alliance School of Business, Alliance University",
+    shortName: "Alliance University",
+    location: "Bangalore",
+    country: "India",
+    region: "Asia",
+    established: 2010,
+    ranking: { global: 120, ftGlobal: 120, qsGlobal: 125 },
+    accreditation: ["NAAC A+"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "12,50,000", currency: "INR" },
+      emba: { available: true, duration: "24 months", tuitionFee: "10,00,000", currency: "INR" },
+      masters: ["PGDM", "PhD in Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 620, minScore: 550 },
+      gre: { accepted: true, averageScore: 310 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 80, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 360,
+      internationalStudents: "15%",
+      femaleStudents: "42%",
+      averageAge: 22,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 1200000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "180%",
+      topRecruiters: ["Infosys", "TCS", "Wipro", "Cognizant", "Accenture"]
+    },
+    highlights: ["Bangalore tech hub location", "Industry-oriented curriculum", "Modern facilities", "Strong placement record"],
+    specializations: ["Business Analytics", "Digital Marketing", "Finance", "HR", "Operations"],
+    image: "/business-schools/alliance-university.jpg",
+    website: "https://www.alliance.edu.in",
+    applicationDeadlines: { round1: "CAT/MAT/XAT based", round2: "Direct admission", round3: "Management quota" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Sports scholarships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "Medium" }
+  },
+  {
+    id: 81,
+    name: "Manchester Business School",
+    shortName: "Manchester BS",
+    location: "Manchester",
+    country: "United Kingdom",
+    region: "Europe",
+    established: 1965,
+    ranking: { global: 35, ftGlobal: 35, qsGlobal: 38 },
+    accreditation: ["AACSB", "EQUIS", "AMBA"],
+    programs: {
+      mba: { available: true, duration: "18 months", tuitionFee: "52,000", currency: "GBP" },
+      emba: { available: true, duration: "20 months", tuitionFee: "78,000", currency: "GBP" },
+      masters: ["MSc Finance", "MSc Marketing", "MSc Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 640, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 5, minYears: 3 },
+      englishTest: { toefl: 90, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 180,
+      internationalStudents: "85%",
+      femaleStudents: "35%",
+      averageAge: 30,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "88%",
+      averageSalary: { amount: 95000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "72%",
+      topRecruiters: ["Deloitte", "PwC", "KPMG", "Barclays", "Manchester United FC"]
+    },
+    highlights: ["Triple accreditation", "Strong European network", "Research excellence", "Industry connections"],
+    specializations: ["Finance", "Marketing", "Operations", "Strategy", "Entrepreneurship"],
+    image: "/business-schools/manchester-bs.jpg",
+    website: "https://www.manchester.ac.uk/study/masters/courses/list/08902/mba/",
+    applicationDeadlines: { round1: "October 31", round2: "January 31", round3: "March 31" },
+    scholarships: ["Dean's scholarships", "Alumni scholarships", "International scholarships"],
+    campusLife: { housing: true, studentClubs: 50, internationalism: "Very High" }
+  },
+  {
+    id: 82,
+    name: "BML Munjal University School of Management",
+    shortName: "BMU",
+    location: "Gurugram",
+    country: "India",
+    region: "Asia",
+    established: 2014,
+    ranking: { global: 140, ftGlobal: 140, qsGlobal: 145 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "14,50,000", currency: "INR" },
+      emba: { available: true, duration: "24 months", tuitionFee: "12,00,000", currency: "INR" },
+      masters: ["PGDM", "Executive PGDM"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 600, minScore: 550 },
+      gre: { accepted: true, averageScore: 305 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 75, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 240,
+      internationalStudents: "10%",
+      femaleStudents: "38%",
+      averageAge: 23,
+      classSize: 120
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 1000000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "150%",
+      topRecruiters: ["Hero MotoCorp", "Maruti Suzuki", "Samsung", "LG", "Hyundai"]
+    },
+    highlights: ["Industry partnerships", "Modern campus", "Gurugram location", "Corporate connections"],
+    specializations: ["Marketing", "Finance", "Operations", "HR", "Business Analytics"],
+    image: "/business-schools/bmu.jpg",
+    website: "https://www.bml.edu.in",
+    applicationDeadlines: { round1: "CAT/MAT/XAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Industry-sponsored scholarships"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Low" }
+  },
+  {
+    id: 83,
+    name: "Warwick Business School",
+    shortName: "Warwick BS",
+    location: "Coventry",
+    country: "United Kingdom",
+    region: "Europe",
+    established: 1967,
+    ranking: { global: 28, ftGlobal: 28, qsGlobal: 32 },
+    accreditation: ["AACSB", "EQUIS", "AMBA"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "49,950", currency: "GBP" },
+      emba: { available: true, duration: "30 months", tuitionFee: "69,500", currency: "GBP" },
+      masters: ["MSc Finance", "MSc Marketing & Strategy", "MSc Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 650, minScore: 550 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 5, minYears: 3 },
+      englishTest: { toefl: 92, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 160,
+      internationalStudents: "90%",
+      femaleStudents: "40%",
+      averageAge: 30,
+      classSize: 160
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 100000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "80%",
+      topRecruiters: ["Deloitte", "PwC", "McKinsey", "Amazon", "Microsoft"]
+    },
+    highlights: ["Triple accreditation", "Strong research focus", "International diversity", "UK university prestige"],
+    specializations: ["Finance", "Strategy", "Marketing", "Operations", "Entrepreneurship"],
+    image: "/business-schools/warwick-bs.jpg",
+    website: "https://www.wbs.ac.uk",
+    applicationDeadlines: { round1: "October 20", round2: "December 15", round3: "February 28" },
+    scholarships: ["Warwick scholarships", "International scholarships", "Merit-based aid"],
+    campusLife: { housing: true, studentClubs: 45, internationalism: "Very High" }
+  },
+  {
+    id: 84,
+    name: "Christ University Institute of Management",
+    shortName: "Christ University",
+    location: "Bangalore",
+    country: "India",
+    region: "Asia",
+    established: 1969,
+    ranking: { global: 150, ftGlobal: 150, qsGlobal: 155 },
+    accreditation: ["NAAC A++", "UGC"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "8,50,000", currency: "INR" },
+      emba: { available: true, duration: "24 months", tuitionFee: "7,00,000", currency: "INR" },
+      masters: ["PGDM", "MIB"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 580, minScore: 500 },
+      gre: { accepted: true, averageScore: 300 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 70, ielts: 5.5 }
+    },
+    statistics: {
+      studentBody: 480,
+      internationalStudents: "12%",
+      femaleStudents: "45%",
+      averageAge: 22,
+      classSize: 240
+    },
+    outcomes: {
+      employmentRate: "88%",
+      averageSalary: { amount: 800000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "120%",
+      topRecruiters: ["Wipro", "Infosys", "TCS", "Cognizant", "Capgemini"]
+    },
+    highlights: ["Bangalore tech hub", "Strong academics", "Diverse programs", "Value for money"],
+    specializations: ["Finance", "Marketing", "HR", "International Business", "Systems"],
+    image: "/business-schools/christ-university.jpg",
+    website: "https://www.christuniversity.in",
+    applicationDeadlines: { round1: "CAT/MAT based", round2: "University entrance", round3: "Management quota" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Sports scholarships"],
+    campusLife: { housing: true, studentClubs: 60, internationalism: "Medium" }
+  },
+  {
+    id: 85,
+    name: "Rotterdam School of Management",
+    shortName: "RSM",
+    location: "Rotterdam",
+    country: "Netherlands",
+    region: "Europe",
+    established: 1970,
+    ranking: { global: 29, ftGlobal: 29, qsGlobal: 31 },
+    accreditation: ["AACSB", "EQUIS", "AMBA"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "62,500", currency: "EUR" },
+      emba: { available: true, duration: "22 months", tuitionFee: "78,000", currency: "EUR" },
+      masters: ["Master in Finance", "Master in Management", "Master in Marketing"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 650, minScore: 600 },
+      gre: { accepted: true, averageScore: 316 },
+      workExperience: { required: true, averageYears: 5, minYears: 3 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 240,
+      internationalStudents: "95%",
+      femaleStudents: "37%",
+      averageAge: 29,
+      classSize: 240
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 110000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "85%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Unilever", "Shell"]
+    },
+    highlights: ["Triple accreditation", "European business hub", "International diversity", "Sustainability focus"],
+    specializations: ["Strategy", "Finance", "Marketing", "Operations", "Sustainability"],
+    image: "/business-schools/rsm.jpg",
+    website: "https://www.rsm.nl",
+    applicationDeadlines: { round1: "September 30", round2: "November 30", round3: "January 31" },
+    scholarships: ["RSM scholarships", "Excellence scholarships", "Diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Extremely High" }
   }
 ]
 
