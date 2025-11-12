@@ -6695,6 +6695,426 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "October 1", round2: "November 15", round3: "January 5" },
     scholarships: ["Merit scholarships", "Consortium fellowships", "Need-based aid"],
     campusLife: { housing: true, studentClubs: 65, internationalism: "High" }
+  },
+  {
+    id: 106,
+    name: "University of Washington Foster School",
+    shortName: "UW Foster",
+    location: "Seattle, WA",
+    country: "United States",
+    region: "North America",
+    established: 1917,
+    ranking: { global: 52, ftGlobal: 52, qsGlobal: 56 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "198,000", currency: "USD" },
+      emba: { available: true, duration: "21 months", tuitionFee: "175,000", currency: "USD" },
+      masters: ["MS Information Systems", "MS Finance"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 665, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 220,
+      internationalStudents: "35%",
+      femaleStudents: "40%",
+      averageAge: 28,
+      classSize: 110
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 135000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "78%",
+      topRecruiters: ["Amazon", "Microsoft", "Deloitte", "Boeing", "Starbucks"]
+    },
+    highlights: ["Seattle tech hub", "Strong tech recruitment", "Innovation focus", "Pacific Northwest network"],
+    specializations: ["Technology", "Consulting", "Finance", "Operations", "Entrepreneurship"],
+    image: "/business-schools/uw-foster.jpg",
+    website: "https://foster.uw.edu",
+    applicationDeadlines: { round1: "October 19", round2: "December 14", round3: "February 15" },
+    scholarships: ["Merit scholarships", "Diversity fellowships", "Tech industry awards"],
+    campusLife: { housing: true, studentClubs: 45, internationalism: "High" }
+  },
+  {
+    id: 107,
+    name: "IIM Kozhikode",
+    shortName: "IIM Kozhikode",
+    location: "Kozhikode",
+    country: "India",
+    region: "Asia",
+    established: 1996,
+    ranking: { global: 90, ftGlobal: 90, qsGlobal: 95 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "20,50,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "16,50,000", currency: "INR" },
+      masters: ["Fellow Program in Management", "EPGP"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 650, minScore: 600 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 90, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 480,
+      internationalStudents: "8%",
+      femaleStudents: "36%",
+      averageAge: 23,
+      classSize: 240
+    },
+    outcomes: {
+      employmentRate: "96%",
+      averageSalary: { amount: 2300000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "260%",
+      topRecruiters: ["McKinsey", "BCG", "Deloitte", "Amazon", "Flipkart"]
+    },
+    highlights: ["Top tier IIM", "Kerala location", "Strong consulting placement", "Innovation focus"],
+    specializations: ["Strategy", "Finance", "Marketing", "Operations", "Analytics"],
+    image: "/business-schools/iim-kozhikode.jpg",
+    website: "https://www.iimk.ac.in",
+    applicationDeadlines: { round1: "CAT Result based", round2: "WAT-PI process", round3: "Final List" },
+    scholarships: ["Government scholarships", "Merit-based aid", "Need-based scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Medium" }
+  },
+  {
+    id: 108,
+    name: "University of Texas McCombs",
+    shortName: "UT McCombs",
+    location: "Austin, TX",
+    country: "United States",
+    region: "North America",
+    established: 1922,
+    ranking: { global: 33, ftGlobal: 33, qsGlobal: 37 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "207,866", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "185,000", currency: "USD" },
+      masters: ["MS Finance", "MS Technology Commercialization"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 695, minScore: 600 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 105, ielts: 7.5 }
+    },
+    statistics: {
+      studentBody: 520,
+      internationalStudents: "30%",
+      femaleStudents: "45%",
+      averageAge: 28,
+      classSize: 260
+    },
+    outcomes: {
+      employmentRate: "94%",
+      averageSalary: { amount: 155000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "85%",
+      topRecruiters: ["McKinsey", "BCG", "Amazon", "Dell", "IBM"]
+    },
+    highlights: ["Austin tech scene", "Entrepreneurship strength", "Energy sector connections", "Strong alumni network"],
+    specializations: ["Technology", "Finance", "Consulting", "Energy", "Entrepreneurship"],
+    image: "/business-schools/ut-mccombs.jpg",
+    website: "https://www.mccombs.utexas.edu",
+    applicationDeadlines: { round1: "October 2", round2: "December 4", round3: "February 5" },
+    scholarships: ["Merit scholarships", "Texas resident scholarships", "Diversity fellowships"],
+    campusLife: { housing: true, studentClubs: 70, internationalism: "High" }
+  },
+  {
+    id: 109,
+    name: "Melbourne Business School",
+    shortName: "Melbourne BS",
+    location: "Melbourne",
+    country: "Australia",
+    region: "Asia-Pacific",
+    established: 1955,
+    ranking: { global: 47, ftGlobal: 47, qsGlobal: 51 },
+    accreditation: ["AACSB", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "17 months", tuitionFee: "130,000", currency: "AUD" },
+      emba: { available: true, duration: "18 months", tuitionFee: "155,000", currency: "AUD" },
+      masters: ["Master of Management", "Master of Marketing"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 680, minScore: 550 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 6, minYears: 4 },
+      englishTest: { toefl: 102, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 200,
+      internationalStudents: "75%",
+      femaleStudents: "38%",
+      averageAge: 31,
+      classSize: 200
+    },
+    outcomes: {
+      employmentRate: "88%",
+      averageSalary: { amount: 125000, currency: "AUD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "68%",
+      topRecruiters: ["McKinsey", "BCG", "Deloitte", "Commonwealth Bank", "BHP"]
+    },
+    highlights: ["Melbourne business hub", "Asia-Pacific focus", "Strong research", "Diverse cohort"],
+    specializations: ["General Management", "Finance", "Marketing", "Strategy", "Innovation"],
+    image: "/business-schools/melbourne-bs.jpg",
+    website: "https://mbs.edu",
+    applicationDeadlines: { round1: "September 30", round2: "November 30", round3: "January 31" },
+    scholarships: ["Melbourne scholarships", "International awards", "Merit-based aid"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Very High" }
+  },
+  {
+    id: 110,
+    name: "MDI Gurgaon",
+    shortName: "MDI Gurgaon",
+    location: "Gurgaon",
+    country: "India",
+    region: "Asia",
+    established: 1973,
+    ranking: { global: 115, ftGlobal: 115, qsGlobal: 120 },
+    accreditation: ["AICTE", "NAAC A++"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "21,50,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "17,50,000", currency: "INR" },
+      masters: ["PGDM", "PGPM"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 640, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 85, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 540,
+      internationalStudents: "10%",
+      femaleStudents: "42%",
+      averageAge: 23,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "95%",
+      averageSalary: { amount: 1950000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "240%",
+      topRecruiters: ["Deloitte", "EY", "KPMG", "Amazon", "Microsoft"]
+    },
+    highlights: ["NCR location advantage", "Strong industry connections", "HR specialization", "Excellent placements"],
+    specializations: ["Human Resources", "Finance", "Marketing", "Operations", "International Business"],
+    image: "/business-schools/mdi-gurgaon.jpg",
+    website: "https://www.mdi.ac.in",
+    applicationDeadlines: { round1: "CAT/XAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Industry scholarships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "Medium" }
+  },
+  {
+    id: 111,
+    name: "Boston University Questrom",
+    shortName: "BU Questrom",
+    location: "Boston, MA",
+    country: "United States",
+    region: "North America",
+    established: 1913,
+    ranking: { global: 55, ftGlobal: 55, qsGlobal: 59 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "225,200", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "198,000", currency: "USD" },
+      masters: ["MS Digital Innovation", "MS Mathematical Finance"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 675, minScore: 550 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 280,
+      internationalStudents: "40%",
+      femaleStudents: "43%",
+      averageAge: 28,
+      classSize: 140
+    },
+    outcomes: {
+      employmentRate: "91%",
+      averageSalary: { amount: 140000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "80%",
+      topRecruiters: ["Deloitte", "PwC", "Amazon", "Fidelity", "State Street"]
+    },
+    highlights: ["Boston business hub", "Healthcare sector strength", "Tech innovation", "Global programs"],
+    specializations: ["Healthcare", "Technology", "Finance", "Consulting", "Digital Innovation"],
+    image: "/business-schools/bu-questrom.jpg",
+    website: "https://www.bu.edu/questrom",
+    applicationDeadlines: { round1: "October 15", round2: "December 3", round3: "February 4" },
+    scholarships: ["Merit scholarships", "Dean's scholarships", "International awards"],
+    campusLife: { housing: true, studentClubs: 50, internationalism: "Very High" }
+  },
+  {
+    id: 112,
+    name: "Shailesh J. Mehta School of Management, IIT Bombay",
+    shortName: "SJMSOM IIT Bombay",
+    location: "Mumbai",
+    country: "India",
+    region: "Asia",
+    established: 1995,
+    ranking: { global: 100, ftGlobal: 100, qsGlobal: 105 },
+    accreditation: ["NAAC A++"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "12,50,000", currency: "INR" },
+      emba: { available: false, duration: "0 months", tuitionFee: "0", currency: "INR" },
+      masters: ["PhD Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 650, minScore: 600 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 85, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 140,
+      internationalStudents: "15%",
+      femaleStudents: "35%",
+      averageAge: 24,
+      classSize: 70
+    },
+    outcomes: {
+      employmentRate: "100%",
+      averageSalary: { amount: 2650000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "350%",
+      topRecruiters: ["Goldman Sachs", "McKinsey", "BCG", "Google", "Microsoft"]
+    },
+    highlights: ["IIT brand value", "Technology focus", "Small batch size", "Exceptional ROI"],
+    specializations: ["Technology Management", "Finance", "Operations", "Strategy", "Analytics"],
+    image: "/business-schools/sjmsom-iitb.jpg",
+    website: "https://www.som.iitb.ac.in",
+    applicationDeadlines: { round1: "CAT Result based", round2: "WAT-PI process", round3: "Final Merit List" },
+    scholarships: ["Government scholarships", "Merit-based aid", "Need-based scholarships"],
+    campusLife: { housing: true, studentClubs: 20, internationalism: "Medium" }
+  },
+  {
+    id: 113,
+    name: "Brigham Young Marriott School",
+    shortName: "BYU Marriott",
+    location: "Provo, UT",
+    country: "United States",
+    region: "North America",
+    established: 1891,
+    ranking: { global: 58, ftGlobal: 58, qsGlobal: 62 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "48,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "85,000", currency: "USD" },
+      masters: ["MS Information Systems", "MAcc"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 640, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 3, minYears: 1 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 320,
+      internationalStudents: "25%",
+      femaleStudents: "32%",
+      averageAge: 27,
+      classSize: 160
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 125000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "85%",
+      topRecruiters: ["Deloitte", "EY", "Amazon", "Adobe", "Goldman Sachs"]
+    },
+    highlights: ["Low cost MBA", "Strong ethics focus", "Technology sector", "Excellent ROI"],
+    specializations: ["Finance", "Information Systems", "Operations", "Strategy", "Entrepreneurship"],
+    image: "/business-schools/byu-marriott.jpg",
+    website: "https://marriottschool.byu.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 1", round3: "February 1" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Church member discounts"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Medium" }
+  },
+  {
+    id: 114,
+    name: "JBIMS Mumbai",
+    shortName: "JBIMS",
+    location: "Mumbai",
+    country: "India",
+    region: "Asia",
+    established: 1965,
+    ranking: { global: 108, ftGlobal: 108, qsGlobal: 112 },
+    accreditation: ["AICTE", "University of Mumbai"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "4,84,000", currency: "INR" },
+      emba: { available: false, duration: "0 months", tuitionFee: "0", currency: "INR" },
+      masters: ["MMS", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 650, minScore: 600 },
+      gre: { accepted: false, averageScore: 0 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 80, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 240,
+      internationalStudents: "5%",
+      femaleStudents: "45%",
+      averageAge: 22,
+      classSize: 120
+    },
+    outcomes: {
+      employmentRate: "100%",
+      averageSalary: { amount: 2800000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "380%",
+      topRecruiters: ["Goldman Sachs", "JPMorgan", "McKinsey", "Bain", "Google"]
+    },
+    highlights: ["Mumbai financial capital", "Exceptional ROI", "Strong finance placement", "Legacy institution"],
+    specializations: ["Finance", "Marketing", "Operations", "HR", "International Business"],
+    image: "/business-schools/jbims.jpg",
+    website: "https://www.jbims.edu",
+    applicationDeadlines: { round1: "Maharashtra CET based", round2: "CAP process", round3: "Final admission" },
+    scholarships: ["Government scholarships", "Merit-based aid", "Need-based scholarships"],
+    campusLife: { housing: false, studentClubs: 25, internationalism: "Low" }
+  },
+  {
+    id: 115,
+    name: "Washington University Olin",
+    shortName: "WashU Olin",
+    location: "St. Louis, MO",
+    country: "United States",
+    region: "North America",
+    established: 1917,
+    ranking: { global: 43, ftGlobal: 43, qsGlobal: 47 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "22 months", tuitionFee: "212,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "188,000", currency: "USD" },
+      masters: ["MS Finance", "MS Supply Chain"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 680, minScore: 600 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 280,
+      internationalStudents: "30%",
+      femaleStudents: "40%",
+      averageAge: 28,
+      classSize: 140
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 135000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "75%",
+      topRecruiters: ["Deloitte", "PwC", "Amazon", "Emerson", "Anheuser-Busch"]
+    },
+    highlights: ["Healthcare sector strength", "Small class sizes", "Collaborative culture", "Midwest connections"],
+    specializations: ["Healthcare", "Finance", "Marketing", "Operations", "Consulting"],
+    image: "/business-schools/washu-olin.jpg",
+    website: "https://olin.wustl.edu",
+    applicationDeadlines: { round1: "October 1", round2: "November 15", round3: "January 15" },
+    scholarships: ["Merit scholarships", "Dean's fellowships", "Diversity awards"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "High" }
   }
 ]
 
