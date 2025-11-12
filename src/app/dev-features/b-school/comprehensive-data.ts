@@ -7115,6 +7115,426 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "October 1", round2: "November 15", round3: "January 15" },
     scholarships: ["Merit scholarships", "Dean's fellowships", "Diversity awards"],
     campusLife: { housing: true, studentClubs: 40, internationalism: "High" }
+  },
+  {
+    id: 116,
+    name: "University of North Carolina Kenan-Flagler",
+    shortName: "UNC Kenan-Flagler",
+    location: "Chapel Hill, NC",
+    country: "United States",
+    region: "North America",
+    established: 1919,
+    ranking: { global: 41, ftGlobal: 41, qsGlobal: 45 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "206,898", currency: "USD" },
+      emba: { available: true, duration: "19 months", tuitionFee: "168,000", currency: "USD" },
+      masters: ["MAC", "MS Real Estate"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 695, minScore: 600 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 580,
+      internationalStudents: "28%",
+      femaleStudents: "44%",
+      averageAge: 28,
+      classSize: 290
+    },
+    outcomes: {
+      employmentRate: "93%",
+      averageSalary: { amount: 145000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "82%",
+      topRecruiters: ["Deloitte", "BCG", "Amazon", "Bank of America", "Wells Fargo"]
+    },
+    highlights: ["Research Triangle location", "Strong finance program", "Sustainable enterprise", "Team-based learning"],
+    specializations: ["Finance", "Consulting", "Real Estate", "Sustainable Enterprise", "Marketing"],
+    image: "/business-schools/unc-kenan-flagler.jpg",
+    website: "https://www.kenan-flagler.unc.edu",
+    applicationDeadlines: { round1: "October 15", round2: "January 5", round3: "March 15" },
+    scholarships: ["Merit fellowships", "Consortium fellowships", "Forté fellowships"],
+    campusLife: { housing: true, studentClubs: 60, internationalism: "High" }
+  },
+  {
+    id: 117,
+    name: "IIM Shillong",
+    shortName: "IIM Shillong",
+    location: "Shillong",
+    country: "India",
+    region: "Asia",
+    established: 2007,
+    ranking: { global: 92, ftGlobal: 92, qsGlobal: 97 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "19,50,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "15,00,000", currency: "INR" },
+      masters: ["Fellow Program in Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 640, minScore: 600 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 90, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 360,
+      internationalStudents: "10%",
+      femaleStudents: "40%",
+      averageAge: 23,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "94%",
+      averageSalary: { amount: 2100000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "250%",
+      topRecruiters: ["Deloitte", "KPMG", "Amazon", "Flipkart", "Wipro"]
+    },
+    highlights: ["Northeast India location", "Innovation focus", "Rural management specialization", "Diverse cohort"],
+    specializations: ["Rural Management", "Innovation", "Finance", "Marketing", "Operations"],
+    image: "/business-schools/iim-shillong.jpg",
+    website: "https://www.iimshillong.ac.in",
+    applicationDeadlines: { round1: "CAT Result based", round2: "WAT-PI process", round3: "Final List" },
+    scholarships: ["Government scholarships", "Merit-based aid", "Northeast region scholarships"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Medium" }
+  },
+  {
+    id: 118,
+    name: "Indiana Kelley School of Business",
+    shortName: "Indiana Kelley",
+    location: "Bloomington, IN",
+    country: "United States",
+    region: "North America",
+    established: 1920,
+    ranking: { global: 54, ftGlobal: 54, qsGlobal: 58 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "188,500", currency: "USD" },
+      emba: { available: true, duration: "21 months", tuitionFee: "165,000", currency: "USD" },
+      masters: ["MS Finance", "MS Marketing"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 665, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 380,
+      internationalStudents: "35%",
+      femaleStudents: "42%",
+      averageAge: 28,
+      classSize: 190
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 130000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "78%",
+      topRecruiters: ["Deloitte", "EY", "Amazon", "Eli Lilly", "Cummins"]
+    },
+    highlights: ["Strong Midwest network", "Finance and consulting strength", "Academy structure", "Global immersion"],
+    specializations: ["Finance", "Consulting", "Marketing", "Operations", "Strategy"],
+    image: "/business-schools/indiana-kelley.jpg",
+    website: "https://kelley.iu.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 5", round3: "February 1" },
+    scholarships: ["Merit scholarships", "Consortium fellowships", "Indiana resident scholarships"],
+    campusLife: { housing: true, studentClubs: 55, internationalism: "High" }
+  },
+  {
+    id: 119,
+    name: "CUHK Business School",
+    shortName: "CUHK",
+    location: "Hong Kong",
+    country: "Hong Kong",
+    region: "Asia-Pacific",
+    established: 1963,
+    ranking: { global: 49, ftGlobal: 49, qsGlobal: 53 },
+    accreditation: ["AACSB", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "16 months", tuitionFee: "680,000", currency: "HKD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "998,000", currency: "HKD" },
+      masters: ["MSc Finance", "MSc Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 650, minScore: 600 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 140,
+      internationalStudents: "85%",
+      femaleStudents: "38%",
+      averageAge: 29,
+      classSize: 140
+    },
+    outcomes: {
+      employmentRate: "89%",
+      averageSalary: { amount: 120000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "65%",
+      topRecruiters: ["Goldman Sachs", "JPMorgan", "McKinsey", "Google", "Alibaba"]
+    },
+    highlights: ["Hong Kong financial hub", "China gateway", "Strong finance program", "Global network"],
+    specializations: ["Finance", "Strategy", "Marketing", "Operations", "Entrepreneurship"],
+    image: "/business-schools/cuhk.jpg",
+    website: "https://www.bschool.cuhk.edu.hk",
+    applicationDeadlines: { round1: "October 31", round2: "December 31", round3: "March 15" },
+    scholarships: ["CUHK scholarships", "International awards", "Asian leadership awards"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Extremely High" }
+  },
+  {
+    id: 120,
+    name: "Symbiosis Institute of Business Management",
+    shortName: "SIBM Pune",
+    location: "Pune",
+    country: "India",
+    region: "Asia",
+    established: 1978,
+    ranking: { global: 118, ftGlobal: 118, qsGlobal: 123 },
+    accreditation: ["NAAC A++"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "20,83,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "17,50,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 630, minScore: 550 },
+      gre: { accepted: true, averageScore: 310 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 85, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 360,
+      internationalStudents: "12%",
+      femaleStudents: "45%",
+      averageAge: 23,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "93%",
+      averageSalary: { amount: 1750000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "220%",
+      topRecruiters: ["TCS", "Infosys", "Deloitte", "KPMG", "Amazon"]
+    },
+    highlights: ["Pune IT hub", "Strong industry connections", "International exposure", "Holistic development"],
+    specializations: ["Finance", "Marketing", "Operations", "HR", "International Business"],
+    image: "/business-schools/sibm-pune.jpg",
+    website: "https://www.sibmpune.edu.in",
+    applicationDeadlines: { round1: "SNAP based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 45, internationalism: "Medium" }
+  },
+  {
+    id: 121,
+    name: "Arizona State Carey School",
+    shortName: "ASU Carey",
+    location: "Tempe, AZ",
+    country: "United States",
+    region: "North America",
+    established: 1962,
+    ranking: { global: 56, ftGlobal: 56, qsGlobal: 60 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "174,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "158,000", currency: "USD" },
+      masters: ["MS Business Analytics", "MS Supply Chain"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 660, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 240,
+      internationalStudents: "40%",
+      femaleStudents: "38%",
+      averageAge: 28,
+      classSize: 120
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 125000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "75%",
+      topRecruiters: ["Intel", "Amazon", "Deloitte", "American Express", "PwC"]
+    },
+    highlights: ["Innovation focus", "Supply chain excellence", "Tech industry connections", "Sustainability emphasis"],
+    specializations: ["Supply Chain", "Analytics", "Innovation", "Finance", "Marketing"],
+    image: "/business-schools/asu-carey.jpg",
+    website: "https://wpcarey.asu.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 15", round3: "February 15" },
+    scholarships: ["Merit scholarships", "Dean's fellowships", "Sustainability awards"],
+    campusLife: { housing: true, studentClubs: 50, internationalism: "High" }
+  },
+  {
+    id: 122,
+    name: "Nirma University Institute of Management",
+    shortName: "Nirma University",
+    location: "Ahmedabad",
+    country: "India",
+    region: "Asia",
+    established: 1996,
+    ranking: { global: 132, ftGlobal: 132, qsGlobal: 137 },
+    accreditation: ["NAAC A++"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "11,40,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "9,50,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 620, minScore: 550 },
+      gre: { accepted: true, averageScore: 310 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 80, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 240,
+      internationalStudents: "8%",
+      femaleStudents: "42%",
+      averageAge: 23,
+      classSize: 120
+    },
+    outcomes: {
+      employmentRate: "91%",
+      averageSalary: { amount: 1150000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "160%",
+      topRecruiters: ["TCS", "Infosys", "Wipro", "L&T", "Reliance"]
+    },
+    highlights: ["Gujarat business hub", "Industry partnerships", "Value for money", "Strong alumni network"],
+    specializations: ["Finance", "Marketing", "Operations", "HR", "International Business"],
+    image: "/business-schools/nirma-university.jpg",
+    website: "https://www.nirmauni.ac.in",
+    applicationDeadlines: { round1: "CAT/MAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Industry scholarships"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Low" }
+  },
+  {
+    id: 123,
+    name: "University of Rochester Simon School",
+    shortName: "Rochester Simon",
+    location: "Rochester, NY",
+    country: "United States",
+    region: "North America",
+    established: 1962,
+    ranking: { global: 59, ftGlobal: 59, qsGlobal: 63 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "17 months", tuitionFee: "195,000", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "168,000", currency: "USD" },
+      masters: ["MS Finance", "MS Marketing Analytics"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 665, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 200,
+      internationalStudents: "50%",
+      femaleStudents: "35%",
+      averageAge: 28,
+      classSize: 100
+    },
+    outcomes: {
+      employmentRate: "88%",
+      averageSalary: { amount: 125000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "72%",
+      topRecruiters: ["Deloitte", "PwC", "Amazon", "Xerox", "Paychex"]
+    },
+    highlights: ["Small class sizes", "Finance strength", "Customizable curriculum", "Strong quant focus"],
+    specializations: ["Finance", "Analytics", "Consulting", "Healthcare", "Operations"],
+    image: "/business-schools/rochester-simon.jpg",
+    website: "https://simon.rochester.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 1", round3: "February 1" },
+    scholarships: ["Merit scholarships", "Simon fellowships", "International awards"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Very High" }
+  },
+  {
+    id: 124,
+    name: "KJ Somaiya Institute of Management",
+    shortName: "KJ Somaiya",
+    location: "Mumbai",
+    country: "India",
+    region: "Asia",
+    established: 1981,
+    ranking: { global: 128, ftGlobal: 128, qsGlobal: 133 },
+    accreditation: ["NAAC A++"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "17,80,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "14,50,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 630, minScore: 550 },
+      gre: { accepted: true, averageScore: 310 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 80, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 360,
+      internationalStudents: "10%",
+      femaleStudents: "40%",
+      averageAge: 23,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 1650000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "210%",
+      topRecruiters: ["HDFC Bank", "ICICI Bank", "TCS", "L&T", "Mahindra"]
+    },
+    highlights: ["Mumbai financial hub", "Strong banking connections", "Industry orientation", "Value-based education"],
+    specializations: ["Banking & Finance", "Marketing", "Operations", "HR", "International Business"],
+    image: "/business-schools/kj-somaiya.jpg",
+    website: "https://www.somaiya.edu",
+    applicationDeadlines: { round1: "CAT/XAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Community scholarships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "Medium" }
+  },
+  {
+    id: 125,
+    name: "Babson Olin Graduate School",
+    shortName: "Babson Olin",
+    location: "Wellesley, MA",
+    country: "United States",
+    region: "North America",
+    established: 1919,
+    ranking: { global: 62, ftGlobal: 62, qsGlobal: 66 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "220,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "195,000", currency: "USD" },
+      masters: ["MS Management", "MS Entrepreneurship"], phd: false
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 640, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 180,
+      internationalStudents: "45%",
+      femaleStudents: "40%",
+      averageAge: 28,
+      classSize: 90
+    },
+    outcomes: {
+      employmentRate: "85%",
+      averageSalary: { amount: 125000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "70%",
+      topRecruiters: ["Amazon", "Deloitte", "PwC", "Accenture", "State Street"]
+    },
+    highlights: ["Entrepreneurship excellence", "#1 Entrepreneurship ranking", "Small cohort", "Action-based learning"],
+    specializations: ["Entrepreneurship", "Innovation", "Strategy", "Marketing", "Finance"],
+    image: "/business-schools/babson-olin.jpg",
+    website: "https://www.babson.edu/academics/graduate-school/",
+    applicationDeadlines: { round1: "October 15", round2: "December 1", round3: "February 15" },
+    scholarships: ["Merit scholarships", "Entrepreneurship fellowships", "Diversity awards"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Very High" }
   }
 ]
 
