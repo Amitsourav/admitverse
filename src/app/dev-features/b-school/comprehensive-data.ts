@@ -7535,6 +7535,426 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "October 15", round2: "December 1", round3: "February 15" },
     scholarships: ["Merit scholarships", "Entrepreneurship fellowships", "Diversity awards"],
     campusLife: { housing: true, studentClubs: 25, internationalism: "Very High" }
+  },
+  {
+    id: 126,
+    name: "University of Minnesota Carlson",
+    shortName: "Minnesota Carlson",
+    location: "Minneapolis, MN",
+    country: "United States",
+    region: "North America",
+    established: 1919,
+    ranking: { global: 61, ftGlobal: 61, qsGlobal: 65 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "176,000", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "158,000", currency: "USD" },
+      masters: ["MS Finance", "MS Business Analytics"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 655, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 200,
+      internationalStudents: "35%",
+      femaleStudents: "38%",
+      averageAge: 28,
+      classSize: 100
+    },
+    outcomes: {
+      employmentRate: "89%",
+      averageSalary: { amount: 120000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "70%",
+      topRecruiters: ["3M", "Target", "UnitedHealth", "General Mills", "Best Buy"]
+    },
+    highlights: ["Twin Cities business hub", "Fortune 500 connections", "Supply chain excellence", "Healthcare focus"],
+    specializations: ["Supply Chain", "Healthcare", "Finance", "Marketing", "Operations"],
+    image: "/business-schools/minnesota-carlson.jpg",
+    website: "https://carlsonschool.umn.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 1", round3: "February 1" },
+    scholarships: ["Merit scholarships", "Minnesota resident scholarships", "Diversity fellowships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "High" }
+  },
+  {
+    id: 127,
+    name: "IIM Udaipur",
+    shortName: "IIM Udaipur",
+    location: "Udaipur",
+    country: "India",
+    region: "Asia",
+    established: 2011,
+    ranking: { global: 88, ftGlobal: 88, qsGlobal: 93 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "19,25,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "14,50,000", currency: "INR" },
+      masters: ["Fellow Program in Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 645, minScore: 600 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 90, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 400,
+      internationalStudents: "12%",
+      femaleStudents: "38%",
+      averageAge: 23,
+      classSize: 200
+    },
+    outcomes: {
+      employmentRate: "96%",
+      averageSalary: { amount: 2250000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "270%",
+      topRecruiters: ["McKinsey", "BCG", "Deloitte", "Amazon", "Microsoft"]
+    },
+    highlights: ["Newest IIM growth", "Innovation and analytics focus", "Beautiful Udaipur campus", "Strong faculty"],
+    specializations: ["Analytics", "Strategy", "Finance", "Marketing", "Operations"],
+    image: "/business-schools/iim-udaipur.jpg",
+    website: "https://www.iimu.ac.in",
+    applicationDeadlines: { round1: "CAT Result based", round2: "WAT-PI process", round3: "Final List" },
+    scholarships: ["Government scholarships", "Merit-based aid", "Need-based scholarships"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Medium" }
+  },
+  {
+    id: 128,
+    name: "Georgia Tech Scheller College",
+    shortName: "Georgia Tech Scheller",
+    location: "Atlanta, GA",
+    country: "United States",
+    region: "North America",
+    established: 1912,
+    ranking: { global: 57, ftGlobal: 57, qsGlobal: 61 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "185,000", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "168,000", currency: "USD" },
+      masters: ["MS Analytics", "MS Quantitative Finance"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 670, minScore: 600 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 180,
+      internationalStudents: "45%",
+      femaleStudents: "35%",
+      averageAge: 29,
+      classSize: 90
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 130000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "78%",
+      topRecruiters: ["Deloitte", "Amazon", "Microsoft", "Home Depot", "Delta"]
+    },
+    highlights: ["STEM-focused MBA", "Technology integration", "Atlanta business hub", "Analytics excellence"],
+    specializations: ["Technology", "Analytics", "Operations", "Finance", "Innovation"],
+    image: "/business-schools/georgia-tech-scheller.jpg",
+    website: "https://scheller.gatech.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 1", round3: "February 1" },
+    scholarships: ["Merit scholarships", "STEM fellowships", "Georgia resident scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Very High" }
+  },
+  {
+    id: 129,
+    name: "HKUST Business School",
+    shortName: "HKUST",
+    location: "Hong Kong",
+    country: "Hong Kong",
+    region: "Asia-Pacific",
+    established: 1991,
+    ranking: { global: 37, ftGlobal: 37, qsGlobal: 41 },
+    accreditation: ["AACSB", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "16 months", tuitionFee: "720,000", currency: "HKD" },
+      emba: { available: true, duration: "17 months", tuitionFee: "1,080,000", currency: "HKD" },
+      masters: ["MSc Finance", "MSc Global Operations"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 660, minScore: 600 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: true, averageYears: 5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 120,
+      internationalStudents: "88%",
+      femaleStudents: "32%",
+      averageAge: 30,
+      classSize: 120
+    },
+    outcomes: {
+      employmentRate: "91%",
+      averageSalary: { amount: 130000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "68%",
+      topRecruiters: ["Goldman Sachs", "JPMorgan", "McKinsey", "Google", "Tencent"]
+    },
+    highlights: ["Hong Kong financial center", "China market access", "Tech industry connections", "Global network"],
+    specializations: ["Finance", "Technology", "Strategy", "Operations", "Entrepreneurship"],
+    image: "/business-schools/hkust.jpg",
+    website: "https://mba.ust.hk",
+    applicationDeadlines: { round1: "October 31", round2: "December 31", round3: "March 31" },
+    scholarships: ["HKUST scholarships", "Asian leadership awards", "Merit-based aid"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Extremely High" }
+  },
+  {
+    id: 130,
+    name: "Goa Institute of Management",
+    shortName: "GIM",
+    location: "Goa",
+    country: "India",
+    region: "Asia",
+    established: 1993,
+    ranking: { global: 122, ftGlobal: 122, qsGlobal: 127 },
+    accreditation: ["NAAC A++"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "16,50,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "13,50,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 630, minScore: 550 },
+      gre: { accepted: true, averageScore: 310 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 85, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 360,
+      internationalStudents: "15%",
+      femaleStudents: "44%",
+      averageAge: 23,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "91%",
+      averageSalary: { amount: 1450000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "190%",
+      topRecruiters: ["TCS", "Infosys", "Deloitte", "L&T", "Amazon"]
+    },
+    highlights: ["Goa coastal location", "Tourism industry connections", "International exposure", "Quality of life"],
+    specializations: ["Tourism & Hospitality", "Finance", "Marketing", "Operations", "IT"],
+    image: "/business-schools/gim.jpg",
+    website: "https://www.gim.ac.in",
+    applicationDeadlines: { round1: "CAT/XAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Tourism industry scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "High" }
+  },
+  {
+    id: 131,
+    name: "Pittsburgh Katz Graduate School",
+    shortName: "Pitt Katz",
+    location: "Pittsburgh, PA",
+    country: "United States",
+    region: "North America",
+    established: 1960,
+    ranking: { global: 65, ftGlobal: 65, qsGlobal: 69 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "168,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "148,000", currency: "USD" },
+      masters: ["MS Finance", "MS Information Systems"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 650, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 160,
+      internationalStudents: "45%",
+      femaleStudents: "40%",
+      averageAge: 28,
+      classSize: 80
+    },
+    outcomes: {
+      employmentRate: "86%",
+      averageSalary: { amount: 115000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "68%",
+      topRecruiters: ["PwC", "Deloitte", "UPMC", "Heinz", "PNC Bank"]
+    },
+    highlights: ["Pittsburgh business revival", "Healthcare sector strength", "Small class sizes", "Affordable tuition"],
+    specializations: ["Healthcare", "Finance", "Information Systems", "Operations", "Marketing"],
+    image: "/business-schools/pitt-katz.jpg",
+    website: "https://business.pitt.edu",
+    applicationDeadlines: { round1: "November 1", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Pennsylvania resident aid", "Healthcare industry awards"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "High" }
+  },
+  {
+    id: 132,
+    name: "Fore School of Management",
+    shortName: "FORE",
+    location: "New Delhi",
+    country: "India",
+    region: "Asia",
+    established: 1991,
+    ranking: { global: 126, ftGlobal: 126, qsGlobal: 131 },
+    accreditation: ["AICTE"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "16,98,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "14,50,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 630, minScore: 550 },
+      gre: { accepted: true, averageScore: 310 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 85, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 420,
+      internationalStudents: "8%",
+      femaleStudents: "42%",
+      averageAge: 23,
+      classSize: 210
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 1520000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "200%",
+      topRecruiters: ["Deloitte", "EY", "KPMG", "Amazon", "Flipkart"]
+    },
+    highlights: ["Delhi NCR advantage", "Strong industry ties", "Research orientation", "Diverse specializations"],
+    specializations: ["Finance", "Marketing", "Operations", "HR", "International Business"],
+    image: "/business-schools/fore.jpg",
+    website: "https://www.fsm.ac.in",
+    applicationDeadlines: { round1: "CAT/XAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Research scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Medium" }
+  },
+  {
+    id: 133,
+    name: "Ohio State Fisher College",
+    shortName: "OSU Fisher",
+    location: "Columbus, OH",
+    country: "United States",
+    region: "North America",
+    established: 1916,
+    ranking: { global: 63, ftGlobal: 63, qsGlobal: 67 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "172,000", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "155,000", currency: "USD" },
+      masters: ["MS Finance", "MS Business Analytics"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 660, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 200,
+      internationalStudents: "32%",
+      femaleStudents: "40%",
+      averageAge: 28,
+      classSize: 100
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 118000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "72%",
+      topRecruiters: ["Deloitte", "PwC", "Amazon", "JPMorgan Chase", "Cardinal Health"]
+    },
+    highlights: ["Columbus business growth", "Strong alumni network", "Research excellence", "Midwest values"],
+    specializations: ["Finance", "Operations", "Marketing", "Strategy", "Analytics"],
+    image: "/business-schools/osu-fisher.jpg",
+    website: "https://fisher.osu.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 1", round3: "February 1" },
+    scholarships: ["Merit scholarships", "Ohio resident scholarships", "Diversity fellowships"],
+    campusLife: { housing: true, studentClubs: 45, internationalism: "High" }
+  },
+  {
+    id: 134,
+    name: "Amity Business School",
+    shortName: "Amity",
+    location: "Noida",
+    country: "India",
+    region: "Asia",
+    established: 2005,
+    ranking: { global: 138, ftGlobal: 138, qsGlobal: 143 },
+    accreditation: ["NAAC A++"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "9,46,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "7,50,000", currency: "INR" },
+      masters: ["PGDM", "Global MBA"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 620, minScore: 550 },
+      gre: { accepted: true, averageScore: 305 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 80, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 480,
+      internationalStudents: "18%",
+      femaleStudents: "48%",
+      averageAge: 23,
+      classSize: 240
+    },
+    outcomes: {
+      employmentRate: "89%",
+      averageSalary: { amount: 950000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "140%",
+      topRecruiters: ["TCS", "Wipro", "L&T", "HCL", "Tech Mahindra"]
+    },
+    highlights: ["Multi-campus presence", "Global partnerships", "Industry orientation", "Modern infrastructure"],
+    specializations: ["Finance", "Marketing", "HR", "International Business", "Digital Marketing"],
+    image: "/business-schools/amity.jpg",
+    website: "https://www.amity.edu",
+    applicationDeadlines: { round1: "CAT/MAT based", round2: "Personal Interview", round3: "Direct admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "International exchange scholarships"],
+    campusLife: { housing: true, studentClubs: 50, internationalism: "High" }
+  },
+  {
+    id: 135,
+    name: "Tulane Freeman School",
+    shortName: "Tulane Freeman",
+    location: "New Orleans, LA",
+    country: "United States",
+    region: "North America",
+    established: 1914,
+    ranking: { global: 68, ftGlobal: 68, qsGlobal: 72 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "178,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "158,000", currency: "USD" },
+      masters: ["MS Finance", "MS Energy Finance"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 645, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 180,
+      internationalStudents: "30%",
+      femaleStudents: "42%",
+      averageAge: 28,
+      classSize: 90
+    },
+    outcomes: {
+      employmentRate: "85%",
+      averageSalary: { amount: 115000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "65%",
+      topRecruiters: ["Shell", "ExxonMobil", "Deloitte", "PwC", "Entergy"]
+    },
+    highlights: ["Energy finance specialization", "New Orleans culture", "Small class sizes", "Gulf Coast connections"],
+    specializations: ["Energy Finance", "Finance", "Marketing", "Operations", "Entrepreneurship"],
+    image: "/business-schools/tulane-freeman.jpg",
+    website: "https://freeman.tulane.edu",
+    applicationDeadlines: { round1: "November 1", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Energy industry scholarships", "Louisiana resident aid"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "High" }
   }
 ]
 
