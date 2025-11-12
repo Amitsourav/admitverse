@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global zoom fix for better scaling */
+html {
+  zoom: 0.8;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

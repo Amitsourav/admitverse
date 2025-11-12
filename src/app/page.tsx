@@ -661,35 +661,42 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="space-y-6 max-w-lg mx-auto"
             >
-              <Link href="/universities">
-                <motion.button 
-                  className="px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300 shadow-lg"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Explore Universities
-                </motion.button>
-              </Link>
-              <Link href="/dev-features/b-school">
-                <motion.button 
-                  className="px-8 py-4 bg-gradient-to-r from-purple-600/80 to-indigo-600/80 backdrop-blur-sm text-white font-semibold rounded-xl border border-purple-500/50 hover:from-purple-700/80 hover:to-indigo-700/80 transition-all duration-300 shadow-lg"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  B-School Zone
-                </motion.button>
-              </Link>
-              <Link href="/contact">
-                <motion.button 
-                  className="px-8 py-4 bg-emerald-600/80 backdrop-blur-sm text-white font-semibold rounded-xl border border-emerald-500/50 hover:bg-emerald-700/80 transition-all duration-300 shadow-lg"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Get Free Consultation
-                </motion.button>
-              </Link>
+              {/* Primary CTA */}
+              <div className="text-center">
+                <Link href="/contact">
+                  <motion.button 
+                    className="w-full sm:w-auto px-12 py-4 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all duration-300 shadow-lg text-lg"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Get Free Consultation
+                  </motion.button>
+                </Link>
+              </div>
+              
+              {/* Secondary CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link href="/universities">
+                  <motion.button 
+                    className="w-full sm:w-auto px-6 py-3 bg-white/15 backdrop-blur-sm text-white font-medium rounded-lg border border-white/20 hover:bg-white/25 transition-all duration-300"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Explore Universities
+                  </motion.button>
+                </Link>
+                <Link href="/dev-features/b-school">
+                  <motion.button 
+                    className="w-full sm:w-auto px-6 py-3 bg-purple-600/20 backdrop-blur-sm text-white font-medium rounded-lg border border-purple-400/30 hover:bg-purple-600/30 transition-all duration-300"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    B-School Zone
+                  </motion.button>
+                </Link>
+              </div>
             </motion.div>
           </div>
         </motion.section>
