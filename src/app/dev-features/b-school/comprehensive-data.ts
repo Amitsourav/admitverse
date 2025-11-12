@@ -4686,6 +4686,311 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "November 30", round2: "January 15", round3: "March 15" },
     scholarships: ["Merit scholarships", "Need-based aid", "Minority scholarships"],
     campusLife: { housing: false, studentClubs: 20, internationalism: "Medium" }
+  },
+
+  // NMIMS Mumbai
+  {
+    id: 59,
+    name: "Narsee Monjee Institute of Management Studies",
+    shortName: "NMIMS",
+    location: "Mumbai",
+    country: "India",
+    region: "Asia",
+    established: 1981,
+    ranking: { global: 90, regional: 25, qsGlobal: 120 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "21,90,000", currency: "INR" },
+      emba: { available: true, duration: "2 years", tuitionFee: "19,50,000", currency: "INR" },
+      masters: ["MBA", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 640 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 600,
+      internationalStudents: "4%",
+      femaleStudents: "40%",
+      averageAge: 22,
+      classSize: 600
+    },
+    outcomes: {
+      employmentRate: "95%",
+      averageSalary: { amount: 2400000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "220%",
+      topRecruiters: ["HDFC Bank", "ICICI", "Kotak", "Reliance", "Aditya Birla"]
+    },
+    highlights: ["Mumbai advantage", "Industry exposure", "Diverse programs", "Strong placements"],
+    specializations: ["Finance", "Marketing", "HR", "Operations", "Analytics"],
+    image: "/business-schools/nmims-mumbai.jpg",
+    website: "https://www.nmims.edu",
+    applicationDeadlines: { round1: "January 31", final: "January 31" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Sports scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Low" }
+  },
+
+  // Great Lakes Chennai
+  {
+    id: 60,
+    name: "Great Lakes Institute of Management",
+    shortName: "GLIM",
+    location: "Chennai",
+    country: "India",
+    region: "Asia",
+    established: 2004,
+    ranking: { global: 95, regional: 28, qsGlobal: 125 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "1 year", tuitionFee: "22,50,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "18,75,000", currency: "INR" },
+      masters: ["PGPM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 680, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 2 },
+      englishTest: { toefl: 85, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 280,
+      internationalStudents: "12%",
+      femaleStudents: "30%",
+      averageAge: 27,
+      classSize: 280
+    },
+    outcomes: {
+      employmentRate: "94%",
+      averageSalary: { amount: 2350000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "75%",
+      topRecruiters: ["Capgemini", "Cognizant", "Infosys", "TCS", "Tech Mahindra"]
+    },
+    highlights: ["One-year MBA", "International faculty", "US curriculum", "Tech focus"],
+    specializations: ["Technology", "Finance", "Marketing", "Operations", "Consulting"],
+    image: "/business-schools/great-lakes-chennai.jpg",
+    website: "https://www.greatlakes.edu.in",
+    applicationDeadlines: { round1: "October 31", round2: "December 15", round3: "February 28" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "High" }
+  },
+
+  // IMT Ghaziabad
+  {
+    id: 61,
+    name: "Institute for Management Technology",
+    shortName: "IMT Ghaziabad",
+    location: "Ghaziabad",
+    country: "India",
+    region: "Asia",
+    established: 1980,
+    ranking: { global: 100, regional: 30, qsGlobal: 130 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "19,53,000", currency: "INR" },
+      emba: { available: true, duration: "2 years", tuitionFee: "15,75,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 620 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 540,
+      internationalStudents: "6%",
+      femaleStudents: "35%",
+      averageAge: 23,
+      classSize: 540
+    },
+    outcomes: {
+      employmentRate: "96%",
+      averageSalary: { amount: 2300000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "210%",
+      topRecruiters: ["EY", "KPMG", "PwC", "Deloitte", "Accenture"]
+    },
+    highlights: ["Marketing strength", "International collaborations", "Industry interface", "Research focus"],
+    specializations: ["Marketing", "Finance", "HR", "Operations", "International Business"],
+    image: "/business-schools/imt-ghaziabad.jpg",
+    website: "https://www.imt.edu",
+    applicationDeadlines: { round1: "November 30", round2: "January 31", round3: "March 31" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Academic excellence awards"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Medium" }
+  },
+
+  // IIFT Delhi
+  {
+    id: 62,
+    name: "Indian Institute of Foreign Trade",
+    shortName: "IIFT Delhi",
+    location: "New Delhi",
+    country: "India",
+    region: "Asia",
+    established: 1963,
+    ranking: { global: 105, regional: 32, qsGlobal: 135 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "10,40,000", currency: "INR" },
+      masters: ["MBA (IB)", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 630 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 420,
+      internationalStudents: "8%",
+      femaleStudents: "32%",
+      averageAge: 23,
+      classSize: 420
+    },
+    outcomes: {
+      employmentRate: "98%",
+      averageSalary: { amount: 2500000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "250%",
+      topRecruiters: ["Mahindra", "Bajaj", "ITC", "Asian Paints", "Godrej"]
+    },
+    highlights: ["International trade focus", "Government institute", "Export-import expertise", "Global connections"],
+    specializations: ["International Business", "Finance", "Marketing", "Operations", "Trade Policy"],
+    image: "/business-schools/iift-delhi.jpg",
+    website: "https://www.iift.edu",
+    applicationDeadlines: { round1: "November 30", final: "November 30" },
+    scholarships: ["Merit scholarships", "Government scholarships", "Need-based aid"],
+    campusLife: { housing: true, studentClubs: 20, internationalism: "High" }
+  },
+
+  // SIBM Pune
+  {
+    id: 63,
+    name: "Symbiosis Institute of Business Management",
+    shortName: "SIBM Pune",
+    location: "Pune",
+    country: "India",
+    region: "Asia",
+    established: 1978,
+    ranking: { global: 110, regional: 35, qsGlobal: 140 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "24,80,000", currency: "INR" },
+      emba: { available: true, duration: "2 years", tuitionFee: "18,50,000", currency: "INR" },
+      masters: ["MBA", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 615 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 360,
+      internationalStudents: "10%",
+      femaleStudents: "45%",
+      averageAge: 22,
+      classSize: 360
+    },
+    outcomes: {
+      employmentRate: "94%",
+      averageSalary: { amount: 2200000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "200%",
+      topRecruiters: ["Wipro", "Infosys", "TCS", "Cognizant", "HCL"]
+    },
+    highlights: ["International exposure", "Innovation focus", "Industry partnerships", "Diverse programs"],
+    specializations: ["Innovation", "Finance", "Marketing", "Operations", "Energy & Environment"],
+    image: "/business-schools/sibm-pune.jpg",
+    website: "https://www.sibmpune.edu.in",
+    applicationDeadlines: { round1: "November 30", round2: "January 31", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Need-based aid", "International scholarships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "High" }
+  },
+
+  // NITIE Mumbai
+  {
+    id: 64,
+    name: "National Institute of Industrial Engineering",
+    shortName: "NITIE",
+    location: "Mumbai",
+    country: "India",
+    region: "Asia",
+    established: 1963,
+    ranking: { global: 115, regional: 38, qsGlobal: 145 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "13,44,500", currency: "INR" },
+      masters: ["PGDIE", "PGDIM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 600 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 380,
+      internationalStudents: "5%",
+      femaleStudents: "25%",
+      averageAge: 23,
+      classSize: 380
+    },
+    outcomes: {
+      employmentRate: "100%",
+      averageSalary: { amount: 2550000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "280%",
+      topRecruiters: ["L&T", "Mahindra", "Tata", "Bajaj", "Godrej"]
+    },
+    highlights: ["Operations excellence", "Industrial engineering focus", "Technical orientation", "Manufacturing strength"],
+    specializations: ["Operations", "Supply Chain", "Industrial Engineering", "Systems", "Project Management"],
+    image: "/business-schools/nitie-mumbai.jpg",
+    website: "https://www.nitie.ac.in",
+    applicationDeadlines: { round1: "February 28", final: "February 28" },
+    scholarships: ["Merit scholarships", "Government scholarships", "SC/ST reservations"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Low" }
+  },
+
+  // MICA Ahmedabad
+  {
+    id: 65,
+    name: "Mudra Institute of Communications Ahmedabad",
+    shortName: "MICA",
+    location: "Ahmedabad",
+    country: "India",
+    region: "Asia",
+    established: 1991,
+    ranking: { global: 120, regional: 40, qsGlobal: 150 },
+    accreditation: ["UGC"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "19,50,000", currency: "INR" },
+      masters: ["PGDM-C", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 590 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 210,
+      internationalStudents: "3%",
+      femaleStudents: "50%",
+      averageAge: 22,
+      classSize: 210
+    },
+    outcomes: {
+      employmentRate: "96%",
+      averageSalary: { amount: 2100000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "190%",
+      topRecruiters: ["Ogilvy", "JWT", "McCann", "Leo Burnett", "Publicis"]
+    },
+    highlights: ["Communication specialization", "Creative focus", "Industry connections", "Unique positioning"],
+    specializations: ["Strategic Marketing", "Brand Management", "Digital Marketing", "Communication", "Media"],
+    image: "/business-schools/mica-ahmedabad.jpg",
+    website: "https://www.mica.ac.in",
+    applicationDeadlines: { round1: "December 31", round2: "February 28", final: "March 31" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Creative scholarships"],
+    campusLife: { housing: true, studentClubs: 15, internationalism: "Low" }
   }
 ]
 
