@@ -26,6 +26,7 @@ export interface BusinessSchool {
       available: boolean
       duration: string
       tuitionFee: string
+      currency?: string
     }
     masters?: string[]
     phd?: boolean
