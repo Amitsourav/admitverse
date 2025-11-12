@@ -5213,6 +5213,228 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "September 15", round2: "November 15", round3: "February 15" },
     scholarships: ["Merit scholarships", "ASEAN scholarships", "Need-based aid"],
     campusLife: { housing: true, studentClubs: 45, internationalism: "Extremely High" }
+  },
+
+  // Batch 3: More Top Global & Indian Schools (IDs 71-80)
+
+  // Cambridge Judge Business School
+  {
+    id: 71,
+    name: "Cambridge Judge Business School",
+    shortName: "Cambridge Judge",
+    location: "Cambridge",
+    country: "United Kingdom",
+    region: "Europe",
+    established: 1990,
+    ranking: { global: 17, regional: 5, qsGlobal: 20, ftGlobal: 15 },
+    accreditation: ["AACSB", "AMBA", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "64,000", currency: "GBP" },
+      emba: { available: true, duration: "20 months", tuitionFee: "89,000", currency: "GBP" },
+      masters: ["MFin", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 692, minScore: 600 },
+      gre: { accepted: true, averageScore: 319 },
+      workExperience: { required: true, averageYears: 6, minYears: 3 },
+      englishTest: { toefl: 110, ielts: 7.5 }
+    },
+    statistics: {
+      studentBody: 200,
+      internationalStudents: "91%",
+      femaleStudents: "36%",
+      averageAge: 30,
+      classSize: 200
+    },
+    outcomes: {
+      employmentRate: "94%",
+      averageSalary: { amount: 118000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "76%",
+      topRecruiters: ["McKinsey", "BCG", "Deloitte", "Amazon", "Microsoft"]
+    },
+    highlights: ["Cambridge University prestige", "Entrepreneurship focus", "Tech innovation", "Small cohort"],
+    specializations: ["Entrepreneurship", "Finance", "Technology", "Strategy", "Consulting"],
+    image: "/business-schools/cambridge-judge.jpg",
+    website: "https://www.jbs.cam.ac.uk",
+    applicationDeadlines: { round1: "October 17", round2: "December 5", round3: "February 6" },
+    scholarships: ["Cambridge scholarships", "Need-based aid", "Entrepreneurship scholarships"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Extremely High" }
+  },
+
+  // IESE Business School
+  {
+    id: 72,
+    name: "IESE Business School",
+    shortName: "IESE",
+    location: "Barcelona",
+    country: "Spain",
+    region: "Europe",
+    established: 1958,
+    ranking: { global: 9, regional: 3, qsGlobal: 11, ftGlobal: 8 },
+    accreditation: ["AACSB", "AMBA", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "19 months", tuitionFee: "93,500", currency: "EUR" },
+      emba: { available: true, duration: "18 months", tuitionFee: "155,000", currency: "EUR" },
+      masters: ["MIM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 686, minScore: 600 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 5, minYears: 3 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 350,
+      internationalStudents: "89%",
+      femaleStudents: "31%",
+      averageAge: 28,
+      classSize: 350
+    },
+    outcomes: {
+      employmentRate: "96%",
+      averageSalary: { amount: 112000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "84%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "P&G", "Coca-Cola"]
+    },
+    highlights: ["Case method teaching", "Strong European network", "General management focus", "Ethics emphasis"],
+    specializations: ["General Management", "Strategy", "Finance", "Marketing", "Operations"],
+    image: "/business-schools/iese-barcelona.jpg",
+    website: "https://www.iese.edu",
+    applicationDeadlines: { round1: "September 27", round2: "November 29", round3: "January 31" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "Extremely High" }
+  },
+
+  // University of Toronto Rotman
+  {
+    id: 73,
+    name: "University of Toronto Rotman School of Management",
+    shortName: "Rotman",
+    location: "Toronto",
+    country: "Canada",
+    region: "North America",
+    established: 1901,
+    ranking: { global: 24, regional: 6, qsGlobal: 28, ftGlobal: 25 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "20 months", tuitionFee: "70,000", currency: "CAD" },
+      emba: { available: true, duration: "16 months", tuitionFee: "150,000", currency: "CAD" },
+      masters: ["MFin", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 665, minScore: 600 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 500,
+      internationalStudents: "45%",
+      femaleStudents: "38%",
+      averageAge: 28,
+      classSize: 500
+    },
+    outcomes: {
+      employmentRate: "91%",
+      averageSalary: { amount: 95000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "68%",
+      topRecruiters: ["McKinsey", "BCG", "RBC", "TD Bank", "Amazon"]
+    },
+    highlights: ["Design thinking", "Innovation focus", "Canadian gateway", "Strong finance program"],
+    specializations: ["Finance", "Consulting", "Technology", "Healthcare", "Real Estate"],
+    image: "/business-schools/rotman-toronto.jpg",
+    website: "https://www.rotman.utoronto.ca",
+    applicationDeadlines: { round1: "October 4", round2: "December 6", round3: "February 28" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Canadian scholarships"],
+    campusLife: { housing: true, studentClubs: 50, internationalism: "High" }
+  },
+
+  // Chinese University of Hong Kong Business School
+  {
+    id: 74,
+    name: "Chinese University of Hong Kong Business School",
+    shortName: "CUHK",
+    location: "Hong Kong",
+    country: "Hong Kong",
+    region: "Asia",
+    established: 1963,
+    ranking: { global: 26, regional: 2, qsGlobal: 30, ftGlobal: 28 },
+    accreditation: ["AACSB", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "55,000", currency: "USD" },
+      emba: { available: true, duration: "14 months", tuitionFee: "75,000", currency: "USD" },
+      masters: ["MFin", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 650, minScore: 600 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 6, minYears: 3 },
+      englishTest: { toefl: 100, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 55,
+      internationalStudents: "70%",
+      femaleStudents: "30%",
+      averageAge: 30,
+      classSize: 55
+    },
+    outcomes: {
+      employmentRate: "98%",
+      averageSalary: { amount: 90000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "70%",
+      topRecruiters: ["Goldman Sachs", "JP Morgan", "Morgan Stanley", "HSBC", "Standard Chartered"]
+    },
+    highlights: ["Asia-Pacific gateway", "Small cohort", "Finance strength", "Chinese market access"],
+    specializations: ["Finance", "Consulting", "Real Estate", "Private Equity", "Investment Banking"],
+    image: "/business-schools/cuhk-hong-kong.jpg",
+    website: "https://www.bschool.cuhk.edu.hk",
+    applicationDeadlines: { round1: "October 15", round2: "December 15", round3: "February 15" },
+    scholarships: ["Merit scholarships", "Asian scholarships", "Need-based aid"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Extremely High" }
+  },
+
+  // HEC Paris
+  {
+    id: 75,
+    name: "HEC Paris",
+    shortName: "HEC",
+    location: "Paris",
+    country: "France",
+    region: "Europe",
+    established: 1881,
+    ranking: { global: 5, regional: 2, qsGlobal: 6, ftGlobal: 5 },
+    accreditation: ["AACSB", "AMBA", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "16 months", tuitionFee: "81,000", currency: "EUR" },
+      emba: { available: true, duration: "18 months", tuitionFee: "160,000", currency: "EUR" },
+      masters: ["MSc", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 690, minScore: 650 },
+      gre: { accepted: true, averageScore: 325 },
+      workExperience: { required: true, averageYears: 5, minYears: 3 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 280,
+      internationalStudents: "93%",
+      femaleStudents: "35%",
+      averageAge: 29,
+      classSize: 280
+    },
+    outcomes: {
+      employmentRate: "95%",
+      averageSalary: { amount: 125000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "82%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "L'Oreal", "LVMH"]
+    },
+    highlights: ["French excellence", "Luxury sector strength", "European focus", "Strong alumni network"],
+    specializations: ["Strategy", "Finance", "Marketing", "Luxury Management", "Entrepreneurship"],
+    image: "/business-schools/hec-paris.jpg",
+    website: "https://www.hec.edu",
+    applicationDeadlines: { round1: "October 6", round2: "January 12", round3: "March 30" },
+    scholarships: ["HEC Foundation scholarships", "Need-based aid", "Diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Extremely High" }
   }
 ]
 
