@@ -4200,6 +4200,228 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "October 6", round2: "January 12", round3: "March 30" },
     scholarships: ["HEC Foundation scholarships", "Need-based aid", "Diversity scholarships"],
     campusLife: { housing: true, studentClubs: 35, internationalism: "Extremely High" }
+  },
+
+  // India's Top Business Schools - Part 1 (IIMs)
+  
+  // IIM Ahmedabad
+  {
+    id: 48,
+    name: "Indian Institute of Management Ahmedabad",
+    shortName: "IIM-A",
+    location: "Ahmedabad",
+    country: "India",
+    region: "Asia",
+    established: 1961,
+    ranking: { global: 25, regional: 2, qsGlobal: 45 },
+    accreditation: ["AACSB", "AMBA"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "25,00,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "28,00,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 680 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 395,
+      internationalStudents: "5%",
+      femaleStudents: "35%",
+      averageAge: 23,
+      classSize: 395
+    },
+    outcomes: {
+      employmentRate: "100%",
+      averageSalary: { amount: 3500000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "300%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Goldman Sachs", "Amazon", "Google"]
+    },
+    highlights: ["India's premier B-school", "Louis Kahn designed campus", "Strong alumni network", "Case study method"],
+    specializations: ["General Management", "Finance", "Marketing", "Operations", "Strategy"],
+    image: "/business-schools/iim-ahmedabad.jpg",
+    website: "https://www.iima.ac.in",
+    applicationDeadlines: { round1: "November 15", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 50, internationalism: "Medium" }
+  },
+
+  // IIM Bangalore
+  {
+    id: 49,
+    name: "Indian Institute of Management Bangalore",
+    shortName: "IIM-B",
+    location: "Bangalore",
+    country: "India",
+    region: "Asia",
+    established: 1973,
+    ranking: { global: 28, regional: 3, qsGlobal: 48 },
+    accreditation: ["AACSB", "AMBA"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "24,00,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "26,00,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 670 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 420,
+      internationalStudents: "8%",
+      femaleStudents: "38%",
+      averageAge: 23,
+      classSize: 420
+    },
+    outcomes: {
+      employmentRate: "100%",
+      averageSalary: { amount: 3200000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "280%",
+      topRecruiters: ["Microsoft", "Amazon", "Flipkart", "Consulting firms", "Investment banks"]
+    },
+    highlights: ["IT hub location", "Strong tech placements", "Research focus", "International programs"],
+    specializations: ["Technology Management", "Finance", "Marketing", "Operations", "Analytics"],
+    image: "/business-schools/iim-bangalore.jpg",
+    website: "https://www.iimb.ac.in",
+    applicationDeadlines: { round1: "November 15", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Women diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 45, internationalism: "High" }
+  },
+
+  // IIM Delhi
+  {
+    id: 50,
+    name: "Indian Institute of Management Delhi",
+    shortName: "IIM-D",
+    location: "New Delhi",
+    country: "India",
+    region: "Asia",
+    established: 1969,
+    ranking: { global: 30, regional: 4, qsGlobal: 52 },
+    accreditation: ["AACSB", "AMBA"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "22,00,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "24,00,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 650 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 440,
+      internationalStudents: "7%",
+      femaleStudents: "36%",
+      averageAge: 23,
+      classSize: 440
+    },
+    outcomes: {
+      employmentRate: "100%",
+      averageSalary: { amount: 3100000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "270%",
+      topRecruiters: ["Deloitte", "EY", "KPMG", "Accenture", "TCS"]
+    },
+    highlights: ["Capital city advantage", "Government relations", "Public policy focus", "Strong consulting placements"],
+    specializations: ["Public Policy", "Finance", "Marketing", "Strategy", "Operations"],
+    image: "/business-schools/iim-delhi.jpg",
+    website: "https://www.iimdelhi.ac.in",
+    applicationDeadlines: { round1: "November 15", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Need-based aid", "SC/ST scholarships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "Medium" }
+  },
+
+  // IIM Kozhikode
+  {
+    id: 51,
+    name: "Indian Institute of Management Kozhikode",
+    shortName: "IIM-K",
+    location: "Kozhikode",
+    country: "India",
+    region: "Asia",
+    established: 1996,
+    ranking: { global: 55, regional: 8, qsGlobal: 85 },
+    accreditation: ["AACSB", "AMBA"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "20,00,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "22,00,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 640 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 450,
+      internationalStudents: "6%",
+      femaleStudents: "34%",
+      averageAge: 23,
+      classSize: 450
+    },
+    outcomes: {
+      employmentRate: "98%",
+      averageSalary: { amount: 2800000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "250%",
+      topRecruiters: ["TCS", "Infosys", "Wipro", "Accenture", "IBM"]
+    },
+    highlights: ["Coastal campus", "Strong IT placements", "Sustainable practices", "International exchange programs"],
+    specializations: ["IT Management", "Finance", "Marketing", "Operations", "HR"],
+    image: "/business-schools/iim-kozhikode.jpg",
+    website: "https://www.iimk.ac.in",
+    applicationDeadlines: { round1: "November 15", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Medium" }
+  },
+
+  // Indian School of Business
+  {
+    id: 52,
+    name: "Indian School of Business",
+    shortName: "ISB",
+    location: "Hyderabad",
+    country: "India",
+    region: "Asia",
+    established: 2001,
+    ranking: { global: 35, regional: 5, qsGlobal: 62 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "1 year", tuitionFee: "36,30,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "28,50,000", currency: "INR" },
+      masters: ["PGP", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 710, minScore: 600 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: true, averageYears: 5.5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 920,
+      internationalStudents: "15%",
+      femaleStudents: "32%",
+      averageAge: 28,
+      classSize: 920
+    },
+    outcomes: {
+      employmentRate: "95%",
+      averageSalary: { amount: 3400000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "85%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Google", "Microsoft", "Amazon"]
+    },
+    highlights: ["US-style curriculum", "World-class faculty", "Global partnerships", "Startup ecosystem"],
+    specializations: ["Consulting", "Finance", "Technology", "Marketing", "Strategy"],
+    image: "/business-schools/isb-hyderabad.jpg",
+    website: "https://www.isb.edu",
+    applicationDeadlines: { round1: "September 19", round2: "November 14", round3: "January 16" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Diversity scholarships", "ISB Trust scholarships"],
+    campusLife: { housing: true, studentClubs: 60, internationalism: "High" }
   }
 ]
 
