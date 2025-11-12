@@ -6275,6 +6275,426 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "October 1", round2: "December 1", round3: "February 1" },
     scholarships: ["Ivey scholarships", "International awards", "Leadership scholarships"],
     campusLife: { housing: true, studentClubs: 30, internationalism: "High" }
+  },
+  {
+    id: 96,
+    name: "Yale School of Management",
+    shortName: "Yale SOM",
+    location: "New Haven, CT",
+    country: "United States",
+    region: "North America",
+    established: 1976,
+    ranking: { global: 25, ftGlobal: 25, qsGlobal: 28 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "251,250", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "235,000", currency: "USD" },
+      masters: ["MAM", "Global MMS"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 720, minScore: 600 },
+      gre: { accepted: true, averageScore: 325 },
+      workExperience: { required: true, averageYears: 5, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 343,
+      internationalStudents: "45%",
+      femaleStudents: "47%",
+      averageAge: 28,
+      classSize: 343
+    },
+    outcomes: {
+      employmentRate: "95%",
+      averageSalary: { amount: 170000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "90%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Goldman Sachs", "Google"]
+    },
+    highlights: ["Ivy League prestige", "Integrated curriculum", "Global perspective", "Social impact focus"],
+    specializations: ["Strategy", "Finance", "Marketing", "Nonprofit", "Social Enterprise"],
+    image: "/business-schools/yale-som.jpg",
+    website: "https://som.yale.edu",
+    applicationDeadlines: { round1: "September 12", round2: "November 7", round3: "January 6" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Fellowship programs"],
+    campusLife: { housing: true, studentClubs: 80, internationalism: "Very High" }
+  },
+  {
+    id: 97,
+    name: "XLRI - Xavier School of Management",
+    shortName: "XLRI",
+    location: "Jamshedpur",
+    country: "India",
+    region: "Asia",
+    established: 1949,
+    ranking: { global: 95, ftGlobal: 95, qsGlobal: 100 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "23,00,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "18,50,000", currency: "INR" },
+      masters: ["PGDM-GM", "PGDM-HRM"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 670, minScore: 600 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 90, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 380,
+      internationalStudents: "8%",
+      femaleStudents: "35%",
+      averageAge: 23,
+      classSize: 190
+    },
+    outcomes: {
+      employmentRate: "98%",
+      averageSalary: { amount: 2800000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "300%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Goldman Sachs", "Microsoft"]
+    },
+    highlights: ["Legacy institution", "Strong HR specialization", "Jesuit values", "Industry leadership"],
+    specializations: ["Human Resources", "General Management", "Finance", "Marketing", "Operations"],
+    image: "/business-schools/xlri.jpg",
+    website: "https://www.xlri.ac.in",
+    applicationDeadlines: { round1: "XAT Result based", round2: "GD-PI process", round3: "Final List" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Minority scholarships"],
+    campusLife: { housing: true, studentClubs: 50, internationalism: "Medium" }
+  },
+  {
+    id: 98,
+    name: "Cornell Johnson Graduate School",
+    shortName: "Cornell Johnson",
+    location: "Ithaca, NY",
+    country: "United States",
+    region: "North America",
+    established: 1946,
+    ranking: { global: 32, ftGlobal: 32, qsGlobal: 36 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "243,200", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "220,000", currency: "USD" },
+      masters: ["MPS", "MBA/MPA"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 700, minScore: 600 },
+      gre: { accepted: true, averageScore: 322 },
+      workExperience: { required: true, averageYears: 5, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 570,
+      internationalStudents: "35%",
+      femaleStudents: "43%",
+      averageAge: 28,
+      classSize: 285
+    },
+    outcomes: {
+      employmentRate: "93%",
+      averageSalary: { amount: 155000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "85%",
+      topRecruiters: ["Goldman Sachs", "McKinsey", "Amazon", "Microsoft", "JPMorgan"]
+    },
+    highlights: ["Ivy League network", "Tech industry connections", "Immersion learning", "Diverse specializations"],
+    specializations: ["Finance", "Technology", "Consulting", "Healthcare", "Real Estate"],
+    image: "/business-schools/cornell-johnson.jpg",
+    website: "https://www.johnson.cornell.edu",
+    applicationDeadlines: { round1: "October 1", round2: "January 3", round3: "March 15" },
+    scholarships: ["Park fellowships", "Merit scholarships", "Diversity fellowships"],
+    campusLife: { housing: true, studentClubs: 85, internationalism: "High" }
+  },
+  {
+    id: 99,
+    name: "NUS Business School",
+    shortName: "NUS",
+    location: "Singapore",
+    country: "Singapore",
+    region: "Asia-Pacific",
+    established: 1965,
+    ranking: { global: 36, ftGlobal: 36, qsGlobal: 40 },
+    accreditation: ["AACSB", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "17 months", tuitionFee: "118,000", currency: "SGD" },
+      emba: { available: true, duration: "17 months", tuitionFee: "148,000", currency: "SGD" },
+      masters: ["MSc Finance", "MSc Marketing Analytics"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 660, minScore: 600 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 5, minYears: 3 },
+      englishTest: { toefl: 100, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 200,
+      internationalStudents: "90%",
+      femaleStudents: "35%",
+      averageAge: 29,
+      classSize: 200
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 125000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "70%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Google", "Grab"]
+    },
+    highlights: ["Singapore hub advantage", "Asia-Pacific focus", "Strong network", "Tech industry access"],
+    specializations: ["Finance", "Strategy", "Marketing", "Operations", "Technology"],
+    image: "/business-schools/nus.jpg",
+    website: "https://biz.nus.edu.sg",
+    applicationDeadlines: { round1: "September 30", round2: "November 30", round3: "February 28" },
+    scholarships: ["NUS scholarships", "ASEAN scholarships", "Merit awards"],
+    campusLife: { housing: true, studentClubs: 45, internationalism: "Extremely High" }
+  },
+  {
+    id: 100,
+    name: "Faculty of Management Studies, Delhi University",
+    shortName: "FMS Delhi",
+    location: "New Delhi",
+    country: "India",
+    region: "Asia",
+    established: 1954,
+    ranking: { global: 105, ftGlobal: 105, qsGlobal: 110 },
+    accreditation: ["NAAC A++"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "20,000", currency: "INR" },
+      emba: { available: true, duration: "24 months", tuitionFee: "50,000", currency: "INR" },
+      masters: ["MBA", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 680, minScore: 600 },
+      gre: { accepted: false, averageScore: 0 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 85, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 220,
+      internationalStudents: "5%",
+      femaleStudents: "40%",
+      averageAge: 22,
+      classSize: 110
+    },
+    outcomes: {
+      employmentRate: "100%",
+      averageSalary: { amount: 3200000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "400%",
+      topRecruiters: ["Goldman Sachs", "McKinsey", "BCG", "Bain", "Google"]
+    },
+    highlights: ["Exceptional ROI", "Top placement record", "Delhi University legacy", "Affordable fees"],
+    specializations: ["Finance", "Marketing", "Operations", "Strategy", "HR"],
+    image: "/business-schools/fms-delhi.jpg",
+    website: "https://www.fms.edu",
+    applicationDeadlines: { round1: "CAT Result based", round2: "Personal Interview", round3: "Final Merit List" },
+    scholarships: ["Government scholarships", "Merit-based aid", "Need-based scholarships"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Low" }
+  },
+  {
+    id: 101,
+    name: "Rice Jones Graduate School",
+    shortName: "Rice Jones",
+    location: "Houston, TX",
+    country: "United States",
+    region: "North America",
+    established: 1974,
+    ranking: { global: 50, ftGlobal: 50, qsGlobal: 55 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "22 months", tuitionFee: "204,000", currency: "USD" },
+      emba: { available: true, duration: "21 months", tuitionFee: "178,000", currency: "USD" },
+      masters: ["MS Accounting", "Professional MBA"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 670, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 240,
+      internationalStudents: "40%",
+      femaleStudents: "35%",
+      averageAge: 28,
+      classSize: 120
+    },
+    outcomes: {
+      employmentRate: "89%",
+      averageSalary: { amount: 135000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "75%",
+      topRecruiters: ["ExxonMobil", "Shell", "Deloitte", "Amazon", "JPMorgan"]
+    },
+    highlights: ["Energy sector strength", "Houston business hub", "Small class sizes", "Strong alumni network"],
+    specializations: ["Energy", "Finance", "Consulting", "Technology", "Healthcare"],
+    image: "/business-schools/rice-jones.jpg",
+    website: "https://business.rice.edu",
+    applicationDeadlines: { round1: "October 10", round2: "December 5", round3: "February 12" },
+    scholarships: ["Merit scholarships", "Consortium fellowships", "Energy industry awards"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "High" }
+  },
+  {
+    id: 102,
+    name: "Indian School of Business",
+    shortName: "ISB",
+    location: "Hyderabad",
+    country: "India",
+    region: "Asia",
+    established: 2001,
+    ranking: { global: 60, ftGlobal: 60, qsGlobal: 65 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "35,60,000", currency: "INR" },
+      emba: { available: true, duration: "12 months", tuitionFee: "32,50,000", currency: "INR" },
+      masters: ["AMPGP", "MFAB"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 710, minScore: 650 },
+      gre: { accepted: true, averageScore: 325 },
+      workExperience: { required: true, averageYears: 5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 917,
+      internationalStudents: "15%",
+      femaleStudents: "35%",
+      averageAge: 27,
+      classSize: 917
+    },
+    outcomes: {
+      employmentRate: "95%",
+      averageSalary: { amount: 3400000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "140%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Goldman Sachs", "Amazon"]
+    },
+    highlights: ["World-class faculty", "Industry partnerships", "Strong alumni network", "Global exposure"],
+    specializations: ["Strategy", "Finance", "Marketing", "Operations", "Technology"],
+    image: "/business-schools/isb.jpg",
+    website: "https://www.isb.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 15", round3: "February 15" },
+    scholarships: ["Need-based scholarships", "Merit awards", "Women in leadership awards"],
+    campusLife: { housing: true, studentClubs: 60, internationalism: "High" }
+  },
+  {
+    id: 103,
+    name: "Georgetown McDonough School",
+    shortName: "Georgetown McDonough",
+    location: "Washington, DC",
+    country: "United States",
+    region: "North America",
+    established: 1957,
+    ranking: { global: 45, ftGlobal: 45, qsGlobal: 49 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "228,950", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "215,000", currency: "USD" },
+      masters: ["MS Finance", "MS Analytics"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 680, minScore: 600 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: true, averageYears: 4, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 285,
+      internationalStudents: "35%",
+      femaleStudents: "42%",
+      averageAge: 28,
+      classSize: 285
+    },
+    outcomes: {
+      employmentRate: "91%",
+      averageSalary: { amount: 145000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "80%",
+      topRecruiters: ["Deloitte", "PwC", "Amazon", "Capital One", "World Bank"]
+    },
+    highlights: ["DC location advantage", "Government connections", "International focus", "Ethics emphasis"],
+    specializations: ["Finance", "Consulting", "International Business", "Healthcare", "Public Policy"],
+    image: "/business-schools/georgetown-mcdonough.jpg",
+    website: "https://msb.georgetown.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 15", round3: "March 1" },
+    scholarships: ["Merit scholarships", "Public service fellowships", "International awards"],
+    campusLife: { housing: true, studentClubs: 55, internationalism: "High" }
+  },
+  {
+    id: 104,
+    name: "SP Jain Institute of Management",
+    shortName: "SP Jain",
+    location: "Mumbai",
+    country: "India",
+    region: "Asia",
+    established: 1981,
+    ranking: { global: 135, ftGlobal: 135, qsGlobal: 140 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "17,50,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "15,00,000", currency: "INR" },
+      masters: ["PGDM", "Global MBA"], phd: false
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 650, minScore: 600 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 80, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 240,
+      internationalStudents: "20%",
+      femaleStudents: "40%",
+      averageAge: 24,
+      classSize: 120
+    },
+    outcomes: {
+      employmentRate: "93%",
+      averageSalary: { amount: 1650000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "230%",
+      topRecruiters: ["Accenture", "Deloitte", "KPMG", "Wipro", "L&T"]
+    },
+    highlights: ["Global campuses", "International exposure", "Industry focus", "Mumbai financial center"],
+    specializations: ["Finance", "Marketing", "Operations", "Information Management", "Economics"],
+    image: "/business-schools/sp-jain.jpg",
+    website: "https://www.spjimr.org",
+    applicationDeadlines: { round1: "CAT/XAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Industry scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "High" }
+  },
+  {
+    id: 105,
+    name: "Emory Goizueta Business School",
+    shortName: "Emory Goizueta",
+    location: "Atlanta, GA",
+    country: "United States",
+    region: "North America",
+    established: 1919,
+    ranking: { global: 38, ftGlobal: 38, qsGlobal: 42 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "22 months", tuitionFee: "215,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "198,000", currency: "USD" },
+      masters: ["MS Analytics", "MS Finance"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 690, minScore: 600 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 320,
+      internationalStudents: "30%",
+      femaleStudents: "41%",
+      averageAge: 28,
+      classSize: 160
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 148000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "85%",
+      topRecruiters: ["McKinsey", "BCG", "Deloitte", "Amazon", "Goldman Sachs"]
+    },
+    highlights: ["Atlanta business hub", "Collaborative culture", "Strong alumni network", "Innovation focus"],
+    specializations: ["Consulting", "Finance", "Marketing", "Operations", "Healthcare"],
+    image: "/business-schools/emory-goizueta.jpg",
+    website: "https://goizueta.emory.edu",
+    applicationDeadlines: { round1: "October 1", round2: "November 15", round3: "January 5" },
+    scholarships: ["Merit scholarships", "Consortium fellowships", "Need-based aid"],
+    campusLife: { housing: true, studentClubs: 65, internationalism: "High" }
   }
 ]
 
