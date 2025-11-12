@@ -5855,6 +5855,426 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "September 30", round2: "November 30", round3: "January 31" },
     scholarships: ["RSM scholarships", "Excellence scholarships", "Diversity scholarships"],
     campusLife: { housing: true, studentClubs: 35, internationalism: "Extremely High" }
+  },
+  {
+    id: 86,
+    name: "Duke Fuqua School of Business",
+    shortName: "Duke Fuqua",
+    location: "Durham, NC",
+    country: "United States",
+    region: "North America",
+    established: 1969,
+    ranking: { global: 24, ftGlobal: 24, qsGlobal: 26 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "22 months", tuitionFee: "252,072", currency: "USD" },
+      emba: { available: true, duration: "17 months", tuitionFee: "180,000", currency: "USD" },
+      masters: ["MMS", "MQM"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 705, minScore: 600 },
+      gre: { accepted: true, averageScore: 322 },
+      workExperience: { required: true, averageYears: 5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 440,
+      internationalStudents: "32%",
+      femaleStudents: "45%",
+      averageAge: 28,
+      classSize: 440
+    },
+    outcomes: {
+      employmentRate: "94%",
+      averageSalary: { amount: 165000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "85%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Goldman Sachs", "Amazon"]
+    },
+    highlights: ["Team Fuqua culture", "Healthcare management strength", "Strong alumni network", "Leadership focus"],
+    specializations: ["Healthcare", "Finance", "Consulting", "Technology", "Entrepreneurship"],
+    image: "/business-schools/duke-fuqua.jpg",
+    website: "https://www.fuqua.duke.edu",
+    applicationDeadlines: { round1: "September 6", round2: "October 22", round3: "January 7" },
+    scholarships: ["Merit scholarships", "Consortium fellowships", "Need-based aid"],
+    campusLife: { housing: true, studentClubs: 75, internationalism: "High" }
+  },
+  {
+    id: 87,
+    name: "Indian Institute of Management Indore",
+    shortName: "IIM Indore",
+    location: "Indore",
+    country: "India",
+    region: "Asia",
+    established: 1996,
+    ranking: { global: 75, ftGlobal: 75, qsGlobal: 80 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "20,75,000", currency: "INR" },
+      emba: { available: true, duration: "24 months", tuitionFee: "18,00,000", currency: "INR" },
+      masters: ["IPM", "Fellow Program"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 660, minScore: 600 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 90, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 540,
+      internationalStudents: "10%",
+      femaleStudents: "38%",
+      averageAge: 23,
+      classSize: 270
+    },
+    outcomes: {
+      employmentRate: "98%",
+      averageSalary: { amount: 2500000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "280%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Goldman Sachs", "Flipkart"]
+    },
+    highlights: ["Top tier IIM", "Strong consulting placements", "5-year IPM program", "Excellent infrastructure"],
+    specializations: ["Strategy", "Finance", "Marketing", "Operations", "Consulting"],
+    image: "/business-schools/iim-indore.jpg",
+    website: "https://www.iimidr.ac.in",
+    applicationDeadlines: { round1: "CAT Result based", round2: "WAT-PI based", round3: "Final List" },
+    scholarships: ["Government scholarships", "Merit-based aid", "Need-based scholarships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "Medium" }
+  },
+  {
+    id: 88,
+    name: "IE Business School",
+    shortName: "IE Madrid",
+    location: "Madrid",
+    country: "Spain",
+    region: "Europe",
+    established: 1973,
+    ranking: { global: 31, ftGlobal: 31, qsGlobal: 35 },
+    accreditation: ["AACSB", "EQUIS", "AMBA"],
+    programs: {
+      mba: { available: true, duration: "11 months", tuitionFee: "89,200", currency: "EUR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "97,000", currency: "EUR" },
+      masters: ["Master in Finance", "Master in Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 690, minScore: 550 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: true, averageYears: 5, minYears: 3 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 400,
+      internationalStudents: "85%",
+      femaleStudents: "42%",
+      averageAge: 29,
+      classSize: 400
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 115000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "90%",
+      topRecruiters: ["McKinsey", "BCG", "Amazon", "Google", "Telefónica"]
+    },
+    highlights: ["Innovation focus", "Tech entrepreneurship", "Madrid location", "Digital transformation"],
+    specializations: ["Innovation", "Entrepreneurship", "Technology", "Strategy", "Finance"],
+    image: "/business-schools/ie-madrid.jpg",
+    website: "https://www.ie.edu",
+    applicationDeadlines: { round1: "October 31", round2: "December 15", round3: "February 28" },
+    scholarships: ["IE Excellence scholarships", "Diversity scholarships", "Women in business awards"],
+    campusLife: { housing: true, studentClubs: 50, internationalism: "Very High" }
+  },
+  {
+    id: 89,
+    name: "Imperial College Business School",
+    shortName: "Imperial CBS",
+    location: "London",
+    country: "United Kingdom",
+    region: "Europe",
+    established: 2003,
+    ranking: { global: 40, ftGlobal: 40, qsGlobal: 42 },
+    accreditation: ["AACSB", "EQUIS", "AMBA"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "59,500", currency: "GBP" },
+      emba: { available: true, duration: "24 months", tuitionFee: "78,000", currency: "GBP" },
+      masters: ["MSc Finance", "MSc Innovation", "MSc Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 680, minScore: 600 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 6, minYears: 3 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 80,
+      internationalStudents: "95%",
+      femaleStudents: "30%",
+      averageAge: 31,
+      classSize: 80
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 110000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "75%",
+      topRecruiters: ["Goldman Sachs", "JPMorgan", "McKinsey", "Google", "Amazon"]
+    },
+    highlights: ["STEM focus", "London financial hub", "Small class size", "Technology innovation"],
+    specializations: ["Finance", "Technology", "Innovation", "Entrepreneurship", "Energy"],
+    image: "/business-schools/imperial-cbs.jpg",
+    website: "https://www.imperial.ac.uk/business-school",
+    applicationDeadlines: { round1: "October 15", round2: "December 15", round3: "February 28" },
+    scholarships: ["Imperial scholarships", "Alumni scholarships", "International awards"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Extremely High" }
+  },
+  {
+    id: 90,
+    name: "NMIMS School of Business Management",
+    shortName: "NMIMS Mumbai",
+    location: "Mumbai",
+    country: "India",
+    region: "Asia",
+    established: 1981,
+    ranking: { global: 110, ftGlobal: 110, qsGlobal: 115 },
+    accreditation: ["NAAC A++"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "19,53,000", currency: "INR" },
+      emba: { available: true, duration: "24 months", tuitionFee: "15,00,000", currency: "INR" },
+      masters: ["PGDM", "Executive PGDM"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 650, minScore: 600 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 85, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 600,
+      internationalStudents: "8%",
+      femaleStudents: "40%",
+      averageAge: 23,
+      classSize: 300
+    },
+    outcomes: {
+      employmentRate: "95%",
+      averageSalary: { amount: 1800000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "220%",
+      topRecruiters: ["Deloitte", "EY", "KPMG", "JPMorgan", "Aditya Birla Group"]
+    },
+    highlights: ["Mumbai financial hub", "Strong industry connections", "Excellent placement record", "Modern facilities"],
+    specializations: ["Finance", "Marketing", "Operations", "HR", "Business Analytics"],
+    image: "/business-schools/nmims.jpg",
+    website: "https://www.nmims.edu",
+    applicationDeadlines: { round1: "NMAT based", round2: "GD-PI process", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Industry-sponsored awards"],
+    campusLife: { housing: true, studentClubs: 45, internationalism: "Low" }
+  },
+  {
+    id: 91,
+    name: "Toronto Rotman School of Management",
+    shortName: "Rotman",
+    location: "Toronto",
+    country: "Canada",
+    region: "North America",
+    established: 1827,
+    ranking: { global: 44, ftGlobal: 44, qsGlobal: 48 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "20 months", tuitionFee: "116,700", currency: "CAD" },
+      emba: { available: true, duration: "17 months", tuitionFee: "142,000", currency: "CAD" },
+      masters: ["Master of Finance", "Master of Management Analytics"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 665, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 300,
+      internationalStudents: "70%",
+      femaleStudents: "40%",
+      averageAge: 28,
+      classSize: 300
+    },
+    outcomes: {
+      employmentRate: "88%",
+      averageSalary: { amount: 110000, currency: "CAD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "70%",
+      topRecruiters: ["Deloitte", "McKinsey", "RBC", "TD Bank", "Amazon"]
+    },
+    highlights: ["Toronto financial center", "Design thinking", "Strong Canadian network", "Integrative thinking"],
+    specializations: ["Finance", "Strategy", "Marketing", "Operations", "Analytics"],
+    image: "/business-schools/rotman.jpg",
+    website: "https://www.rotman.utoronto.ca",
+    applicationDeadlines: { round1: "October 6", round2: "December 8", round3: "February 23" },
+    scholarships: ["Rotman scholarships", "International awards", "Diversity scholarships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "Very High" }
+  },
+  {
+    id: 92,
+    name: "Great Lakes Institute of Management",
+    shortName: "Great Lakes",
+    location: "Chennai",
+    country: "India",
+    region: "Asia",
+    established: 2004,
+    ranking: { global: 130, ftGlobal: 130, qsGlobal: 135 },
+    accreditation: ["AICTE"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "17,50,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "14,50,000", currency: "INR" },
+      masters: ["PGDM", "PGPM"], phd: false
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 630, minScore: 550 },
+      gre: { accepted: true, averageScore: 310 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 80, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 480,
+      internationalStudents: "15%",
+      femaleStudents: "35%",
+      averageAge: 24,
+      classSize: 240
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 1400000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "200%",
+      topRecruiters: ["TCS", "Infosys", "Wipro", "Cognizant", "L&T"]
+    },
+    highlights: ["Industry-academia partnership", "Chennai IT hub", "Strong alumni network", "Practical learning"],
+    specializations: ["IT Management", "Finance", "Marketing", "Operations", "Strategy"],
+    image: "/business-schools/great-lakes.jpg",
+    website: "https://www.greatlakes.edu.in",
+    applicationDeadlines: { round1: "CAT/XAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Alumni scholarships"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Medium" }
+  },
+  {
+    id: 93,
+    name: "Vanderbilt Owen Graduate School",
+    shortName: "Vanderbilt Owen",
+    location: "Nashville, TN",
+    country: "United States",
+    region: "North America",
+    established: 1969,
+    ranking: { global: 48, ftGlobal: 48, qsGlobal: 52 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "218,412", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "189,000", currency: "USD" },
+      masters: ["MS Finance", "MS Marketing"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 680, minScore: 550 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 4, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 350,
+      internationalStudents: "30%",
+      femaleStudents: "38%",
+      averageAge: 28,
+      classSize: 175
+    },
+    outcomes: {
+      employmentRate: "91%",
+      averageSalary: { amount: 140000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "80%",
+      topRecruiters: ["Deloitte", "EY", "Amazon", "Bridgestone", "HCA Healthcare"]
+    },
+    highlights: ["Healthcare management", "Finance strength", "Nashville hub", "Small class sizes"],
+    specializations: ["Healthcare", "Finance", "Operations", "Strategy", "Marketing"],
+    image: "/business-schools/vanderbilt-owen.jpg",
+    website: "https://business.vanderbilt.edu",
+    applicationDeadlines: { round1: "October 2", round2: "November 13", round3: "January 8" },
+    scholarships: ["Merit scholarships", "Diversity fellowships", "Dean's scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "High" }
+  },
+  {
+    id: 94,
+    name: "IMT Ghaziabad",
+    shortName: "IMT Ghaziabad",
+    location: "Ghaziabad",
+    country: "India",
+    region: "Asia",
+    established: 1980,
+    ranking: { global: 125, ftGlobal: 125, qsGlobal: 130 },
+    accreditation: ["AICTE", "SAQS"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "19,50,000", currency: "INR" },
+      emba: { available: true, duration: "24 months", tuitionFee: "16,00,000", currency: "INR" },
+      masters: ["PGDM", "PGDM-DCP"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 640, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 85, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 540,
+      internationalStudents: "12%",
+      femaleStudents: "42%",
+      averageAge: 23,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "94%",
+      averageSalary: { amount: 1550000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "210%",
+      topRecruiters: ["Accenture", "Deloitte", "KPMG", "Amazon", "Flipkart"]
+    },
+    highlights: ["Established legacy", "Strong industry ties", "NCR location advantage", "Excellent placements"],
+    specializations: ["Marketing", "Finance", "Operations", "HR", "IT"],
+    image: "/business-schools/imt-ghaziabad.jpg",
+    website: "https://www.imt.edu",
+    applicationDeadlines: { round1: "CAT/XAT based", round2: "Personal Interview", round3: "Final List" },
+    scholarships: ["Merit scholarships", "Need-based scholarships", "Alumni awards"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Medium" }
+  },
+  {
+    id: 95,
+    name: "Ivey Business School at Western University",
+    shortName: "Ivey",
+    location: "London, ON",
+    country: "Canada",
+    region: "North America",
+    established: 1922,
+    ranking: { global: 46, ftGlobal: 46, qsGlobal: 50 },
+    accreditation: ["AACSB", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "89,000", currency: "CAD" },
+      emba: { available: true, duration: "16 months", tuitionFee: "118,000", currency: "CAD" },
+      masters: ["Master in Management", "MSc"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 660, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 180,
+      internationalStudents: "50%",
+      femaleStudents: "35%",
+      averageAge: 27,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 105000, currency: "CAD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "75%",
+      topRecruiters: ["Deloitte", "McKinsey", "RBC", "TD Bank", "Shopify"]
+    },
+    highlights: ["Case method excellence", "General management focus", "Strong Canadian presence", "Leadership development"],
+    specializations: ["General Management", "Strategy", "Finance", "Marketing", "Operations"],
+    image: "/business-schools/ivey.jpg",
+    website: "https://www.ivey.uwo.ca",
+    applicationDeadlines: { round1: "October 1", round2: "December 1", round3: "February 1" },
+    scholarships: ["Ivey scholarships", "International awards", "Leadership scholarships"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "High" }
   }
 ]
 
