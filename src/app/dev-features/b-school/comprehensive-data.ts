@@ -4991,6 +4991,228 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "December 31", round2: "February 28", final: "March 31" },
     scholarships: ["Merit scholarships", "Need-based aid", "Creative scholarships"],
     campusLife: { housing: true, studentClubs: 15, internationalism: "Low" }
+  },
+
+  // Batch 2: Mix of Indian & International Schools (IDs 66-75)
+
+  // IIM Indore
+  {
+    id: 66,
+    name: "Indian Institute of Management Indore",
+    shortName: "IIM-I",
+    location: "Indore",
+    country: "India",
+    region: "Asia",
+    established: 1996,
+    ranking: { global: 58, regional: 9, qsGlobal: 88 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "2 years", tuitionFee: "19,50,000", currency: "INR" },
+      emba: { available: true, duration: "1 year", tuitionFee: "21,00,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 635 },
+      gre: { accepted: false },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 0, ielts: 0 }
+    },
+    statistics: {
+      studentBody: 480,
+      internationalStudents: "5%",
+      femaleStudents: "33%",
+      averageAge: 23,
+      classSize: 480
+    },
+    outcomes: {
+      employmentRate: "97%",
+      averageSalary: { amount: 2700000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "240%",
+      topRecruiters: ["HDFC Bank", "ICICI", "SBI", "Bajaj", "Mahindra"]
+    },
+    highlights: ["5-year integrated program", "Strong research focus", "Industry partnerships", "Rural immersion"],
+    specializations: ["Rural Management", "Finance", "Marketing", "Operations", "Strategy"],
+    image: "/business-schools/iim-indore.jpg",
+    website: "https://www.iimidr.ac.in",
+    applicationDeadlines: { round1: "November 15", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Rural scholarships"],
+    campusLife: { housing: true, studentClubs: 38, internationalism: "Low" }
+  },
+
+  // London Business School
+  {
+    id: 67,
+    name: "London Business School",
+    shortName: "LBS",
+    location: "London",
+    country: "United Kingdom",
+    region: "Europe",
+    established: 1964,
+    ranking: { global: 6, regional: 1, qsGlobal: 8, ftGlobal: 4 },
+    accreditation: ["AACSB", "AMBA", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "15-21 months", tuitionFee: "104,000", currency: "GBP" },
+      emba: { available: true, duration: "20 months", tuitionFee: "166,000", currency: "GBP" },
+      masters: ["MFA", "MiM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 708, minScore: 600 },
+      gre: { accepted: true, averageScore: 326 },
+      workExperience: { required: true, averageYears: 6, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 500,
+      internationalStudents: "95%",
+      femaleStudents: "40%",
+      averageAge: 29,
+      classSize: 500
+    },
+    outcomes: {
+      employmentRate: "94%",
+      averageSalary: { amount: 140000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "90%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Goldman Sachs", "Morgan Stanley"]
+    },
+    highlights: ["Global diversity", "Finance strength", "London location", "Flexible curriculum"],
+    specializations: ["Finance", "Consulting", "Strategy", "Entrepreneurship", "Private Equity"],
+    image: "/business-schools/london-business-school.jpg",
+    website: "https://www.london.edu",
+    applicationDeadlines: { round1: "September 5", round2: "November 7", round3: "January 9" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Diversity scholarships"],
+    campusLife: { housing: false, studentClubs: 70, internationalism: "Extremely High" }
+  },
+
+  // INSEAD
+  {
+    id: 68,
+    name: "INSEAD",
+    shortName: "INSEAD",
+    location: "Fontainebleau",
+    country: "France",
+    region: "Europe",
+    established: 1957,
+    ranking: { global: 7, regional: 2, qsGlobal: 9, ftGlobal: 3 },
+    accreditation: ["AACSB", "AMBA", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "10 months", tuitionFee: "95,000", currency: "EUR" },
+      emba: { available: true, duration: "14-17 months", tuitionFee: "190,000", currency: "EUR" },
+      masters: ["MIM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 709, minScore: 650 },
+      gre: { accepted: true, averageScore: 327 },
+      workExperience: { required: true, averageYears: 5.5, minYears: 2 },
+      englishTest: { toefl: 105, ielts: 7.5 }
+    },
+    statistics: {
+      studentBody: 500,
+      internationalStudents: "98%",
+      femaleStudents: "36%",
+      averageAge: 29,
+      classSize: 500
+    },
+    outcomes: {
+      employmentRate: "95%",
+      averageSalary: { amount: 150000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "85%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "L'Oreal", "LVMH"]
+    },
+    highlights: ["Multi-campus experience", "Global perspective", "Accelerated program", "Strong alumni network"],
+    specializations: ["Strategy", "Entrepreneurship", "Finance", "Marketing", "Consulting"],
+    image: "/business-schools/insead.jpg",
+    website: "https://www.insead.edu",
+    applicationDeadlines: { round1: "August 31", round2: "October 31", round3: "February 28" },
+    scholarships: ["Need-based scholarships", "Diversity scholarships", "Country-specific scholarships"],
+    campusLife: { housing: true, studentClubs: 50, internationalism: "Extremely High" }
+  },
+
+  // Oxford Said Business School
+  {
+    id: 69,
+    name: "Saïd Business School, University of Oxford",
+    shortName: "Oxford Said",
+    location: "Oxford",
+    country: "United Kingdom",
+    region: "Europe",
+    established: 1996,
+    ranking: { global: 11, regional: 3, qsGlobal: 13, ftGlobal: 9 },
+    accreditation: ["AACSB", "AMBA", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "73,000", currency: "GBP" },
+      emba: { available: true, duration: "21 months", tuitionFee: "95,000", currency: "GBP" },
+      masters: ["MFE", "MSc", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 690, minScore: 600 },
+      gre: { accepted: true, averageScore: 321 },
+      workExperience: { required: true, averageYears: 5.5, minYears: 3 },
+      englishTest: { toefl: 110, ielts: 7.5 }
+    },
+    statistics: {
+      studentBody: 340,
+      internationalStudents: "92%",
+      femaleStudents: "38%",
+      averageAge: 29,
+      classSize: 340
+    },
+    outcomes: {
+      employmentRate: "93%",
+      averageSalary: { amount: 125000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "78%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Goldman Sachs", "Barclays"]
+    },
+    highlights: ["Oxford University prestige", "One-year program", "Global network", "Research excellence"],
+    specializations: ["Strategy", "Finance", "Entrepreneurship", "Social Impact", "Consulting"],
+    image: "/business-schools/oxford-said.jpg",
+    website: "https://www.sbs.ox.ac.uk",
+    applicationDeadlines: { round1: "September 12", round2: "November 7", round3: "January 9" },
+    scholarships: ["Oxford scholarships", "Need-based aid", "Country-specific scholarships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "Extremely High" }
+  },
+
+  // National University of Singapore Business School
+  {
+    id: 70,
+    name: "National University of Singapore Business School",
+    shortName: "NUS",
+    location: "Singapore",
+    country: "Singapore",
+    region: "Asia",
+    established: 1965,
+    ranking: { global: 15, regional: 1, qsGlobal: 18, ftGlobal: 12 },
+    accreditation: ["AACSB", "AMBA", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "17 months", tuitionFee: "65,000", currency: "SGD" },
+      emba: { available: true, duration: "17 months", tuitionFee: "95,000", currency: "SGD" },
+      masters: ["MSc", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 680, minScore: 600 },
+      gre: { accepted: true, averageScore: 320 },
+      workExperience: { required: true, averageYears: 5.5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 200,
+      internationalStudents: "85%",
+      femaleStudents: "35%",
+      averageAge: 29,
+      classSize: 200
+    },
+    outcomes: {
+      employmentRate: "96%",
+      averageSalary: { amount: 105000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "80%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Google", "Amazon"]
+    },
+    highlights: ["Asian gateway", "Diverse cohort", "Strong in Asia", "Government connections"],
+    specializations: ["Finance", "Consulting", "Technology", "Healthcare", "Real Estate"],
+    image: "/business-schools/nus-singapore.jpg",
+    website: "https://bba.nus.edu.sg",
+    applicationDeadlines: { round1: "September 15", round2: "November 15", round3: "February 15" },
+    scholarships: ["Merit scholarships", "ASEAN scholarships", "Need-based aid"],
+    campusLife: { housing: true, studentClubs: 45, internationalism: "Extremely High" }
   }
 ]
 
