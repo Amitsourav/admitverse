@@ -7955,6 +7955,690 @@ export const topBusinessSchools: BusinessSchool[] = [
     applicationDeadlines: { round1: "November 1", round2: "January 15", round3: "March 15" },
     scholarships: ["Merit scholarships", "Energy industry scholarships", "Louisiana resident aid"],
     campusLife: { housing: true, studentClubs: 25, internationalism: "High" }
+  },
+  {
+    id: 136,
+    name: "University of Wisconsin-Madison School of Business",
+    shortName: "Wisconsin Madison",
+    location: "Madison, WI",
+    country: "United States",
+    region: "North America",
+    established: 1900,
+    ranking: { global: 64, ftGlobal: 64, qsGlobal: 68 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "165,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "148,000", currency: "USD" },
+      masters: ["MS Finance", "MS Real Estate"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 650, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 180,
+      internationalStudents: "30%",
+      femaleStudents: "38%",
+      averageAge: 28,
+      classSize: 90
+    },
+    outcomes: {
+      employmentRate: "88%",
+      averageSalary: { amount: 115000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "70%",
+      topRecruiters: ["Johnson Controls", "American Family Insurance", "Epic", "Deloitte", "PwC"]
+    },
+    highlights: ["Wisconsin business tradition", "Real estate excellence", "Applied learning", "Strong Midwest network"],
+    specializations: ["Real Estate", "Finance", "Marketing", "Operations", "Supply Chain"],
+    image: "/business-schools/wisconsin-madison.jpg",
+    website: "https://business.wisc.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 1", round3: "February 1" },
+    scholarships: ["Merit scholarships", "Wisconsin resident scholarships", "Industry partnerships"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "High" }
+  },
+  {
+    id: 137,
+    name: "IIM Kashipur",
+    shortName: "IIM Kashipur",
+    location: "Kashipur",
+    country: "India",
+    region: "Asia",
+    established: 2011,
+    ranking: { global: 94, ftGlobal: 94, qsGlobal: 99 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "18,50,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "14,00,000", currency: "INR" },
+      masters: ["Fellow Program in Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 640, minScore: 600 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 90, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 360,
+      internationalStudents: "10%",
+      femaleStudents: "40%",
+      averageAge: 23,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "95%",
+      averageSalary: { amount: 2050000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "250%",
+      topRecruiters: ["Deloitte", "KPMG", "Amazon", "Flipkart", "TCS"]
+    },
+    highlights: ["Fast-growing IIM", "Himalayan foothills location", "Innovation focus", "Strong placement record"],
+    specializations: ["General Management", "Finance", "Marketing", "Operations", "Analytics"],
+    image: "/business-schools/iim-kashipur.jpg",
+    website: "https://www.iimkashipur.ac.in",
+    applicationDeadlines: { round1: "CAT Result based", round2: "WAT-PI process", round3: "Final List" },
+    scholarships: ["Government scholarships", "Merit-based aid", "Need-based scholarships"],
+    campusLife: { housing: true, studentClubs: 28, internationalism: "Medium" }
+  },
+  {
+    id: 138,
+    name: "Penn State Smeal College",
+    shortName: "Penn State Smeal",
+    location: "University Park, PA",
+    country: "United States",
+    region: "North America",
+    established: 1953,
+    ranking: { global: 67, ftGlobal: 67, qsGlobal: 71 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "175,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "158,000", currency: "USD" },
+      masters: ["MS Finance", "MS Supply Chain"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 648, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 160,
+      internationalStudents: "40%",
+      femaleStudents: "35%",
+      averageAge: 28,
+      classSize: 80
+    },
+    outcomes: {
+      employmentRate: "87%",
+      averageSalary: { amount: 112000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "68%",
+      topRecruiters: ["Deloitte", "EY", "Johnson & Johnson", "Vanguard", "IBM"]
+    },
+    highlights: ["Supply chain excellence", "Strong alumni network", "Pennsylvania connections", "Research focus"],
+    specializations: ["Supply Chain", "Finance", "Marketing", "Operations", "Strategy"],
+    image: "/business-schools/penn-state-smeal.jpg",
+    website: "https://smeal.psu.edu",
+    applicationDeadlines: { round1: "November 1", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Pennsylvania resident aid", "Industry scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "High" }
+  },
+  {
+    id: 139,
+    name: "Singapore Management University",
+    shortName: "SMU",
+    location: "Singapore",
+    country: "Singapore",
+    region: "Asia-Pacific",
+    established: 2000,
+    ranking: { global: 51, ftGlobal: 51, qsGlobal: 55 },
+    accreditation: ["AACSB", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "88,000", currency: "SGD" },
+      emba: { available: true, duration: "15 months", tuitionFee: "118,000", currency: "SGD" },
+      masters: ["MSc Finance", "MSc Management"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 650, minScore: 600 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 5, minYears: 2 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 100,
+      internationalStudents: "80%",
+      femaleStudents: "40%",
+      averageAge: 30,
+      classSize: 100
+    },
+    outcomes: {
+      employmentRate: "88%",
+      averageSalary: { amount: 115000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "62%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "DBS Bank", "Grab"]
+    },
+    highlights: ["Singapore financial hub", "City campus", "Asia focus", "Small cohort intimacy"],
+    specializations: ["Finance", "Strategy", "Analytics", "Entrepreneurship", "Digital Transformation"],
+    image: "/business-schools/smu.jpg",
+    website: "https://mba.smu.edu.sg",
+    applicationDeadlines: { round1: "September 30", round2: "November 30", round3: "January 31" },
+    scholarships: ["SMU scholarships", "ASEAN scholarships", "Merit awards"],
+    campusLife: { housing: false, studentClubs: 25, internationalism: "Extremely High" }
+  },
+  {
+    id: 140,
+    name: "Welingkar Institute of Management",
+    shortName: "WeSchool",
+    location: "Mumbai",
+    country: "India",
+    region: "Asia",
+    established: 1977,
+    ranking: { global: 134, ftGlobal: 134, qsGlobal: 139 },
+    accreditation: ["NAAC A++"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "14,50,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "12,50,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 620, minScore: 550 },
+      gre: { accepted: true, averageScore: 310 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 80, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 480,
+      internationalStudents: "12%",
+      femaleStudents: "44%",
+      averageAge: 23,
+      classSize: 240
+    },
+    outcomes: {
+      employmentRate: "90%",
+      averageSalary: { amount: 1380000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "180%",
+      topRecruiters: ["Wipro", "TCS", "L&T", "HDFC Bank", "Mahindra"]
+    },
+    highlights: ["Mumbai commercial capital", "Industry partnerships", "Practical learning", "Strong alumni network"],
+    specializations: ["Finance", "Marketing", "Operations", "HR", "Retail Management"],
+    image: "/business-schools/weschool.jpg",
+    website: "https://www.welingkar.org",
+    applicationDeadlines: { round1: "CAT/MAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Industry scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Medium" }
+  },
+  {
+    id: 141,
+    name: "Temple Fox School of Business",
+    shortName: "Temple Fox",
+    location: "Philadelphia, PA",
+    country: "United States",
+    region: "North America",
+    established: 1918,
+    ranking: { global: 69, ftGlobal: 69, qsGlobal: 73 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "168,000", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "148,000", currency: "USD" },
+      masters: ["MS Finance", "MS Digital Innovation"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 640, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 140,
+      internationalStudents: "45%",
+      femaleStudents: "42%",
+      averageAge: 28,
+      classSize: 70
+    },
+    outcomes: {
+      employmentRate: "85%",
+      averageSalary: { amount: 108000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "65%",
+      topRecruiters: ["Deloitte", "PwC", "Comcast", "Johnson & Johnson", "Vanguard"]
+    },
+    highlights: ["Philadelphia business hub", "Digital innovation focus", "Small class sizes", "Urban campus"],
+    specializations: ["Digital Innovation", "Finance", "Marketing", "Consulting", "Healthcare"],
+    image: "/business-schools/temple-fox.jpg",
+    website: "https://fox.temple.edu",
+    applicationDeadlines: { round1: "November 1", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Philadelphia partnerships", "Diversity fellowships"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Very High" }
+  },
+  {
+    id: 142,
+    name: "Xavier School of Management",
+    shortName: "XIME Bangalore",
+    location: "Bangalore",
+    country: "India",
+    region: "Asia",
+    established: 1991,
+    ranking: { global: 142, ftGlobal: 142, qsGlobal: 147 },
+    accreditation: ["NAAC A+"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "11,50,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "9,50,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 620, minScore: 550 },
+      gre: { accepted: true, averageScore: 305 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 80, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 360,
+      internationalStudents: "10%",
+      femaleStudents: "45%",
+      averageAge: 23,
+      classSize: 180
+    },
+    outcomes: {
+      employmentRate: "88%",
+      averageSalary: { amount: 980000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "145%",
+      topRecruiters: ["Infosys", "TCS", "Cognizant", "L&T", "Tech Mahindra"]
+    },
+    highlights: ["Bangalore tech ecosystem", "Jesuit values", "Value for money", "Industry orientation"],
+    specializations: ["Information Technology", "Finance", "Marketing", "HR", "Operations"],
+    image: "/business-schools/xime-bangalore.jpg",
+    website: "https://www.xime.org",
+    applicationDeadlines: { round1: "CAT/MAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Minority scholarships"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Medium" }
+  },
+  {
+    id: 143,
+    name: "University of Florida Warrington",
+    shortName: "UF Warrington",
+    location: "Gainesville, FL",
+    country: "United States",
+    region: "North America",
+    established: 1929,
+    ranking: { global: 66, ftGlobal: 66, qsGlobal: 70 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "158,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "138,000", currency: "USD" },
+      masters: ["MS Finance", "MS Information Systems"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 645, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 180,
+      internationalStudents: "35%",
+      femaleStudents: "40%",
+      averageAge: 28,
+      classSize: 90
+    },
+    outcomes: {
+      employmentRate: "86%",
+      averageSalary: { amount: 110000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "68%",
+      topRecruiters: ["Deloitte", "PwC", "Amazon", "Raymond James", "Publix"]
+    },
+    highlights: ["Florida business growth", "Strong alumni network", "Affordable tuition", "Research excellence"],
+    specializations: ["Finance", "Real Estate", "Information Systems", "Marketing", "Operations"],
+    image: "/business-schools/uf-warrington.jpg",
+    website: "https://warrington.ufl.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 1", round3: "February 1" },
+    scholarships: ["Merit scholarships", "Florida resident scholarships", "Alumni awards"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "High" }
+  },
+  {
+    id: 144,
+    name: "Jaipuria Institute of Management",
+    shortName: "Jaipuria",
+    location: "Lucknow",
+    country: "India",
+    region: "Asia",
+    established: 2000,
+    ranking: { global: 145, ftGlobal: 145, qsGlobal: 150 },
+    accreditation: ["NAAC A+"],
+    programs: {
+      mba: { available: true, duration: "24 months", tuitionFee: "7,95,000", currency: "INR" },
+      emba: { available: true, duration: "15 months", tuitionFee: "6,50,000", currency: "INR" },
+      masters: ["PGDM", "PhD"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: false, averageScore: 610, minScore: 550 },
+      gre: { accepted: true, averageScore: 305 },
+      workExperience: { required: false, averageYears: 0, minYears: 0 },
+      englishTest: { toefl: 75, ielts: 6.0 }
+    },
+    statistics: {
+      studentBody: 300,
+      internationalStudents: "8%",
+      femaleStudents: "42%",
+      averageAge: 23,
+      classSize: 150
+    },
+    outcomes: {
+      employmentRate: "87%",
+      averageSalary: { amount: 850000, currency: "INR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "125%",
+      topRecruiters: ["TCS", "Wipro", "HDFC Bank", "L&T", "HCL"]
+    },
+    highlights: ["Multi-campus network", "Value for money", "Strong placement support", "Industry mentorship"],
+    specializations: ["Finance", "Marketing", "HR", "Operations", "Retail Management"],
+    image: "/business-schools/jaipuria.jpg",
+    website: "https://www.jaipuria.ac.in",
+    applicationDeadlines: { round1: "CAT/MAT based", round2: "Personal Interview", round3: "Final admission" },
+    scholarships: ["Merit scholarships", "Need-based aid", "Regional scholarships"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Low" }
+  },
+  {
+    id: 145,
+    name: "University of Alabama Culverhouse",
+    shortName: "Alabama Culverhouse",
+    location: "Tuscaloosa, AL",
+    country: "United States",
+    region: "North America",
+    established: 1919,
+    ranking: { global: 70, ftGlobal: 70, qsGlobal: 74 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "155,000", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "138,000", currency: "USD" },
+      masters: ["MS Finance", "MS MIS"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 635, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 3, minYears: 0 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 120,
+      internationalStudents: "25%",
+      femaleStudents: "35%",
+      averageAge: 27,
+      classSize: 60
+    },
+    outcomes: {
+      employmentRate: "84%",
+      averageSalary: { amount: 105000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "65%",
+      topRecruiters: ["BBVA", "Regions Bank", "Mercedes-Benz", "Deloitte", "PwC"]
+    },
+    highlights: ["Alabama business tradition", "Small cohort experience", "Southern connections", "Affordable excellence"],
+    specializations: ["Finance", "MIS", "Operations", "Marketing", "Strategy"],
+    image: "/business-schools/alabama-culverhouse.jpg",
+    website: "https://culverhouse.ua.edu",
+    applicationDeadlines: { round1: "November 1", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Alabama resident scholarships", "Graduate assistantships"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Medium" }
+  },
+
+  // University of Denver Daniels
+  {
+    id: 146,
+    name: "University of Denver Daniels College of Business",
+    shortName: "Denver Daniels",
+    location: "Denver, CO",
+    country: "United States",
+    region: "North America",
+    established: 1908,
+    ranking: { global: 71, ftGlobal: 71, qsGlobal: 75 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "145,000", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "138,000", currency: "USD" },
+      masters: ["MS Finance", "MS Business Analytics"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 630, minScore: 530 },
+      gre: { accepted: true, averageScore: 310 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 88, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 140,
+      internationalStudents: "28%",
+      femaleStudents: "40%",
+      averageAge: 27,
+      classSize: 70
+    },
+    outcomes: {
+      employmentRate: "85%",
+      averageSalary: { amount: 108000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "68%",
+      topRecruiters: ["Vail Resorts", "Ball Corporation", "Gates Corporation", "Arrow Electronics", "Kaiser Permanente"]
+    },
+    highlights: ["Rocky Mountain location", "Sustainability focus", "Entrepreneurship center", "Industry partnerships"],
+    specializations: ["Entrepreneurship", "Finance", "Marketing", "Real Estate", "Operations"],
+    image: "/business-schools/denver-daniels.jpg",
+    website: "https://daniels.du.edu",
+    applicationDeadlines: { round1: "November 1", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Graduate assistantships", "Denver scholarships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "High" }
+  },
+
+  // Trinity College Dublin Business School
+  {
+    id: 147,
+    name: "Trinity College Dublin Business School",
+    shortName: "Trinity Dublin",
+    location: "Dublin",
+    country: "Ireland",
+    region: "Europe",
+    established: 1592,
+    ranking: { global: 73, ftGlobal: 73, qsGlobal: 77 },
+    accreditation: ["AACSB", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "45,000", currency: "EUR" },
+      emba: { available: true, duration: "18 months", tuitionFee: "52,000", currency: "EUR" },
+      masters: ["MSc Management", "MSc Finance"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 640, minScore: 550 },
+      gre: { accepted: true, averageScore: 315 },
+      workExperience: { required: true, averageYears: 3, minYears: 2 },
+      englishTest: { toefl: 90, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 120,
+      internationalStudents: "65%",
+      femaleStudents: "45%",
+      averageAge: 28,
+      classSize: 60
+    },
+    outcomes: {
+      employmentRate: "88%",
+      averageSalary: { amount: 75000, currency: "EUR", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "72%",
+      topRecruiters: ["Accenture", "Deloitte", "PwC", "Google", "Microsoft"]
+    },
+    highlights: ["Historic Dublin campus", "European tech hub access", "Strong alumni network", "International diversity"],
+    specializations: ["Digital Innovation", "Finance", "Entrepreneurship", "Consulting", "Technology"],
+    image: "/business-schools/trinity-dublin.jpg",
+    website: "https://www.tcd.ie/business",
+    applicationDeadlines: { round1: "December 1", round2: "February 15", round3: "April 15" },
+    scholarships: ["Merit scholarships", "EU scholarships", "International excellence awards"],
+    campusLife: { housing: true, studentClubs: 40, internationalism: "Very High" }
+  },
+
+  // Singapore Management University
+  {
+    id: 148,
+    name: "Singapore Management University Lee Kong Chian School of Business",
+    shortName: "SMU Singapore",
+    location: "Singapore",
+    country: "Singapore",
+    region: "Asia",
+    established: 2000,
+    ranking: { global: 74, ftGlobal: 74, qsGlobal: 78 },
+    accreditation: ["AACSB", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "85,000", currency: "SGD" },
+      emba: { available: true, duration: "17 months", tuitionFee: "95,000", currency: "SGD" },
+      masters: ["MS Management", "MS Applied Finance"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 650, minScore: 550 },
+      gre: { accepted: true, averageScore: 318 },
+      workExperience: { required: true, averageYears: 5, minYears: 3 },
+      englishTest: { toefl: 100, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 100,
+      internationalStudents: "80%",
+      femaleStudents: "38%",
+      averageAge: 30,
+      classSize: 50
+    },
+    outcomes: {
+      employmentRate: "92%",
+      averageSalary: { amount: 125000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "85%",
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Goldman Sachs", "JP Morgan"]
+    },
+    highlights: ["Asian financial hub", "Small class sizes", "High diversity", "Tech innovation focus"],
+    specializations: ["Finance", "Digital Transformation", "Consulting", "Entrepreneurship", "FinTech"],
+    image: "/business-schools/smu-singapore.jpg",
+    website: "https://business.smu.edu.sg",
+    applicationDeadlines: { round1: "November 15", round2: "January 31", round3: "March 31" },
+    scholarships: ["Merit scholarships", "ASEAN scholarships", "Industry partnerships"],
+    campusLife: { housing: true, studentClubs: 25, internationalism: "Very High" }
+  },
+
+  // University of Pittsburgh Katz
+  {
+    id: 149,
+    name: "University of Pittsburgh Katz Graduate School of Business",
+    shortName: "Pitt Katz",
+    location: "Pittsburgh, PA",
+    country: "United States",
+    region: "North America",
+    established: 1960,
+    ranking: { global: 76, ftGlobal: 76, qsGlobal: 80 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "140,000", currency: "USD" },
+      emba: { available: true, duration: "20 months", tuitionFee: "135,000", currency: "USD" },
+      masters: ["MS Finance", "MS Information Systems"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 625, minScore: 520 },
+      gre: { accepted: true, averageScore: 308 },
+      workExperience: { required: true, averageYears: 4, minYears: 0 },
+      englishTest: { toefl: 90, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 130,
+      internationalStudents: "32%",
+      femaleStudents: "42%",
+      averageAge: 27,
+      classSize: 65
+    },
+    outcomes: {
+      employmentRate: "86%",
+      averageSalary: { amount: 105000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "70%",
+      topRecruiters: ["PNC Financial", "UPMC", "Heinz", "PPG Industries", "BNY Mellon"]
+    },
+    highlights: ["Healthcare/biotech focus", "Pittsburgh connections", "Innovation ecosystem", "Affordable excellence"],
+    specializations: ["Healthcare", "Finance", "Information Systems", "Supply Chain", "Analytics"],
+    image: "/business-schools/pitt-katz.jpg",
+    website: "https://business.pitt.edu",
+    applicationDeadlines: { round1: "November 1", round2: "January 15", round3: "March 15" },
+    scholarships: ["Merit scholarships", "Graduate assistantships", "Pennsylvania resident aid"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "High" }
+  },
+
+  // Lancaster University Management School  
+  {
+    id: 150,
+    name: "Lancaster University Management School",
+    shortName: "Lancaster",
+    location: "Lancaster",
+    country: "United Kingdom",
+    region: "Europe",
+    established: 1964,
+    ranking: { global: 80, ftGlobal: 80, qsGlobal: 84 },
+    accreditation: ["AACSB", "AMBA", "EQUIS"],
+    programs: {
+      mba: { available: true, duration: "12 months", tuitionFee: "42,000", currency: "GBP" },
+      emba: { available: true, duration: "18 months", tuitionFee: "48,000", currency: "GBP" },
+      masters: ["MSc Management", "MSc Finance"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 635, minScore: 540 },
+      gre: { accepted: true, averageScore: 312 },
+      workExperience: { required: true, averageYears: 3, minYears: 2 },
+      englishTest: { toefl: 93, ielts: 7.0 }
+    },
+    statistics: {
+      studentBody: 90,
+      internationalStudents: "75%",
+      femaleStudents: "43%",
+      averageAge: 29,
+      classSize: 45
+    },
+    outcomes: {
+      employmentRate: "87%",
+      averageSalary: { amount: 68000, currency: "GBP", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "75%",
+      topRecruiters: ["Deloitte", "PwC", "KPMG", "Barclays", "HSBC"]
+    },
+    highlights: ["Triple accreditation", "Strong research focus", "UK business connections", "International diversity"],
+    specializations: ["Management Science", "Marketing", "Finance", "Entrepreneurship", "Operations"],
+    image: "/business-schools/lancaster.jpg",
+    website: "https://www.lancaster.ac.uk/lums",
+    applicationDeadlines: { round1: "December 1", round2: "February 28", round3: "April 30" },
+    scholarships: ["Merit scholarships", "International scholarships", "UK government funding"],
+    campusLife: { housing: true, studentClubs: 30, internationalism: "Very High" }
+  },
+
+  // University of Connecticut
+  {
+    id: 151,
+    name: "University of Connecticut School of Business",
+    shortName: "UConn Business",
+    location: "Storrs, CT",
+    country: "United States",
+    region: "North America",
+    established: 1881,
+    ranking: { global: 78, ftGlobal: 78, qsGlobal: 82 },
+    accreditation: ["AACSB"],
+    programs: {
+      mba: { available: true, duration: "21 months", tuitionFee: "135,000", currency: "USD" },
+      emba: { available: true, duration: "22 months", tuitionFee: "128,000", currency: "USD" },
+      masters: ["MS Finance", "MS Business Analytics"], phd: true
+    },
+    admissionRequirements: {
+      gmat: { required: true, averageScore: 620, minScore: 510 },
+      gre: { accepted: true, averageScore: 305 },
+      workExperience: { required: true, averageYears: 3, minYears: 0 },
+      englishTest: { toefl: 88, ielts: 6.5 }
+    },
+    statistics: {
+      studentBody: 110,
+      internationalStudents: "28%",
+      femaleStudents: "38%",
+      averageAge: 26,
+      classSize: 55
+    },
+    outcomes: {
+      employmentRate: "84%",
+      averageSalary: { amount: 102000, currency: "USD", timeFrame: "3 months post-graduation" },
+      salaryIncrease: "68%",
+      topRecruiters: ["Aetna", "Travelers", "GE", "UTC", "Pratt & Whitney"]
+    },
+    highlights: ["Connecticut industry ties", "Affordable state school", "Strong alumni network", "Northeastern corridor access"],
+    specializations: ["Finance", "Operations", "Marketing", "Real Estate", "Healthcare"],
+    image: "/business-schools/uconn.jpg",
+    website: "https://business.uconn.edu",
+    applicationDeadlines: { round1: "October 15", round2: "December 15", round3: "February 15" },
+    scholarships: ["Merit scholarships", "Connecticut resident scholarships", "Graduate assistantships"],
+    campusLife: { housing: true, studentClubs: 35, internationalism: "Medium" }
   }
 ]
 
