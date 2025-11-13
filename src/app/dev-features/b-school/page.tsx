@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import { 
   Search, 
   Filter, 
@@ -19,6 +20,7 @@ import {
   CheckCircle,
   AlertCircle,
   Menu,
+  X,
   Bell,
   User,
   LogOut,
@@ -33,6 +35,7 @@ import {
   Edit,
   Send,
   MessageCircle,
+  Mail,
   Target,
   TrendingUp,
   Star,
@@ -45,7 +48,6 @@ import {
   Info,
   Download,
   ExternalLink,
-  X,
   Plus,
   Minus,
   RefreshCw,
@@ -938,9 +940,13 @@ export default function BSchoolPage() {
               <p className="text-sm text-blue-700 mb-3">
                 Can't find what you're looking for? Our admissions consultants are here to help with personalized guidance.
               </p>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+              <Link 
+                href="/#book-counseling"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center gap-2"
+              >
+                <MessageCircle className="w-4 h-4" />
                 Contact Our Experts
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -956,24 +962,63 @@ export default function BSchoolPage() {
           <div className="border border-gray-200 rounded-lg p-4 text-center">
             <Phone className="w-8 h-8 text-blue-600 mx-auto mb-2" />
             <h4 className="font-semibold">Phone Support</h4>
-            <p className="text-sm text-gray-600">+1-800-123-4567</p>
-            <p className="text-xs text-gray-500">Mon-Fri 9AM-6PM</p>
+            <p className="text-sm text-gray-600">+91 99826 27466</p>
+            <p className="text-xs text-gray-500">Mon-Fri: 9AM-6PM IST</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4 text-center">
             <MessageCircle className="w-8 h-8 text-green-600 mx-auto mb-2" />
             <h4 className="font-semibold">Live Chat</h4>
-            <p className="text-sm text-gray-600">Available 24/7</p>
-            <button className="mt-2 bg-green-600 text-white px-4 py-1 rounded text-sm">Start Chat</button>
+            <p className="text-sm text-gray-600">Available for counseling</p>
+            <Link 
+              href="/#book-counseling"
+              className="mt-2 bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded text-sm transition-colors inline-flex items-center gap-1"
+            >
+              <MessageCircle className="w-3 h-3" />
+              Start Chat
+            </Link>
           </div>
         </div>
         <div className="border border-gray-200 rounded-lg p-4">
-          <h4 className="font-semibold mb-2">Send us a message</h4>
-          <div className="space-y-3">
-            <input type="text" placeholder="Your Name" className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
-            <input type="email" placeholder="Your Email" className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
-            <textarea placeholder="Your Message" rows={4} className="w-full px-3 py-2 border border-gray-300 rounded-lg"></textarea>
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Send Message</button>
+          <div className="flex items-start gap-3 mb-4">
+            <Mail className="w-5 h-5 text-blue-600 mt-0.5" />
+            <div>
+              <h4 className="font-semibold">Email Support</h4>
+              <p className="text-sm text-gray-600">admission@admitverse.com</p>
+              <p className="text-xs text-gray-500">We reply within 24 hours</p>
+            </div>
           </div>
+          <div className="flex items-start gap-3 mb-4">
+            <MapPin className="w-5 h-5 text-blue-600 mt-0.5" />
+            <div>
+              <h4 className="font-semibold">Visit Our Office</h4>
+              <p className="text-sm text-gray-600">WorkWorm Co-working Space, NHPC Chowk</p>
+              <p className="text-sm text-gray-600">Block A, DLF Industrial Area, Sector 32</p>
+              <p className="text-sm text-gray-600">Faridabad, Haryana 121003, India</p>
+              <p className="text-xs text-gray-500">Visit by appointment</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 mb-4">
+            <Clock className="w-5 h-5 text-blue-600 mt-0.5" />
+            <div>
+              <h4 className="font-semibold">Office Hours</h4>
+              <p className="text-sm text-gray-600">Monday - Friday: 9AM - 6PM</p>
+              <p className="text-sm text-gray-600">Saturday: 10AM - 4PM</p>
+              <p className="text-xs text-gray-500">IST (Indian Standard Time)</p>
+            </div>
+          </div>
+        </div>
+        <div className="border border-gray-200 rounded-lg p-4">
+          <h4 className="font-semibold mb-2">Get Detailed Consultation</h4>
+          <p className="text-sm text-gray-600 mb-4">
+            Connect with our expert counsellors for personalized B-school guidance and comprehensive support throughout your MBA journey.
+          </p>
+          <Link 
+            href="/#book-counseling"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors inline-flex items-center gap-2 w-full justify-center"
+          >
+            <MessageCircle className="w-4 h-4" />
+            Book Free Consultation
+          </Link>
         </div>
       </div>
     </div>
@@ -2804,9 +2849,13 @@ export default function BSchoolPage() {
             >
               <Menu className="w-5 h-5 text-gray-600" />
             </button>
-            <button className="px-4 py-2 bg-blue-600 text-white text-sm rounded-md text-xs sm:text-sm">
+            <Link 
+              href="/#book-counseling"
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-md text-xs sm:text-sm transition-colors duration-200 font-medium flex items-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4" />
               Book a Free Counselling with AV
-            </button>
+            </Link>
           </div>
           <div className="flex items-center gap-4">
             <img src="/api/placeholder/60/40" alt="AV Logo" className="h-10" />
