@@ -261,33 +261,117 @@ export default function BSchoolPage() {
   };
 
   // Component functions for different sections
-  const ScoreCalculator = () => (
-    <div className="bg-white rounded-xl border border-gray-200 p-6">
-      <h3 className="text-lg sm:text-xl font-bold mb-4">Score vs Percentile Calculator</h3>
-      <div className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Exam Type</label>
-            <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>CAT</option>
-              <option>GMAT</option>
-              <option>XAT</option>
-              <option>MAT</option>
-            </select>
+  const ScoreCalculator = () => {
+    const [examType, setExamType] = useState('CAT');
+    const [score, setScore] = useState('');
+    const [result, setResult] = useState<{ percentile: number; interpretation: string } | null>(null);
+
+    const calculatePercentile = () => {
+      const numScore = parseInt(score);
+      if (!numScore) {
+        alert('Please enter a valid score');
+        return;
+      }
+
+      let percentile = 0;
+      let interpretation = '';
+
+      // Simplified percentile calculation based on exam type
+      switch(examType) {
+        case 'CAT':
+          if (numScore >= 99) percentile = 99.5;
+          else if (numScore >= 95) percentile = 99;
+          else if (numScore >= 85) percentile = 95;
+          else if (numScore >= 75) percentile = 85;
+          else if (numScore >= 60) percentile = 70;
+          else percentile = Math.max(numScore * 0.8, 10);
+          break;
+        case 'GMAT':
+          if (numScore >= 760) percentile = 99;
+          else if (numScore >= 720) percentile = 95;
+          else if (numScore >= 680) percentile = 85;
+          else if (numScore >= 640) percentile = 70;
+          else if (numScore >= 600) percentile = 55;
+          else percentile = Math.max((numScore - 200) / 6, 5);
+          break;
+        case 'XAT':
+          if (numScore >= 99) percentile = 99.5;
+          else if (numScore >= 95) percentile = 99;
+          else if (numScore >= 85) percentile = 95;
+          else if (numScore >= 75) percentile = 85;
+          else percentile = Math.max(numScore * 0.85, 15);
+          break;
+        case 'MAT':
+          if (numScore >= 750) percentile = 99;
+          else if (numScore >= 650) percentile = 95;
+          else if (numScore >= 550) percentile = 85;
+          else if (numScore >= 450) percentile = 70;
+          else percentile = Math.max(numScore / 8, 20);
+          break;
+      }
+
+      // Generate interpretation
+      if (percentile >= 95) interpretation = 'Excellent! You\'re in the top 5% of test takers.';
+      else if (percentile >= 85) interpretation = 'Great score! Good chances at top-tier schools.';
+      else if (percentile >= 70) interpretation = 'Good score. Consider target and safety schools.';
+      else if (percentile >= 50) interpretation = 'Average score. Focus on other application strengths.';
+      else interpretation = 'Consider retaking the exam for better school options.';
+
+      setResult({ percentile: Math.round(percentile * 10) / 10, interpretation });
+    };
+
+    return (
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <h3 className="text-lg sm:text-xl font-bold mb-4">Score vs Percentile Calculator</h3>
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Exam Type</label>
+              <select 
+                value={examType}
+                onChange={(e) => setExamType(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option>CAT</option>
+                <option>GMAT</option>
+                <option>XAT</option>
+                <option>MAT</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Your Score</label>
+              <input 
+                type="number" 
+                placeholder="Enter your score" 
+                value={score}
+                onChange={(e) => setScore(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Your Score</label>
-            <input type="number" placeholder="Enter your score" className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <button 
+            onClick={calculatePercentile}
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Calculate Percentile
+          </button>
+          <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+            <h4 className="font-semibold text-blue-800 mb-2">Result</h4>
+            {result ? (
+              <div>
+                <p className="text-blue-700 font-semibold text-lg mb-2">
+                  Your estimated percentile: {result.percentile}%
+                </p>
+                <p className="text-blue-600 text-sm">{result.interpretation}</p>
+              </div>
+            ) : (
+              <p className="text-blue-700">Your estimated percentile will appear here</p>
+            )}
           </div>
-        </div>
-        <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Calculate Percentile</button>
-        <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-          <h4 className="font-semibold text-blue-800 mb-2">Result</h4>
-          <p className="text-blue-700">Your estimated percentile will appear here</p>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const CompareSchools = () => {
     const [selectedSchoolIds, setSelectedSchoolIds] = useState<string[]>(['', '', '']);
@@ -491,105 +575,275 @@ export default function BSchoolPage() {
     );
   };
 
-  const MBAExamCalculator = () => (
-    <div className="bg-white rounded-xl border border-gray-200 p-6">
-      <h3 className="text-xl font-bold mb-4">MBA Exam Calculator</h3>
-      <div className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Exam Type</label>
-            <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>GMAT</option>
-              <option>CAT</option>
-              <option>XAT</option>
-              <option>SNAP</option>
-              <option>NMAT</option>
-              <option>MAT</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Target Score</label>
-            <input type="number" placeholder="Enter target score" className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-        </div>
+  const MBAExamCalculator = () => {
+    const [examType, setExamType] = useState('GMAT');
+    const [targetScore, setTargetScore] = useState('');
+    const [verbalScore, setVerbalScore] = useState('');
+    const [quantScore, setQuantScore] = useState('');
+    const [overallScore, setOverallScore] = useState('');
+    const [result, setResult] = useState<{
+      verbalPercentile: number;
+      quantPercentile: number;
+      overallPercentile: number;
+      recommendations: string[];
+    } | null>(null);
+
+    const calculateScore = () => {
+      const verbal = parseInt(verbalScore);
+      const quant = parseInt(quantScore);
+      const total = parseInt(overallScore);
+
+      if (!verbal && !quant && !total) {
+        alert('Please enter at least verbal and quantitative scores or overall score');
+        return;
+      }
+
+      let verbalPercentile = 0;
+      let quantPercentile = 0;
+      let overallPercentile = 0;
+      let recommendations: string[] = [];
+
+      // Calculate based on exam type
+      if (examType === 'GMAT') {
+        // GMAT scoring logic
+        if (verbal) {
+          if (verbal >= 42) verbalPercentile = 95;
+          else if (verbal >= 38) verbalPercentile = 85;
+          else if (verbal >= 34) verbalPercentile = 70;
+          else if (verbal >= 30) verbalPercentile = 55;
+          else verbalPercentile = Math.max(verbal * 1.5, 10);
+        }
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Verbal Score</label>
-            <input type="number" placeholder="Verbal" className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Quantitative Score</label>
-            <input type="number" placeholder="Quant" className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Overall Score</label>
-            <input type="number" placeholder="Total" className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-        </div>
+        if (quant) {
+          if (quant >= 50) quantPercentile = 85;
+          else if (quant >= 47) quantPercentile = 70;
+          else if (quant >= 44) quantPercentile = 55;
+          else if (quant >= 40) quantPercentile = 40;
+          else quantPercentile = Math.max(quant * 1.2, 10);
+        }
 
-        <div className="flex gap-4">
-          <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Calculate Score</button>
-          <button className="border border-blue-600 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-50">Reset</button>
-        </div>
+        if (total) {
+          if (total >= 760) overallPercentile = 99;
+          else if (total >= 720) overallPercentile = 95;
+          else if (total >= 680) overallPercentile = 85;
+          else if (total >= 640) overallPercentile = 70;
+          else if (total >= 600) overallPercentile = 55;
+          else overallPercentile = Math.max((total - 200) / 6, 5);
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-4 bg-blue-50 rounded-lg">
-            <h4 className="font-semibold text-blue-800 mb-3">Score Breakdown</h4>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span>Verbal Percentile:</span>
-                <span className="font-medium">--</span>
+          // School recommendations based on GMAT score
+          if (total >= 720) {
+            recommendations = ['Harvard Business School', 'MIT Sloan', 'Columbia Business School', 'Stanford GSB'];
+          } else if (total >= 680) {
+            recommendations = ['NYU Stern', 'Georgetown McDonough', 'Cornell Johnson', 'UCLA Anderson'];
+          } else if (total >= 640) {
+            recommendations = ['Boston University', 'University of Rochester', 'Georgia Tech', 'University of Florida'];
+          } else if (total >= 600) {
+            recommendations = ['Arizona State', 'University of Iowa', 'University of Utah', 'Auburn University'];
+          } else {
+            recommendations = ['Consider retaking GMAT', 'Look at regional programs', 'Focus on other application strengths'];
+          }
+        }
+      } else if (examType === 'CAT') {
+        // CAT scoring logic (percentile-based)
+        if (verbal && quant) {
+          const avgSectional = (verbal + quant) / 2;
+          if (avgSectional >= 95) verbalPercentile = quantPercentile = 95;
+          else if (avgSectional >= 85) verbalPercentile = quantPercentile = 85;
+          else if (avgSectional >= 75) verbalPercentile = quantPercentile = 75;
+          else verbalPercentile = quantPercentile = avgSectional;
+        }
+        
+        if (total) {
+          overallPercentile = Math.min(total, 100);
+          
+          // IIM recommendations based on CAT percentile
+          if (total >= 99) {
+            recommendations = ['IIM Ahmedabad', 'IIM Bangalore', 'IIM Calcutta'];
+          } else if (total >= 95) {
+            recommendations = ['IIM Lucknow', 'IIM Kozhikode', 'IIM Indore'];
+          } else if (total >= 85) {
+            recommendations = ['IIM Kashipur', 'IIM Udaipur', 'IIM Tiruchirappalli'];
+          } else if (total >= 75) {
+            recommendations = ['ISB Hyderabad', 'XLRI', 'FMS Delhi', 'MDI Gurgaon'];
+          } else {
+            recommendations = ['Regional IIMs', 'Good state universities', 'Consider other entrance exams'];
+          }
+        }
+      }
+
+      setResult({
+        verbalPercentile: Math.round(verbalPercentile),
+        quantPercentile: Math.round(quantPercentile), 
+        overallPercentile: Math.round(overallPercentile),
+        recommendations
+      });
+    };
+
+    const resetCalculator = () => {
+      setTargetScore('');
+      setVerbalScore('');
+      setQuantScore('');
+      setOverallScore('');
+      setResult(null);
+    };
+
+    return (
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <h3 className="text-xl font-bold mb-4">MBA Exam Calculator</h3>
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Exam Type</label>
+              <select 
+                value={examType}
+                onChange={(e) => setExamType(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option>GMAT</option>
+                <option>CAT</option>
+                <option>XAT</option>
+                <option>SNAP</option>
+                <option>NMAT</option>
+                <option>MAT</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Target Score</label>
+              <input 
+                type="number" 
+                placeholder="Enter target score" 
+                value={targetScore}
+                onChange={(e) => setTargetScore(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Verbal Score</label>
+              <input 
+                type="number" 
+                placeholder={examType === 'GMAT' ? '0-51' : 'Percentile'} 
+                value={verbalScore}
+                onChange={(e) => setVerbalScore(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Quantitative Score</label>
+              <input 
+                type="number" 
+                placeholder={examType === 'GMAT' ? '0-51' : 'Percentile'} 
+                value={quantScore}
+                onChange={(e) => setQuantScore(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Overall Score</label>
+              <input 
+                type="number" 
+                placeholder={examType === 'GMAT' ? '200-800' : 'Percentile'} 
+                value={overallScore}
+                onChange={(e) => setOverallScore(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <button 
+              onClick={calculateScore}
+              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Calculate Score
+            </button>
+            <button 
+              onClick={resetCalculator}
+              className="border border-blue-600 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-50 transition-colors"
+            >
+              Reset
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-4 bg-blue-50 rounded-lg">
+              <h4 className="font-semibold text-blue-800 mb-3">Score Breakdown</h4>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span>Verbal Percentile:</span>
+                  <span className="font-medium">{result ? result.verbalPercentile + '%' : '--'}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Quant Percentile:</span>
+                  <span className="font-medium">{result ? result.quantPercentile + '%' : '--'}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Overall Percentile:</span>
+                  <span className="font-medium">{result ? result.overallPercentile + '%' : '--'}</span>
+                </div>
               </div>
-              <div className="flex justify-between">
-                <span>Quant Percentile:</span>
-                <span className="font-medium">--</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Overall Percentile:</span>
-                <span className="font-medium">--</span>
+            </div>
+            <div className="p-4 bg-green-50 rounded-lg">
+              <h4 className="font-semibold text-green-800 mb-3">School Recommendations</h4>
+              <div className="space-y-2 text-sm">
+                {result && result.recommendations.length > 0 ? (
+                  result.recommendations.map((school, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <span>{school}</span>
+                    </div>
+                  ))
+                ) : (
+                  <>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <span>Good fit schools will appear here</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <span>Based on your score range</span>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
-          <div className="p-4 bg-green-50 rounded-lg">
-            <h4 className="font-semibold text-green-800 mb-3">School Recommendations</h4>
-            <div className="space-y-2 text-sm">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span>Good fit schools will appear here</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span>Based on your score range</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div className="bg-gray-50 p-4 rounded-lg">
-          <h4 className="font-semibold text-gray-800 mb-2">Exam Information</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <span className="font-medium">Score Range:</span>
-              <span className="ml-2 text-gray-600">200-800 (GMAT)</span>
-            </div>
-            <div>
-              <span className="font-medium">Average Score:</span>
-              <span className="ml-2 text-gray-600">565</span>
-            </div>
-            <div>
-              <span className="font-medium">Test Duration:</span>
-              <span className="ml-2 text-gray-600">3.5 hours</span>
-            </div>
-            <div>
-              <span className="font-medium">Valid For:</span>
-              <span className="ml-2 text-gray-600">5 years</span>
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <h4 className="font-semibold text-gray-800 mb-2">Exam Information</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <span className="font-medium">Score Range:</span>
+                <span className="ml-2 text-gray-600">
+                  {examType === 'GMAT' ? '200-800' : examType === 'CAT' ? '0-100 percentile' : '0-100 percentile'}
+                </span>
+              </div>
+              <div>
+                <span className="font-medium">Average Score:</span>
+                <span className="ml-2 text-gray-600">
+                  {examType === 'GMAT' ? '565' : examType === 'CAT' ? '50th percentile' : '50th percentile'}
+                </span>
+              </div>
+              <div>
+                <span className="font-medium">Test Duration:</span>
+                <span className="ml-2 text-gray-600">
+                  {examType === 'GMAT' ? '3.5 hours' : examType === 'CAT' ? '3 hours' : '2-3 hours'}
+                </span>
+              </div>
+              <div>
+                <span className="font-medium">Valid For:</span>
+                <span className="ml-2 text-gray-600">
+                  {examType === 'GMAT' ? '5 years' : examType === 'CAT' ? '1 year' : '1-5 years'}
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const WishlistManager = () => (
     <div className="bg-white rounded-xl border border-gray-200 p-6">
@@ -628,78 +882,496 @@ export default function BSchoolPage() {
     </div>
   );
 
-  const CutoffPredictor = () => (
-    <div className="bg-white rounded-xl border border-gray-200 p-6">
-      <h3 className="text-xl font-bold mb-4">MBA Cutoff Predictor</h3>
-      <div className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Exam</label>
-            <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
-              <option>CAT</option>
-              <option>XAT</option>
-              <option>MAT</option>
-              <option>SNAP</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Your Score</label>
-            <input type="number" placeholder="Enter score" className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
-            <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
-              <option>General</option>
-              <option>OBC</option>
-              <option>SC</option>
-              <option>ST</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Work Experience</label>
-            <input type="number" placeholder="Years" className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
-          </div>
-        </div>
-        <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Predict Admission Chances</button>
-        <div className="mt-4 p-4 bg-green-50 rounded-lg">
-          <h4 className="font-semibold text-green-800 mb-2">Predicted Schools</h4>
-          <p className="text-green-700">Your admission predictions will appear here</p>
-        </div>
-      </div>
-    </div>
-  );
+  const CutoffPredictor = () => {
+    const [exam, setExam] = useState('CAT');
+    const [score, setScore] = useState('');
+    const [category, setCategory] = useState('General');
+    const [workExperience, setWorkExperience] = useState('');
+    const [predictions, setPredictions] = useState<{
+      safeSchools: string[];
+      moderateSchools: string[];
+      reachSchools: string[];
+      admissionChance: string;
+    } | null>(null);
 
-  const EligibilityChecker = () => (
-    <div className="bg-white rounded-xl border border-gray-200 p-6">
-      <h3 className="text-xl font-bold mb-4">MBA Eligibility Checker</h3>
-      <div className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Graduation Percentage</label>
-            <input type="number" placeholder="%" className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
+    const predictAdmissionChances = () => {
+      const numScore = parseInt(score);
+      const experience = parseInt(workExperience) || 0;
+
+      if (!numScore) {
+        alert('Please enter your exam score');
+        return;
+      }
+
+      let adjustedScore = numScore;
+      let safeSchools: string[] = [];
+      let moderateSchools: string[] = [];
+      let reachSchools: string[] = [];
+      let admissionChance = '';
+
+      // Category-based score adjustment
+      if (category === 'OBC') {
+        adjustedScore = numScore * 0.95; // 5% adjustment
+      } else if (category === 'SC') {
+        adjustedScore = numScore * 0.85; // 15% adjustment
+      } else if (category === 'ST') {
+        adjustedScore = numScore * 0.80; // 20% adjustment
+      }
+
+      // Work experience boost
+      if (experience >= 3) {
+        adjustedScore += (exam === 'CAT' ? 2 : 20);
+      }
+
+      // Predict based on exam type
+      if (exam === 'CAT') {
+        if (adjustedScore >= 99) {
+          admissionChance = '95%+ chance at top IIMs';
+          safeSchools = ['IIM Ahmedabad', 'IIM Bangalore', 'IIM Calcutta'];
+          moderateSchools = ['ISB Hyderabad', 'XLRI Jamshedpur'];
+          reachSchools = ['Top International Schools'];
+        } else if (adjustedScore >= 95) {
+          admissionChance = '85%+ chance at good IIMs';
+          safeSchools = ['IIM Lucknow', 'IIM Kozhikode', 'IIM Indore'];
+          moderateSchools = ['IIM Ahmedabad', 'IIM Bangalore'];
+          reachSchools = ['Harvard Business School', 'Stanford GSB'];
+        } else if (adjustedScore >= 90) {
+          admissionChance = '70%+ chance at newer IIMs';
+          safeSchools = ['IIM Kashipur', 'IIM Udaipur', 'IIM Tiruchirappalli'];
+          moderateSchools = ['IIM Lucknow', 'IIM Kozhikode'];
+          reachSchools = ['IIM Ahmedabad', 'IIM Bangalore'];
+        } else if (adjustedScore >= 80) {
+          admissionChance = '60%+ chance at regional schools';
+          safeSchools = ['MDI Gurgaon', 'FMS Delhi', 'XLRI'];
+          moderateSchools = ['Newer IIMs'];
+          reachSchools = ['Top IIMs'];
+        } else {
+          admissionChance = 'Consider other entrance exams';
+          safeSchools = ['Regional business schools', 'Private universities'];
+          moderateSchools = ['Tier-2 colleges'];
+          reachSchools = ['IIMs with lower cutoffs'];
+        }
+      } else if (exam === 'XAT') {
+        if (adjustedScore >= 99) {
+          admissionChance = '90%+ chance at XLRI';
+          safeSchools = ['XLRI Jamshedpur', 'SPJIMR Mumbai'];
+          moderateSchools = ['IMT Ghaziabad', 'TAPMI'];
+          reachSchools = ['IIMs', 'ISB'];
+        } else if (adjustedScore >= 95) {
+          admissionChance = '75%+ chance at good schools';
+          safeSchools = ['IMT Ghaziabad', 'TAPMI Manipal'];
+          moderateSchools = ['XLRI Jamshedpur'];
+          reachSchools = ['SPJIMR Mumbai'];
+        } else if (adjustedScore >= 85) {
+          admissionChance = '60%+ chance at decent schools';
+          safeSchools = ['BIM Trichy', 'FORE New Delhi'];
+          moderateSchools = ['IMT Ghaziabad'];
+          reachSchools = ['XLRI'];
+        }
+      } else if (exam === 'MAT') {
+        if (adjustedScore >= 95) {
+          admissionChance = '80%+ chance at good colleges';
+          safeSchools = ['JBIMS Mumbai', 'Sydenham Institute'];
+          moderateSchools = ['K.J. Somaiya', 'Welingkar'];
+          reachSchools = ['IIMs', 'XLRI'];
+        } else if (adjustedScore >= 85) {
+          admissionChance = '70%+ chance at decent colleges';
+          safeSchools = ['MET Mumbai', 'PUMBA Pune'];
+          moderateSchools = ['JBIMS Mumbai'];
+          reachSchools = ['Top private schools'];
+        }
+      }
+
+      setPredictions({
+        safeSchools,
+        moderateSchools, 
+        reachSchools,
+        admissionChance
+      });
+    };
+
+    return (
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <h3 className="text-xl font-bold mb-4">MBA Cutoff Predictor</h3>
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Exam</label>
+              <select 
+                value={exam}
+                onChange={(e) => setExam(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option>CAT</option>
+                <option>XAT</option>
+                <option>MAT</option>
+                <option>SNAP</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Your Score</label>
+              <input 
+                type="number" 
+                placeholder={exam === 'CAT' ? 'Percentile (0-100)' : exam === 'MAT' ? 'Score (200-800)' : 'Percentile (0-100)'} 
+                value={score}
+                onChange={(e) => setScore(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+              <select 
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option>General</option>
+                <option>OBC</option>
+                <option>SC</option>
+                <option>ST</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Work Experience</label>
+              <input 
+                type="number" 
+                placeholder="Years" 
+                value={workExperience}
+                onChange={(e) => setWorkExperience(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Work Experience</label>
-            <input type="number" placeholder="Years" className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Entrance Exam Score</label>
-            <input type="number" placeholder="Score" className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Target School</label>
-            <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
-              <option>Select School</option>
-              {schools.map((school) => (
-                <option key={school.id}>{school.name}</option>
-              ))}
-            </select>
-          </div>
+          <button 
+            onClick={predictAdmissionChances}
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Predict Admission Chances
+          </button>
+          
+          {predictions ? (
+            <div className="space-y-4">
+              <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                <h4 className="font-semibold text-green-800 mb-2">Admission Prediction</h4>
+                <p className="text-green-700 font-medium">{predictions.admissionChance}</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <h5 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4" />
+                    Safe Schools (High Chance)
+                  </h5>
+                  <ul className="space-y-1 text-sm text-blue-700">
+                    {predictions.safeSchools.map((school, idx) => (
+                      <li key={idx} className="flex items-center gap-1">
+                        <span className="w-1 h-1 bg-blue-600 rounded-full"></span>
+                        {school}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                  <h5 className="font-semibold text-yellow-800 mb-2 flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4" />
+                    Moderate Schools (Good Chance)
+                  </h5>
+                  <ul className="space-y-1 text-sm text-yellow-700">
+                    {predictions.moderateSchools.map((school, idx) => (
+                      <li key={idx} className="flex items-center gap-1">
+                        <span className="w-1 h-1 bg-yellow-600 rounded-full"></span>
+                        {school}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+                  <h5 className="font-semibold text-red-800 mb-2 flex items-center gap-2">
+                    <Target className="w-4 h-4" />
+                    Reach Schools (Stretch Goals)
+                  </h5>
+                  <ul className="space-y-1 text-sm text-red-700">
+                    {predictions.reachSchools.map((school, idx) => (
+                      <li key={idx} className="flex items-center gap-1">
+                        <span className="w-1 h-1 bg-red-600 rounded-full"></span>
+                        {school}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h5 className="font-semibold text-gray-800 mb-2">Important Notes</h5>
+                <ul className="space-y-1 text-sm text-gray-600">
+                  <li>• Predictions are based on historical data and general trends</li>
+                  <li>• Actual admissions depend on multiple factors including essays, interview performance, and overall profile</li>
+                  <li>• Consider applying to schools across all three categories for best results</li>
+                  <li>• Work experience and achievements can significantly improve your chances</li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <div className="mt-4 p-4 bg-green-50 rounded-lg">
+              <h4 className="font-semibold text-green-800 mb-2">Predicted Schools</h4>
+              <p className="text-green-700">Your admission predictions will appear here</p>
+            </div>
+          )}
         </div>
-        <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Check Eligibility</button>
       </div>
-    </div>
-  );
+    );
+  };
+
+  const EligibilityChecker = () => {
+    const [graduationPercentage, setGraduationPercentage] = useState('');
+    const [workExperience, setWorkExperience] = useState('');
+    const [examScore, setExamScore] = useState('');
+    const [targetSchool, setTargetSchool] = useState('');
+    const [eligibilityResult, setEligibilityResult] = useState<{
+      isEligible: boolean;
+      eligibilityScore: number;
+      requirements: string[];
+      recommendations: string[];
+      missingRequirements: string[];
+    } | null>(null);
+
+    const checkEligibility = () => {
+      const gradPercent = parseFloat(graduationPercentage);
+      const experience = parseInt(workExperience) || 0;
+      const score = parseInt(examScore);
+
+      if (!gradPercent || !targetSchool) {
+        alert('Please fill in graduation percentage and select a target school');
+        return;
+      }
+
+      const selectedSchool = schools.find(school => school.name === targetSchool);
+      if (!selectedSchool) {
+        alert('Please select a valid school');
+        return;
+      }
+
+      let eligibilityScore = 0;
+      let requirements: string[] = [];
+      let recommendations: string[] = [];
+      let missingRequirements: string[] = [];
+
+      // Check graduation percentage (typically 50%+ required)
+      if (gradPercent >= 50) {
+        eligibilityScore += 25;
+        requirements.push(`✓ Graduation percentage: ${gradPercent}% (Minimum 50% required)`);
+      } else {
+        missingRequirements.push(`Graduation percentage is below 50% (Current: ${gradPercent}%)`);
+      }
+
+      // Check work experience
+      const minExperience = selectedSchool.admissionRequirements.workExperience.minYears || 2;
+      if (experience >= minExperience) {
+        eligibilityScore += 25;
+        requirements.push(`✓ Work experience: ${experience} years (Minimum ${minExperience} years required)`);
+      } else {
+        missingRequirements.push(`Need ${minExperience - experience} more years of work experience`);
+      }
+
+      // Check exam score (if provided)
+      if (score) {
+        const avgScore = selectedSchool.admissionRequirements.gmat.averageScore;
+        if (avgScore && score >= avgScore * 0.9) { // 90% of average score
+          eligibilityScore += 30;
+          requirements.push(`✓ Entrance exam score: ${score} (Competitive for this school)`);
+        } else if (avgScore && score >= avgScore * 0.8) { // 80% of average score
+          eligibilityScore += 20;
+          requirements.push(`✓ Entrance exam score: ${score} (Meets minimum requirements)`);
+          recommendations.push('Consider retaking the exam for better chances');
+        } else {
+          eligibilityScore += 10;
+          requirements.push(`⚠ Entrance exam score: ${score} (Below average for this school)`);
+          missingRequirements.push('Entrance exam score needs improvement');
+        }
+      } else {
+        eligibilityScore += 15;
+        requirements.push('⚠ No entrance exam score provided');
+        missingRequirements.push('Take GMAT/GRE or relevant entrance exam');
+      }
+
+      // Additional checks based on school ranking
+      if (selectedSchool.ranking.global <= 10) {
+        eligibilityScore += 20;
+        recommendations.push('Top-tier school: Ensure strong essays and recommendations');
+        recommendations.push('Consider leadership experience and unique achievements');
+      } else if (selectedSchool.ranking.global <= 25) {
+        eligibilityScore += 15;
+        recommendations.push('Competitive school: Focus on demonstrating clear career goals');
+      } else {
+        eligibilityScore += 20;
+        recommendations.push('Good chance of admission with current profile');
+      }
+
+      // General recommendations
+      if (experience < 3) {
+        recommendations.push('Consider gaining more work experience before applying');
+      }
+      if (gradPercent < 70) {
+        recommendations.push('Consider additional certifications to strengthen academic profile');
+      }
+
+      recommendations.push('Prepare strong essays highlighting your unique value proposition');
+      recommendations.push('Secure strong recommendation letters from supervisors');
+      recommendations.push('Consider applying to multiple schools across different tiers');
+
+      const isEligible = eligibilityScore >= 60 && missingRequirements.length <= 1;
+
+      setEligibilityResult({
+        isEligible,
+        eligibilityScore,
+        requirements,
+        recommendations,
+        missingRequirements
+      });
+    };
+
+    return (
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <h3 className="text-xl font-bold mb-4">MBA Eligibility Checker</h3>
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Graduation Percentage</label>
+              <input 
+                type="number" 
+                placeholder="%" 
+                value={graduationPercentage}
+                onChange={(e) => setGraduationPercentage(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Work Experience</label>
+              <input 
+                type="number" 
+                placeholder="Years" 
+                value={workExperience}
+                onChange={(e) => setWorkExperience(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Entrance Exam Score</label>
+              <input 
+                type="number" 
+                placeholder="GMAT/GRE Score" 
+                value={examScore}
+                onChange={(e) => setExamScore(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Target School</label>
+              <select 
+                value={targetSchool}
+                onChange={(e) => setTargetSchool(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">Select School</option>
+                {schools.map((school) => (
+                  <option key={school.id} value={school.name}>{school.name}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+          
+          <button 
+            onClick={checkEligibility}
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Check Eligibility
+          </button>
+
+          {eligibilityResult && (
+            <div className="space-y-4">
+              <div className={`p-4 rounded-lg border ${
+                eligibilityResult.isEligible 
+                  ? 'bg-green-50 border-green-200' 
+                  : 'bg-yellow-50 border-yellow-200'
+              }`}>
+                <h4 className={`font-semibold mb-2 ${
+                  eligibilityResult.isEligible ? 'text-green-800' : 'text-yellow-800'
+                }`}>
+                  Eligibility Result
+                </h4>
+                <div className="flex items-center gap-4">
+                  <span className={`font-medium ${
+                    eligibilityResult.isEligible ? 'text-green-700' : 'text-yellow-700'
+                  }`}>
+                    {eligibilityResult.isEligible ? '✅ Eligible' : '⚠️ Partially Eligible'}
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    Eligibility Score: {eligibilityResult.eligibilityScore}/100
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <h5 className="font-semibold text-blue-800 mb-3">Requirements Status</h5>
+                  <ul className="space-y-2 text-sm">
+                    {eligibilityResult.requirements.map((req, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-blue-700">
+                        <span className="text-xs mt-1">•</span>
+                        <span>{req}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+                  <h5 className="font-semibold text-purple-800 mb-3">Recommendations</h5>
+                  <ul className="space-y-2 text-sm">
+                    {eligibilityResult.recommendations.map((rec, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-purple-700">
+                        <span className="text-xs mt-1">•</span>
+                        <span>{rec}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {eligibilityResult.missingRequirements.length > 0 && (
+                <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+                  <h5 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4" />
+                    Missing Requirements
+                  </h5>
+                  <ul className="space-y-2 text-sm">
+                    {eligibilityResult.missingRequirements.map((missing, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-red-700">
+                        <span className="text-xs mt-1">•</span>
+                        <span>{missing}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h5 className="font-semibold text-gray-800 mb-2">Next Steps</h5>
+                <ul className="space-y-1 text-sm text-gray-600">
+                  <li>• Address any missing requirements listed above</li>
+                  <li>• Research school-specific requirements and deadlines</li>
+                  <li>• Prepare application essays and recommendation letters</li>
+                  <li>• Consider applying to multiple schools with varying selectivity</li>
+                  <li>• Schedule interviews and campus visits if possible</li>
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
 
   const FeeCalculator = () => (
     <div className="bg-white rounded-xl border border-gray-200 p-6">
