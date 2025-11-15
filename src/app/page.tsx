@@ -10,9 +10,8 @@ import Navigation from '@/components/Navigation'
 import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
-// TEMPORARILY DISABLED - Mobile popup imports
-// import MobileNumberPopup from '@/components/MobileNumberPopup'
-// import { useMobilePopup } from '@/hooks/useMobilePopup'
+import MobileNumberPopup from '@/components/MobileNumberPopup'
+import { useMobilePopup } from '@/hooks/useMobilePopup'
 
 // StatCard component for animated statistics
 const StatCard = ({ number, suffix, label, icon, delay, useCountAnimation, format }: {
@@ -54,8 +53,8 @@ const StatCard = ({ number, suffix, label, icon, delay, useCountAnimation, forma
 }
 
 export default function HomePage() {
-  // Mobile popup hook - TEMPORARILY DISABLED
-  // const { isPopupOpen, mobileSubmitted, closePopup, submitMobile } = useMobilePopup()
+  // Mobile popup hook
+  const { isPopupOpen, mobileSubmitted, closePopup, submitMobile } = useMobilePopup()
   const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
@@ -1959,12 +1958,12 @@ export default function HomePage() {
       <Footer />
       <FloatingActions />
       
-      {/* Mobile Number Popup - TEMPORARILY DISABLED */}
-      {/* <MobileNumberPopup
+      {/* Mobile Number Popup */}
+      <MobileNumberPopup
         isOpen={isPopupOpen}
         onClose={closePopup}
         onSubmit={submitMobile}
-      /> */}
+      />
     </div>
   )
 }
