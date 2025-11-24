@@ -115,7 +115,7 @@ export default function ContactPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
+      <section className="relative pt-24 pb-16 bg-gradient-to-br from-blue-600 via-blue-800 to-blue-900 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (

@@ -506,14 +506,14 @@ export default function UniversityDetailPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-12 bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
+      <section className="relative pt-20 pb-12 bg-gradient-to-br from-blue-600 via-blue-800 to-blue-900 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={university.image}
             alt={university.name}
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 to-teal-900/50" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 to-blue-950/50" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -761,7 +761,7 @@ export default function BlogPostPage() {
                     left: 0;
                     width: 60px;
                     height: 4px;
-                    background: linear-gradient(to right, #10b981, #059669);
+                    background: linear-gradient(to right, #3b82f6, #2563eb);
                     border-radius: 2px;
                   }
                   
@@ -814,7 +814,7 @@ export default function BlogPostPage() {
                     content: '•';
                     position: absolute;
                     left: 0.5rem;
-                    color: #10b981;
+                    color: #3b82f6;
                     font-weight: bold;
                     font-size: 1.25rem;
                   }
@@ -831,7 +831,7 @@ export default function BlogPostPage() {
                     content: counter(list-counter) ".";
                     position: absolute;
                     left: 0;
-                    color: #10b981;
+                    color: #3b82f6;
                     font-weight: 600;
                     font-size: 1rem;
                   }
@@ -842,7 +842,7 @@ export default function BlogPostPage() {
                   }
                   
                   .blog-content blockquote {
-                    border-left: 4px solid #10b981;
+                    border-left: 4px solid #3b82f6;
                     padding-left: 2rem;
                     margin: 3rem 0;
                     font-style: italic;
@@ -857,17 +857,17 @@ export default function BlogPostPage() {
                   }
                   
                   .blog-content a {
-                    color: #059669;
+                    color: #2563eb;
                     text-decoration: underline;
                     text-underline-offset: 3px;
                     text-decoration-thickness: 2px;
-                    text-decoration-color: #10b98130;
+                    text-decoration-color: #3b82f630;
                     transition: all 0.2s;
                   }
                   
                   .blog-content a:hover {
-                    color: #047857;
-                    text-decoration-color: #10b981;
+                    color: #1d4ed8;
+                    text-decoration-color: #3b82f6;
                   }
                   
                   .blog-content code {

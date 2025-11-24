@@ -112,8 +112,8 @@ export function getStatusColor(status: string): string {
     ARCHIVED: 'text-red-600 bg-red-100',
     NEW: 'text-blue-600 bg-blue-100',
     CONTACTED: 'text-indigo-600 bg-indigo-100',
-    QUALIFIED: 'text-green-600 bg-green-100',
-    CONVERTED: 'text-emerald-600 bg-emerald-100',
+    QUALIFIED: 'text-blue-600 bg-blue-100',
+    CONVERTED: 'text-sky-600 bg-sky-100',
     LOST: 'text-red-600 bg-red-100',
   }
   return statusColors[status] || 'text-gray-600 bg-gray-100'

@@ -603,7 +603,7 @@ export default function CountriesPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
+      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-blue-900 overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentImageIndex}

@@ -218,7 +218,7 @@ export default function CoursesPage() {
       <Navigation />
 
       {/* Hero Section with Carousel */}
-      <section className="relative pt-20 pb-16 min-h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
+      <section className="relative pt-20 pb-16 min-h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-blue-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/10" />
         
         {/* Course Image Carousel */}
@@ -644,7 +644,7 @@ export default function CoursesPage() {
                 <motion.div 
                   className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 text-blue-600 relative overflow-hidden"
                   whileHover={{ 
-                    backgroundColor: "#10b981",
+                    backgroundColor: "#3b82f6",
                     scale: 1.1,
                     rotateY: 180
                   }}

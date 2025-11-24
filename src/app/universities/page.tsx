@@ -101,7 +101,7 @@ export default function UniversitiesPage() {
       <Navigation />
 
       {/* Hero Section with University Images */}
-      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
+      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-blue-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/10" />
         
         {/* University Image Carousel */}

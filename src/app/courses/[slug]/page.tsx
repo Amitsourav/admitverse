@@ -46,7 +46,7 @@ export default function CourseDetailPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
+      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-blue-900 overflow-hidden">
         <motion.img
           initial={{ scale: 1.2, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
