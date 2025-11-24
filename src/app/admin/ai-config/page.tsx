@@ -13,7 +13,7 @@ export default function AIConfigPage() {
     loading: true
   })
   const [testResults, setTestResults] = useState<Record<string, any>>({})
-  const [istesting, setIsTestig] = useState(false)
+  const [isTesting, setIsTesting] = useState(false)
 
   useEffect(() => {
     checkAIStatus()
@@ -83,7 +83,7 @@ export default function AIConfigPage() {
   }
 
   const runFullTest = async () => {
-    setIsTestig(true)
+    setIsTesting(true)
     
     try {
       // Comprehensive test with real data
@@ -137,7 +137,7 @@ export default function AIConfigPage() {
     } catch (error) {
       console.error('Full test failed:', error)
     } finally {
-      setIsTestig(false)
+      setIsTesting(false)
     }
   }
 
@@ -229,14 +229,14 @@ export default function AIConfigPage() {
               </h2>
               <button
                 onClick={runFullTest}
-                disabled={isTestig}
+                disabled={isTesting}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                  isTestig
+                  isTesting
                     ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     : 'bg-blue-600 text-white hover:bg-blue-700'
                 }`}
               >
-                {isTestig ? 'Testing...' : 'Run Full Test'}
+                {isTesting ? 'Testing...' : 'Run Full Test'}
               </button>
             </div>
             
