@@ -1,16 +1,19 @@
 import { createClient } from '@supabase/supabase-js'
 
 // Initialize Supabase client for storage operations
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!, // Use service role key for server-side operations
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+
+const supabase = supabaseUrl && supabaseKey ? createClient(
+  supabaseUrl,
+  supabaseKey, // Use service role key for server-side operations
   {
     auth: {
       autoRefreshToken: false,
       persistSession: false
     }
   }
-)
+) : null
 
 export interface UploadResult {
   success: boolean
@@ -32,6 +35,10 @@ export interface UploadOptions {
  * Upload a file to Supabase Storage
  */
 export async function uploadFile(options: UploadOptions): Promise<UploadResult> {
+  if (!supabase) {
+    return { success: false, error: 'Supabase client not configured' }
+  }
+
   try {
     const { bucket, path, file, contentType, cacheControl = '3600', upsert = false } = options
 
@@ -104,6 +111,10 @@ export async function uploadFile(options: UploadOptions): Promise<UploadResult> 
  * Delete a file from Supabase Storage
  */
 export async function deleteFile(bucket: string, path: string): Promise<{ success: boolean; error?: string }> {
+  if (!supabase) {
+    return { success: false, error: 'Supabase client not configured' }
+  }
+
   try {
     const { error } = await supabase.storage
       .from(bucket)
@@ -129,6 +140,8 @@ export async function deleteFile(bucket: string, path: string): Promise<{ succes
  * Get public URL for a file
  */
 export function getPublicUrl(bucket: string, path: string): string {
+  if (!supabase) return ''
+
   const { data } = supabase.storage
     .from(bucket)
     .getPublicUrl(path)
@@ -140,6 +153,10 @@ export function getPublicUrl(bucket: string, path: string): string {
  * List files in a bucket
  */
 export async function listFiles(bucket: string, folder?: string, limit = 100) {
+  if (!supabase) {
+    return { success: false, error: 'Supabase client not configured', files: [] }
+  }
+
   try {
     const { data, error } = await supabase.storage
       .from(bucket)

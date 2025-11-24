@@ -107,10 +107,13 @@ Please provide comprehensive feedback following the specified JSON format.`
       ],
       temperature: 0.3,
       max_tokens: 2000,
-      response_format: { type: 'json_object' }
+      response_format: { type: 'json_object' },
+      stream: false
     })
 
-    const feedback = JSON.parse(completion.choices[0]?.message?.content || '{}') as SOPFeedback
+    // Type assertion to ensure we have the non-streaming response
+    const chatCompletion = completion as any
+    const feedback = JSON.parse(chatCompletion.choices?.[0]?.message?.content || '{}') as SOPFeedback
 
     // Add actual word count
     const actualWordCount = content.trim().split(/\s+/).length
