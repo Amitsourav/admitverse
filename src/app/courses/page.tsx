@@ -218,7 +218,7 @@ export default function CoursesPage() {
       <Navigation />
 
       {/* Hero Section with Carousel */}
-      <section className="relative pt-20 pb-16 min-h-[70vh] bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700 overflow-hidden">
+      <section className="relative pt-20 pb-16 min-h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
         <div className="absolute inset-0 bg-black/10" />
         
         {/* Course Image Carousel */}
@@ -287,7 +287,7 @@ export default function CoursesPage() {
               Explore Top Courses
             </motion.h1>
             <motion.p 
-              className="text-lg md:text-xl text-emerald-50 max-w-3xl mx-auto mb-8"
+              className="text-lg md:text-xl text-blue-50 max-w-3xl mx-auto mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -361,7 +361,7 @@ export default function CoursesPage() {
                   placeholder="Search courses, skills, or career paths..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                  className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
             </div>
@@ -371,7 +371,7 @@ export default function CoursesPage() {
               <select
                 value={selectedLevel}
                 onChange={(e) => setSelectedLevel(e.target.value)}
-                className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white"
+                className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
               >
                 <option value="all">All Levels</option>
                 <option value="Bachelor">Bachelor's</option>
@@ -383,7 +383,7 @@ export default function CoursesPage() {
               <select
                 value={selectedDuration}
                 onChange={(e) => setSelectedDuration(e.target.value)}
-                className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white"
+                className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
               >
                 <option value="all">All Durations</option>
                 <option value="2years">2 Years</option>
@@ -394,7 +394,7 @@ export default function CoursesPage() {
               <select
                 value={selectedField}
                 onChange={(e) => setSelectedField(e.target.value)}
-                className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white"
+                className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
               >
                 <option value="all">All Fields</option>
                 <option value="Technology">Technology</option>
@@ -420,7 +420,7 @@ export default function CoursesPage() {
         {/* Floating Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <motion.div
-            className="absolute top-20 left-10 w-20 h-20 bg-emerald-100/30 rounded-full blur-xl"
+            className="absolute top-20 left-10 w-20 h-20 bg-blue-100/30 rounded-full blur-xl"
             animate={{
               y: [0, -20, 0],
               x: [0, 10, 0],
@@ -433,7 +433,7 @@ export default function CoursesPage() {
             }}
           />
           <motion.div
-            className="absolute top-40 right-20 w-32 h-32 bg-green-100/20 rounded-full blur-2xl"
+            className="absolute top-40 right-20 w-32 h-32 bg-blue-100/20 rounded-full blur-2xl"
             animate={{
               y: [0, 30, 0],
               x: [0, -15, 0],
@@ -447,7 +447,7 @@ export default function CoursesPage() {
             }}
           />
           <motion.div
-            className="absolute bottom-40 left-1/4 w-16 h-16 bg-teal-100/40 rounded-full blur-lg"
+            className="absolute bottom-40 left-1/4 w-16 h-16 bg-indigo-100/40 rounded-full blur-lg"
             animate={{
               y: [0, -25, 0],
               rotate: [0, 360],
@@ -502,19 +502,19 @@ export default function CoursesPage() {
                   className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group relative cursor-pointer"
                 >
                   {/* Course Header */}
-                  <div className="h-48 bg-gradient-to-br from-emerald-100 to-green-100 relative p-6">
+                  <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-100 relative p-6">
                     <div className="absolute top-4 right-4 z-10">
                       <div className="bg-white rounded-full px-3 py-1 flex items-center shadow-sm">
-                        <TrendingUp className="w-4 h-4 text-emerald-600 mr-1" />
+                        <TrendingUp className="w-4 h-4 text-blue-600 mr-1" />
                         <span className="text-sm font-semibold text-gray-700">{course.popularity}% Popular</span>
                       </div>
                     </div>
                     
                     <div className="flex flex-col justify-end h-full">
                       <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 inline-block mb-3">
-                        <BookOpen className="w-8 h-8 text-emerald-600" />
+                        <BookOpen className="w-8 h-8 text-blue-600" />
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
                         {course.name}
                       </h3>
                       <p className="text-sm text-gray-600 mt-1">{course.description}</p>
@@ -539,7 +539,7 @@ export default function CoursesPage() {
                       </div>
                       <div className="flex items-center">
                         <DollarSign className="w-4 h-4 mr-2 text-gray-400" />
-                        <span className="text-sm font-semibold text-green-600">{course.avgSalary}</span>
+                        <span className="text-sm font-semibold text-blue-800">{course.avgSalary}</span>
                       </div>
                     </div>
                     
@@ -548,7 +548,7 @@ export default function CoursesPage() {
                       <p className="text-xs text-gray-500 mb-2">Key Skills:</p>
                       <div className="flex flex-wrap gap-1">
                         {course.skills.slice(0, 3).map(skill => (
-                          <span key={skill} className="px-2 py-1 bg-emerald-50 text-emerald-700 text-xs rounded">
+                          <span key={skill} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
                             {skill}
                           </span>
                         ))}
@@ -574,7 +574,7 @@ export default function CoursesPage() {
                     {/* Action Button */}
                     <Link href={`/courses/${course.slug}`}>
                       <motion.button 
-                        className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 relative overflow-hidden group/btn"
+                        className="w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-blue-800 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 relative overflow-hidden group/btn"
                         whileHover={{ 
                           scale: 1.05,
                           y: -2,
@@ -594,7 +594,7 @@ export default function CoursesPage() {
                           View Programs
                         </motion.span>
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg"
+                          className="absolute inset-0 bg-gradient-to-r from-blue-800 to-blue-600 rounded-lg"
                           initial={{ scale: 0, opacity: 0 }}
                           whileHover={{ scale: 1, opacity: 1 }}
                           transition={{ duration: 0.3 }}
@@ -642,7 +642,7 @@ export default function CoursesPage() {
                 className="text-center cursor-pointer"
               >
                 <motion.div 
-                  className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3 text-emerald-600 relative overflow-hidden"
+                  className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 text-blue-600 relative overflow-hidden"
                   whileHover={{ 
                     backgroundColor: "#10b981",
                     scale: 1.1,
@@ -657,7 +657,7 @@ export default function CoursesPage() {
                     {stat.icon}
                   </motion.div>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"
                     initial={{ scale: 0, opacity: 0 }}
                     whileHover={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.3 }}

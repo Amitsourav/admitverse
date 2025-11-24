@@ -28,7 +28,7 @@ export default function ServicesPage() {
         <div className="relative w-full max-w-md">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg flex items-center justify-between hover:border-emerald-500 transition-colors focus:outline-none focus:border-emerald-500"
+            className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg flex items-center justify-between hover:border-blue-500 transition-colors focus:outline-none focus:border-blue-500"
           >
             <span className={selectedService ? 'text-gray-900' : 'text-gray-500'}>
               {selectedService || 'Select a Service'}
@@ -45,7 +45,7 @@ export default function ServicesPage() {
                 <button
                   key={service}
                   onClick={() => handleServiceSelect(service)}
-                  className="w-full px-4 py-3 text-left hover:bg-emerald-50 hover:text-emerald-600 transition-colors first:rounded-t-lg last:rounded-b-lg"
+                  className="w-full px-4 py-3 text-left hover:bg-blue-50 hover:text-blue-600 transition-colors first:rounded-t-lg last:rounded-b-lg"
                 >
                   {service}
                 </button>

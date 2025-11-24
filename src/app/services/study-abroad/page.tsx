@@ -109,14 +109,14 @@ export default function StudyAbroadPage() {
       <TopBanner />
       <Navigation />
       <FloatingActions />
-    <div className="min-h-screen bg-gradient-to-b from-white to-emerald-50/30 pt-20 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50/30 pt-20 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Floating Particles */}
         {[15, 28, 41, 54, 67, 80, 93, 7, 21, 34, 47, 60, 73, 86, 99, 13, 26, 39, 52, 65].map((pos, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-emerald-400/20 rounded-full"
+            className="absolute w-2 h-2 bg-blue-400/20 rounded-full"
             style={{
               left: `${pos}%`,
               top: `${((i * 21) % 75) + 12}%`,
@@ -138,7 +138,7 @@ export default function StudyAbroadPage() {
         {[240, 370, 310, 460, 290, 410].map((width, i) => (
           <motion.div
             key={`line-${i}`}
-            className="absolute h-0.5 bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent"
+            className="absolute h-0.5 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"
             style={{
               width: `${width}px`,
               left: `${(i * 19) % 76}%`,
@@ -160,7 +160,7 @@ export default function StudyAbroadPage() {
         {[38, 56, 30, 44, 42, 60, 34, 50].map((size, i) => (
           <motion.div
             key={`shape-${i}`}
-            className={`absolute ${i % 2 === 0 ? 'bg-emerald-400/10' : 'bg-green-400/10'} ${
+            className={`absolute ${i % 2 === 0 ? 'bg-blue-400/10' : 'bg-blue-400/10'} ${
               i % 3 === 0 ? 'rounded-full' : 'rounded-lg'
             }`}
             style={{
@@ -190,12 +190,12 @@ export default function StudyAbroadPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center bg-gradient-to-br from-emerald-500/90 to-green-600/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg text-white"
+            className="text-center bg-gradient-to-br from-blue-500/90 to-blue-800/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg text-white"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Study <span className="text-emerald-100">Abroad</span> Services
+              Study <span className="text-blue-100">Abroad</span> Services
             </h1>
-            <p className="text-xl text-emerald-50 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-50 max-w-3xl mx-auto">
               Your gateway to world-class education at top universities globally
             </p>
           </motion.div>
@@ -216,7 +216,7 @@ export default function StudyAbroadPage() {
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 className="text-center"
               >
-                <div className="text-4xl font-bold text-emerald-600 mb-2">
+                <div className="text-4xl font-bold text-blue-600 mb-2">
                   <AnimatedCounter value={stat.value} />
                 </div>
                 <div className="text-gray-600">{stat.label}</div>
@@ -253,20 +253,20 @@ export default function StudyAbroadPage() {
                   boxShadow: "0 25px 50px rgba(0,0,0,0.15)", 
                   transition: { duration: 0.3, ease: "easeOut" } 
                 }}
-                className="bg-white border border-emerald-200 rounded-xl p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer group"
+                className="bg-white border border-blue-200 rounded-xl p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer group"
               >
-                <div className="bg-emerald-100 group-hover:bg-emerald-200 rounded-lg p-3 inline-block mb-4 transition-colors duration-300">
+                <div className="bg-blue-100 group-hover:bg-blue-200 rounded-lg p-3 inline-block mb-4 transition-colors duration-300">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors duration-300">
                   {service.title}
                 </h3>
                 <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   {service.description}
                 </p>
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-4">
-                  <div className="w-full h-0.5 bg-gradient-to-r from-emerald-400 to-green-500"></div>
-                  <p className="text-sm text-emerald-600 mt-2 font-medium">
+                  <div className="w-full h-0.5 bg-gradient-to-r from-blue-400 to-blue-500"></div>
+                  <p className="text-sm text-blue-600 mt-2 font-medium">
                     {service.title === "University Selection" && "Access to 500+ partner universities worldwide"}
                     {service.title === "Application Support" && "End-to-end application management"}
                     {service.title === "Visa Guidance" && "98% visa success rate"}
@@ -303,10 +303,10 @@ export default function StudyAbroadPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                className="bg-gradient-to-br from-emerald-50 to-green-100 rounded-xl p-6"
+                className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6"
               >
                 <div className="flex items-center mb-4">
-                  <MapPin className="w-6 h-6 text-emerald-600 mr-2" />
+                  <MapPin className="w-6 h-6 text-blue-600 mr-2" />
                   <h3 className="text-2xl font-bold text-gray-900">{dest.country}</h3>
                 </div>
                 <div className="space-y-2 mb-4">
@@ -355,7 +355,7 @@ export default function StudyAbroadPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
                 whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-                className="flex items-center justify-between bg-gray-50 rounded-lg p-4 hover:bg-emerald-50 transition-colors"
+                className="flex items-center justify-between bg-gray-50 rounded-lg p-4 hover:bg-blue-50 transition-colors"
               >
                 <div className="flex items-center">
                   <span className="text-3xl mr-4">{course.icon}</span>
@@ -394,11 +394,11 @@ export default function StudyAbroadPage() {
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 className="relative"
               >
-                <div className="bg-emerald-500 text-white rounded-full px-6 py-3 font-semibold">
+                <div className="bg-blue-500 text-white rounded-full px-6 py-3 font-semibold">
                   {index + 1}. {step}
                 </div>
                 {index < process.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-emerald-400">
+                  <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-blue-400">
                     →
                   </div>
                 )}
@@ -409,7 +409,7 @@ export default function StudyAbroadPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-12 px-4 bg-gradient-to-r from-emerald-500 to-green-600 relative z-10">
+      <section className="py-12 px-4 bg-gradient-to-r from-blue-500 to-blue-800 relative z-10">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-8">
             Why Choose AdmitVerse
@@ -451,7 +451,7 @@ export default function StudyAbroadPage() {
             </p>
             <Link
               href="/#book-counseling"
-              className="inline-block bg-gradient-to-r from-emerald-500 to-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
+              className="inline-block bg-gradient-to-r from-blue-500 to-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
             >
               Book Free Counseling
             </Link>

@@ -600,11 +600,11 @@ export default function BlogPostPage() {
         {/* Hero Section */}
         <section className="relative">
           {/* Green background for hero */}
-          <div className="absolute top-0 left-0 right-0 h-[400px] bg-gradient-to-r from-emerald-500 to-green-600"></div>
+          <div className="absolute top-0 left-0 right-0 h-[400px] bg-gradient-to-r from-blue-500 to-blue-800"></div>
           
           <div className="relative z-10 max-w-7xl mx-auto px-4 pt-24 pb-12">
             {/* Back to Blog */}
-            <Link href="/blog" className="inline-flex items-center text-white hover:text-emerald-100 mb-8 transition-colors">
+            <Link href="/blog" className="inline-flex items-center text-white hover:text-blue-100 mb-8 transition-colors">
               <ArrowLeft className="w-5 h-5 mr-2" />
               Back to Blog
             </Link>
@@ -664,8 +664,8 @@ export default function BlogPostPage() {
               <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 mb-10 border border-gray-100 shadow-sm">
                 <div className="flex items-center justify-between flex-wrap gap-4">
                   <div className="flex items-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-emerald-100 to-green-100 rounded-full flex items-center justify-center mr-5 shadow-md">
-                      <User className="w-10 h-10 text-emerald-600" />
+                    <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-100 rounded-full flex items-center justify-center mr-5 shadow-md">
+                      <User className="w-10 h-10 text-blue-600" />
                     </div>
                     <div>
                       <h3 className="font-bold text-xl text-gray-900 mb-1">{post.author}</h3>
@@ -678,7 +678,7 @@ export default function BlogPostPage() {
                   <button
                     onClick={() => setLiked(!liked)}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
-                      liked ? 'bg-emerald-100 text-emerald-700' : 'bg-white text-gray-600 hover:bg-gray-100'
+                      liked ? 'bg-blue-100 text-blue-700' : 'bg-white text-gray-600 hover:bg-gray-100'
                     }`}
                   >
                     <ThumbsUp className={`w-5 h-5 ${liked ? 'fill-current' : ''}`} />
@@ -914,7 +914,7 @@ export default function BlogPostPage() {
                     <Link
                       key={tag}
                       href={`/blog?tag=${tag.toLowerCase()}`}
-                      className="bg-gradient-to-r from-emerald-50 to-green-50 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium hover:from-emerald-100 hover:to-green-100 transition-all duration-200 border border-emerald-200"
+                      className="bg-gradient-to-r from-blue-50 to-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:from-blue-100 hover:to-blue-100 transition-all duration-200 border border-blue-200"
                     >
                       {tag}
                     </Link>
@@ -934,7 +934,7 @@ export default function BlogPostPage() {
               <div className="sticky top-24">
                 <div className="bg-gray-50 rounded-xl p-6 mb-6">
                   <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-                    <BookOpen className="w-5 h-5 mr-2 text-emerald-600" />
+                    <BookOpen className="w-5 h-5 mr-2 text-blue-600" />
                     Table of Contents
                   </h3>
                   <nav className="space-y-2">
@@ -942,7 +942,7 @@ export default function BlogPostPage() {
                       <button 
                         key={index}
                         onClick={() => scrollToSection(heading.id)}
-                        className={`block text-gray-600 hover:text-emerald-600 transition-colors text-left w-full ${
+                        className={`block text-gray-600 hover:text-blue-600 transition-colors text-left w-full ${
                           heading.level === 3 ? 'pl-4 text-sm' : ''
                         }`}
                       >
@@ -956,12 +956,12 @@ export default function BlogPostPage() {
                 </div>
                 
                 {/* Newsletter CTA */}
-                <div className="bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl p-6 text-white">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-800 rounded-xl p-6 text-white">
                   <h3 className="font-bold mb-3">Get Expert Guidance</h3>
                   <p className="text-sm mb-4 opacity-90">
                     Subscribe to receive personalized advice and updates about studying abroad.
                   </p>
-                  <button className="w-full bg-white text-emerald-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                  <button className="w-full bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                     Subscribe Now
                   </button>
                 </div>
@@ -986,7 +986,7 @@ export default function BlogPostPage() {
                   className="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex items-center justify-between mb-3">
-                    <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">
+                    <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs">
                       {article.category}
                     </span>
                     <span className="text-gray-500 text-xs">{article.readTime}</span>
@@ -1006,7 +1006,7 @@ export default function BlogPostPage() {
                     </div>
                     <Link 
                       href={`/blog/${article.id}`}
-                      className="text-emerald-600 hover:text-emerald-700 font-medium text-sm flex items-center group"
+                      className="text-blue-600 hover:text-blue-700 font-medium text-sm flex items-center group"
                     >
                       Read More
                       <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />

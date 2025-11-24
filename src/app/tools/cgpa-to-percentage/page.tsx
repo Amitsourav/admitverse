@@ -110,7 +110,7 @@ export default function CGPAToPercentagePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
       <TopBanner />
       <Navigation />
 
@@ -126,9 +126,9 @@ export default function CGPAToPercentagePage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-24 h-24 bg-gradient-to-br from-teal-100 to-emerald-100 rounded-3xl flex items-center justify-center mx-auto mb-6"
+            className="w-24 h-24 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-3xl flex items-center justify-center mx-auto mb-6"
           >
-            <Percent className="w-14 h-14 text-teal-600" />
+            <Percent className="w-14 h-14 text-indigo-600" />
           </motion.div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -146,7 +146,7 @@ export default function CGPAToPercentagePage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <Calculator className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <Calculator className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">100K+</h3>
               <p className="text-gray-600">Conversions</p>
             </motion.div>
@@ -156,7 +156,7 @@ export default function CGPAToPercentagePage() {
               transition={{ delay: 0.2 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <GraduationCap className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <GraduationCap className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">All Scales</h3>
               <p className="text-gray-600">4.0, 5.0, 10.0</p>
             </motion.div>
@@ -166,7 +166,7 @@ export default function CGPAToPercentagePage() {
               transition={{ delay: 0.3 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <Award className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <Award className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">100%</h3>
               <p className="text-gray-600">Accurate</p>
             </motion.div>
@@ -193,7 +193,7 @@ export default function CGPAToPercentagePage() {
                   }}
                   className={`p-4 rounded-lg border-2 transition-all ${
                     conversionType === 'cgpa-to-percentage'
-                      ? 'border-emerald-500 bg-emerald-50 text-emerald-700'
+                      ? 'border-blue-500 bg-blue-50 text-blue-700'
                       : 'border-gray-300 hover:border-gray-400'
                   }`}
                 >
@@ -207,7 +207,7 @@ export default function CGPAToPercentagePage() {
                   }}
                   className={`p-4 rounded-lg border-2 transition-all ${
                     conversionType === 'percentage-to-cgpa'
-                      ? 'border-emerald-500 bg-emerald-50 text-emerald-700'
+                      ? 'border-blue-500 bg-blue-50 text-blue-700'
                       : 'border-gray-300 hover:border-gray-400'
                   }`}
                 >
@@ -223,7 +223,7 @@ export default function CGPAToPercentagePage() {
               <select
                 value={scale}
                 onChange={(e) => setScale(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="10">10-Point Scale</option>
                 <option value="4">4-Point Scale</option>
@@ -237,7 +237,7 @@ export default function CGPAToPercentagePage() {
               <select
                 value={formula}
                 onChange={(e) => setFormula(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="standard">Standard</option>
                 {scale === '10' && (
@@ -263,7 +263,7 @@ export default function CGPAToPercentagePage() {
                 max={getMaxValue()}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-2xl font-semibold text-center"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-2xl font-semibold text-center"
                 placeholder={conversionType === 'cgpa-to-percentage' ? 'Enter CGPA' : 'Enter Percentage'}
               />
             </div>
@@ -274,7 +274,7 @@ export default function CGPAToPercentagePage() {
                 onClick={calculateConversion}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex-1 py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-lg hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
               >
                 <Calculator className="w-5 h-5" />
                 Calculate
@@ -294,10 +294,10 @@ export default function CGPAToPercentagePage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-emerald-50 rounded-lg p-6 border-2 border-emerald-200"
+                className="bg-blue-50 rounded-lg p-6 border-2 border-blue-200"
               >
                 <h3 className="text-lg font-semibold text-gray-700 mb-2">Result</h3>
-                <div className="text-3xl font-bold text-emerald-600">
+                <div className="text-3xl font-bold text-blue-600">
                   {result} {conversionType === 'cgpa-to-percentage' ? '%' : 'CGPA'}
                 </div>
                 <div className="text-sm text-gray-600 mt-2">
@@ -307,7 +307,7 @@ export default function CGPAToPercentagePage() {
                   onClick={downloadResult}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="mt-4 px-4 py-2 bg-white border border-emerald-300 text-emerald-700 rounded-lg hover:bg-emerald-50 transition-colors flex items-center gap-2"
+                  className="mt-4 px-4 py-2 bg-white border border-blue-300 text-blue-700 rounded-lg hover:bg-blue-50 transition-colors flex items-center gap-2"
                 >
                   <Download className="w-4 h-4" />
                   Download Result
@@ -328,7 +328,7 @@ export default function CGPAToPercentagePage() {
               whileInView={{ opacity: 1, y: 0 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <Info className="w-8 h-8 text-emerald-600 mb-4" />
+              <Info className="w-8 h-8 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Standard Formula</h3>
               <p className="text-gray-600 mb-3">10-Point Scale: CGPA × 9.5</p>
               <p className="text-gray-600 mb-3">4-Point Scale: CGPA × 25</p>
@@ -340,7 +340,7 @@ export default function CGPAToPercentagePage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <Info className="w-8 h-8 text-emerald-600 mb-4" />
+              <Info className="w-8 h-8 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">VTU Formula</h3>
               <p className="text-gray-600 mb-3">Percentage = (CGPA - 0.75) × 10</p>
               <p className="text-gray-600">Applicable for VTU affiliated colleges</p>
@@ -351,7 +351,7 @@ export default function CGPAToPercentagePage() {
               transition={{ delay: 0.2 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <Info className="w-8 h-8 text-emerald-600 mb-4" />
+              <Info className="w-8 h-8 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Anna University</h3>
               <p className="text-gray-600 mb-3">Percentage = CGPA × 10</p>
               <p className="text-gray-600">Direct multiplication method</p>

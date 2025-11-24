@@ -596,9 +596,9 @@ export default function AIMatchingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center mb-12"
               >
-                <div className="inline-flex items-center bg-green-100 rounded-full px-4 py-2 mb-4">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
-                  <span className="text-green-700 font-medium">Analysis Complete</span>
+                <div className="inline-flex items-center bg-blue-100 rounded-full px-4 py-2 mb-4">
+                  <CheckCircle className="w-5 h-5 text-blue-800 mr-2" />
+                  <span className="text-blue-900 font-medium">Analysis Complete</span>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
                   Your Perfect University Matches
@@ -635,7 +635,7 @@ export default function AIMatchingPage() {
                         <ul className="space-y-1">
                           {aiAnalysis.recommendations.slice(0, 3).map((rec: string, idx: number) => (
                             <li key={idx} className="text-sm text-gray-600 flex items-start">
-                              <CheckCircle className="w-3 h-3 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                              <CheckCircle className="w-3 h-3 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
                               <span>{rec}</span>
                             </li>
                           ))}
@@ -716,7 +716,7 @@ export default function AIMatchingPage() {
                             </div>
                             <span className="text-sm text-gray-500">Match Score</span>
                             <div className={`mt-2 px-3 py-1 rounded-full text-xs font-medium ${
-                              match.admissionChance === 'Very Good' ? 'bg-green-100 text-green-700' :
+                              match.admissionChance === 'Very Good' ? 'bg-blue-100 text-blue-900' :
                               match.admissionChance === 'Good' ? 'bg-blue-100 text-blue-700' :
                               'bg-orange-100 text-orange-700'
                             }`}>
@@ -742,7 +742,7 @@ export default function AIMatchingPage() {
                             <div className="space-y-1">
                               {match.highlights.map(highlight => (
                                 <div key={highlight} className="flex items-center text-sm text-gray-600">
-                                  <CheckCircle className="w-3 h-3 text-green-500 mr-2" />
+                                  <CheckCircle className="w-3 h-3 text-blue-500 mr-2" />
                                   <span>{highlight}</span>
                                 </div>
                               ))}

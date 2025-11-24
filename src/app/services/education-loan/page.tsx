@@ -79,14 +79,14 @@ export default function EducationLoanPage() {
       <TopBanner />
       <Navigation />
       <FloatingActions />
-    <div className="min-h-screen bg-gradient-to-b from-white to-green-50/30 pt-20 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50/30 pt-20 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Floating Particles */}
         {[10, 20, 30, 40, 50, 60, 70, 80, 90, 15, 25, 35, 45, 55, 65, 75, 85, 95, 12, 87].map((pos, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-emerald-400/20 rounded-full"
+            className="absolute w-2 h-2 bg-blue-400/20 rounded-full"
             style={{
               left: `${pos}%`,
               top: `${((i * 13) % 90) + 5}%`,
@@ -108,7 +108,7 @@ export default function EducationLoanPage() {
         {[200, 350, 300, 450, 250, 400].map((width, i) => (
           <motion.div
             key={`line-${i}`}
-            className="absolute h-0.5 bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent"
+            className="absolute h-0.5 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"
             style={{
               width: `${width}px`,
               left: `${(i * 20) % 80}%`,
@@ -130,7 +130,7 @@ export default function EducationLoanPage() {
         {[40, 60, 30, 50, 35, 45, 55, 25].map((size, i) => (
           <motion.div
             key={`shape-${i}`}
-            className={`absolute ${i % 2 === 0 ? 'bg-emerald-400/10' : 'bg-green-400/10'} ${
+            className={`absolute ${i % 2 === 0 ? 'bg-blue-400/10' : 'bg-blue-400/10'} ${
               i % 3 === 0 ? 'rounded-full' : 'rounded-lg'
             }`}
             style={{
@@ -160,12 +160,12 @@ export default function EducationLoanPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center bg-gradient-to-br from-emerald-500/90 to-green-600/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg text-white"
+            className="text-center bg-gradient-to-br from-blue-500/90 to-blue-800/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg text-white"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Education <span className="text-emerald-100">Loan</span> Assistance
+              Education <span className="text-blue-100">Loan</span> Assistance
             </h1>
-            <p className="text-xl text-emerald-50 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-50 max-w-3xl mx-auto">
               Making quality education accessible with comprehensive loan support for studying abroad
             </p>
           </motion.div>
@@ -200,18 +200,18 @@ export default function EducationLoanPage() {
                 }}
                 className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
               >
-                <div className="bg-emerald-100 group-hover:bg-emerald-200 rounded-lg p-3 inline-block mb-4 transition-colors duration-300">
+                <div className="bg-blue-100 group-hover:bg-blue-200 rounded-lg p-3 inline-block mb-4 transition-colors duration-300">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors duration-300">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   {feature.description}
                 </p>
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-4">
-                  <div className="w-full h-0.5 bg-gradient-to-r from-emerald-400 to-green-500"></div>
-                  <p className="text-sm text-emerald-600 mt-2 font-medium">
+                  <div className="w-full h-0.5 bg-gradient-to-r from-blue-400 to-blue-500"></div>
+                  <p className="text-sm text-blue-600 mt-2 font-medium">
                     {feature.title === "Competitive Interest Rates" && "Starting from 8.5% per annum"}
                     {feature.title === "100% Financing" && "Up to ₹1.5 Crore coverage"}
                     {feature.title === "Quick Processing" && "Approval within 7-10 days"}
@@ -248,7 +248,7 @@ export default function EducationLoanPage() {
                 whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                 className="text-center"
               >
-                <div className="bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 font-bold text-xl">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-800 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 font-bold text-xl">
                   {item.step}
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
@@ -279,7 +279,7 @@ export default function EducationLoanPage() {
                 "Other Education Expenses"
               ].map((item) => (
                 <li key={item} className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <CheckCircle className="w-5 h-5 text-blue-500 mr-3" />
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}
@@ -297,7 +297,7 @@ export default function EducationLoanPage() {
               {eligibleCountries.map((country) => (
                 <div
                   key={country}
-                  className="bg-emerald-50 rounded-lg px-4 py-2 text-center text-gray-700"
+                  className="bg-blue-50 rounded-lg px-4 py-2 text-center text-gray-700"
                 >
                   {country}
                 </div>
@@ -308,7 +308,7 @@ export default function EducationLoanPage() {
       </section>
 
       {/* Key Benefits */}
-      <section className="py-12 px-4 bg-gradient-to-r from-emerald-500 to-green-600 relative z-10">
+      <section className="py-12 px-4 bg-gradient-to-r from-blue-500 to-blue-800 relative z-10">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-8">
             Partner Banks & Financial Institutions
@@ -350,7 +350,7 @@ export default function EducationLoanPage() {
             </p>
             <Link
               href="/#book-counseling"
-              className="inline-block bg-gradient-to-r from-emerald-500 to-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
+              className="inline-block bg-gradient-to-r from-blue-500 to-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
             >
               Get Free Consultation
             </Link>

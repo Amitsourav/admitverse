@@ -38,7 +38,7 @@ export default function CVReviewPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
       <TopBanner />
       <Navigation />
 
@@ -54,9 +54,9 @@ export default function CVReviewPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-24 h-24 bg-gradient-to-br from-teal-100 to-emerald-100 rounded-3xl flex items-center justify-center mx-auto mb-6"
+            className="w-24 h-24 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-3xl flex items-center justify-center mx-auto mb-6"
           >
-            <FileText className="w-14 h-14 text-teal-600" />
+            <FileText className="w-14 h-14 text-indigo-600" />
           </motion.div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -74,7 +74,7 @@ export default function CVReviewPage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <Users className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <Users className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">15,000+</h3>
               <p className="text-gray-600">CVs Reviewed</p>
             </motion.div>
@@ -84,7 +84,7 @@ export default function CVReviewPage() {
               transition={{ delay: 0.2 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <Clock className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <Clock className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">24 Hours</h3>
               <p className="text-gray-600">Turnaround Time</p>
             </motion.div>
@@ -94,7 +94,7 @@ export default function CVReviewPage() {
               transition={{ delay: 0.3 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <Star className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <Star className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">98%</h3>
               <p className="text-gray-600">Success Rate</p>
             </motion.div>
@@ -122,7 +122,7 @@ export default function CVReviewPage() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
               >
-                <item.icon className="w-8 h-8 text-emerald-500 mb-4" />
+                <item.icon className="w-8 h-8 text-blue-500 mb-4" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600">{item.desc}</p>
               </motion.div>
@@ -151,7 +151,7 @@ export default function CVReviewPage() {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="John Doe"
                   />
                 </div>
@@ -164,7 +164,7 @@ export default function CVReviewPage() {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -177,7 +177,7 @@ export default function CVReviewPage() {
                     required
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="+91 98765 43210"
                   />
                 </div>
@@ -190,7 +190,7 @@ export default function CVReviewPage() {
                     required
                     value={formData.currentRole}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Software Engineer"
                   />
                 </div>
@@ -203,7 +203,7 @@ export default function CVReviewPage() {
                     required
                     value={formData.targetRole}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Senior Software Engineer"
                   />
                 </div>
@@ -215,7 +215,7 @@ export default function CVReviewPage() {
                     required
                     value={formData.industry}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="">Select Industry</option>
                     <option value="technology">Technology</option>
@@ -236,7 +236,7 @@ export default function CVReviewPage() {
                     required
                     value={formData.experience}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="">Select Experience</option>
                     <option value="entry">Entry Level (0-2 years)</option>
@@ -253,7 +253,7 @@ export default function CVReviewPage() {
                     required
                     value={formData.country}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="">Select Country</option>
                     <option value="usa">USA</option>
@@ -269,7 +269,7 @@ export default function CVReviewPage() {
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Upload CV/Resume *</label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-emerald-500 transition-colors">
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-500 transition-colors">
                   <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
                   <p className="text-gray-600 mb-2">Click to upload or drag and drop</p>
                   <p className="text-sm text-gray-500">PDF, DOC, DOCX (Max 5MB)</p>
@@ -283,12 +283,12 @@ export default function CVReviewPage() {
                   />
                   <label
                     htmlFor="file-upload"
-                    className="mt-4 inline-block px-4 py-2 bg-emerald-600 text-white rounded-lg cursor-pointer hover:bg-emerald-700 transition-colors"
+                    className="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition-colors"
                   >
                     Select File
                   </label>
                   {file && (
-                    <p className="mt-3 text-sm text-emerald-600 font-medium">
+                    <p className="mt-3 text-sm text-blue-600 font-medium">
                       Selected: {file.name}
                     </p>
                   )}
@@ -304,7 +304,7 @@ export default function CVReviewPage() {
                   rows={4}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Tell us what specific aspects of your CV you'd like us to focus on..."
                 />
               </div>
@@ -313,7 +313,7 @@ export default function CVReviewPage() {
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-lg hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
               >
                 Submit for Review
                 <ArrowRight className="w-5 h-5" />
@@ -324,7 +324,7 @@ export default function CVReviewPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-12 px-6 bg-emerald-50">
+      <section className="py-12 px-6 bg-blue-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">How It Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -341,7 +341,7 @@ export default function CVReviewPage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {item.step}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>

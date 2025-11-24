@@ -26,7 +26,6 @@ import {
   ExternalLink,
   Mail,
   Phone,
-  Download,
   Heart,
   Share2,
   Play
@@ -451,7 +450,7 @@ export default function UniversityDetailPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <h2 className="text-xl font-semibold text-gray-900 mb-2">Loading university details...</h2>
           <p className="text-gray-600">Please wait while we fetch the information.</p>
         </div>
@@ -478,7 +477,7 @@ export default function UniversityDetailPage() {
           <div className="space-y-3">
             <button
               onClick={() => window.location.reload()}
-              className="block px-6 py-3 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+              className="block px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             >
               Try Again
             </button>
@@ -507,14 +506,14 @@ export default function UniversityDetailPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-12 bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700 overflow-hidden">
+      <section className="relative pt-20 pb-12 bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={university.image}
             alt={university.name}
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/50 to-teal-900/50" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 to-teal-900/50" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -595,7 +594,7 @@ export default function UniversityDetailPage() {
               </motion.button>
 
               <motion.button
-                className="flex items-center px-6 py-3 bg-white text-emerald-600 rounded-full font-semibold hover:bg-gray-50 transition-colors"
+                className="flex items-center px-6 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-50 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -604,7 +603,7 @@ export default function UniversityDetailPage() {
               </motion.button>
 
               <motion.button
-                className="flex items-center px-6 py-3 bg-emerald-500 text-white rounded-full font-semibold hover:bg-emerald-600 transition-colors"
+                className="flex items-center px-6 py-3 bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-600 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -634,7 +633,7 @@ export default function UniversityDetailPage() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3 text-emerald-600">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 text-blue-600">
                   {stat.icon}
                 </div>
                 <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
@@ -655,7 +654,7 @@ export default function UniversityDetailPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center space-x-2 pb-2 px-1 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
                   activeTab === tab.id
-                    ? 'border-emerald-500 text-emerald-600'
+                    ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
                 }`}
                 whileHover={{ y: -2 }}
@@ -696,7 +695,7 @@ export default function UniversityDetailPage() {
                             viewport={{ once: true }}
                             className="flex items-start"
                           >
-                            <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                            <CheckCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                             <span className="text-gray-700">{highlight}</span>
                           </motion.div>
                         ))}
@@ -720,33 +719,29 @@ export default function UniversityDetailPage() {
                       <h4 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h4>
                       <div className="space-y-3">
                         <div className="flex items-center">
-                          <Mail className="w-5 h-5 text-emerald-500 mr-3" />
+                          <Mail className="w-5 h-5 text-blue-500 mr-3" />
                           <span className="text-gray-700">{university.contact.email}</span>
                         </div>
                         <div className="flex items-center">
-                          <Phone className="w-5 h-5 text-emerald-500 mr-3" />
+                          <Phone className="w-5 h-5 text-blue-500 mr-3" />
                           <span className="text-gray-700">{university.contact.phone}</span>
                         </div>
                         <div className="flex items-center">
-                          <Globe className="w-5 h-5 text-emerald-500 mr-3" />
+                          <Globe className="w-5 h-5 text-blue-500 mr-3" />
                           <span className="text-gray-700">{university.contact.website}</span>
                         </div>
                         <div className="flex items-start">
-                          <MapPin className="w-5 h-5 text-emerald-500 mr-3 mt-0.5" />
+                          <MapPin className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
                           <span className="text-gray-700">{university.contact.address}</span>
                         </div>
                       </div>
                     </div>
                   )}
 
-                  <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl p-6 border border-emerald-100">
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 border border-blue-100">
                     <h4 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h4>
                     <div className="space-y-3">
-                      <button className="w-full flex items-center justify-center px-4 py-3 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors">
-                        <Download className="w-5 h-5 mr-2" />
-                        Download Brochure
-                      </button>
-                      <button className="w-full flex items-center justify-center px-4 py-3 bg-white text-emerald-600 border border-emerald-200 rounded-lg hover:bg-emerald-50 transition-colors">
+                      <button className="w-full flex items-center justify-center px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
                         <Play className="w-5 h-5 mr-2" />
                         Watch Virtual Tour
                       </button>
@@ -775,11 +770,11 @@ export default function UniversityDetailPage() {
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.5, delay: index * 0.1 }}
                           viewport={{ once: true }}
-                          className="p-4 border border-gray-200 rounded-lg hover:border-emerald-300 hover:shadow-md transition-all duration-300 cursor-pointer group"
+                          className="p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all duration-300 cursor-pointer group"
                         >
                           <div className="flex items-center">
-                            <GraduationCap className="w-5 h-5 text-emerald-500 mr-3 group-hover:scale-110 transition-transform" />
-                            <span className="font-medium text-gray-900 group-hover:text-emerald-600 transition-colors">
+                            <GraduationCap className="w-5 h-5 text-blue-500 mr-3 group-hover:scale-110 transition-transform" />
+                            <span className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
                               {program}
                             </span>
                           </div>
@@ -817,7 +812,7 @@ export default function UniversityDetailPage() {
                           viewport={{ once: true }}
                           className="flex items-start"
                         >
-                          <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                           <span className="text-gray-700">{requirement}</span>
                         </motion.div>
                       ))}
@@ -837,7 +832,7 @@ export default function UniversityDetailPage() {
                           className="flex justify-between items-center p-4 bg-gray-50 rounded-lg"
                         >
                           <span className="font-medium text-gray-900">{type}</span>
-                          <span className="text-emerald-600 font-semibold">{deadline}</span>
+                          <span className="text-blue-600 font-semibold">{deadline}</span>
                         </motion.div>
                       ))}
                     </div>
@@ -854,10 +849,10 @@ export default function UniversityDetailPage() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className="p-4 border border-gray-200 rounded-lg hover:border-emerald-300 transition-colors"
+                        className="p-4 border border-gray-200 rounded-lg hover:border-blue-300 transition-colors"
                       >
                         <div className="flex items-start">
-                          <Award className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                          <Award className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                           <span className="text-gray-700">{scholarship}</span>
                         </div>
                       </motion.div>
@@ -885,12 +880,12 @@ export default function UniversityDetailPage() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className="p-6 border border-gray-200 rounded-lg hover:border-emerald-300 hover:shadow-md transition-all duration-300 cursor-pointer group"
+                        className="p-6 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all duration-300 cursor-pointer group"
                       >
                         <div className="flex items-start">
-                          <Building className="w-6 h-6 text-emerald-500 mr-4 mt-1 group-hover:scale-110 transition-transform" />
+                          <Building className="w-6 h-6 text-blue-500 mr-4 mt-1 group-hover:scale-110 transition-transform" />
                           <div>
-                            <h4 className="font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors">
+                            <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                               {facility}
                             </h4>
                           </div>

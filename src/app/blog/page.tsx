@@ -132,7 +132,7 @@ export default function BlogPage() {
       <TopBanner />
       <Navigation />
       <FloatingActions />
-      <div className="min-h-screen bg-gradient-to-b from-white to-emerald-50/30 pt-20">
+      <div className="min-h-screen bg-gradient-to-b from-white to-blue-50/30 pt-20">
         
         {/* Hero Section */}
         <section className="py-16 px-4">
@@ -144,7 +144,7 @@ export default function BlogPage() {
               className="text-center"
             >
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                Education <span className="text-emerald-600">Insights</span> & Guidance
+                Education <span className="text-blue-600">Insights</span> & Guidance
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
                 Expert advice, insider tips, and comprehensive guides to help you navigate your international education journey successfully.
@@ -189,7 +189,7 @@ export default function BlogPage() {
                   transition={{ delay: index * 0.1 }}
                   className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="relative h-64 bg-gradient-to-r from-emerald-500 to-green-600">
+                  <div className="relative h-64 bg-gradient-to-r from-blue-500 to-blue-800">
                     <div className="absolute inset-0 bg-black/20" />
                     <div className="absolute top-4 left-4">
                       <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
@@ -197,7 +197,7 @@ export default function BlogPage() {
                       </span>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-100 transition-colors">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-blue-100 transition-colors">
                         {post.title}
                       </h3>
                     </div>
@@ -225,7 +225,7 @@ export default function BlogPage() {
                     
                     <div className="flex flex-wrap gap-2 mb-4">
                       {post.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-xs">
+                        <span key={tag} className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">
                           {tag}
                         </span>
                       ))}
@@ -233,7 +233,7 @@ export default function BlogPage() {
                     
                     <Link 
                       href={`/blog/${post.id}`}
-                      className="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-semibold group"
+                      className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold group"
                     >
                       Read Full Article
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -272,7 +272,7 @@ export default function BlogPage() {
                       className="group bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300"
                     >
                       <div className="flex items-start justify-between mb-3">
-                        <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">
+                        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
                           {post.category}
                         </span>
                         <div className="flex items-center space-x-1 text-sm text-gray-500">
@@ -281,7 +281,7 @@ export default function BlogPage() {
                         </div>
                       </div>
                       
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-700 transition-colors">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors">
                         {post.title}
                       </h3>
                       
@@ -301,7 +301,7 @@ export default function BlogPage() {
                         
                         <Link 
                           href={`/blog/${post.id}`}
-                          className="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-semibold group"
+                          className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold group"
                         >
                           Read More
                           <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -332,10 +332,10 @@ export default function BlogPage() {
                           className="flex items-center justify-between p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all group"
                         >
                           <div className="flex items-center space-x-3">
-                            <Icon className="w-5 h-5 text-emerald-600" />
+                            <Icon className="w-5 h-5 text-blue-600" />
                             <span className="text-gray-700 group-hover:text-gray-900">{category.name}</span>
                           </div>
-                          <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-sm">
+                          <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-sm">
                             {category.count}
                           </span>
                         </Link>
@@ -358,7 +358,7 @@ export default function BlogPage() {
                       <Link
                         key={tag}
                         href={`/blog/tag/${tag.toLowerCase()}`}
-                        className="bg-white text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-emerald-100 hover:text-emerald-700 transition-colors"
+                        className="bg-white text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-blue-100 hover:text-blue-700 transition-colors"
                       >
                         #{tag}
                       </Link>
@@ -371,7 +371,7 @@ export default function BlogPage() {
         </section>
 
         {/* Newsletter Signup */}
-        <section className="py-16 px-4 bg-gradient-to-r from-emerald-500 to-green-600">
+        <section className="py-16 px-4 bg-gradient-to-r from-blue-500 to-blue-800">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -382,7 +382,7 @@ export default function BlogPage() {
               <h2 className="text-3xl font-bold mb-4">
                 Stay Updated with Latest Education Insights
               </h2>
-              <p className="text-emerald-100 mb-8 text-lg">
+              <p className="text-blue-100 mb-8 text-lg">
                 Get weekly expert tips, university updates, and scholarship alerts delivered to your inbox.
               </p>
               
@@ -392,12 +392,12 @@ export default function BlogPage() {
                   placeholder="Enter your email address"
                   className="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-white focus:outline-none"
                 />
-                <button className="bg-white text-emerald-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                   Subscribe
                 </button>
               </div>
               
-              <p className="text-emerald-100 text-sm mt-4">
+              <p className="text-blue-100 text-sm mt-4">
                 Join 50,000+ students who trust our insights. Unsubscribe anytime.
               </p>
             </motion.div>

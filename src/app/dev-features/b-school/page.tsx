@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import Navigation from '@/components/Navigation';
+import TopBanner from '@/components/TopBanner';
 import { 
   Search, 
   Filter, 
@@ -456,7 +458,7 @@ export default function BSchoolPage() {
                 <tr className="border-b border-gray-100">
                   <td className="p-4 font-medium bg-gray-50">Tuition Fee</td>
                   {selectedSchools.map((school, index) => (
-                    <td key={index} className="text-center p-4 font-semibold text-green-600">
+                    <td key={index} className="text-center p-4 font-semibold text-blue-800">
                       {school.programs.mba.currency} {school.programs.mba.tuitionFee}
                     </td>
                   ))}
@@ -478,7 +480,7 @@ export default function BSchoolPage() {
                 <tr className="border-b border-gray-100">
                   <td className="p-4 font-medium bg-gray-50">Employment Rate</td>
                   {selectedSchools.map((school, index) => (
-                    <td key={index} className="text-center p-4 font-semibold text-green-600">{school.outcomes.employmentRate}</td>
+                    <td key={index} className="text-center p-4 font-semibold text-blue-800">{school.outcomes.employmentRate}</td>
                   ))}
                 </tr>
                 <tr className="border-b border-gray-100">
@@ -554,7 +556,7 @@ export default function BSchoolPage() {
                   ))}
                 </select>
                 {selectedSchoolIds[slot] && (
-                  <div className="mt-2 text-xs text-green-600 font-medium">
+                  <div className="mt-2 text-xs text-blue-800 font-medium">
                     ✓ Selected
                   </div>
                 )}
@@ -785,24 +787,24 @@ export default function BSchoolPage() {
                 </div>
               </div>
             </div>
-            <div className="p-4 bg-green-50 rounded-lg">
-              <h4 className="font-semibold text-green-800 mb-3">School Recommendations</h4>
+            <div className="p-4 bg-blue-50 rounded-lg">
+              <h4 className="font-semibold text-blue-800 mb-3">School Recommendations</h4>
               <div className="space-y-2 text-sm">
                 {result && result.recommendations.length > 0 ? (
                   result.recommendations.map((school, idx) => (
                     <div key={idx} className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <CheckCircle className="w-4 h-4 text-blue-800" />
                       <span>{school}</span>
                     </div>
                   ))
                 ) : (
                   <>
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <CheckCircle className="w-4 h-4 text-blue-800" />
                       <span>Good fit schools will appear here</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <CheckCircle className="w-4 h-4 text-blue-800" />
                       <span>Based on your score range</span>
                     </div>
                   </>
@@ -1051,9 +1053,9 @@ export default function BSchoolPage() {
           
           {predictions ? (
             <div className="space-y-4">
-              <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                <h4 className="font-semibold text-green-800 mb-2">Admission Prediction</h4>
-                <p className="text-green-700 font-medium">{predictions.admissionChance}</p>
+              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h4 className="font-semibold text-blue-800 mb-2">Admission Prediction</h4>
+                <p className="text-blue-900 font-medium">{predictions.admissionChance}</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -1114,9 +1116,9 @@ export default function BSchoolPage() {
               </div>
             </div>
           ) : (
-            <div className="mt-4 p-4 bg-green-50 rounded-lg">
-              <h4 className="font-semibold text-green-800 mb-2">Predicted Schools</h4>
-              <p className="text-green-700">Your admission predictions will appear here</p>
+            <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+              <h4 className="font-semibold text-blue-800 mb-2">Predicted Schools</h4>
+              <p className="text-blue-900">Your admission predictions will appear here</p>
             </div>
           )}
         </div>
@@ -1293,17 +1295,17 @@ export default function BSchoolPage() {
             <div className="space-y-4">
               <div className={`p-4 rounded-lg border ${
                 eligibilityResult.isEligible 
-                  ? 'bg-green-50 border-green-200' 
+                  ? 'bg-blue-50 border-blue-200' 
                   : 'bg-yellow-50 border-yellow-200'
               }`}>
                 <h4 className={`font-semibold mb-2 ${
-                  eligibilityResult.isEligible ? 'text-green-800' : 'text-yellow-800'
+                  eligibilityResult.isEligible ? 'text-blue-800' : 'text-yellow-800'
                 }`}>
                   Eligibility Result
                 </h4>
                 <div className="flex items-center gap-4">
                   <span className={`font-medium ${
-                    eligibilityResult.isEligible ? 'text-green-700' : 'text-yellow-700'
+                    eligibilityResult.isEligible ? 'text-blue-900' : 'text-yellow-700'
                   }`}>
                     {eligibilityResult.isEligible ? '✅ Eligible' : '⚠️ Partially Eligible'}
                   </span>
@@ -1397,9 +1399,9 @@ export default function BSchoolPage() {
             <div className="text-sm text-blue-600">Tuition Fee</div>
             <div className="text-xl font-bold text-blue-800">$0</div>
           </div>
-          <div className="p-4 bg-green-50 rounded-lg">
-            <div className="text-sm text-green-600">Total Cost</div>
-            <div className="text-xl font-bold text-green-800">$0</div>
+          <div className="p-4 bg-blue-50 rounded-lg">
+            <div className="text-sm text-blue-800">Total Cost</div>
+            <div className="text-xl font-bold text-blue-800">$0</div>
           </div>
         </div>
       </div>
@@ -1441,7 +1443,7 @@ export default function BSchoolPage() {
               <h4 className="font-semibold mb-2">{school.shortName}</h4>
               <div className="space-y-1">
                 {school.scholarships?.slice(0, 3).map((scholarship, idx) => (
-                  <div key={idx} className="text-sm text-green-600 flex items-center gap-1">
+                  <div key={idx} className="text-sm text-blue-800 flex items-center gap-1">
                     <CheckCircle className="w-3 h-3" />
                     {scholarship}
                   </div>
@@ -1638,12 +1640,12 @@ export default function BSchoolPage() {
             <p className="text-xs text-gray-500">Mon-Fri: 9AM-6PM IST</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4 text-center">
-            <MessageCircle className="w-8 h-8 text-green-600 mx-auto mb-2" />
+            <MessageCircle className="w-8 h-8 text-blue-800 mx-auto mb-2" />
             <h4 className="font-semibold">Live Chat</h4>
             <p className="text-sm text-gray-600">Available for counseling</p>
             <Link 
               href="/#book-counseling"
-              className="mt-2 bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded text-sm transition-colors inline-flex items-center gap-1"
+              className="mt-2 bg-blue-800 hover:bg-blue-900 text-white px-4 py-1 rounded text-sm transition-colors inline-flex items-center gap-1"
             >
               <MessageCircle className="w-3 h-3" />
               Start Chat
@@ -1942,7 +1944,7 @@ export default function BSchoolPage() {
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                           <div>
                             <p className="text-sm text-gray-500">Fit Score</p>
-                            <p className="text-lg font-bold text-green-600">{school.fitScore}%</p>
+                            <p className="text-lg font-bold text-blue-800">{school.fitScore}%</p>
                           </div>
                           <div>
                             <p className="text-sm text-gray-500">GMAT Average</p>
@@ -2137,7 +2139,7 @@ export default function BSchoolPage() {
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded-lg">
                   <div className="text-sm text-gray-500">Employment Rate</div>
-                  <div className="font-semibold text-green-600">{school.outcomes.employmentRate}</div>
+                  <div className="font-semibold text-blue-800">{school.outcomes.employmentRate}</div>
                 </div>
               </div>
             </div>
@@ -2449,7 +2451,7 @@ export default function BSchoolPage() {
                     </div>
                     <div>
                       <span className="text-gray-500">Employment: </span>
-                      <span className="font-medium text-green-600">{school.outcomes.employmentRate}</span>
+                      <span className="font-medium text-blue-800">{school.outcomes.employmentRate}</span>
                     </div>
                   </div>
                 </div>
@@ -2499,19 +2501,19 @@ export default function BSchoolPage() {
               <h4 className="font-semibold text-blue-600 mb-3">Program Structure</h4>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="w-4 h-4 text-blue-500" />
                   Weekend and evening classes
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="w-4 h-4 text-blue-500" />
                   Modular intensive sessions
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="w-4 h-4 text-blue-500" />
                   International residencies
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="w-4 h-4 text-blue-500" />
                   Continue working full-time
                 </li>
               </ul>
@@ -2600,7 +2602,7 @@ export default function BSchoolPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center p-3 bg-gray-50 rounded-lg">
                   <div className="text-sm text-gray-500">EMBA Fee</div>
-                  <div className="font-semibold text-green-600">
+                  <div className="font-semibold text-blue-800">
                     {school.programs.emba?.tuitionFee || school.programs.mba.currency + ' ' + school.programs.mba.tuitionFee}
                   </div>
                 </div>
@@ -2808,7 +2810,7 @@ export default function BSchoolPage() {
                     </div>
                     <div>
                       <span className="text-gray-500">Employment: </span>
-                      <span className="font-medium text-green-600">{school.outcomes.employmentRate}</span>
+                      <span className="font-medium text-blue-800">{school.outcomes.employmentRate}</span>
                     </div>
                   </div>
                 </div>
@@ -3223,7 +3225,7 @@ export default function BSchoolPage() {
                 </div>
                 <div className="bg-gray-50 p-3 rounded-lg">
                   <div className="text-xs text-gray-500 mb-1">Avg Salary</div>
-                  <div className="font-semibold text-green-600">{school.outcomes.averageSalary.currency} {school.outcomes.averageSalary.amount.toLocaleString()}</div>
+                  <div className="font-semibold text-blue-800">{school.outcomes.averageSalary.currency} {school.outcomes.averageSalary.amount.toLocaleString()}</div>
                 </div>
                 <div className="bg-gray-50 p-3 rounded-lg">
                   <div className="text-xs text-gray-500 mb-1">GMAT Avg</div>
@@ -3304,6 +3306,11 @@ export default function BSchoolPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <TopBanner />
+      {/* Spacer for fixed TopBanner */}
+      <div className="h-[52px]"></div>
+      <Navigation />
+      
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div 
@@ -3314,7 +3321,7 @@ export default function BSchoolPage() {
 
       <div className="flex">
         {/* Desktop Sidebar */}
-        <div className="hidden lg:flex w-72 bg-white shadow-sm border-r border-gray-200 flex-col fixed h-full overflow-y-auto z-30">
+        <div className="hidden lg:flex w-72 bg-white shadow-sm border-r border-gray-200 flex-col fixed top-[116px] bottom-0 overflow-y-auto z-30">
           {/* Header */}
           <div className="bg-blue-600 text-white p-4">
             <h2 className="text-lg font-bold">AV B-School Zone</h2>
@@ -3408,7 +3415,7 @@ export default function BSchoolPage() {
         </div>
 
         {/* Mobile Sidebar */}
-        <div className={`lg:hidden fixed left-0 top-0 h-full w-72 bg-white shadow-lg border-r border-gray-200 z-50 transform transition-transform duration-300 ease-in-out ${
+        <div className={`lg:hidden fixed left-0 top-[116px] bottom-0 w-72 bg-white shadow-lg border-r border-gray-200 z-50 transform transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
           {/* Header */}

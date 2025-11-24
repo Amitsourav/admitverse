@@ -97,7 +97,7 @@ export default function MobileNumberPopup({ isOpen, onClose, onSubmit }: MobileN
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header with gradient */}
-              <div className="bg-gradient-to-r from-emerald-500 to-green-600 p-6 text-white relative overflow-hidden">
+              <div className="bg-gradient-to-r from-blue-500 to-blue-800 p-6 text-white relative overflow-hidden">
                 <motion.button
                   onClick={(e) => {
                     e.preventDefault()
@@ -124,7 +124,7 @@ export default function MobileNumberPopup({ isOpen, onClose, onSubmit }: MobileN
                   </motion.div>
                   <div>
                     <h2 className="text-2xl font-bold">🎉 Special Offer!</h2>
-                    <p className="text-emerald-100">Get personalized university recommendations</p>
+                    <p className="text-blue-100">Get personalized university recommendations</p>
                   </div>
                 </div>
                 
@@ -179,7 +179,7 @@ export default function MobileNumberPopup({ isOpen, onClose, onSubmit }: MobileN
                         value={mobile}
                         onChange={handleMobileChange}
                         placeholder="Enter your mobile number"
-                        className={`w-full pl-16 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 ${
+                        className={`w-full pl-16 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
                           !isValid ? 'border-red-300 bg-red-50' : 'border-gray-200'
                         }`}
                         maxLength={10}
@@ -198,7 +198,7 @@ export default function MobileNumberPopup({ isOpen, onClose, onSubmit }: MobileN
 
                   <motion.button
                     type="submit"
-                    className="w-full py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
+                    className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-800 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     disabled={mobile.length < 10}

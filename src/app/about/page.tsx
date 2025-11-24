@@ -155,7 +155,7 @@ export default function AboutPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-32 bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700 overflow-hidden">
+      <section className="relative pt-24 pb-32 bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
@@ -206,7 +206,7 @@ export default function AboutPage() {
               </motion.span>
             </motion.h1>
             <motion.p 
-              className="text-xl md:text-2xl text-emerald-50 max-w-4xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl text-blue-50 max-w-4xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -241,14 +241,14 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="py-20 bg-gradient-to-br from-emerald-50 via-gray-50 to-green-50 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-gray-50 to-blue-50 relative overflow-hidden">
         {/* Animated Geometric Background */}
         <div className="absolute inset-0">
           {/* Flowing Lines */}
           {[...Array(8)].map((_, i) => (
             <motion.div
               key={`line-${i}`}
-              className="absolute h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent"
+              className="absolute h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"
               style={{
                 width: `${Math.random() * 600 + 200}px`,
                 left: `${Math.random() * 100}%`,
@@ -271,7 +271,7 @@ export default function AboutPage() {
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={`orb-${i}`}
-              className="absolute w-2 h-2 bg-emerald-400 rounded-full shadow-lg shadow-emerald-400/50"
+              className="absolute w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -308,7 +308,7 @@ export default function AboutPage() {
             >
               Our{" "}
               <motion.span
-                className="bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -339,7 +339,7 @@ export default function AboutPage() {
               style={{ perspective: "1000px" }}
             >
               <motion.div
-                className="relative bg-white/90 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-emerald-200 shadow-2xl overflow-hidden"
+                className="relative bg-white/90 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-blue-200 shadow-2xl overflow-hidden"
                 whileHover={{ 
                   rotateY: 5,
                   rotateX: -5,
@@ -348,11 +348,11 @@ export default function AboutPage() {
                 transition={{ duration: 0.3 }}
               >
                 {/* Glowing Border Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-transparent to-green-500/20 rounded-3xl"></div>
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-400/10 rounded-full blur-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-transparent to-blue-500/20 rounded-3xl"></div>
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl"></div>
                 
                 <motion.div 
-                  className="relative z-10 w-20 h-20 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-2xl flex items-center justify-center text-black mb-6 shadow-lg shadow-emerald-400/30"
+                  className="relative z-10 w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-500 rounded-2xl flex items-center justify-center text-black mb-6 shadow-lg shadow-blue-400/30"
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.8 }}
                 >
@@ -396,8 +396,8 @@ export default function AboutPage() {
                       whileHover={{ x: 10 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="w-3 h-3 bg-emerald-400 rounded-full mr-4 shadow-lg shadow-emerald-400/50 group-hover/item:shadow-emerald-400/80 transition-all"></div>
-                      <span className="text-gray-600 group-hover/item:text-emerald-600 transition-colors">{point}</span>
+                      <div className="w-3 h-3 bg-blue-400 rounded-full mr-4 shadow-lg shadow-blue-400/50 group-hover/item:shadow-blue-400/80 transition-all"></div>
+                      <span className="text-gray-600 group-hover/item:text-blue-600 transition-colors">{point}</span>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -414,7 +414,7 @@ export default function AboutPage() {
               style={{ perspective: "1000px" }}
             >
               <motion.div
-                className="relative bg-white/90 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-green-200 shadow-2xl overflow-hidden"
+                className="relative bg-white/90 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-blue-200 shadow-2xl overflow-hidden"
                 whileHover={{ 
                   rotateY: -5,
                   rotateX: -5,
@@ -423,11 +423,11 @@ export default function AboutPage() {
                 transition={{ duration: 0.3 }}
               >
                 {/* Glowing Border Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-transparent to-teal-500/20 rounded-3xl"></div>
-                <div className="absolute -top-10 -left-10 w-40 h-40 bg-green-400/10 rounded-full blur-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-transparent to-indigo-500/20 rounded-3xl"></div>
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl"></div>
                 
                 <motion.div 
-                  className="relative z-10 w-20 h-20 bg-gradient-to-br from-green-400 to-teal-400 rounded-2xl flex items-center justify-center text-black mb-6 shadow-lg shadow-green-400/30"
+                  className="relative z-10 w-20 h-20 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-2xl flex items-center justify-center text-black mb-6 shadow-lg shadow-blue-400/30"
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.8 }}
                 >
@@ -471,8 +471,8 @@ export default function AboutPage() {
                       whileHover={{ x: 10 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="w-3 h-3 bg-green-400 rounded-full mr-4 shadow-lg shadow-green-400/50 group-hover/item:shadow-green-400/80 transition-all"></div>
-                      <span className="text-gray-600 group-hover/item:text-green-600 transition-colors">{point}</span>
+                      <div className="w-3 h-3 bg-blue-400 rounded-full mr-4 shadow-lg shadow-blue-400/50 group-hover/item:shadow-blue-400/80 transition-all"></div>
+                      <span className="text-gray-600 group-hover/item:text-blue-800 transition-colors">{point}</span>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -483,7 +483,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-500 to-green-600">
+      <section className="py-20 bg-gradient-to-r from-blue-500 to-blue-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -507,7 +507,7 @@ export default function AboutPage() {
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2">
                   <AnimatedCounter value={stat.value + stat.suffix} />
                 </div>
-                <div className="text-emerald-100">{stat.label}</div>
+                <div className="text-blue-100">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -533,7 +533,7 @@ export default function AboutPage() {
             >
               Our{" "}
               <motion.span
-                className="bg-gradient-to-r from-emerald-500 to-green-600 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-blue-500 to-blue-800 bg-clip-text text-transparent"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
@@ -551,7 +551,7 @@ export default function AboutPage() {
             >
               The principles that{" "}
               <motion.span
-                className="font-semibold text-emerald-600"
+                className="font-semibold text-blue-600"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
@@ -569,7 +569,7 @@ export default function AboutPage() {
               >
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:scale-105 relative z-10">
                   {/* Header Section - Always Visible */}
-                  <div className="p-6 bg-gradient-to-r from-emerald-500 to-green-600 text-white">
+                  <div className="p-6 bg-gradient-to-r from-blue-500 to-blue-800 text-white">
                     <div className="flex items-center mb-3">
                       <motion.div 
                         className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4"
@@ -588,7 +588,7 @@ export default function AboutPage() {
                       </motion.h3>
                     </div>
                     <motion.p 
-                      className="text-emerald-100 text-sm"
+                      className="text-blue-100 text-sm"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
@@ -600,7 +600,7 @@ export default function AboutPage() {
                   {/* Compact Footer - Default State */}
                   <div className="px-6 py-4 text-center bg-white group-hover:hidden">
                     <motion.div 
-                      className="text-emerald-600 text-sm font-medium"
+                      className="text-blue-600 text-sm font-medium"
                       animate={{ 
                         opacity: [1, 0.7, 1],
                         scale: [1, 1.02, 1]
@@ -617,11 +617,11 @@ export default function AboutPage() {
                 </div>
 
                 {/* Expanded Content - Overlay on Hover */}
-                <div className="absolute top-0 left-0 w-full bg-white rounded-xl shadow-2xl border border-emerald-200 p-6 opacity-0 invisible scale-95 group-hover:opacity-100 group-hover:visible group-hover:scale-100 transition-all duration-300 transform-gpu z-20">
+                <div className="absolute top-0 left-0 w-full bg-white rounded-xl shadow-2xl border border-blue-200 p-6 opacity-0 invisible scale-95 group-hover:opacity-100 group-hover:visible group-hover:scale-100 transition-all duration-300 transform-gpu z-20">
                   {/* Header Section */}
                   <div className="mb-4">
                     <div className="flex items-center mb-2">
-                      <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-lg flex items-center justify-center text-white mr-3">
+                      <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-800 rounded-lg flex items-center justify-center text-white mr-3">
                         {value.icon}
                       </div>
                       <h3 className="text-lg font-bold text-gray-900">{value.title}</h3>
@@ -635,25 +635,25 @@ export default function AboutPage() {
                   
                   <div className="mb-4">
                     <h4 className="text-sm font-bold text-gray-800 mb-3 flex items-center">
-                      <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></span>
+                      <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
                       Key Features:
                     </h4>
                     <div className="space-y-2">
                       {value.expandedContent.benefits.slice(0, 2).map((benefit, i) => (
                         <div
                           key={i}
-                          className="flex items-center p-2 bg-gray-50 rounded-lg hover:bg-emerald-50 transition-colors duration-200"
+                          className="flex items-center p-2 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200"
                         >
-                          <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3 flex-shrink-0"></div>
+                          <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 flex-shrink-0"></div>
                           <span className="text-xs text-gray-700 font-medium">{benefit}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                   
-                  <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-lg p-3 border border-emerald-200 text-center">
-                    <div className="text-emerald-800 font-bold text-sm">{value.expandedContent.impact}</div>
-                    <div className="text-emerald-600 text-xs">Our Achievement</div>
+                  <div className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-lg p-3 border border-blue-200 text-center">
+                    <div className="text-blue-800 font-bold text-sm">{value.expandedContent.impact}</div>
+                    <div className="text-blue-600 text-xs">Our Achievement</div>
                   </div>
                 </div>
               </div>
@@ -701,10 +701,10 @@ export default function AboutPage() {
                 className="absolute inset-0 w-full"
               >
                 {whyChooseUs[currentSlide] && (
-                  <div className="bg-gradient-to-r from-emerald-50 via-white to-green-50 rounded-3xl shadow-xl overflow-hidden border border-emerald-100 h-full">
+                  <div className="bg-gradient-to-r from-blue-50 via-white to-blue-50 rounded-3xl shadow-xl overflow-hidden border border-blue-100 h-full">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 h-full">
                       {/* Image Section */}
-                      <div className="relative bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center min-h-[220px] lg:min-h-full">
+                      <div className="relative bg-gradient-to-br from-blue-500 to-blue-800 flex items-center justify-center min-h-[220px] lg:min-h-full">
                         <div className="absolute inset-0 bg-black/10"></div>
                         <motion.div 
                           className="relative z-10 w-24 h-24 lg:w-32 lg:h-32 bg-white/20 rounded-3xl flex items-center justify-center backdrop-blur-sm"
@@ -726,7 +726,7 @@ export default function AboutPage() {
                       <div className="p-6 lg:p-8 xl:p-10 flex flex-col justify-center h-full relative">
                         {/* Watermark Number */}
                         <div className="absolute top-2 right-2 lg:top-4 lg:right-4">
-                          <span className="text-8xl lg:text-9xl font-black text-emerald-200 select-none pointer-events-none opacity-60">
+                          <span className="text-8xl lg:text-9xl font-black text-blue-200 select-none pointer-events-none opacity-60">
                             {currentSlide + 1}
                           </span>
                         </div>
@@ -742,19 +742,19 @@ export default function AboutPage() {
                         {/* Additional Benefits */}
                         <div className="space-y-2 mb-4 lg:mb-6 flex-shrink-0">
                           <div className="flex items-start">
-                            <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                            <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
                             <span className="text-xs lg:text-sm text-gray-700">
                               Proven track record with {currentSlide === 0 ? '15+ years' : currentSlide === 1 ? '500+ universities' : currentSlide === 2 ? 'personalized approach' : currentSlide === 3 ? 'comprehensive support' : currentSlide === 4 ? 'thousands of success stories' : 'cutting-edge technology'}
                             </span>
                           </div>
                           <div className="flex items-start">
-                            <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                            <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
                             <span className="text-xs lg:text-sm text-gray-700">Available 24/7 for your success</span>
                           </div>
                         </div>
                         
                         <div className="mt-auto pt-4">
-                          <div className="inline-flex items-center px-4 py-2 lg:px-6 lg:py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl shadow-lg text-sm lg:text-base hover:shadow-xl transition-shadow cursor-pointer">
+                          <div className="inline-flex items-center px-4 py-2 lg:px-6 lg:py-3 bg-gradient-to-r from-blue-500 to-blue-800 text-white font-semibold rounded-xl shadow-lg text-sm lg:text-base hover:shadow-xl transition-shadow cursor-pointer">
                             <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
                             Learn More
                           </div>
@@ -774,8 +774,8 @@ export default function AboutPage() {
                   onClick={() => handleSlideClick(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-200 ${
                     currentSlide === index 
-                      ? 'bg-emerald-500 scale-125' 
-                      : 'bg-emerald-200 hover:bg-emerald-300'
+                      ? 'bg-blue-500 scale-125' 
+                      : 'bg-blue-200 hover:bg-blue-300'
                   }`}
                 />
               ))}
@@ -786,7 +786,7 @@ export default function AboutPage() {
 
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-600 to-green-600">
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -797,19 +797,19 @@ export default function AboutPage() {
             <h2 className="text-4xl font-bold text-white mb-6">
               Ready to Start Your Journey?
             </h2>
-            <p className="text-xl text-emerald-50 mb-8">
+            <p className="text-xl text-blue-50 mb-8">
               Join thousands of students who have achieved their dreams with AdmitVerse
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="px-8 py-4 bg-white text-emerald-600 font-bold rounded-xl hover:shadow-xl transform hover:scale-105 transition-all"
+                className="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:shadow-xl transform hover:scale-105 transition-all"
               >
                 Get Free Consultation
               </Link>
               <Link
                 href="/colleges"
-                className="px-8 py-4 bg-emerald-700 text-white font-bold rounded-xl hover:bg-emerald-800 transition-colors"
+                className="px-8 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition-colors"
               >
                 Explore Universities
               </Link>

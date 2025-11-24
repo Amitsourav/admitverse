@@ -101,7 +101,7 @@ export default function UniversitiesPage() {
       <Navigation />
 
       {/* Hero Section with University Images */}
-      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700 overflow-hidden">
+      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
         <div className="absolute inset-0 bg-black/10" />
         
         {/* University Image Carousel */}
@@ -171,7 +171,7 @@ export default function UniversitiesPage() {
               Explore Top Universities
             </motion.h1>
             <motion.p 
-              className="text-lg md:text-xl text-emerald-50 max-w-3xl mx-auto mb-8"
+              className="text-lg md:text-xl text-blue-50 max-w-3xl mx-auto mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -284,7 +284,7 @@ export default function UniversitiesPage() {
                       animate={{ rotate: [0, 180, 360] }}
                       transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                      <Filter className="w-5 h-5 mr-2 text-emerald-600" />
+                      <Filter className="w-5 h-5 mr-2 text-blue-600" />
                     </motion.div>
                     Filters
                   </h2>
@@ -292,7 +292,7 @@ export default function UniversitiesPage() {
                     campusSize !== 'all' || studentSize !== 'all' || researchOutput !== 'all' || internationalStudents !== 'all' || 
                     specializations !== 'all' || universityType !== 'all') && (
                     <motion.span 
-                      className="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full font-medium"
+                      className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full font-medium"
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 500, damping: 15 }}
@@ -338,7 +338,7 @@ export default function UniversitiesPage() {
                       placeholder="Search universities..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm transition-all duration-300 hover:border-emerald-300"
+                      className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm transition-all duration-300 hover:border-blue-300"
                     />
                   </motion.div>
                 </motion.div>
@@ -362,7 +362,7 @@ export default function UniversitiesPage() {
                   <motion.select
                     value={selectedCountry}
                     onChange={(e) => setSelectedCountry(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-sm transition-all duration-300 hover:border-emerald-300 cursor-pointer"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-sm transition-all duration-300 hover:border-blue-300 cursor-pointer"
                     whileFocus={{ scale: 1.02 }}
                   >
                     <option value="all">All Countries</option>
@@ -393,7 +393,7 @@ export default function UniversitiesPage() {
                   <motion.select
                     value={selectedRanking}
                     onChange={(e) => setSelectedRanking(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-sm transition-all duration-300 hover:border-emerald-300 cursor-pointer"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-sm transition-all duration-300 hover:border-blue-300 cursor-pointer"
                     whileFocus={{ scale: 1.02 }}
                   >
                     <option value="all">All Rankings</option>
@@ -422,7 +422,7 @@ export default function UniversitiesPage() {
                   <motion.select
                     value={tuitionRange}
                     onChange={(e) => setTuitionRange(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-sm transition-all duration-300 hover:border-emerald-300 cursor-pointer"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-sm transition-all duration-300 hover:border-blue-300 cursor-pointer"
                     whileFocus={{ scale: 1.02 }}
                   >
                     <option value="all">All Tuition</option>
@@ -452,7 +452,7 @@ export default function UniversitiesPage() {
                   <motion.select
                     value={acceptanceRate}
                     onChange={(e) => setAcceptanceRate(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-sm transition-all duration-300 hover:border-emerald-300 cursor-pointer"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-sm transition-all duration-300 hover:border-blue-300 cursor-pointer"
                     whileFocus={{ scale: 1.02 }}
                   >
                     <option value="all">All Rates</option>
@@ -474,7 +474,7 @@ export default function UniversitiesPage() {
                   <select
                     value={studentSize}
                     onChange={(e) => setStudentSize(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-sm"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-sm"
                   >
                     <option value="all">All Sizes</option>
                     <option value="small">Small (&lt; 5,000)</option>
@@ -495,7 +495,7 @@ export default function UniversitiesPage() {
                   <select
                     value={campusSize}
                     onChange={(e) => setCampusSize(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-sm"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-sm"
                   >
                     <option value="all">All Types</option>
                     <option value="urban">Urban</option>
@@ -516,7 +516,7 @@ export default function UniversitiesPage() {
                   <select
                     value={specializations}
                     onChange={(e) => setSpecializations(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-sm"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-sm"
                   >
                     <option value="all">All Fields</option>
                     <option value="engineering">Engineering</option>
@@ -540,7 +540,7 @@ export default function UniversitiesPage() {
                   <select
                     value={internationalStudents}
                     onChange={(e) => setInternationalStudents(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-sm"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-sm"
                   >
                     <option value="all">All Percentages</option>
                     <option value="0-10">Under 10%</option>
@@ -561,7 +561,7 @@ export default function UniversitiesPage() {
                   <select
                     value={researchOutput}
                     onChange={(e) => setResearchOutput(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-sm"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-sm"
                   >
                     <option value="all">All Levels</option>
                     <option value="very-high">Very High Research</option>
@@ -588,7 +588,7 @@ export default function UniversitiesPage() {
                     setUniversityType('all')
                     setSearchTerm('')
                   }}
-                  className="w-full px-4 py-2 text-sm text-emerald-600 bg-emerald-50 hover:bg-emerald-100 rounded-lg font-medium transition-colors"
+                  className="w-full px-4 py-2 text-sm text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg font-medium transition-colors"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.5, duration: 0.5 }}
@@ -616,7 +616,7 @@ export default function UniversitiesPage() {
                       onClick={() => setViewType('row')}
                       className={`flex items-center px-3 py-1.5 rounded-md transition-colors text-sm ${
                         viewType === 'row' 
-                          ? 'bg-white text-emerald-600 shadow-sm' 
+                          ? 'bg-white text-blue-600 shadow-sm' 
                           : 'text-gray-600 hover:text-gray-900'
                       }`}
                     >
@@ -627,7 +627,7 @@ export default function UniversitiesPage() {
                       onClick={() => setViewType('grid')}
                       className={`flex items-center px-3 py-1.5 rounded-md transition-colors text-sm ${
                         viewType === 'grid' 
-                          ? 'bg-white text-emerald-600 shadow-sm' 
+                          ? 'bg-white text-blue-600 shadow-sm' 
                           : 'text-gray-600 hover:text-gray-900'
                       }`}
                     >
@@ -643,7 +643,7 @@ export default function UniversitiesPage() {
                     onClick={() => setUniversityType('all')}
                     className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
                       universityType === 'all'
-                        ? 'bg-emerald-500 text-white shadow-md'
+                        ? 'bg-blue-500 text-white shadow-md'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                     whileHover={{ scale: 1.05 }}
@@ -655,7 +655,7 @@ export default function UniversitiesPage() {
                     onClick={() => setUniversityType('domestic')}
                     className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
                       universityType === 'domestic'
-                        ? 'bg-emerald-500 text-white shadow-md'
+                        ? 'bg-blue-500 text-white shadow-md'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                     whileHover={{ scale: 1.05 }}
@@ -667,7 +667,7 @@ export default function UniversitiesPage() {
                     onClick={() => setUniversityType('international')}
                     className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
                       universityType === 'international'
-                        ? 'bg-emerald-500 text-white shadow-md'
+                        ? 'bg-blue-500 text-white shadow-md'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                     whileHover={{ scale: 1.05 }}
@@ -683,7 +683,7 @@ export default function UniversitiesPage() {
           {loading ? (
             <div className="text-center py-16">
               <div className="inline-flex items-center space-x-2">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
                 <span className="text-lg text-gray-600">Loading universities...</span>
               </div>
             </div>
@@ -702,7 +702,7 @@ export default function UniversitiesPage() {
               <p className="text-gray-600 mb-4">{error}</p>
               <button 
                 onClick={() => window.location.reload()}
-                className="px-6 py-3 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
               >
                 Try Again
               </button>
@@ -732,12 +732,23 @@ export default function UniversitiesPage() {
                 >
                   <div className="flex flex-col md:flex-row">
                     {/* Left side - Image and Ranking */}
-                    <div className="md:w-48 h-40 md:h-auto bg-gradient-to-br from-emerald-100 to-green-100 relative flex-shrink-0">
+                    <div className="md:w-48 h-40 md:h-auto bg-gradient-to-br from-blue-100 to-blue-100 relative flex-shrink-0">
+                      {university.image ? (
+                        <img 
+                          src={university.image} 
+                          alt={university.name}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <GraduationCap className="w-12 h-12 text-blue-300" />
+                        </div>
+                      )}
                       <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 flex items-center">
-                        <Award className="w-4 h-4 text-emerald-600 mr-1" />
+                        <Award className="w-4 h-4 text-blue-600 mr-1" />
                         <span className="text-sm font-medium">#{university.ranking}</span>
                       </div>
-                      <div className="absolute bottom-4 right-4 bg-emerald-500/90 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <div className="absolute bottom-4 right-4 bg-blue-500/90 text-white px-3 py-1 rounded-full text-sm font-medium">
                         {university.rating} ⭐
                       </div>
                     </div>
@@ -751,20 +762,20 @@ export default function UniversitiesPage() {
                           </h3>
                           <div className="flex flex-wrap gap-3 mb-3 text-sm text-gray-600">
                             <div className="flex items-center">
-                              <MapPin className="w-4 h-4 mr-1 text-emerald-500" />
+                              <MapPin className="w-4 h-4 mr-1 text-blue-500" />
                               {university.location}, {university.country}
                             </div>
                             <div className="flex items-center">
-                              <Users className="w-4 h-4 mr-1 text-emerald-500" />
+                              <Users className="w-4 h-4 mr-1 text-blue-500" />
                               {university.students} Students
                             </div>
                             <div className="flex items-center">
-                              <DollarSign className="w-4 h-4 mr-1 text-emerald-500" />
+                              <DollarSign className="w-4 h-4 mr-1 text-blue-500" />
                               {university.tuition}
                             </div>
                             {university.acceptance && (
                               <div className="flex items-center">
-                                <TrendingUp className="w-4 h-4 mr-1 text-emerald-500" />
+                                <TrendingUp className="w-4 h-4 mr-1 text-blue-500" />
                                 {university.acceptance} Acceptance
                               </div>
                             )}
@@ -776,7 +787,7 @@ export default function UniversitiesPage() {
                               {university.programs.slice(0, 4).map((program: string, idx: number) => (
                                 <span 
                                   key={idx}
-                                  className="px-2 py-1 bg-emerald-50 text-emerald-700 rounded-full text-xs font-medium"
+                                  className="px-2 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium"
                                 >
                                   {program}
                                 </span>
@@ -798,14 +809,14 @@ export default function UniversitiesPage() {
                         <div className="mt-4 md:mt-0 md:ml-6 flex flex-col gap-2">
                           <Link href={`/universities/${university.slug}`}>
                             <motion.button 
-                              className="px-6 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-medium rounded-lg hover:shadow-md transition-all duration-300 whitespace-nowrap"
+                              className="px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-800 text-white font-medium rounded-lg hover:shadow-md transition-all duration-300 whitespace-nowrap"
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
                             >
                               View Details
                             </motion.button>
                           </Link>
-                          <button className="px-6 py-2 border border-emerald-500 text-emerald-600 font-medium rounded-lg hover:bg-emerald-50 transition-all duration-300 whitespace-nowrap">
+                          <button className="px-6 py-2 border border-blue-500 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-all duration-300 whitespace-nowrap">
                             Save
                           </button>
                         </div>
@@ -844,21 +855,30 @@ export default function UniversitiesPage() {
                   viewport={{ once: true, margin: "-50px" }}
                   className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
                 >
-                  {/* Card Header with Gradient - Reduced height for rectangular shape */}
-                  <div className="h-20 bg-gradient-to-br from-emerald-100 to-green-100 relative">
+                  {/* Card Header with Image - Increased height for better image display */}
+                  <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-100 relative overflow-hidden">
+                    {university.image ? (
+                      <img 
+                        src={university.image} 
+                        alt={university.name}
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <GraduationCap className="w-16 h-16 text-blue-300" />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 flex items-center">
-                      <Award className="w-4 h-4 text-emerald-600 mr-1" />
+                      <Award className="w-4 h-4 text-blue-600 mr-1" />
                       <span className="text-sm font-medium">#{university.ranking}</span>
-                    </div>
-                    <div className="absolute bottom-3 right-3">
-                      <GraduationCap className="w-10 h-10 text-emerald-600/30" />
                     </div>
                   </div>
                   
                   {/* Card Content - Adjusted padding for rectangular shape */}
                   <div className="p-5">
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors line-clamp-1">
+                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1">
                         {university.name}
                       </h3>
                       <div className="flex items-center flex-shrink-0 ml-2">
@@ -884,7 +904,7 @@ export default function UniversitiesPage() {
                     
                     <Link href={`/universities/${university.slug}`}>
                       <motion.button 
-                        className="mt-4 w-full py-2 px-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-medium rounded-lg hover:shadow-md transition-all duration-300"
+                        className="mt-4 w-full py-2 px-4 bg-gradient-to-r from-blue-500 to-blue-800 text-white font-medium rounded-lg hover:shadow-md transition-all duration-300"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -920,7 +940,7 @@ export default function UniversitiesPage() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3 text-emerald-600">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 text-blue-600">
                   {stat.icon}
                 </div>
                 <div className="text-3xl font-bold text-gray-900">{stat.number}</div>

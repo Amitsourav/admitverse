@@ -46,7 +46,7 @@ export default function CourseDetailPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700 overflow-hidden">
+      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
         <motion.img
           initial={{ scale: 1.2, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -88,11 +88,11 @@ export default function CourseDetailPage() {
                 </motion.span>
                 <div>
                   <h1 className="text-5xl font-bold text-white mb-2">{course.name}</h1>
-                  <p className="text-xl text-emerald-100">{course.category} • {course.level}</p>
+                  <p className="text-xl text-blue-100">{course.category} • {course.level}</p>
                 </div>
               </div>
               
-              <div className="flex flex-wrap gap-4 text-emerald-100">
+              <div className="flex flex-wrap gap-4 text-blue-100">
                 <motion.div 
                   className="flex items-center"
                   initial={{ opacity: 0, x: -20 }}
@@ -164,7 +164,7 @@ export default function CourseDetailPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-all duration-300 ${
                   activeTab === tab.id
-                    ? 'border-emerald-500 text-emerald-600'
+                    ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -203,7 +203,7 @@ export default function CourseDetailPage() {
                       transition={{ delay: index * 0.1, duration: 0.5 }}
                       viewport={{ once: true }}
                     >
-                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700">{skill}</span>
                     </motion.div>
                   ))}
@@ -260,7 +260,7 @@ export default function CourseDetailPage() {
                       viewport={{ once: true }}
                     >
                       <span className="text-gray-600">Job Growth:</span>
-                      <span className="font-medium text-emerald-600">{course.jobGrowth}</span>
+                      <span className="font-medium text-blue-600">{course.jobGrowth}</span>
                     </motion.div>
                     <motion.div 
                       className="flex justify-between"
@@ -270,7 +270,7 @@ export default function CourseDetailPage() {
                       viewport={{ once: true }}
                     >
                       <span className="text-gray-600">Avg. Salary:</span>
-                      <span className="font-medium text-emerald-600">{course.averageSalary}</span>
+                      <span className="font-medium text-blue-600">{course.averageSalary}</span>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -284,7 +284,7 @@ export default function CourseDetailPage() {
                 {course.specializations.map((spec, index) => (
                   <motion.div
                     key={index}
-                    className="bg-emerald-50 border border-emerald-100 rounded-xl p-4 hover:bg-emerald-100 transition-colors cursor-pointer"
+                    className="bg-blue-50 border border-blue-100 rounded-xl p-4 hover:bg-blue-100 transition-colors cursor-pointer"
                     whileHover={{ scale: 1.02 }}
                   >
                     <h4 className="font-medium text-gray-900 text-center">{spec}</h4>
@@ -316,7 +316,7 @@ export default function CourseDetailPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {yearData.subjects.map((subject, subIndex) => (
                       <div key={subIndex} className="flex items-center">
-                        <BookOpen className="w-4 h-4 text-emerald-500 mr-3" />
+                        <BookOpen className="w-4 h-4 text-blue-500 mr-3" />
                         <span className="text-gray-700">{subject}</span>
                       </div>
                     ))}
@@ -327,7 +327,7 @@ export default function CourseDetailPage() {
 
             <div className="mt-12">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Prerequisites</h3>
-              <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6">
+              <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
                 <div className="space-y-3">
                   {course.prerequisites.map((prereq, index) => (
                     <motion.div 
@@ -338,7 +338,7 @@ export default function CourseDetailPage() {
                       transition={{ delay: index * 0.1, duration: 0.5 }}
                       viewport={{ once: true }}
                     >
-                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700">{prereq}</span>
                     </motion.div>
                   ))}
@@ -385,7 +385,7 @@ export default function CourseDetailPage() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-sm text-emerald-600 font-medium">#{university.ranking} Global</div>
+                          <div className="text-sm text-blue-600 font-medium">#{university.ranking} Global</div>
                           <div className="text-lg font-bold text-gray-900">{university.tuition}</div>
                         </div>
                       </div>
@@ -397,7 +397,7 @@ export default function CourseDetailPage() {
                         </div>
                         <Link href="/contact">
                           <motion.button
-                            className="px-6 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-lg hover:from-emerald-600 hover:to-green-700 transition-all shadow-md hover:shadow-lg"
+                            className="px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-800 text-white rounded-lg hover:from-blue-600 hover:to-blue-900 transition-all shadow-md hover:shadow-lg"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                           >
@@ -427,7 +427,7 @@ export default function CourseDetailPage() {
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                 <motion.div 
-                  className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 text-center"
+                  className="bg-blue-50 border border-blue-100 rounded-2xl p-6 text-center"
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
@@ -440,11 +440,11 @@ export default function CourseDetailPage() {
                     transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
                     viewport={{ once: true }}
                   >
-                    <DollarSign className="w-8 h-8 text-emerald-600 mx-auto mb-4" />
+                    <DollarSign className="w-8 h-8 text-blue-600 mx-auto mb-4" />
                   </motion.div>
                   <h3 className="font-bold text-gray-900 mb-2">Average Salary</h3>
                   <motion.p 
-                    className="text-2xl font-bold text-emerald-600"
+                    className="text-2xl font-bold text-blue-600"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
@@ -455,7 +455,7 @@ export default function CourseDetailPage() {
                 </motion.div>
                 
                 <motion.div 
-                  className="bg-teal-50 border border-teal-100 rounded-2xl p-6 text-center"
+                  className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 text-center"
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -468,11 +468,11 @@ export default function CourseDetailPage() {
                     transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
                     viewport={{ once: true }}
                   >
-                    <TrendingUp className="w-8 h-8 text-teal-600 mx-auto mb-4" />
+                    <TrendingUp className="w-8 h-8 text-indigo-600 mx-auto mb-4" />
                   </motion.div>
                   <h3 className="font-bold text-gray-900 mb-2">Job Growth</h3>
                   <motion.p 
-                    className="text-2xl font-bold text-teal-600"
+                    className="text-2xl font-bold text-indigo-600"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
@@ -523,7 +523,7 @@ export default function CourseDetailPage() {
                     whileHover={{ scale: 1.02 }}
                   >
                     <div className="flex items-center mb-3">
-                      <Target className="w-5 h-5 text-emerald-600 mr-2" />
+                      <Target className="w-5 h-5 text-blue-600 mr-2" />
                       <h4 className="font-medium text-gray-900">{career}</h4>
                     </div>
                   </motion.div>
@@ -537,7 +537,7 @@ export default function CourseDetailPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {course.industryConnections.map((company, index) => (
                     <div key={index} className="flex items-center">
-                      <Award className="w-4 h-4 text-emerald-500 mr-3" />
+                      <Award className="w-4 h-4 text-blue-500 mr-3" />
                       <span className="text-gray-700">{company}</span>
                     </div>
                   ))}
@@ -577,19 +577,19 @@ export default function CourseDetailPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {course.admissionRequirements.map((requirement, index) => (
                   <div key={index} className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-emerald-500 mr-4 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-blue-500 mr-4 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">{requirement}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-12 bg-emerald-50 border border-emerald-100 rounded-2xl p-8 text-center">
+            <div className="mt-12 bg-blue-50 border border-blue-100 rounded-2xl p-8 text-center">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Apply?</h3>
               <p className="text-gray-600 mb-6">Get personalized guidance from our education experts to strengthen your application</p>
               <Link href="/contact">
                 <motion.button
-                  className="px-8 py-4 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all shadow-lg"
+                  className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all shadow-lg"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -602,7 +602,7 @@ export default function CourseDetailPage() {
       </div>
 
       {/* CTA Section */}
-      <section className="bg-emerald-600 py-16">
+      <section className="bg-blue-600 py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -613,13 +613,13 @@ export default function CourseDetailPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Start Your Journey in {course.name}
             </h2>
-            <p className="text-xl text-emerald-100 mb-8">
+            <p className="text-xl text-blue-100 mb-8">
               Connect with our experts to find the perfect program and university for your goals
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
                 <motion.button
-                  className="px-8 py-4 bg-white text-emerald-600 font-semibold rounded-xl hover:bg-emerald-50 transition-all shadow-lg"
+                  className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-blue-50 transition-all shadow-lg"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -628,7 +628,7 @@ export default function CourseDetailPage() {
               </Link>
               <Link href="/universities">
                 <motion.button
-                  className="px-8 py-4 bg-emerald-700 text-white font-semibold rounded-xl hover:bg-emerald-800 transition-all border border-emerald-500"
+                  className="px-8 py-4 bg-blue-700 text-white font-semibold rounded-xl hover:bg-blue-800 transition-all border border-blue-500"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >

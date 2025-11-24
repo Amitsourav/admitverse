@@ -108,7 +108,7 @@ export default function DemoPage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-gray-900">{demo.title}</h3>
-                      <span className="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
+                      <span className="inline-flex items-center bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">
                         <CheckCircle className="w-3 h-3 mr-1" />
                         {demo.status}
                       </span>
@@ -123,7 +123,7 @@ export default function DemoPage() {
                   <div className="grid grid-cols-1 gap-2">
                     {demo.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <CheckCircle className="w-4 h-4 text-blue-500" />
                         <span className="text-sm text-gray-600">{feature}</span>
                       </div>
                     ))}
@@ -165,7 +165,7 @@ export default function DemoPage() {
                         <span className="text-sm text-gray-600">Real-time intelligent processing</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Target className="w-4 h-4 text-green-500" />
+                        <Target className="w-4 h-4 text-blue-500" />
                         <span className="text-sm text-gray-600">Personalized for each user</span>
                       </div>
                     </div>
@@ -187,8 +187,8 @@ export default function DemoPage() {
           
           <div className="space-y-4">
             <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                <CheckCircle className="w-4 h-4 text-green-600" />
+              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                <CheckCircle className="w-4 h-4 text-blue-800" />
               </div>
               <div>
                 <h3 className="font-medium text-gray-900">Phase 1: Demo Development</h3>

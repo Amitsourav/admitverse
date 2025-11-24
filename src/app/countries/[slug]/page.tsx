@@ -132,7 +132,7 @@ export default function CountryDetailPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
                   activeTab === tab.id
-                    ? 'border-emerald-500 text-emerald-600'
+                    ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -164,7 +164,7 @@ export default function CountryDetailPage() {
                 <div className="space-y-3">
                   {country.whyStudy.map((reason, index) => (
                     <div key={index} className="flex items-start">
-                      <CheckCircle className="w-6 h-6 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-6 h-6 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700">{reason}</span>
                     </div>
                   ))}
@@ -225,12 +225,12 @@ export default function CountryDetailPage() {
                   />
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-emerald-600 font-medium">#{university.ranking} Global</span>
+                      <span className="text-sm text-blue-600 font-medium">#{university.ranking} Global</span>
                       <Star className="w-4 h-4 text-yellow-400 fill-current" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">{university.name}</h3>
                     <p className="text-gray-600 mb-4">{university.location}</p>
-                    <button className="w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition-colors">
+                    <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
                       View Details
                     </button>
                   </div>
@@ -252,11 +252,11 @@ export default function CountryDetailPage() {
               {country.popularPrograms.map((program, index) => (
                 <motion.div
                   key={index}
-                  className="bg-emerald-50 border border-emerald-100 rounded-xl p-6 hover:bg-emerald-100 transition-colors cursor-pointer"
+                  className="bg-blue-50 border border-blue-100 rounded-xl p-6 hover:bg-blue-100 transition-colors cursor-pointer"
                   whileHover={{ scale: 1.02 }}
                 >
                   <h3 className="font-bold text-gray-900 mb-2">{program}</h3>
-                  <div className="flex items-center text-emerald-600">
+                  <div className="flex items-center text-blue-600">
                     <TrendingUp className="w-4 h-4 mr-2" />
                     <span className="text-sm">High demand</span>
                   </div>
@@ -270,7 +270,7 @@ export default function CountryDetailPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {country.admissionRequirements.map((requirement, index) => (
                     <div key={index} className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700">{requirement}</span>
                     </div>
                   ))}
@@ -300,11 +300,11 @@ export default function CountryDetailPage() {
               </div>
               
               <div className="bg-white border rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <DollarSign className="w-6 h-6 text-green-600" />
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <DollarSign className="w-6 h-6 text-blue-800" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">Food</h3>
-                <p className="text-2xl font-bold text-green-600">{country.livingCost.food}</p>
+                <p className="text-2xl font-bold text-blue-800">{country.livingCost.food}</p>
               </div>
               
               <div className="bg-white border rounded-2xl p-6 text-center">
@@ -328,10 +328,10 @@ export default function CountryDetailPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Scholarships Available</h3>
               <div className="space-y-4">
                 {country.scholarships.map((scholarship, index) => (
-                  <div key={index} className="bg-emerald-50 border border-emerald-100 rounded-xl p-6">
+                  <div key={index} className="bg-blue-50 border border-blue-100 rounded-xl p-6">
                     <div className="flex justify-between items-start mb-2">
                       <h4 className="font-bold text-gray-900">{scholarship.name}</h4>
-                      <span className="text-emerald-600 font-bold">{scholarship.amount}</span>
+                      <span className="text-blue-600 font-bold">{scholarship.amount}</span>
                     </div>
                     <p className="text-gray-600">{scholarship.eligibility}</p>
                   </div>
@@ -346,7 +346,7 @@ export default function CountryDetailPage() {
                   <h4 className="font-bold text-gray-900 mb-2">During Study</h4>
                   <p className="text-gray-700">{country.workRights.duringStudy}</p>
                 </div>
-                <div className="bg-green-50 border border-green-100 rounded-xl p-6">
+                <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
                   <h4 className="font-bold text-gray-900 mb-2">After Graduation</h4>
                   <p className="text-gray-700">{country.workRights.afterGraduation}</p>
                 </div>
@@ -373,7 +373,7 @@ export default function CountryDetailPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div>
                       <div className="flex items-center mb-2">
-                        <Clock className="w-5 h-5 text-emerald-600 mr-2" />
+                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
                         <span className="font-medium text-gray-900">Processing Time</span>
                       </div>
                       <p className="text-gray-600">{country.visaInfo.processingTime}</p>
@@ -384,7 +384,7 @@ export default function CountryDetailPage() {
                   <div className="space-y-3">
                     {country.visaInfo.requirements.map((requirement, index) => (
                       <div key={index} className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-700">{requirement}</span>
                       </div>
                     ))}
@@ -393,12 +393,12 @@ export default function CountryDetailPage() {
               </div>
               
               <div className="lg:col-span-1">
-                <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6">
+                <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
                   <h4 className="font-bold text-gray-900 mb-4">Need Help?</h4>
                   <p className="text-gray-600 mb-6">Our visa experts can guide you through the application process.</p>
                   <Link href="/contact">
                     <motion.button
-                      className="w-full bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition-colors font-medium"
+                      className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -413,7 +413,7 @@ export default function CountryDetailPage() {
       </div>
 
       {/* CTA Section */}
-      <section className="bg-emerald-600 py-16">
+      <section className="bg-blue-600 py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -424,13 +424,13 @@ export default function CountryDetailPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready to Start Your Journey to {country.name}?
             </h2>
-            <p className="text-xl text-emerald-100 mb-8">
+            <p className="text-xl text-blue-100 mb-8">
               Get personalized guidance from our education experts
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
                 <motion.button
-                  className="px-8 py-4 bg-white text-emerald-600 font-semibold rounded-xl hover:bg-emerald-50 transition-all shadow-lg"
+                  className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-blue-50 transition-all shadow-lg"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -439,7 +439,7 @@ export default function CountryDetailPage() {
               </Link>
               <Link href="/universities">
                 <motion.button
-                  className="px-8 py-4 bg-emerald-700 text-white font-semibold rounded-xl hover:bg-emerald-800 transition-all border border-emerald-500"
+                  className="px-8 py-4 bg-blue-700 text-white font-semibold rounded-xl hover:bg-blue-800 transition-all border border-blue-500"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >

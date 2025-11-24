@@ -578,7 +578,7 @@ export default function CountriesPage() {
   const floatingElements = Array.from({ length: 8 }, (_, i) => (
     <motion.div
       key={i}
-      className="absolute w-4 h-4 bg-emerald-400 rounded-full opacity-20"
+      className="absolute w-4 h-4 bg-blue-400 rounded-full opacity-20"
       animate={{
         x: [0, 100, 0],
         y: [0, -100, 0],
@@ -603,7 +603,7 @@ export default function CountriesPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700 overflow-hidden">
+      <section className="relative pt-24 pb-16 h-[70vh] bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentImageIndex}
@@ -642,7 +642,7 @@ export default function CountriesPage() {
               Study Destinations
             </motion.h1>
             <motion.p 
-              className="text-xl md:text-2xl text-emerald-100 mb-8"
+              className="text-xl md:text-2xl text-blue-100 mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -710,13 +710,13 @@ export default function CountriesPage() {
           >
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-emerald-600 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-5 h-5" />
                 <input
                   type="text"
                   placeholder="Search countries..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+                  className="w-full pl-12 pr-4 py-3 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                 />
               </div>
               
@@ -724,7 +724,7 @@ export default function CountriesPage() {
                 <select
                   value={selectedContinent}
                   onChange={(e) => setSelectedContinent(e.target.value)}
-                  className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+                  className="w-full px-4 py-3 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                 >
                   {continents.map(continent => (
                     <option key={continent} value={continent}>{continent}</option>
@@ -736,7 +736,7 @@ export default function CountriesPage() {
                 <select
                   value={selectedRanking}
                   onChange={(e) => setSelectedRanking(e.target.value)}
-                  className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+                  className="w-full px-4 py-3 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                 >
                   {rankings.map(ranking => (
                     <option key={ranking} value={ranking}>{ranking}</option>
@@ -747,7 +747,7 @@ export default function CountriesPage() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all duration-300 font-semibold"
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold"
               >
                 Search Countries
               </motion.button>
@@ -767,10 +767,10 @@ export default function CountriesPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { icon: Globe, label: 'Countries', value: '150+', color: 'text-emerald-600' },
-              { icon: Users, label: 'Students', value: '10M+', color: 'text-teal-600' },
+              { icon: Globe, label: 'Countries', value: '150+', color: 'text-blue-600' },
+              { icon: Users, label: 'Students', value: '10M+', color: 'text-indigo-600' },
               { icon: GraduationCap, label: 'Universities', value: '7K+', color: 'text-cyan-600' },
-              { icon: Award, label: 'Success Rate', value: '95%', color: 'text-emerald-700' }
+              { icon: Award, label: 'Success Rate', value: '95%', color: 'text-blue-700' }
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -840,7 +840,7 @@ export default function CountriesPage() {
                       stiffness: 400, 
                       damping: 25 
                     }}
-                    className="bg-white rounded-2xl shadow-xl overflow-hidden border border-emerald-100 h-full transform-gpu perspective-1000"
+                    className="bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-100 h-full transform-gpu perspective-1000"
                   >
                     <div className="relative h-48 overflow-hidden">
                       <Image
@@ -853,20 +853,20 @@ export default function CountriesPage() {
                         <span className="text-2xl mr-2">{country.flag}</span>
                         <span className="text-sm font-medium text-gray-800">#{country.ranking}</span>
                       </div>
-                      <div className="absolute top-4 right-4 bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <div className="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                         {country.internationalStudents}
                       </div>
                     </div>
 
                     <div className="p-6">
                       <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-2xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">
+                        <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
                           {country.name}
                         </h3>
                         <motion.div
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.6 }}
-                          className="text-emerald-500"
+                          className="text-blue-500"
                         >
                           <Star className="w-6 h-6 fill-current" />
                         </motion.div>
@@ -874,15 +874,15 @@ export default function CountriesPage() {
 
                       <div className="space-y-3 mb-6">
                         <div className="flex items-center text-gray-600">
-                          <MapPin className="w-4 h-4 mr-2 text-emerald-500" />
+                          <MapPin className="w-4 h-4 mr-2 text-blue-500" />
                           <span>{country.continent} • {country.capital}</span>
                         </div>
                         <div className="flex items-center text-gray-600">
-                          <GraduationCap className="w-4 h-4 mr-2 text-emerald-500" />
+                          <GraduationCap className="w-4 h-4 mr-2 text-blue-500" />
                           <span>{country.universities.toLocaleString()} Universities</span>
                         </div>
                         <div className="flex items-center text-gray-600">
-                          <DollarSign className="w-4 h-4 mr-2 text-emerald-500" />
+                          <DollarSign className="w-4 h-4 mr-2 text-blue-500" />
                           <span>{country.averageTuition}</span>
                         </div>
                       </div>
@@ -892,7 +892,7 @@ export default function CountriesPage() {
                           {country.popularPrograms.slice(0, 3).map((program, idx) => (
                             <span
                               key={idx}
-                              className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium"
+                              className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium"
                             >
                               {program}
                             </span>
@@ -905,12 +905,12 @@ export default function CountriesPage() {
                       </p>
 
                       <div className="grid grid-cols-2 gap-4 mb-6">
-                        <div className="text-center p-3 bg-emerald-50 rounded-xl">
-                          <div className="text-2xl font-bold text-emerald-600">{country.stats.universities}</div>
+                        <div className="text-center p-3 bg-blue-50 rounded-xl">
+                          <div className="text-2xl font-bold text-blue-600">{country.stats.universities}</div>
                           <div className="text-xs text-gray-600">Universities</div>
                         </div>
-                        <div className="text-center p-3 bg-teal-50 rounded-xl">
-                          <div className="text-2xl font-bold text-teal-600">{country.stats.satisfaction}</div>
+                        <div className="text-center p-3 bg-indigo-50 rounded-xl">
+                          <div className="text-2xl font-bold text-indigo-600">{country.stats.satisfaction}</div>
                           <div className="text-xs text-gray-600">Rating</div>
                         </div>
                       </div>
@@ -920,7 +920,7 @@ export default function CountriesPage() {
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="w-full py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all duration-300 font-semibold"
+                            className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold"
                           >
                             Explore {country.name}
                           </motion.button>

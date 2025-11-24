@@ -35,7 +35,7 @@ export default function FloatingActions() {
         >
           <Link
             href="/blog"
-            className="flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            className="flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-blue-800 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <BookOpen className="w-5 h-5" />
             <span className="font-semibold">Blog</span>

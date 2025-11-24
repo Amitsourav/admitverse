@@ -85,7 +85,7 @@ export default function CostCalculatorPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
       <TopBanner />
       <Navigation />
 
@@ -101,9 +101,9 @@ export default function CostCalculatorPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-24 h-24 bg-gradient-to-br from-teal-100 to-emerald-100 rounded-3xl flex items-center justify-center mx-auto mb-6"
+            className="w-24 h-24 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-3xl flex items-center justify-center mx-auto mb-6"
           >
-            <Calculator className="w-14 h-14 text-teal-600" />
+            <Calculator className="w-14 h-14 text-indigo-600" />
           </motion.div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -121,7 +121,7 @@ export default function CostCalculatorPage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <MapPin className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <MapPin className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">50+</h3>
               <p className="text-gray-600">Countries Covered</p>
             </motion.div>
@@ -131,7 +131,7 @@ export default function CostCalculatorPage() {
               transition={{ delay: 0.2 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <DollarSign className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <DollarSign className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">Real-time</h3>
               <p className="text-gray-600">Exchange Rates</p>
             </motion.div>
@@ -141,7 +141,7 @@ export default function CostCalculatorPage() {
               transition={{ delay: 0.3 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <GraduationCap className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <GraduationCap className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">100K+</h3>
               <p className="text-gray-600">Students Helped</p>
             </motion.div>
@@ -169,7 +169,7 @@ export default function CostCalculatorPage() {
                     required
                     value={formData.country}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="">Select Country</option>
                     <option value="usa">United States</option>
@@ -186,7 +186,7 @@ export default function CostCalculatorPage() {
                     name="city"
                     value={formData.city}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     disabled={!formData.country}
                   >
                     <option value="">Select City (Optional)</option>
@@ -224,7 +224,7 @@ export default function CostCalculatorPage() {
                     required
                     value={formData.lifestyle}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="budget">Budget (Minimal expenses)</option>
                     <option value="moderate">Moderate (Average lifestyle)</option>
@@ -239,7 +239,7 @@ export default function CostCalculatorPage() {
                     required
                     value={formData.accommodation}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="shared">Shared Accommodation</option>
                     <option value="single">Single Room</option>
@@ -254,7 +254,7 @@ export default function CostCalculatorPage() {
                     name="familyStatus"
                     value={formData.familyStatus}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="single">Single</option>
                     <option value="couple">Couple</option>
@@ -267,7 +267,7 @@ export default function CostCalculatorPage() {
                   disabled={isCalculating}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-lg hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50"
+                  className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50"
                 >
                   {isCalculating ? 'Calculating...' : 'Calculate Costs'}
                 </motion.button>
@@ -290,9 +290,9 @@ export default function CostCalculatorPage() {
               ) : (
                 <div className="space-y-6">
                   {/* Total Cost */}
-                  <div className="bg-emerald-50 rounded-xl p-6 text-center">
+                  <div className="bg-blue-50 rounded-xl p-6 text-center">
                     <h3 className="text-lg font-semibold text-gray-700 mb-2">Monthly Total</h3>
-                    <div className="text-3xl font-bold text-emerald-600 mb-1">
+                    <div className="text-3xl font-bold text-blue-600 mb-1">
                       ${results.totalUSD.toLocaleString()}
                     </div>
                     <div className="text-xl text-gray-600">
@@ -306,7 +306,7 @@ export default function CostCalculatorPage() {
                       { icon: Home, label: 'Accommodation', amount: results.breakdown.housing, color: 'text-blue-600' },
                       { icon: Utensils, label: 'Food & Dining', amount: results.breakdown.food, color: 'text-orange-600' },
                       { icon: Car, label: 'Transportation', amount: results.breakdown.transport, color: 'text-purple-600' },
-                      { icon: ShoppingBag, label: 'Utilities', amount: results.breakdown.utilities, color: 'text-green-600' },
+                      { icon: ShoppingBag, label: 'Utilities', amount: results.breakdown.utilities, color: 'text-blue-800' },
                       { icon: Heart, label: 'Miscellaneous', amount: results.breakdown.misc, color: 'text-pink-600' }
                     ].map((item, index) => (
                       <motion.div
@@ -346,7 +346,7 @@ export default function CostCalculatorPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-12 px-6 bg-emerald-50">
+      <section className="py-12 px-6 bg-blue-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Why Use Our Calculator</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -374,7 +374,7 @@ export default function CostCalculatorPage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center bg-white rounded-xl p-6 shadow-lg"
               >
-                <item.icon className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
+                <item.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600">{item.desc}</p>
               </motion.div>

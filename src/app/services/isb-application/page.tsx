@@ -86,14 +86,14 @@ export default function ISBApplicationPage() {
       <TopBanner />
       <Navigation />
       <FloatingActions />
-    <div className="min-h-screen bg-gradient-to-b from-white to-green-50/30 pt-20 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50/30 pt-20 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Floating Particles */}
         {[12, 25, 38, 51, 64, 77, 90, 18, 31, 44, 57, 70, 83, 96, 9, 22, 35, 48, 61, 74].map((pos, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-emerald-400/20 rounded-full"
+            className="absolute w-2 h-2 bg-blue-400/20 rounded-full"
             style={{
               left: `${pos}%`,
               top: `${((i * 17) % 85) + 8}%`,
@@ -115,7 +115,7 @@ export default function ISBApplicationPage() {
         {[250, 380, 320, 480, 280, 420].map((width, i) => (
           <motion.div
             key={`line-${i}`}
-            className="absolute h-0.5 bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent"
+            className="absolute h-0.5 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"
             style={{
               width: `${width}px`,
               left: `${(i * 18) % 75}%`,
@@ -137,7 +137,7 @@ export default function ISBApplicationPage() {
         {[42, 58, 32, 48, 38, 52, 28, 45].map((size, i) => (
           <motion.div
             key={`shape-${i}`}
-            className={`absolute ${i % 2 === 0 ? 'bg-emerald-400/10' : 'bg-green-400/10'} ${
+            className={`absolute ${i % 2 === 0 ? 'bg-blue-400/10' : 'bg-blue-400/10'} ${
               i % 3 === 0 ? 'rounded-full' : 'rounded-lg'
             }`}
             style={{
@@ -167,12 +167,12 @@ export default function ISBApplicationPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center bg-gradient-to-br from-emerald-500/90 to-green-600/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg text-white"
+            className="text-center bg-gradient-to-br from-blue-500/90 to-blue-800/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg text-white"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              ISB <span className="text-emerald-100">Application</span> Services
+              ISB <span className="text-blue-100">Application</span> Services
             </h1>
-            <p className="text-xl text-emerald-50 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-50 max-w-3xl mx-auto">
               Expert guidance for Indian School of Business admissions - One of Asia's top business schools
             </p>
           </motion.div>
@@ -193,7 +193,7 @@ export default function ISBApplicationPage() {
                 whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                 className="text-center"
               >
-                <div className="text-4xl font-bold text-emerald-600 mb-2">
+                <div className="text-4xl font-bold text-blue-600 mb-2">
                   <AnimatedCounter value={stat.value} />
                 </div>
                 <div className="text-gray-600">{stat.label}</div>
@@ -225,12 +225,12 @@ export default function ISBApplicationPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
                 whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-                className="bg-gradient-to-r from-emerald-50 to-green-100 rounded-xl p-6 border border-emerald-200"
+                className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {program.name}
                 </h3>
-                <p className="text-emerald-600 font-semibold mb-2">{program.duration}</p>
+                <p className="text-blue-600 font-semibold mb-2">{program.duration}</p>
                 <p className="text-gray-600">{program.description}</p>
               </motion.div>
             ))}
@@ -267,18 +267,18 @@ export default function ISBApplicationPage() {
                 }}
                 className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
               >
-                <div className="bg-emerald-100 group-hover:bg-emerald-200 rounded-lg p-3 inline-block mb-4 transition-colors duration-300">
+                <div className="bg-blue-100 group-hover:bg-blue-200 rounded-lg p-3 inline-block mb-4 transition-colors duration-300">
                   {component.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors duration-300">
                   {component.title}
                 </h3>
                 <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   {component.description}
                 </p>
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-4">
-                  <div className="w-full h-0.5 bg-gradient-to-r from-emerald-400 to-green-500"></div>
-                  <p className="text-sm text-emerald-600 mt-2 font-medium">
+                  <div className="w-full h-0.5 bg-gradient-to-r from-blue-400 to-blue-500"></div>
+                  <p className="text-sm text-blue-600 mt-2 font-medium">
                     {component.title === "Application Form" && "Complete guidance on ISB application portal"}
                     {component.title === "Essays" && "Personalized essay coaching and review"}
                     {component.title === "Recommendations" && "Strategic recommender selection and briefing"}
@@ -315,7 +315,7 @@ export default function ISBApplicationPage() {
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                 className="flex items-start space-x-4"
               >
-                <div className="bg-emerald-500 text-white rounded-full p-2 mt-1">
+                <div className="bg-blue-500 text-white rounded-full p-2 mt-1">
                   <Calendar className="w-5 h-5" />
                 </div>
                 <div>
@@ -329,7 +329,7 @@ export default function ISBApplicationPage() {
       </section>
 
       {/* Why ISB */}
-      <section className="py-12 px-4 bg-gradient-to-r from-emerald-500 to-green-600 relative z-10">
+      <section className="py-12 px-4 bg-gradient-to-r from-blue-500 to-blue-800 relative z-10">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-8">
             Why Choose ISB?
@@ -371,7 +371,7 @@ export default function ISBApplicationPage() {
             </p>
             <Link
               href="/#book-counseling"
-              className="inline-block bg-gradient-to-r from-emerald-500 to-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
+              className="inline-block bg-gradient-to-r from-blue-500 to-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
             >
               Start Your Application
             </Link>

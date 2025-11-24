@@ -88,9 +88,9 @@ export default function AISearchPage() {
               className="text-center mb-8"
             >
               <div className="flex items-center justify-center gap-2 mb-4">
-                <Sparkles className="w-8 h-8 text-emerald-500" />
+                <Sparkles className="w-8 h-8 text-blue-500" />
                 <h1 className="text-3xl font-bold text-gray-900">AI-Powered Search</h1>
-                <Sparkles className="w-8 h-8 text-emerald-500" />
+                <Sparkles className="w-8 h-8 text-blue-500" />
               </div>
               <p className="text-gray-600">
                 Using ChatGPT to understand and find exactly what you're looking for
@@ -110,13 +110,13 @@ export default function AISearchPage() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Ask me anything about universities, courses, or study destinations..."
-                className="w-full pl-14 pr-32 py-5 text-lg bg-white rounded-2xl shadow-lg focus:outline-none focus:ring-4 focus:ring-emerald-300/50 border border-gray-200"
+                className="w-full pl-14 pr-32 py-5 text-lg bg-white rounded-2xl shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300/50 border border-gray-200"
               />
               <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400" />
               <button
                 type="submit"
                 disabled={isSearching || !searchTerm.trim()}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-800 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
               >
                 {isSearching ? (
                   <>
@@ -156,9 +156,9 @@ export default function AISearchPage() {
               <div className="bg-white rounded-2xl shadow-lg p-8">
                 <div className="flex flex-col items-center justify-center space-y-4">
                   <div className="relative">
-                    <Bot className="w-16 h-16 text-emerald-500" />
+                    <Bot className="w-16 h-16 text-blue-500" />
                     <div className="absolute inset-0 animate-ping">
-                      <Bot className="w-16 h-16 text-emerald-500 opacity-30" />
+                      <Bot className="w-16 h-16 text-blue-500 opacity-30" />
                     </div>
                   </div>
                   <p className="text-lg font-medium text-gray-700">AI is analyzing your query...</p>
@@ -182,10 +182,10 @@ export default function AISearchPage() {
                   animate={{ opacity: 1, y: 0 }}
                   className="mb-8"
                 >
-                  <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl shadow-lg p-6 border border-emerald-200">
+                  <div className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-2xl shadow-lg p-6 border border-blue-200">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
-                        <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
                           <Bot className="w-6 h-6 text-white" />
                         </div>
                       </div>
@@ -200,7 +200,7 @@ export default function AISearchPage() {
                         
                         {/* Search Intent & Filters */}
                         {searchResults.interpretation && (
-                          <div className="mt-4 pt-4 border-t border-emerald-200">
+                          <div className="mt-4 pt-4 border-t border-blue-200">
                             <div className="flex flex-wrap gap-2">
                               <span className="px-3 py-1 bg-white rounded-full text-sm font-medium text-gray-700">
                                 Type: {searchResults.interpretation.searchType}
@@ -231,7 +231,7 @@ export default function AISearchPage() {
                                     setSearchTerm(suggestion)
                                     handleAISearch(suggestion)
                                   }}
-                                  className="px-3 py-1 bg-emerald-100 hover:bg-emerald-200 rounded-full text-sm text-emerald-700 transition-colors"
+                                  className="px-3 py-1 bg-blue-100 hover:bg-blue-200 rounded-full text-sm text-blue-700 transition-colors"
                                 >
                                   {suggestion}
                                 </button>
@@ -248,7 +248,7 @@ export default function AISearchPage() {
               {/* Results Summary */}
               <div className="mb-6 flex items-center justify-between">
                 <p className="text-lg text-gray-700">
-                  Found <span className="font-semibold text-emerald-600">{searchResults.totalResults}</span> results for "{query}"
+                  Found <span className="font-semibold text-blue-600">{searchResults.totalResults}</span> results for "{query}"
                 </p>
                 {searchResults.fallbackMode && (
                   <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">
@@ -261,7 +261,7 @@ export default function AISearchPage() {
               {searchResults.results.universities.length > 0 && (
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                    <GraduationCap className="w-6 h-6 text-emerald-500" />
+                    <GraduationCap className="w-6 h-6 text-blue-500" />
                     Universities ({searchResults.results.universities.length})
                   </h2>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -281,13 +281,13 @@ export default function AISearchPage() {
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                               />
                               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                                <span className="text-sm font-semibold text-emerald-600">
+                                <span className="text-sm font-semibold text-blue-600">
                                   Rank #{university.ranking}
                                 </span>
                               </div>
                             </div>
                             <div className="p-6">
-                              <h3 className="text-xl font-semibold mb-2 group-hover:text-emerald-600 transition-colors">
+                              <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors">
                                 {university.name}
                               </h3>
                               <p className="text-gray-600 mb-4 flex items-center gap-2">
@@ -305,10 +305,10 @@ export default function AISearchPage() {
                                 </span>
                               </div>
                               <div className="flex items-center justify-between">
-                                <span className="text-lg font-semibold text-emerald-600">
+                                <span className="text-lg font-semibold text-blue-600">
                                   {university.tuitionFee}
                                 </span>
-                                <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" />
+                                <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
                               </div>
                             </div>
                           </div>
@@ -323,7 +323,7 @@ export default function AISearchPage() {
               {searchResults.results.courses.length > 0 && (
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                    <BookOpen className="w-6 h-6 text-emerald-500" />
+                    <BookOpen className="w-6 h-6 text-blue-500" />
                     Courses ({searchResults.results.courses.length})
                   </h2>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -337,25 +337,25 @@ export default function AISearchPage() {
                         <Link href={`/courses/${course.slug || course.id}`}>
                           <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 cursor-pointer h-full">
                             <div className="mb-4">
-                              <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-3">
-                                <BookOpen className="w-6 h-6 text-emerald-600" />
+                              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-3">
+                                <BookOpen className="w-6 h-6 text-blue-600" />
                               </div>
-                              <h3 className="text-xl font-semibold mb-2 hover:text-emerald-600 transition-colors">
+                              <h3 className="text-xl font-semibold mb-2 hover:text-blue-600 transition-colors">
                                 {course.name}
                               </h3>
                               <p className="text-gray-600 text-sm mb-3">{course.description}</p>
                             </div>
                             <div className="space-y-2 text-sm text-gray-600">
                               <div className="flex items-center gap-2">
-                                <Award className="w-4 h-4 text-emerald-500" />
+                                <Award className="w-4 h-4 text-blue-500" />
                                 <span>{course.level}</span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <Clock className="w-4 h-4 text-emerald-500" />
+                                <Clock className="w-4 h-4 text-blue-500" />
                                 <span>{course.duration}</span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <TrendingUp className="w-4 h-4 text-emerald-500" />
+                                <TrendingUp className="w-4 h-4 text-blue-500" />
                                 <span>{course.field}</span>
                               </div>
                             </div>
@@ -380,7 +380,7 @@ export default function AISearchPage() {
               {searchResults.results.countries.length > 0 && (
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                    <Globe className="w-6 h-6 text-emerald-500" />
+                    <Globe className="w-6 h-6 text-blue-500" />
                     Study Destinations ({searchResults.results.countries.length})
                   </h2>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -409,7 +409,7 @@ export default function AISearchPage() {
                               <div className="grid grid-cols-2 gap-4 mb-4">
                                 <div>
                                   <p className="text-sm text-gray-600 mb-1">Universities</p>
-                                  <p className="text-lg font-semibold text-emerald-600">
+                                  <p className="text-lg font-semibold text-blue-600">
                                     {country.universities}+
                                   </p>
                                 </div>
@@ -424,7 +424,7 @@ export default function AISearchPage() {
                                 <p className="text-sm text-gray-600 mb-2">Popular Programs</p>
                                 <div className="flex flex-wrap gap-1">
                                   {country.popularPrograms.slice(0, 3).map((program: string, i: number) => (
-                                    <span key={i} className="px-2 py-1 bg-emerald-100 rounded text-xs text-emerald-700">
+                                    <span key={i} className="px-2 py-1 bg-blue-100 rounded text-xs text-blue-700">
                                       {program}
                                     </span>
                                   ))}

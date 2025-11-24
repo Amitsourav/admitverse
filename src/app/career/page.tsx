@@ -205,7 +205,7 @@ export default function CareerPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-emerald-600 via-emerald-700 to-green-600 overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -228,7 +228,7 @@ export default function CareerPage() {
             >
               Join Our Mission to
               <motion.span 
-                className="block bg-gradient-to-r from-emerald-200 to-green-200 bg-clip-text text-transparent mt-2"
+                className="block bg-gradient-to-r from-blue-200 to-blue-200 bg-clip-text text-transparent mt-2"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -236,7 +236,7 @@ export default function CareerPage() {
                 Transform Education
               </motion.span>
             </motion.h1>
-            <p className="text-xl text-emerald-50 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-blue-50 max-w-3xl mx-auto mb-8">
               Be part of a team that's helping thousands of students achieve their dreams of quality education in India and abroad
             </p>
             
@@ -249,7 +249,7 @@ export default function CareerPage() {
                 whileHover={{ scale: 1.05, y: -5 }}
               >
                 <div className="text-3xl font-bold text-white">50+</div>
-                <div className="text-emerald-100">Team Members</div>
+                <div className="text-blue-100">Team Members</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
@@ -259,7 +259,7 @@ export default function CareerPage() {
                 whileHover={{ scale: 1.05, y: -5 }}
               >
                 <div className="text-3xl font-bold text-white">5</div>
-                <div className="text-emerald-100">Office Locations</div>
+                <div className="text-blue-100">Office Locations</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
@@ -269,13 +269,13 @@ export default function CareerPage() {
                 whileHover={{ scale: 1.05, y: -5 }}
               >
                 <div className="text-3xl font-bold text-white">10K+</div>
-                <div className="text-emerald-100">Students Helped</div>
+                <div className="text-blue-100">Students Helped</div>
               </motion.div>
             </div>
 
             <motion.a
               href="#openings"
-              className="inline-flex items-center px-8 py-4 bg-white text-emerald-600 font-semibold rounded-xl hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:shadow-xl transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -287,7 +287,7 @@ export default function CareerPage() {
       </section>
 
       {/* Company Values */}
-      <section className="py-16 bg-emerald-50/30">
+      <section className="py-16 bg-blue-50/30">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -317,7 +317,7 @@ export default function CareerPage() {
                 onMouseLeave={() => setHoveredValue(null)}
               >
                 <motion.div 
-                  className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-emerald-600 group-hover:shadow-lg transition-all duration-300"
+                  className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600 group-hover:shadow-lg transition-all duration-300"
                   animate={{
                     scale: hoveredValue === index ? 1.1 : 1,
                     rotate: hoveredValue === index ? 5 : 0
@@ -326,7 +326,7 @@ export default function CareerPage() {
                 >
                   {value.icon}
                 </motion.div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">{value.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">{value.title}</h3>
                 <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{value.description}</p>
               </motion.div>
             ))}
@@ -360,8 +360,8 @@ export default function CareerPage() {
                 onClick={() => setSelectedDepartment(dept)}
                 className={`px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
                   selectedDepartment === dept
-                    ? 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg'
-                    : 'bg-white text-gray-600 border border-gray-200 hover:border-emerald-400 hover:text-emerald-600'
+                    ? 'bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg'
+                    : 'bg-white text-gray-600 border border-gray-200 hover:border-blue-400 hover:text-blue-600'
                 }`}
               >
                 {dept}
@@ -385,7 +385,7 @@ export default function CareerPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-emerald-200"
+                  className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-blue-200"
                 >
                   <div
                     className="p-6 cursor-pointer"
@@ -445,7 +445,7 @@ export default function CareerPage() {
                             <ul className="space-y-2">
                               {job.requirements.map((req, idx) => (
                                 <li key={idx} className="flex items-start text-gray-600">
-                                  <CheckCircle className="w-5 h-5 text-emerald-500 mr-2 mt-0.5 flex-shrink-0" />
+                                  <CheckCircle className="w-5 h-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
                                   <span>{req}</span>
                                 </li>
                               ))}
@@ -454,7 +454,7 @@ export default function CareerPage() {
 
                           <div className="flex gap-4">
                             <motion.button
-                              className="px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all duration-300"
+                              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                               onClick={(e) => {
@@ -484,7 +484,7 @@ export default function CareerPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-gradient-to-br from-emerald-50 to-green-50">
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -509,13 +509,13 @@ export default function CareerPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300 group cursor-pointer border border-gray-100 hover:border-emerald-200"
+                className="bg-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300 group cursor-pointer border border-gray-100 hover:border-blue-200"
                 onMouseEnter={() => setHoveredBenefit(index)}
                 onMouseLeave={() => setHoveredBenefit(null)}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <motion.div 
-                  className="w-12 h-12 bg-gradient-to-br from-emerald-100 to-green-100 rounded-xl flex items-center justify-center mb-4 text-emerald-600"
+                  className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-100 rounded-xl flex items-center justify-center mb-4 text-blue-600"
                   animate={{
                     rotate: hoveredBenefit === index ? 360 : 0
                   }}
@@ -523,7 +523,7 @@ export default function CareerPage() {
                 >
                   {benefit.icon}
                 </motion.div>
-                <h3 className="font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">{benefit.title}</h3>
+                <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">{benefit.title}</h3>
                 <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{benefit.description}</p>
               </motion.div>
             ))}
@@ -555,11 +555,11 @@ export default function CareerPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl p-8 text-white"
+              className="bg-gradient-to-br from-blue-500 to-blue-800 rounded-2xl p-8 text-white"
             >
               <Sparkles className="w-12 h-12 mb-4" />
               <h3 className="text-2xl font-bold mb-3">Innovation First</h3>
-              <p className="text-emerald-50">
+              <p className="text-blue-50">
                 We encourage creative thinking and new ideas. Your voice matters, and your innovations can shape our future.
               </p>
             </motion.div>
@@ -569,12 +569,12 @@ export default function CareerPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 text-white relative overflow-hidden group"
+              className="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl p-8 text-white relative overflow-hidden group"
               whileHover={{ scale: 1.02 }}
             >
               <Globe className="w-12 h-12 mb-4" />
               <h3 className="text-2xl font-bold mb-3">Global Impact</h3>
-              <p className="text-emerald-50">
+              <p className="text-blue-50">
                 Help students from around the world achieve their dreams. Your work directly impacts thousands of lives.
               </p>
             </motion.div>
@@ -584,12 +584,12 @@ export default function CareerPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-8 text-white relative overflow-hidden group"
+              className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-8 text-white relative overflow-hidden group"
               whileHover={{ scale: 1.02 }}
             >
               <Award className="w-12 h-12 mb-4" />
               <h3 className="text-2xl font-bold mb-3">Growth Focused</h3>
-              <p className="text-green-50">
+              <p className="text-blue-50">
                 Regular training, mentorship programs, and clear career progression paths to help you reach your potential.
               </p>
             </motion.div>
@@ -598,7 +598,7 @@ export default function CareerPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-emerald-600 via-emerald-700 to-green-600 relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -609,14 +609,14 @@ export default function CareerPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Make a Difference?
             </h2>
-            <p className="text-xl text-emerald-100 mb-8">
+            <p className="text-xl text-blue-100 mb-8">
               Join us in our mission to democratize quality education
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="mailto:careers@admitverse.com"
-                className="inline-flex items-center px-8 py-4 bg-white text-emerald-600 font-semibold rounded-xl hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:shadow-xl transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -625,7 +625,7 @@ export default function CareerPage() {
               </motion.a>
               <motion.a
                 href="tel:+919876543210"
-                className="inline-flex items-center px-8 py-4 bg-emerald-700 text-white font-semibold rounded-xl hover:bg-emerald-800 transition-all duration-300"
+                className="inline-flex items-center px-8 py-4 bg-blue-700 text-white font-semibold rounded-xl hover:bg-blue-800 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -634,7 +634,7 @@ export default function CareerPage() {
               </motion.a>
             </div>
 
-            <p className="mt-8 text-emerald-100">
+            <p className="mt-8 text-blue-100">
               Can't find a suitable position? Send your resume to{' '}
               <a href="mailto:careers@admitverse.com" className="underline font-semibold">
                 careers@admitverse.com

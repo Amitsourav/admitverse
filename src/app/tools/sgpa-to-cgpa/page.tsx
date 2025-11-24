@@ -77,7 +77,7 @@ export default function SGPAToCGPAPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
       <TopBanner />
       <Navigation />
 
@@ -93,9 +93,9 @@ export default function SGPAToCGPAPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-24 h-24 bg-gradient-to-br from-teal-100 to-emerald-100 rounded-3xl flex items-center justify-center mx-auto mb-6"
+            className="w-24 h-24 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-3xl flex items-center justify-center mx-auto mb-6"
           >
-            <GraduationCap className="w-14 h-14 text-teal-600" />
+            <GraduationCap className="w-14 h-14 text-indigo-600" />
           </motion.div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -113,7 +113,7 @@ export default function SGPAToCGPAPage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <Calculator className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <Calculator className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">3 Scales</h3>
               <p className="text-gray-600">4.0, 5.0 & 10.0 Point</p>
             </motion.div>
@@ -123,7 +123,7 @@ export default function SGPAToCGPAPage() {
               transition={{ delay: 0.2 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <BookOpen className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <BookOpen className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">Credit-based</h3>
               <p className="text-gray-600">Weighted Calculation</p>
             </motion.div>
@@ -133,7 +133,7 @@ export default function SGPAToCGPAPage() {
               transition={{ delay: 0.3 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <Target className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+              <Target className="w-8 h-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-gray-900">Accurate</h3>
               <p className="text-gray-600">Precise Results</p>
             </motion.div>
@@ -159,7 +159,7 @@ export default function SGPAToCGPAPage() {
                   <select
                     value={scale}
                     onChange={(e) => setScale(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="10">10.0 Point Scale</option>
                     <option value="4">4.0 Point Scale</option>
@@ -173,7 +173,7 @@ export default function SGPAToCGPAPage() {
                     <button
                       type="button"
                       onClick={addSemester}
-                      className="flex items-center gap-2 px-3 py-2 text-emerald-600 border border-emerald-600 rounded-lg hover:bg-emerald-50 transition-colors"
+                      className="flex items-center gap-2 px-3 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
                     >
                       <Plus className="w-4 h-4" />
                       Add Semester
@@ -198,7 +198,7 @@ export default function SGPAToCGPAPage() {
                           max={getMaxValue()}
                           value={semester.sgpa}
                           onChange={(e) => updateSemester(semester.id, 'sgpa', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           placeholder={`0.00 - ${getMaxValue()}`}
                           required
                         />
@@ -214,7 +214,7 @@ export default function SGPAToCGPAPage() {
                           max="50"
                           value={semester.credits}
                           onChange={(e) => updateSemester(semester.id, 'credits', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           placeholder="Credits"
                           required
                         />
@@ -238,7 +238,7 @@ export default function SGPAToCGPAPage() {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-lg hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   Calculate CGPA
                 </motion.button>
@@ -262,9 +262,9 @@ export default function SGPAToCGPAPage() {
                   </div>
                 ) : (
                   <div className="space-y-6">
-                    <div className="bg-emerald-50 rounded-xl p-6 text-center">
+                    <div className="bg-blue-50 rounded-xl p-6 text-center">
                       <h3 className="text-lg font-semibold text-gray-700 mb-2">Your CGPA</h3>
-                      <div className="text-4xl font-bold text-emerald-600 mb-2">
+                      <div className="text-4xl font-bold text-blue-600 mb-2">
                         {result.cgpa}
                       </div>
                       <div className="text-gray-600">
@@ -342,7 +342,7 @@ export default function SGPAToCGPAPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-12 px-6 bg-emerald-50">
+      <section className="py-12 px-6 bg-blue-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -370,7 +370,7 @@ export default function SGPAToCGPAPage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center bg-white rounded-xl p-6 shadow-lg"
               >
-                <item.icon className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
+                <item.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600">{item.desc}</p>
               </motion.div>

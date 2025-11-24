@@ -47,7 +47,7 @@ const StatCard = ({ number, suffix, label, icon, delay, useCountAnimation, forma
       <div className="text-4xl font-bold mb-2">
         {formatNumber(count)}{suffix}
       </div>
-      <div className="text-emerald-100">{label}</div>
+      <div className="text-blue-100">{label}</div>
     </motion.div>
   )
 }
@@ -474,12 +474,14 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <TopBanner />
+      {/* Spacer for fixed TopBanner */}
+      <div className="h-[52px]"></div>
       <Navigation />
       <div ref={containerRef} className="min-h-screen">
         
         {/* Hero Section with Video Background */}
         <motion.section 
-          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900"
+          className="relative h-screen md:min-h-screen flex items-center justify-center overflow-hidden bg-gray-900"
           style={{ 
             opacity: heroOpacity, 
             transform: `scale(${heroScale})`,
@@ -519,7 +521,7 @@ export default function HomePage() {
           {!videoLoaded && !videoError && (
             <div className="absolute inset-0 bg-gray-900 z-5 flex items-center justify-center">
               <div className="flex flex-col items-center space-y-4">
-                <div className="w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                 <p className="text-white text-sm opacity-75">Loading video...</p>
               </div>
             </div>
@@ -549,26 +551,105 @@ export default function HomePage() {
           </div>
 
           {/* Hero Content */}
-          <div className="relative z-20 text-center max-w-6xl mx-auto px-6">
+          <div className="relative z-20 text-center max-w-6xl mx-auto px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 text-white" style={{ lineHeight: '1.3' }}>
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-6 md:mb-8 text-white" style={{ lineHeight: '1.2' }}>
                 Your Complete
-                <span className="block bg-gradient-to-r from-emerald-400 to-green-300 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
                   Admission Journey
                 </span>
               </h1>
-              <div className="flex items-center justify-center gap-3 mb-8">
-                <span className="text-emerald-300 font-medium text-lg md:text-xl">in India</span>
-                <span className="text-white/60">•</span>
-                <span className="text-green-300 font-medium text-lg md:text-xl">and Abroad</span>
+              <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6 md:mb-8">
+                <span className="text-blue-300 text-lg md:text-xl flex items-center">
+                  in{' '}
+                  <motion.span 
+                    className="font-bold text-xl md:text-2xl inline-block ml-2"
+                    initial={{ width: 0 }}
+                    animate={{ width: "auto" }}
+                    transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
+                    style={{ overflow: "hidden", whiteSpace: "nowrap", verticalAlign: "baseline" }}
+                  >
+                    India
+                  </motion.span>
+                </span>
+                <motion.span 
+                  className="text-blue-300 text-xl md:text-2xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 1.5 }}
+                >
+                  •
+                </motion.span>
+                <span className="text-blue-300 text-lg md:text-xl flex items-center">
+                  and{' '}
+                  <motion.span 
+                    className="font-bold text-xl md:text-2xl inline-block ml-2"
+                    initial={{ width: 0 }}
+                    animate={{ width: "auto" }}
+                    transition={{ duration: 1, delay: 1.8, ease: "easeInOut" }}
+                    style={{ overflow: "hidden", whiteSpace: "nowrap", verticalAlign: "baseline" }}
+                  >
+                    Abroad
+                  </motion.span>
+                </span>
               </div>
-              <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Discover top universities worldwide. Get personalized recommendations, expert guidance, and make your dream of studying a reality.
-              </p>
+              <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 md:mb-12">
+                <motion.div 
+                  className="flex items-center gap-3"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 2.5 }}
+                >
+                  <span className="text-blue-400 text-xl sm:text-2xl">•</span>
+                  <motion.span 
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 font-bold inline-block"
+                    initial={{ width: 0 }}
+                    animate={{ width: "auto" }}
+                    transition={{ duration: 1.2, delay: 2.8, ease: "easeInOut" }}
+                    style={{ overflow: "hidden", whiteSpace: "nowrap" }}
+                  >
+                    Study Abroad Counselling
+                  </motion.span>
+                </motion.div>
+                <motion.div 
+                  className="flex items-center gap-3"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 3.8 }}
+                >
+                  <span className="text-blue-400 text-xl sm:text-2xl">•</span>
+                  <motion.span 
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 font-bold inline-block"
+                    initial={{ width: 0 }}
+                    animate={{ width: "auto" }}
+                    transition={{ duration: 0.8, delay: 4.1, ease: "easeInOut" }}
+                    style={{ overflow: "hidden", whiteSpace: "nowrap" }}
+                  >
+                    Education Loan
+                  </motion.span>
+                </motion.div>
+                <motion.div 
+                  className="flex items-center gap-3"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 4.8 }}
+                >
+                  <span className="text-blue-400 text-xl sm:text-2xl">•</span>
+                  <motion.span 
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 font-bold inline-block"
+                    initial={{ width: 0 }}
+                    animate={{ width: "auto" }}
+                    transition={{ duration: 0.8, delay: 5.1, ease: "easeInOut" }}
+                    style={{ overflow: "hidden", whiteSpace: "nowrap" }}
+                  >
+                    Online MBA
+                  </motion.span>
+                </motion.div>
+              </div>
             </motion.div>
 
             {/* Search Bar */}
@@ -576,7 +657,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative max-w-2xl mx-auto mb-12 z-50"
+              className="relative max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-12 z-50"
               onClick={(e) => e.stopPropagation()}
             >
               <motion.div 
@@ -584,7 +665,7 @@ export default function HomePage() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400" />
+                <Search className="absolute left-3 sm:left-4 md:left-6 top-1/2 transform -translate-y-1/2 w-5 sm:w-6 h-5 sm:h-6 text-gray-400" />
                 <input
                   type="text"
                   placeholder={placeholders[placeholderIndex]}
@@ -596,12 +677,12 @@ export default function HomePage() {
                     }
                   }}
                   onFocus={() => searchTerm && setShowSuggestions(true)}
-                  className="w-full pl-16 pr-32 py-6 text-lg bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl focus:outline-none focus:ring-4 focus:ring-emerald-300/50 border-0 transition-all duration-300"
+                  className="w-full pl-10 sm:pl-12 md:pl-16 pr-20 sm:pr-24 md:pr-32 py-3 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg bg-white/95 backdrop-blur-md rounded-xl sm:rounded-2xl shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300/50 border-0 transition-all duration-300"
                 />
                 <button
                   onClick={() => handleSearch()}
                   disabled={isSearching}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 px-8 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 px-3 sm:px-5 md:px-8 py-2 sm:py-2.5 md:py-3 bg-gradient-to-r from-blue-500 to-blue-800 text-white font-semibold rounded-lg sm:rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base"
                 >
                   {isSearching ? (
                     <>
@@ -630,15 +711,15 @@ export default function HomePage() {
                     {filteredSuggestions.map((suggestion, index) => (
                       <motion.div
                         key={`${suggestion.type}-${suggestion.name}`}
-                        className="flex items-center p-4 hover:bg-emerald-50 cursor-pointer transition-colors duration-200 border-b border-gray-50 last:border-b-0"
+                        className="flex items-center p-4 hover:bg-blue-50 cursor-pointer transition-colors duration-200 border-b border-gray-50 last:border-b-0"
                         onClick={() => handleSuggestionClick(suggestion)}
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.1 }}
                       >
-                        <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mr-3 flex-shrink-0">
-                          {suggestion.type === 'university' && <GraduationCap className="w-5 h-5 text-emerald-600" />}
-                          {suggestion.type === 'course' && <BookOpen className="w-5 h-5 text-emerald-600" />}
-                          {suggestion.type === 'country' && <Globe className="w-5 h-5 text-emerald-600" />}
+                        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
+                          {suggestion.type === 'university' && <GraduationCap className="w-5 h-5 text-blue-600" />}
+                          {suggestion.type === 'course' && <BookOpen className="w-5 h-5 text-blue-600" />}
+                          {suggestion.type === 'country' && <Globe className="w-5 h-5 text-blue-600" />}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="font-medium text-gray-900 truncate">{suggestion.name}</div>
@@ -667,7 +748,7 @@ export default function HomePage() {
               <div className="text-center">
                 <Link href="/contact">
                   <motion.button 
-                    className="w-full sm:w-auto px-12 py-4 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all duration-300 shadow-lg text-lg"
+                    className="w-full sm:w-auto px-12 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg text-lg"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -680,7 +761,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="/universities">
                   <motion.button 
-                    className="w-full sm:w-auto px-6 py-3 bg-white/15 backdrop-blur-sm text-white font-medium rounded-lg border border-white/20 hover:bg-white/25 transition-all duration-300"
+                    className="w-full sm:w-auto px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 bg-white/15 backdrop-blur-sm text-white font-medium rounded-lg border border-white/20 hover:bg-white/25 transition-all duration-300 text-sm sm:text-base"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -689,7 +770,7 @@ export default function HomePage() {
                 </Link>
                 <Link href="/dev-features/b-school">
                   <motion.button 
-                    className="w-full sm:w-auto px-6 py-3 bg-purple-600/20 backdrop-blur-sm text-white font-medium rounded-lg border border-purple-400/30 hover:bg-purple-600/30 transition-all duration-300"
+                    className="w-full sm:w-auto px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 bg-purple-600/20 backdrop-blur-sm text-white font-medium rounded-lg border border-purple-400/30 hover:bg-purple-600/30 transition-all duration-300 text-sm sm:text-base"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -702,8 +783,8 @@ export default function HomePage() {
         </motion.section>
 
         {/* How It Works Section */}
-        <section className="py-20 bg-emerald-50/30">
-          <div className="max-w-7xl mx-auto px-6">
+        <section className="py-12 sm:py-16 md:py-20 bg-blue-50/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -719,35 +800,35 @@ export default function HomePage() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {[
                 {
                   step: "01",
                   title: "Profile Assessment",
                   description: "Share your academic background, career goals, and budget — we'll evaluate your profile to find your best-fit options.",
                   icon: <FileText className="w-8 h-8" />,
-                  color: "bg-emerald-100 text-emerald-600"
+                  color: "bg-blue-100 text-blue-600"
                 },
                 {
                   step: "02", 
                   title: "AI Matching",
                   description: "Our intelligent algorithm instantly matches your profile with top universities, domestic and international, along with scholarships and loan options.",
                   icon: <Target className="w-8 h-8" />,
-                  color: "bg-emerald-100 text-emerald-600"
+                  color: "bg-blue-100 text-blue-600"
                 },
                 {
                   step: "03",
                   title: "Personalized Guidance",
                   description: "Connect with our admission experts for personalized guidance — from SOPs, essays, and applications to visa and loan support.",
                   icon: <Users className="w-8 h-8" />,
-                  color: "bg-emerald-100 text-emerald-600"
+                  color: "bg-blue-100 text-blue-600"
                 },
                 {
                   step: "04",
                   title: "Application Success",
                   description: "Receive your offer letter, secure your loan, and access post-admission support for housing, forex, or online learning resources.",
                   icon: <Award className="w-8 h-8" />,
-                  color: "bg-emerald-100 text-emerald-600"
+                  color: "bg-blue-100 text-blue-600"
                 }
               ].map((item, index) => (
                 <motion.div
@@ -760,7 +841,7 @@ export default function HomePage() {
                 >
                   {/* Step Number */}
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="w-12 h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                    <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
                       {item.step}
                     </div>
                   </div>
@@ -776,7 +857,7 @@ export default function HomePage() {
                   {/* Arrow for desktop */}
                   {index < 3 && (
                     <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                      <ArrowRight className="w-6 h-6 text-emerald-300" />
+                      <ArrowRight className="w-6 h-6 text-blue-300" />
                     </div>
                   )}
                 </motion.div>
@@ -792,7 +873,7 @@ export default function HomePage() {
             >
               <Link href="/contact">
                 <motion.button 
-                  className="px-8 py-4 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all duration-300 shadow-lg"
+                  className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -804,8 +885,8 @@ export default function HomePage() {
         </section>
 
         {/* Enhanced Why Choose Us Section */}
-        <section className="py-20 bg-green-50/20">
-          <div className="max-w-7xl mx-auto px-6">
+        <section className="py-12 sm:py-16 md:py-20 bg-blue-50/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -836,7 +917,7 @@ export default function HomePage() {
                   {/* Content */}
                   <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
                     <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600">
+                      <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600">
                         {feature.icon}
                       </div>
                       <h3 className="text-3xl font-bold text-gray-900">{feature.title}</h3>
@@ -850,24 +931,24 @@ export default function HomePage() {
                     <div className="grid grid-cols-2 gap-3">
                       {feature.highlights.map((highlight, idx) => (
                         <div key={idx} className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                           <span className="text-sm font-medium text-gray-700">{highlight}</span>
                         </div>
                       ))}
                     </div>
                     
                     {/* Stats */}
-                    <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                    <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
                       <div className="flex items-center space-x-2">
-                        <BarChart className="w-5 h-5 text-emerald-600" />
-                        <span className="text-sm font-semibold text-emerald-800">{feature.stats}</span>
+                        <BarChart className="w-5 h-5 text-blue-600" />
+                        <span className="text-sm font-semibold text-blue-800">{feature.stats}</span>
                       </div>
                     </div>
                     
                     {/* CTA */}
                     <Link href={feature.ctaHref}>
                       <motion.button
-                        className="inline-flex items-center px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all duration-300 shadow-md"
+                        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-md"
                         whileHover={{ scale: 1.05, x: 5 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -889,7 +970,7 @@ export default function HomePage() {
                         alt={feature.title}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent"></div>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -899,8 +980,8 @@ export default function HomePage() {
         </section>
 
         {/* Why Choose AdmitVerse Over Others - Comparison Section */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-6">
+        <section className="py-12 sm:py-16 md:py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -927,12 +1008,12 @@ export default function HomePage() {
               <div className="min-w-full bg-white rounded-2xl shadow-xl overflow-hidden">
                 <table className="w-full">
                   <thead>
-                    <tr className="bg-gradient-to-r from-emerald-600 to-green-600 text-white">
+                    <tr className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
                       <th className="px-6 py-5 text-left text-lg font-semibold">Features</th>
                       <th className="px-6 py-5 text-center">
                         <div className="flex flex-col items-center">
                           <span className="text-lg font-bold">AdmitVerse</span>
-                          <span className="text-xs text-emerald-100 mt-1">✨ Recommended</span>
+                          <span className="text-xs text-blue-100 mt-1">✨ Recommended</span>
                         </div>
                       </th>
                       <th className="px-6 py-5 text-center text-lg">Traditional Consultants</th>
@@ -1023,7 +1104,7 @@ export default function HomePage() {
                         className="hover:bg-gray-50 transition-colors duration-200"
                       >
                         <td className="px-6 py-4 text-gray-900 font-medium">{row.feature}</td>
-                        <td className="px-6 py-4 text-center bg-emerald-50/50">
+                        <td className="px-6 py-4 text-center bg-blue-50/50">
                           {typeof row.admitverse === 'boolean' ? (
                             row.admitverse ? (
                               <motion.div
@@ -1033,7 +1114,7 @@ export default function HomePage() {
                                 viewport={{ once: true }}
                                 className="inline-flex items-center justify-center"
                               >
-                                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center">
+                                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                                   <Check className="w-5 h-5 text-white" />
                                 </div>
                               </motion.div>
@@ -1043,13 +1124,13 @@ export default function HomePage() {
                               </div>
                             )
                           ) : (
-                            <span className="text-emerald-600 font-semibold">{row.admitverse}</span>
+                            <span className="text-blue-600 font-semibold">{row.admitverse}</span>
                           )}
                         </td>
                         <td className="px-6 py-4 text-center">
                           {typeof row.traditional === 'boolean' ? (
                             row.traditional ? (
-                              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mx-auto">
                                 <Check className="w-5 h-5 text-white" />
                               </div>
                             ) : (
@@ -1064,7 +1145,7 @@ export default function HomePage() {
                         <td className="px-6 py-4 text-center">
                           {typeof row.others === 'boolean' ? (
                             row.others ? (
-                              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mx-auto">
                                 <Check className="w-5 h-5 text-white" />
                               </div>
                             ) : (
@@ -1089,10 +1170,10 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
+              className="mt-8 sm:mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6"
             >
               <motion.div
-                className="bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl p-6 text-white"
+                className="bg-gradient-to-br from-blue-500 to-blue-800 rounded-2xl p-6 text-white"
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ duration: 0.3 }}
               >
@@ -1102,16 +1183,16 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="text-3xl font-bold">10x</div>
-                    <div className="text-emerald-100 text-sm">More Affordable</div>
+                    <div className="text-blue-100 text-sm">More Affordable</div>
                   </div>
                 </div>
-                <p className="text-emerald-50">
+                <p className="text-blue-50">
                   Save up to ₹1,75,000 compared to traditional consultants with better results
                 </p>
               </motion.div>
 
               <motion.div
-                className="bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl p-6 text-white"
+                className="bg-gradient-to-br from-indigo-500 to-blue-600 rounded-2xl p-6 text-white"
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ duration: 0.3 }}
               >
@@ -1121,16 +1202,16 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="text-3xl font-bold">3x</div>
-                    <div className="text-teal-100 text-sm">Faster Process</div>
+                    <div className="text-indigo-100 text-sm">Faster Process</div>
                   </div>
                 </div>
-                <p className="text-teal-50">
+                <p className="text-indigo-50">
                   Get matched with universities in minutes, not weeks. Complete applications 3x faster
                 </p>
               </motion.div>
 
               <motion.div
-                className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white"
+                className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 text-white"
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ duration: 0.3 }}
               >
@@ -1140,10 +1221,10 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="text-3xl font-bold">95%</div>
-                    <div className="text-green-100 text-sm">Success Rate</div>
+                    <div className="text-blue-100 text-sm">Success Rate</div>
                   </div>
                 </div>
-                <p className="text-green-50">
+                <p className="text-blue-50">
                   Highest admission success rate with personalized support at every step
                 </p>
               </motion.div>
@@ -1159,7 +1240,7 @@ export default function HomePage() {
             >
               <Link href="/contact">
                 <motion.button
-                  className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -1172,10 +1253,10 @@ export default function HomePage() {
         </section>
 
         {/* Free Tools & Resources Section */}
-        <section className="py-20 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 relative overflow-hidden">
+        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-50 via-blue-50 to-indigo-50 relative overflow-hidden">
           {/* Animated background elements */}
           <motion.div
-            className="absolute top-20 left-10 w-72 h-72 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+            className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
             animate={{
               x: [0, 30, 0],
               y: [0, -30, 0],
@@ -1187,7 +1268,7 @@ export default function HomePage() {
             }}
           />
           <motion.div
-            className="absolute bottom-20 right-10 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+            className="absolute bottom-20 right-10 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
             animate={{
               x: [0, -30, 0],
               y: [0, 30, 0],
@@ -1199,7 +1280,7 @@ export default function HomePage() {
             }}
           />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1214,7 +1295,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="inline-block mb-4"
               >
-                <span className="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-semibold">
+                <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
                   ✨ Exclusive Resources
                 </span>
               </motion.div>
@@ -1238,7 +1319,7 @@ export default function HomePage() {
               </motion.p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6 max-w-7xl mx-auto">
               {/* SOP Review Card */}
               <motion.div
                 initial={{ opacity: 0, y: 50, rotateX: -10 }}
@@ -1255,35 +1336,35 @@ export default function HomePage() {
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-100 group relative overflow-hidden"
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-blue-100 group relative overflow-hidden"
               >
                 <motion.div 
-                  className="absolute top-0 right-0 bg-gradient-to-bl from-emerald-500 to-transparent w-20 h-20 opacity-10"
+                  className="absolute top-0 right-0 bg-gradient-to-bl from-blue-500 to-transparent w-20 h-20 opacity-10"
                   whileHover={{ scale: 2, opacity: 0.2 }}
                   transition={{ duration: 0.4 }}
                 />
                 <div className="flex justify-center mb-6">
-                  <div className="w-28 h-28 bg-gradient-to-br from-teal-100 to-emerald-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                    <FileCheck className="w-14 h-14 text-teal-600" />
+                  <div className="w-28 h-28 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <FileCheck className="w-14 h-14 text-indigo-600" />
                   </div>
                 </div>
                 <div className="text-center">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">SOP Review</h3>
-                  <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-4">Professional Guidance</p>
+                  <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-4">Professional Guidance</p>
                   <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
                     Get a comprehensive review of your Statement of Purpose within 48 hours from our expert admission counselors.
                   </p>
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       Expert feedback
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       Grammar & structure check
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       University-specific tips
                     </div>
                   </div>
@@ -1291,7 +1372,7 @@ export default function HomePage() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                      className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg font-semibold text-sm hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       Get SOP Review
                     </motion.button>
@@ -1315,35 +1396,35 @@ export default function HomePage() {
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-100 group relative overflow-hidden"
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-blue-100 group relative overflow-hidden"
               >
                 <motion.div 
-                  className="absolute top-0 right-0 bg-gradient-to-bl from-green-500 to-transparent w-20 h-20 opacity-10"
+                  className="absolute top-0 right-0 bg-gradient-to-bl from-blue-500 to-transparent w-20 h-20 opacity-10"
                   whileHover={{ scale: 2, opacity: 0.2 }}
                   transition={{ duration: 0.4 }}
                 />
                 <div className="flex justify-center mb-6">
-                  <div className="w-28 h-28 bg-gradient-to-br from-green-100 to-emerald-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                    <FileText className="w-14 h-14 text-green-600" />
+                  <div className="w-28 h-28 bg-gradient-to-br from-blue-100 to-blue-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <FileText className="w-14 h-14 text-blue-800" />
                   </div>
                 </div>
                 <div className="text-center">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">CV Review</h3>
-                  <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-4">Career Enhancement</p>
+                  <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-4">Career Enhancement</p>
                   <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
                     Transform your CV into a powerful tool that stands out. Get detailed tips from our study abroad coaches.
                   </p>
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       ATS optimization
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       Industry standards
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       Achievement highlights
                     </div>
                   </div>
@@ -1351,7 +1432,7 @@ export default function HomePage() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                      className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg font-semibold text-sm hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       Review My CV
                     </motion.button>
@@ -1375,35 +1456,35 @@ export default function HomePage() {
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-100 group relative overflow-hidden"
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-blue-100 group relative overflow-hidden"
               >
                 <motion.div 
-                  className="absolute top-0 right-0 bg-gradient-to-bl from-teal-500 to-transparent w-20 h-20 opacity-10"
+                  className="absolute top-0 right-0 bg-gradient-to-bl from-indigo-500 to-transparent w-20 h-20 opacity-10"
                   whileHover={{ scale: 2, opacity: 0.2 }}
                   transition={{ duration: 0.4 }}
                 />
                 <div className="flex justify-center mb-6">
-                  <div className="w-28 h-28 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                    <DollarSign className="w-14 h-14 text-emerald-600" />
+                  <div className="w-28 h-28 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <DollarSign className="w-14 h-14 text-blue-600" />
                   </div>
                 </div>
                 <div className="text-center">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Cost Calculator</h3>
-                  <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-4">Financial Planning</p>
+                  <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-4">Financial Planning</p>
                   <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
                     Plan your budget accurately. Calculate living expenses for your dream study destination worldwide.
                   </p>
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       150+ cities covered
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       Real-time data
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       Student lifestyle costs
                     </div>
                   </div>
@@ -1411,7 +1492,7 @@ export default function HomePage() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                      className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg font-semibold text-sm hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       Calculate Now
                     </motion.button>
@@ -1435,35 +1516,35 @@ export default function HomePage() {
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-100 group relative overflow-hidden"
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-blue-100 group relative overflow-hidden"
               >
                 <motion.div 
-                  className="absolute top-0 right-0 bg-gradient-to-bl from-emerald-500 to-transparent w-20 h-20 opacity-10"
+                  className="absolute top-0 right-0 bg-gradient-to-bl from-blue-500 to-transparent w-20 h-20 opacity-10"
                   whileHover={{ scale: 2, opacity: 0.2 }}
                   transition={{ duration: 0.4 }}
                 />
                 <div className="flex justify-center mb-6">
-                  <div className="w-28 h-28 bg-gradient-to-br from-teal-100 to-green-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                    <Calculator className="w-14 h-14 text-teal-600" />
+                  <div className="w-28 h-28 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <Calculator className="w-14 h-14 text-indigo-600" />
                   </div>
                 </div>
                 <div className="text-center">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">SGPA to CGPA</h3>
-                  <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-4">Grade Converter</p>
+                  <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-4">Grade Converter</p>
                   <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
                     Convert your semester grades to cumulative GPA instantly with our accurate calculation tool.
                   </p>
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       All university scales
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       Instant results
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       100% accurate
                     </div>
                   </div>
@@ -1471,7 +1552,7 @@ export default function HomePage() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                      className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg font-semibold text-sm hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       Convert Grade
                     </motion.button>
@@ -1495,35 +1576,35 @@ export default function HomePage() {
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-100 group relative overflow-hidden"
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-blue-100 group relative overflow-hidden"
               >
                 <motion.div 
-                  className="absolute top-0 right-0 bg-gradient-to-bl from-green-500 to-transparent w-20 h-20 opacity-10"
+                  className="absolute top-0 right-0 bg-gradient-to-bl from-blue-500 to-transparent w-20 h-20 opacity-10"
                   whileHover={{ scale: 2, opacity: 0.2 }}
                   transition={{ duration: 0.4 }}
                 />
                 <div className="flex justify-center mb-6">
-                  <div className="w-28 h-28 bg-gradient-to-br from-green-100 to-teal-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                    <Percent className="w-14 h-14 text-green-600" />
+                  <div className="w-28 h-28 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <Percent className="w-14 h-14 text-blue-800" />
                   </div>
                 </div>
                 <div className="text-center">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">CGPA to %</h3>
-                  <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-4">Quick Conversion</p>
+                  <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-4">Quick Conversion</p>
                   <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
                     Convert between CGPA and percentage instantly. Support for multiple grading systems worldwide.
                   </p>
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       4.0, 5.0, 10.0 scales
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       Reverse calculation
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
-                      <Check className="w-4 h-4 text-emerald-500 mr-2" />
+                      <Check className="w-4 h-4 text-blue-500 mr-2" />
                       Download report
                     </div>
                   </div>
@@ -1531,7 +1612,7 @@ export default function HomePage() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                      className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg font-semibold text-sm hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       Start Converting
                     </motion.button>
@@ -1543,8 +1624,8 @@ export default function HomePage() {
         </section>
 
         {/* Success Stories */}
-        <section className="py-20 bg-emerald-50/20">
-          <div className="max-w-6xl mx-auto px-6">
+        <section className="py-12 sm:py-16 md:py-20 bg-blue-50/20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1558,7 +1639,7 @@ export default function HomePage() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
               {successStories.map((story, index) => (
                 <motion.div
                   key={index}
@@ -1569,19 +1650,19 @@ export default function HomePage() {
                   className="bg-gray-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
                 >
                   <div className="flex items-start mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-green-100 rounded-full flex items-center justify-center mr-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-100 rounded-full flex items-center justify-center mr-4">
                       <span className="text-2xl">{story.flag}</span>
                     </div>
                     <div>
                       <h4 className="font-bold text-gray-900">{story.name} {story.flag}</h4>
-                      <p className="text-emerald-600 font-semibold">{story.university}</p>
+                      <p className="text-blue-600 font-semibold">{story.university}</p>
                       <p className="text-gray-600 text-sm">{story.program}</p>
                     </div>
                   </div>
                   <div className="relative">
-                    <div className="absolute -top-2 -left-2 text-emerald-200 text-4xl font-serif">"</div>
+                    <div className="absolute -top-2 -left-2 text-blue-200 text-4xl font-serif">"</div>
                     <p className="text-gray-600 italic pl-4">{story.quote}</p>
-                    <div className="absolute -bottom-2 -right-2 text-emerald-200 text-4xl font-serif">"</div>
+                    <div className="absolute -bottom-2 -right-2 text-blue-200 text-4xl font-serif">"</div>
                   </div>
                 </motion.div>
               ))}
@@ -1591,8 +1672,8 @@ export default function HomePage() {
 
 
         {/* Stats Section */}
-        <section className="py-16 bg-emerald-600">
-          <div className="max-w-7xl mx-auto px-6">
+        <section className="py-10 sm:py-14 md:py-16 bg-blue-600">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             {(() => {
               // Create animation hooks for each stat
               const studentsAnimation = useCountAnimation(10000, 2000)
@@ -1616,12 +1697,12 @@ export default function HomePage() {
                       viewport={{ once: true }}
                       className="flex items-center gap-2 text-white"
                     >
-                      <Users className="w-6 h-6 text-emerald-200" />
+                      <Users className="w-6 h-6 text-blue-200" />
                       <span className="text-2xl md:text-3xl font-bold">{studentsAnimation.count.toLocaleString()}+</span>
-                      <span className="text-lg md:text-xl text-emerald-100">Students Guided</span>
+                      <span className="text-lg md:text-xl text-blue-100">Students Guided</span>
                     </motion.div>
                     
-                    <span className="text-emerald-300 text-2xl hidden md:block">•</span>
+                    <span className="text-blue-300 text-2xl hidden md:block">•</span>
                     
                     <motion.div
                       ref={successAnimation.ref}
@@ -1631,12 +1712,12 @@ export default function HomePage() {
                       viewport={{ once: true }}
                       className="flex items-center gap-2 text-white"
                     >
-                      <Award className="w-6 h-6 text-emerald-200" />
+                      <Award className="w-6 h-6 text-blue-200" />
                       <span className="text-2xl md:text-3xl font-bold">{successAnimation.count}%</span>
-                      <span className="text-lg md:text-xl text-emerald-100">Admission Success</span>
+                      <span className="text-lg md:text-xl text-blue-100">Admission Success</span>
                     </motion.div>
                     
-                    <span className="text-emerald-300 text-2xl hidden md:block">•</span>
+                    <span className="text-blue-300 text-2xl hidden md:block">•</span>
                     
                     <motion.div
                       ref={loansAnimation.ref}
@@ -1646,9 +1727,9 @@ export default function HomePage() {
                       viewport={{ once: true }}
                       className="flex items-center gap-2 text-white"
                     >
-                      <TrendingUp className="w-6 h-6 text-emerald-200" />
+                      <TrendingUp className="w-6 h-6 text-blue-200" />
                       <span className="text-2xl md:text-3xl font-bold">₹{loansAnimation.count} Cr+</span>
-                      <span className="text-lg md:text-xl text-emerald-100">Loans Facilitated</span>
+                      <span className="text-lg md:text-xl text-blue-100">Loans Facilitated</span>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -1658,7 +1739,7 @@ export default function HomePage() {
         </section>
 
         {/* Contact Form Section */}
-        <section id="book-counseling" className="py-16 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800 relative overflow-hidden">
+        <section id="book-counseling" className="py-16 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 relative overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -1683,7 +1764,7 @@ export default function HomePage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Book Your Free Consultation
               </h2>
-              <p className="text-lg text-emerald-100 max-w-2xl mx-auto">
+              <p className="text-lg text-blue-100 max-w-2xl mx-auto">
                 Get Personalized Guidance from Experts Who've Helped Thousands
               </p>
             </motion.div>
@@ -1700,7 +1781,7 @@ export default function HomePage() {
                 >
                   <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl border border-white/20">
                 <div className="text-center mb-6">
-                  <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-1">Start Your Journey</h3>
@@ -1716,7 +1797,7 @@ export default function HomePage() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all duration-300 placeholder-gray-400"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-300 placeholder-gray-400"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -1729,7 +1810,7 @@ export default function HomePage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all duration-300 placeholder-gray-400"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-300 placeholder-gray-400"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -1742,7 +1823,7 @@ export default function HomePage() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all duration-300 placeholder-gray-400"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-300 placeholder-gray-400"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
@@ -1754,7 +1835,7 @@ export default function HomePage() {
                       value={formData.message}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all duration-300 placeholder-gray-400 resize-none"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-300 placeholder-gray-400 resize-none"
                       placeholder="Tell us about your goals or any specific questions..."
                     ></textarea>
                   </div>
@@ -1763,7 +1844,7 @@ export default function HomePage() {
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm text-center"
+                      className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-blue-900 text-sm text-center"
                     >
                       ✓ Thank you! We'll contact you within 24 hours.
                     </motion.div>
@@ -1772,7 +1853,7 @@ export default function HomePage() {
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold rounded-lg hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                     whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                     whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                   >
@@ -1784,15 +1865,15 @@ export default function HomePage() {
                 <div className="mt-6 pt-4 border-t border-gray-200">
                   <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-600">
                     <div className="flex items-center">
-                      <Award className="w-3 h-3 text-emerald-600 mr-1" />
+                      <Award className="w-3 h-3 text-blue-600 mr-1" />
                       Free Consultation
                     </div>
                     <div className="flex items-center">
-                      <Target className="w-3 h-3 text-emerald-600 mr-1" />
+                      <Target className="w-3 h-3 text-blue-600 mr-1" />
                       Expert Guidance
                     </div>
                     <div className="flex items-center">
-                      <TrendingUp className="w-3 h-3 text-emerald-600 mr-1" />
+                      <TrendingUp className="w-3 h-3 text-blue-600 mr-1" />
                       Loan & Scholarship Help
                     </div>
                   </div>
@@ -1807,10 +1888,10 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   viewport={{ once: true }}
                 >
-                  <div className="bg-emerald-800/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 h-full">
+                  <div className="bg-blue-800/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 h-full">
                     <div className="text-center lg:text-left mb-6">
                       <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Join Our Community</h3>
-                      <p className="text-emerald-100">Connect with 50,000+ students worldwide</p>
+                      <p className="text-blue-100">Connect with 50,000+ students worldwide</p>
                     </div>
                   
                   <div className="space-y-4">
@@ -1829,7 +1910,7 @@ export default function HomePage() {
                         </div>
                         <div className="text-left">
                           <h4 className="font-bold text-white">Join our Community</h4>
-                          <p className="text-sm text-emerald-100">Daily tips & updates</p>
+                          <p className="text-sm text-blue-100">Daily tips & updates</p>
                         </div>
                       </div>
                       <ChevronRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
@@ -1850,7 +1931,7 @@ export default function HomePage() {
                         </div>
                         <div className="text-left">
                           <h4 className="font-bold text-white">Follow Us</h4>
-                          <p className="text-sm text-emerald-100">Success stories & more</p>
+                          <p className="text-sm text-blue-100">Success stories & more</p>
                         </div>
                       </div>
                       <ChevronRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
@@ -1871,7 +1952,7 @@ export default function HomePage() {
                         </div>
                         <div className="text-left">
                           <h4 className="font-bold text-white">Subscribe</h4>
-                          <p className="text-sm text-emerald-100">Free webinars & guides</p>
+                          <p className="text-sm text-blue-100">Free webinars & guides</p>
                         </div>
                       </div>
                       <ChevronRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
@@ -1887,16 +1968,16 @@ export default function HomePage() {
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                        <div className="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center">
                           <MessageCircle className="w-6 h-6 text-white fill-white" />
                         </div>
                         <div className="text-left">
                           <h4 className="font-bold text-white">Join Now</h4>
-                          <p className="text-sm text-emerald-100">WhatsApp community</p>
+                          <p className="text-sm text-blue-100">WhatsApp community</p>
                         </div>
                       </div>
                       <motion.span
-                        className="bg-green-400 text-green-900 px-3 py-1 rounded-full text-sm font-bold"
+                        className="bg-blue-400 text-blue-900 px-3 py-1 rounded-full text-sm font-bold"
                         animate={{ scale: [1, 1.1, 1] }}
                         transition={{ duration: 1, repeat: Infinity }}
                       >
@@ -1919,7 +2000,7 @@ export default function HomePage() {
                         </div>
                         <div className="text-left">
                           <h4 className="font-bold text-white">Join Now</h4>
-                          <p className="text-sm text-emerald-100">Telegram channel</p>
+                          <p className="text-sm text-blue-100">Telegram channel</p>
                         </div>
                       </div>
                       <motion.span
@@ -1948,7 +2029,7 @@ export default function HomePage() {
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                 ))}
-                <span className="text-emerald-100 ml-2 text-sm">4.9/5 (10,000+ students)</span>
+                <span className="text-blue-100 ml-2 text-sm">4.9/5 (10,000+ students)</span>
               </div>
             </motion.div>
           </div>

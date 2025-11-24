@@ -201,7 +201,7 @@ function SearchContent() {
             </h1>
             {query && (
               <p className="text-lg text-gray-600">
-                Showing results for "<span className="font-semibold text-emerald-600">{query}</span>"
+                Showing results for "<span className="font-semibold text-blue-600">{query}</span>"
               </p>
             )}
           </div>
@@ -215,11 +215,11 @@ function SearchContent() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search universities, courses, or countries..."
-                className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               <button
                 type="submit"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-emerald-500 text-white px-6 py-2 rounded-lg hover:bg-emerald-600 transition-colors"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors"
               >
                 Search
               </button>
@@ -246,7 +246,7 @@ function SearchContent() {
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">No results found for "{query}"</h3>
                   <p className="text-gray-600 mb-6">Try searching with different keywords or browse our categories</p>
                   <div className="flex gap-4 justify-center">
-                    <Link href="/universities" className="px-6 py-3 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors">
+                    <Link href="/universities" className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
                       Browse Universities
                     </Link>
                     <Link href="/courses" className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors">
@@ -260,7 +260,7 @@ function SearchContent() {
               {mockResults.universities.length > 0 && (
                 <div>
                   <div className="flex items-center mb-6">
-                    <GraduationCap className="w-6 h-6 text-emerald-600 mr-3" />
+                    <GraduationCap className="w-6 h-6 text-blue-600 mr-3" />
                     <h2 className="text-2xl font-bold text-gray-900">Universities</h2>
                     <span className="ml-3 text-gray-500">({mockResults.universities.length} results)</span>
                   </div>
@@ -296,16 +296,16 @@ function SearchContent() {
                           </div>
                           <div className="flex flex-wrap gap-1 mb-4">
                             {university.programs.slice(0, 3).map((program, i) => (
-                              <span key={i} className="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs rounded">
+                              <span key={i} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
                                 {program}
                               </span>
                             ))}
                           </div>
                           <div className="flex justify-between items-center">
-                            <span className="text-lg font-bold text-emerald-600">{university.tuition}</span>
+                            <span className="text-lg font-bold text-blue-600">{university.tuition}</span>
                             <Link 
                               href={`/universities/${university.name.toLowerCase().replace(/\s+/g, '-')}`}
-                              className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors text-sm"
+                              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm"
                             >
                               View Details
                             </Link>
@@ -342,7 +342,7 @@ function SearchContent() {
                           </div>
                           <div className="flex justify-between">
                             <span className="text-gray-600">Average Salary:</span>
-                            <span className="font-medium text-green-600">{course.avgSalary}</span>
+                            <span className="font-medium text-blue-800">{course.avgSalary}</span>
                           </div>
                           <div className="flex justify-between">
                             <span className="text-gray-600">Duration:</span>

@@ -115,7 +115,7 @@ export default function ContactPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700 overflow-hidden">
+      <section className="relative pt-24 pb-16 bg-gradient-to-br from-blue-600 via-blue-800 to-teal-700 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
@@ -166,7 +166,7 @@ export default function ContactPage() {
               </motion.span>
             </motion.h1>
             <motion.p 
-              className="text-xl text-emerald-50 max-w-3xl mx-auto"
+              className="text-xl text-blue-50 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -222,8 +222,8 @@ export default function ContactPage() {
               whileHover={{ y: -5, shadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
             >
               {/* Decorative Elements */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-100 to-green-100 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-emerald-100 to-green-100 rounded-full translate-y-12 -translate-x-12 opacity-50"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-blue-100 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-100 to-blue-100 rounded-full translate-y-12 -translate-x-12 opacity-50"></div>
               
               <motion.div 
                 className="mb-8 relative z-10"
@@ -240,7 +240,7 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                 >
                   Send us a{" "}
-                  <span className="bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                     Message
                   </span>
                 </motion.h2>
@@ -267,7 +267,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -281,7 +281,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -297,7 +297,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                       placeholder="Enter your phone number"
                     />
                   </div>
@@ -309,7 +309,7 @@ export default function ContactPage() {
                       name="country"
                       value={formData.country}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     >
                       <option value="">Select your country</option>
                       <option value="india">India</option>
@@ -331,7 +331,7 @@ export default function ContactPage() {
                       name="interestedCountry"
                       value={formData.interestedCountry}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     >
                       <option value="">Where do you want to study?</option>
                       <option value="usa">United States</option>
@@ -352,7 +352,7 @@ export default function ContactPage() {
                       name="studyLevel"
                       value={formData.studyLevel}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     >
                       <option value="">Select study level</option>
                       <option value="undergraduate">Undergraduate (Bachelor's)</option>
@@ -373,7 +373,7 @@ export default function ContactPage() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     placeholder="e.g., University Selection, Visa Guidance, Scholarships"
                   />
                 </div>
@@ -388,7 +388,7 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
                     placeholder="Tell us about your goals and how we can help you..."
                   />
                 </div>
@@ -401,7 +401,7 @@ export default function ContactPage() {
                     name="preferredTime"
                     value={formData.preferredTime}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   >
                     <option value="">Select preferred time</option>
                     <option value="morning">Morning (9AM - 12PM)</option>
@@ -414,7 +414,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold py-4 px-6 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+                  className="w-full bg-gradient-to-r from-blue-500 to-blue-800 text-white font-bold py-4 px-6 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
                 >
                   {isSubmitting ? (
                     <>
@@ -444,8 +444,8 @@ export default function ContactPage() {
                 whileHover={{ y: -5, shadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
               >
                 {/* Decorative Background */}
-                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-500 to-green-600"></div>
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-emerald-100 to-green-100 rounded-full -translate-y-10 translate-x-10 opacity-60"></div>
+                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-blue-800"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-100 to-blue-100 rounded-full -translate-y-10 translate-x-10 opacity-60"></div>
                 
                 <motion.h2 
                   className="text-3xl font-bold text-gray-900 mb-8 relative z-10"
@@ -455,7 +455,7 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                 >
                   Get in{" "}
-                  <span className="bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                     Touch
                   </span>
                 </motion.h2>
@@ -472,7 +472,7 @@ export default function ContactPage() {
                       whileHover={{ x: 5, scale: 1.02 }}
                     >
                       <motion.div 
-                        className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-green-600 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-lg"
+                        className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-800 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-lg"
                         whileHover={{ 
                           rotate: 360, 
                           scale: 1.1,
@@ -483,7 +483,7 @@ export default function ContactPage() {
                         {info.icon}
                       </motion.div>
                       <div>
-                        <h3 className="font-bold text-gray-900 mb-1 group-hover:text-emerald-600 transition-colors">
+                        <h3 className="font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
                           {info.title}
                         </h3>
                         {info.details.map((detail, i) => (
@@ -498,7 +498,7 @@ export default function ContactPage() {
 
               {/* Quick Actions */}
               <motion.div 
-                className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-8 relative overflow-hidden"
+                className="bg-gradient-to-br from-blue-50 to-blue-50 rounded-2xl p-8 relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
@@ -506,8 +506,8 @@ export default function ContactPage() {
                 whileHover={{ y: -5 }}
               >
                 {/* Floating Orbs */}
-                <div className="absolute top-4 right-4 w-8 h-8 bg-emerald-200/50 rounded-full"></div>
-                <div className="absolute bottom-4 left-4 w-6 h-6 bg-green-200/50 rounded-full"></div>
+                <div className="absolute top-4 right-4 w-8 h-8 bg-blue-200/50 rounded-full"></div>
+                <div className="absolute bottom-4 left-4 w-6 h-6 bg-blue-200/50 rounded-full"></div>
                 
                 <motion.h3 
                   className="text-2xl font-bold text-gray-900 mb-6 relative z-10"
@@ -517,17 +517,17 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                 >
                   Quick{" "}
-                  <span className="bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                     Actions
                   </span>
                 </motion.h3>
                 
                 <div className="space-y-4 relative z-10">
                   {[
-                    { href: "tel:+919982627466", icon: <Phone className="w-6 h-6 text-emerald-600 mr-3" />, text: "Call us now", type: "link" },
-                    { href: "mailto:admission@admitverse.com", icon: <Mail className="w-6 h-6 text-emerald-600 mr-3" />, text: "Send us an email", type: "link" },
-                    { icon: <MessageCircle className="w-6 h-6 text-emerald-600 mr-3" />, text: "Start live chat", type: "button" },
-                    { icon: <Calendar className="w-6 h-6 text-emerald-600 mr-3" />, text: "Schedule a consultation", type: "button" }
+                    { href: "tel:+919982627466", icon: <Phone className="w-6 h-6 text-blue-600 mr-3" />, text: "Call us now", type: "link" },
+                    { href: "mailto:admission@admitverse.com", icon: <Mail className="w-6 h-6 text-blue-600 mr-3" />, text: "Send us an email", type: "link" },
+                    { icon: <MessageCircle className="w-6 h-6 text-blue-600 mr-3" />, text: "Start live chat", type: "button" },
+                    { icon: <Calendar className="w-6 h-6 text-blue-600 mr-3" />, text: "Schedule a consultation", type: "button" }
                   ].map((action, index) => (
                     <motion.div
                       key={index}
@@ -553,7 +553,7 @@ export default function ContactPage() {
                           >
                             {action.icon}
                           </motion.div>
-                          <span className="font-medium group-hover:text-emerald-600 transition-colors">
+                          <span className="font-medium group-hover:text-blue-600 transition-colors">
                             {action.text}
                           </span>
                         </motion.a>
@@ -573,7 +573,7 @@ export default function ContactPage() {
                           >
                             {action.icon}
                           </motion.div>
-                          <span className="font-medium group-hover:text-emerald-600 transition-colors">
+                          <span className="font-medium group-hover:text-blue-600 transition-colors">
                             {action.text}
                           </span>
                         </motion.button>
@@ -594,7 +594,7 @@ export default function ContactPage() {
           {[...Array(8)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-emerald-300/30 rounded-full"
+              className="absolute w-1 h-1 bg-blue-300/30 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -630,7 +630,7 @@ export default function ContactPage() {
             >
               Our{" "}
               <motion.span
-                className="bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
                 animate={{ 
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] 
                 }}
@@ -659,7 +659,7 @@ export default function ContactPage() {
             className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-96 mb-12 flex items-center justify-center relative overflow-hidden shadow-2xl"
             whileHover={{ y: -10, rotateX: 5 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-green-100 opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-100 opacity-80" />
             
             {/* Floating Globe Animation */}
             <motion.div
@@ -668,7 +668,7 @@ export default function ContactPage() {
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
-              <div className="w-32 h-32 border-2 border-emerald-300/30 rounded-full"></div>
+              <div className="w-32 h-32 border-2 border-blue-300/30 rounded-full"></div>
             </motion.div>
             
             <motion.div
@@ -686,7 +686,7 @@ export default function ContactPage() {
                 }}
                 transition={{ duration: 0.8 }}
               >
-                <Globe className="w-16 h-16 text-emerald-600 mx-auto mb-4" />
+                <Globe className="w-16 h-16 text-blue-600 mx-auto mb-4" />
               </motion.div>
               <motion.h3 
                 className="text-2xl font-bold text-gray-900 mb-2"
@@ -751,8 +751,8 @@ export default function ContactPage() {
                 }}
               >
                 {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-emerald-100 to-green-100 rounded-full -translate-y-8 translate-x-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-emerald-100 to-green-100 rounded-full translate-y-6 -translate-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-blue-100 to-blue-100 rounded-full -translate-y-8 translate-x-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-blue-100 to-blue-100 rounded-full translate-y-6 -translate-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 <motion.div 
                   className="flex items-center mb-4 relative z-10"
@@ -769,10 +769,10 @@ export default function ContactPage() {
                     }}
                     transition={{ duration: 0.6 }}
                   >
-                    <MapPin className="w-6 h-6 text-emerald-600 mr-2" />
+                    <MapPin className="w-6 h-6 text-blue-600 mr-2" />
                   </motion.div>
                   <motion.h3 
-                    className="text-lg font-bold text-gray-900 group-hover:text-emerald-600 transition-colors"
+                    className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors"
                     whileHover={{ scale: 1.05 }}
                   >
                     {office.city}
@@ -795,11 +795,11 @@ export default function ContactPage() {
                     >
                       <motion.div
                         whileHover={{ rotate: 15, scale: 1.1 }}
-                        className="group-hover/item:text-emerald-600 transition-colors"
+                        className="group-hover/item:text-blue-600 transition-colors"
                       >
                         <Phone className="w-4 h-4 mr-2" />
                       </motion.div>
-                      <span className="group-hover/item:text-emerald-600 transition-colors">
+                      <span className="group-hover/item:text-blue-600 transition-colors">
                         {office.phone}
                       </span>
                     </motion.p>
@@ -809,11 +809,11 @@ export default function ContactPage() {
                     >
                       <motion.div
                         whileHover={{ rotate: 15, scale: 1.1 }}
-                        className="group-hover/item:text-emerald-600 transition-colors"
+                        className="group-hover/item:text-blue-600 transition-colors"
                       >
                         <Mail className="w-4 h-4 mr-2" />
                       </motion.div>
-                      <span className="group-hover/item:text-emerald-600 transition-colors">
+                      <span className="group-hover/item:text-blue-600 transition-colors">
                         {office.email}
                       </span>
                     </motion.p>
@@ -832,7 +832,7 @@ export default function ContactPage() {
           {[...Array(12)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 bg-emerald-200/20 rounded-full"
+              className="absolute w-2 h-2 bg-blue-200/20 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -868,7 +868,7 @@ export default function ContactPage() {
             >
               Frequently Asked{" "}
               <motion.span
-                className="bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
                 animate={{ 
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] 
                 }}
@@ -941,8 +941,8 @@ export default function ContactPage() {
                 }}
               >
                 {/* Decorative Elements */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-emerald-100 to-green-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <motion.span 
                     className="text-lg"
                     initial={{ rotate: 0 }}
@@ -960,7 +960,7 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                 >
                   <motion.h3 
-                    className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors pr-16"
+                    className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors pr-16"
                     whileHover={{ scale: 1.02 }}
                   >
                     {faq.question}
@@ -978,7 +978,7 @@ export default function ContactPage() {
                 </motion.div>
                 
                 {/* Hover Effect Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/0 via-emerald-50/50 to-emerald-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-50/0 via-blue-50/50 to-blue-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               </motion.div>
             ))}
           </div>
@@ -992,12 +992,12 @@ export default function ContactPage() {
             className="text-center mt-12"
           >
             <motion.div 
-              className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-8 relative overflow-hidden"
+              className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-2xl p-8 relative overflow-hidden"
               whileHover={{ y: -5, scale: 1.02 }}
             >
               {/* Decorative Elements */}
-              <div className="absolute top-0 left-0 w-20 h-20 bg-emerald-200/30 rounded-full -translate-y-10 -translate-x-10"></div>
-              <div className="absolute bottom-0 right-0 w-16 h-16 bg-green-200/30 rounded-full translate-y-8 translate-x-8"></div>
+              <div className="absolute top-0 left-0 w-20 h-20 bg-blue-200/30 rounded-full -translate-y-10 -translate-x-10"></div>
+              <div className="absolute bottom-0 right-0 w-16 h-16 bg-blue-200/30 rounded-full translate-y-8 translate-x-8"></div>
               
               <motion.h3 
                 className="text-2xl font-bold text-gray-900 mb-4 relative z-10"
@@ -1018,7 +1018,7 @@ export default function ContactPage() {
                 Don't hesitate to reach out. Our team is here to help you every step of the way.
               </motion.p>
               <motion.button 
-                className="bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold py-3 px-8 rounded-lg relative z-10"
+                className="bg-gradient-to-r from-blue-500 to-blue-800 text-white font-bold py-3 px-8 rounded-lg relative z-10"
                 whileHover={{ 
                   scale: 1.05,
                   boxShadow: "0 10px 25px -5px rgba(16, 185, 129, 0.4)"
