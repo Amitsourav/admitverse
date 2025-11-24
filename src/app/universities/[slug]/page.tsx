@@ -8,6 +8,7 @@ import Navigation from '@/components/Navigation'
 import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
+import { formatTuitionByCountry } from '@/lib/currency-utils'
 import {
   ArrowLeft,
   MapPin,
@@ -622,7 +623,7 @@ export default function UniversityDetailPage() {
             {[
               { label: 'Acceptance Rate', value: university.acceptance, icon: <TrendingUp className="w-6 h-6" /> },
               { label: 'International Students', value: university.internationalStudents, icon: <Globe className="w-6 h-6" /> },
-              { label: 'Annual Tuition', value: university.tuition, icon: <DollarSign className="w-6 h-6" /> },
+              { label: 'Annual Tuition', value: formatTuitionByCountry(university.tuition, university.country || 'USA'), icon: <DollarSign className="w-6 h-6" /> },
               { label: 'Global Ranking', value: `#${university.ranking}`, icon: <Award className="w-6 h-6" /> },
             ].map((stat, index) => (
               <motion.div

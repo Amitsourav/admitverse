@@ -1380,7 +1380,7 @@ export default function HomePage() {
                 </div>
               </motion.div>
 
-              {/* CV Review Card */}
+              {/* EMI Calculator Card */}
               <motion.div
                 initial={{ opacity: 0, y: 50, rotateX: -10 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -1405,36 +1405,36 @@ export default function HomePage() {
                 />
                 <div className="flex justify-center mb-6">
                   <div className="w-28 h-28 bg-gradient-to-br from-blue-100 to-blue-100 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                    <FileText className="w-14 h-14 text-blue-800" />
+                    <Calculator className="w-14 h-14 text-blue-800" />
                   </div>
                 </div>
                 <div className="text-center">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">CV Review</h3>
-                  <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-4">Career Enhancement</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">EMI Calculator</h3>
+                  <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-4">Loan Planning</p>
                   <p className="text-sm text-gray-600 mb-6 min-h-[80px] leading-relaxed">
-                    Transform your CV into a powerful tool that stands out. Get detailed tips from our study abroad coaches.
+                    Calculate your education loan EMI instantly. Plan your finances better with accurate monthly payment estimates.
                   </p>
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center justify-center text-xs text-gray-500">
                       <Check className="w-4 h-4 text-blue-500 mr-2" />
-                      ATS optimization
+                      Instant calculations
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
                       <Check className="w-4 h-4 text-blue-500 mr-2" />
-                      Industry standards
+                      Multiple interest rates
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-500">
                       <Check className="w-4 h-4 text-blue-500 mr-2" />
-                      Achievement highlights
+                      Repayment schedule
                     </div>
                   </div>
-                  <Link href="/tools/cv-review">
+                  <Link href="/tools/emi-calculator">
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg font-semibold text-sm hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
-                      Review My CV
+                      Calculate EMI
                     </motion.button>
                   </Link>
                 </div>

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
+import { formatCurrency, getCurrencyByCountry } from '@/lib/currency-utils'
 import { Calculator, MapPin, Home, Utensils, Car, GraduationCap, Heart, ShoppingBag, DollarSign } from 'lucide-react'
 
 export default function CostCalculatorPage() {
@@ -62,6 +63,17 @@ export default function CostCalculatorPage() {
 
       const totalUSD = housing + food + transport + utilities + misc
       const totalINR = Math.round(totalUSD * 83) // USD to INR conversion
+      
+      // Get currency for the selected country
+      const countryMap = {
+        usa: 'USA',
+        uk: 'UK',
+        canada: 'Canada',
+        australia: 'Australia',
+        germany: 'Germany'
+      }
+      const country = countryMap[formData.country as keyof typeof countryMap] || 'USA'
+      const currency = getCurrencyByCountry(country)
 
       setResults({
         breakdown: {
@@ -73,7 +85,8 @@ export default function CostCalculatorPage() {
         },
         totalUSD,
         totalINR,
-        currency: 'USD'
+        currency: currency.code,
+        country
       })
       setIsCalculating(false)
     }, 1500)
@@ -293,7 +306,7 @@ export default function CostCalculatorPage() {
                   <div className="bg-blue-50 rounded-xl p-6 text-center">
                     <h3 className="text-lg font-semibold text-gray-700 mb-2">Monthly Total</h3>
                     <div className="text-3xl font-bold text-blue-600 mb-1">
-                      ${results.totalUSD.toLocaleString()}
+                      {formatCurrency(results.totalUSD, results.country)}
                     </div>
                     <div className="text-xl text-gray-600">
                       ₹{results.totalINR.toLocaleString()}
@@ -321,7 +334,7 @@ export default function CostCalculatorPage() {
                           <span className="font-medium text-gray-700">{item.label}</span>
                         </div>
                         <div className="text-right">
-                          <div className="font-semibold text-gray-900">${item.amount}</div>
+                          <div className="font-semibold text-gray-900">{formatCurrency(item.amount, results.country)}</div>
                           <div className="text-sm text-gray-500">₹{(item.amount * 83).toLocaleString()}</div>
                         </div>
                       </motion.div>
@@ -332,7 +345,7 @@ export default function CostCalculatorPage() {
                   <div className="bg-gray-50 rounded-xl p-6 text-center">
                     <h3 className="text-lg font-semibold text-gray-700 mb-2">Annual Total</h3>
                     <div className="text-2xl font-bold text-gray-900 mb-1">
-                      ${(results.totalUSD * 12).toLocaleString()}
+                      {formatCurrency(results.totalUSD * 12, results.country)}
                     </div>
                     <div className="text-lg text-gray-600">
                       ₹{(results.totalINR * 12).toLocaleString()}

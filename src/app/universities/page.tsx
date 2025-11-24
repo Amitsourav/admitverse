@@ -8,6 +8,7 @@ import Navigation from '@/components/Navigation'
 import TopBanner from '@/components/TopBanner'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
+import { formatTuitionByCountry } from '@/lib/currency-utils'
 import { 
   Search, 
   MapPin, 
@@ -771,7 +772,7 @@ export default function UniversitiesPage() {
                             </div>
                             <div className="flex items-center">
                               <DollarSign className="w-4 h-4 mr-1 text-blue-500" />
-                              {university.tuition}
+                              {formatTuitionByCountry(university.tuition, university.country || 'USA')}
                             </div>
                             {university.acceptance && (
                               <div className="flex items-center">
