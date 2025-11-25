@@ -12,6 +12,7 @@ import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
 import MobileNumberPopup from '@/components/MobileNumberPopup'
 import { useMobilePopup } from '@/hooks/useMobilePopup'
+import { trackSearch, trackButtonClick, trackFormSubmit, trackToolUse } from '@/components/GoogleAnalytics'
 
 // StatCard component for animated statistics
 const StatCard = ({ number, suffix, label, icon, delay, useCountAnimation, format }: {
@@ -168,6 +169,9 @@ export default function HomePage() {
   const handleSearch = async (term: string = searchTerm) => {
     if (term.trim()) {
       setShowSuggestions(false)
+      
+      // Track search event
+      trackSearch(term.trim())
       
       // Use AI search if available
       const aiResults = await searchWithAI(term)
@@ -1430,6 +1434,7 @@ export default function HomePage() {
                   </div>
                   <Link href="/tools/emi-calculator">
                     <motion.button
+                      onClick={() => trackToolUse('EMI Calculator')}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg font-semibold text-sm hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-md hover:shadow-lg"
