@@ -482,7 +482,7 @@ export default function HomePage() {
         
         {/* Hero Section with Video Background */}
         <motion.section 
-          className="relative h-screen md:min-h-screen flex items-center justify-center overflow-hidden bg-gray-900"
+          className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-gray-900 pt-20 md:pt-24 pb-8"
           style={{ 
             opacity: heroOpacity, 
             transform: `scale(${heroScale})`,
@@ -552,7 +552,7 @@ export default function HomePage() {
           </div>
 
           {/* Hero Content */}
-          <div className="relative z-20 text-center max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="relative z-20 text-center max-w-6xl mx-auto px-4 sm:px-6 pb-16 md:pb-20">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

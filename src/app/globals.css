@@ -32,6 +32,21 @@ html {
   }
 }
 
+/* Windows-specific viewport height fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .hero-section {
+    min-height: 100vh;
+    min-height: calc(100vh - 80px); /* Account for navbar */
+  }
+}
+
+/* Better button visibility on Windows */
+.windows-button-fix {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
