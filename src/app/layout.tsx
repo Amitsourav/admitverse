@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import '@/styles/rich-text.css'
 import { ToastProvider } from '@/components/Toast'
-import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 // Force dynamic rendering for better compatibility with deployment platforms
 export const dynamic = 'force-dynamic'
@@ -80,9 +79,21 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#667eea" />
+        
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTE8M9L51R"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-FTE8M9L51R');
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
         <ToastProvider>
           <div className="min-h-screen bg-background">
             {children}
