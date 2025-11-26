@@ -5,6 +5,31 @@
 /* Global zoom fix for better scaling */
 html {
   zoom: 0.8;
+  /* Cross-platform font smoothing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Windows-specific font fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  body {
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+  }
+}
+
+/* Better font rendering on Windows */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for Windows Chrome font weight issues */
+@supports (-webkit-appearance: none) {
+  body {
+    text-shadow: 0 0 0.01px rgba(0, 0, 0, 0.01);
+  }
 }
 
 @layer base {
