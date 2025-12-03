@@ -36,7 +36,17 @@ export interface ContactFormData {
   sessionId: string
 }
 
-export type FormSubmission = MobilePopupData | HomepageFormData | ContactFormData
+export interface GDPIPackageData {
+  type: 'gdpi_package'
+  name: string
+  phone: string
+  package: string
+  timestamp: string
+  page: string
+  sessionId: string
+}
+
+export type FormSubmission = MobilePopupData | HomepageFormData | ContactFormData | GDPIPackageData
 
 // Generate unique session ID
 function generateSessionId(): string {
@@ -165,6 +175,20 @@ class DataCollectionService {
         for (let [key, value] of formData.entries()) {
           console.log(`  ${key}: ${value}`)
         }
+      } else if (submissionData.type === 'gdpi_package') {
+        const gdpiData = submissionData as GDPIPackageData
+        console.log('GDPI package data:', gdpiData)
+        
+        formData.append('name', gdpiData.name || '')
+        formData.append('email', gdpiData.phone ? `gdpi_${gdpiData.phone}@placeholder.com` : 'gdpi_unknown@placeholder.com')
+        formData.append('phone', gdpiData.phone || '')
+        formData.append('message', `GDPI Package Interest: ${gdpiData.package} - Student: ${gdpiData.name} | Phone: ${gdpiData.phone}`)
+        formData.append('package', gdpiData.package || '')
+        
+        console.log('GDPI FormData entries:')
+        for (let [key, value] of formData.entries()) {
+          console.log(`  ${key}: ${value}`)
+        }
       } else {
         formData.append('name', (submissionData as any).name || '')
         formData.append('email', (submissionData as any).email || '')
@@ -269,4 +293,13 @@ export const submitContactForm = (formData: Omit<ContactFormData, 'type' | 'time
     type: 'contact_form',
     ...formData
   })
+}
+
+export const submitGDPIPackage = (name: string, phone: string, packageName: string) => {
+  return dataCollectionService.submitData({
+    type: 'gdpi_package',
+    name,
+    phone,
+    package: packageName
+  } as Omit<GDPIPackageData, 'timestamp' | 'page' | 'sessionId'>)
 }
