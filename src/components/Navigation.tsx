@@ -27,6 +27,7 @@ export default function Navigation() {
     { href: '/services/education-loan', label: 'Education Loan' },
     { href: '/services/isb-application', label: 'ISB Application' },
     { href: '/services/gdpi-preparation', label: 'GDPI Preparation' },
+    { href: '/services/germany-universities', label: 'Germany Universities' },
     { href: '/services/study-abroad', label: 'Study Abroad' },
   ]
 
@@ -51,10 +52,11 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-800 rounded-lg flex items-center justify-center">
-              <GraduationCap className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-gray-900">AdmitVerse</span>
+            <img 
+              src="/admitverse-logo.jpg" 
+              alt="AdmitVerse" 
+              className="h-10 w-auto rounded-xl"
+            />
           </Link>
 
           {/* Desktop Navigation */}
