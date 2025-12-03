@@ -808,10 +808,10 @@ export default function HomePage() {
                         </div>
                         <div>
                           <div className="inline-flex items-center bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-xs font-bold mb-2">
-                            🎓 NEW: Study in Germany
+                            🎓 NOW OPEN: Admissions in Germany
                           </div>
                           <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
-                            Europe's Top Education Destination
+                            Germany's Top Education Destination
                           </h3>
                           <p className="text-blue-100 text-sm md:text-base">
                             World-class universities • No tuition fees • 18-month post-study visa
