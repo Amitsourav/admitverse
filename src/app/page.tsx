@@ -826,7 +826,7 @@ export default function HomePage() {
               {/* Carousel Content */}
               <AnimatePresence mode="wait" initial={false}>
                 {currentAdIndex === 0 ? (
-                  // Germany Universities Ad
+                  // Germany Public Ad
                   <motion.div
                     key="germany-ad"
                     initial={{ opacity: 0, scale: 0.98 }}

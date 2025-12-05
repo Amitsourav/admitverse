@@ -27,7 +27,7 @@ export default function Navigation() {
     { href: '/services/education-loan', label: 'Education Loan' },
     { href: '/services/isb-application', label: 'ISB Application' },
     { href: '/services/gdpi-preparation', label: 'GDPI Preparation' },
-    { href: '/services/germany-universities', label: 'Germany Universities' },
+    { href: '/services/germany-universities', label: 'Germany Public' },
     { href: '/services/study-abroad', label: 'Study Abroad' },
   ]
 

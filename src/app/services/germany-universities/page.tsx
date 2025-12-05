@@ -709,7 +709,7 @@ export default function GermanyUniversitiesPage() {
             className="text-center"
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              Study in <span className="text-yellow-400">Germany</span>
+              Study in <span className="text-yellow-400">Germany Public</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
               World-Class Education • Tuition-Free Universities • Excellent Career Prospects
@@ -769,7 +769,7 @@ export default function GermanyUniversitiesPage() {
         </div>
       </section>
 
-      {/* Why Study in Germany */}
+      {/* Why Study in Germany Public */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -780,7 +780,7 @@ export default function GermanyUniversitiesPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Why Choose <span className="text-blue-600">Germany</span> for Your Studies?
+              Why Choose <span className="text-blue-600">Germany Public</span> for Your Studies?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Discover why Germany is the top destination for international students worldwide
@@ -817,7 +817,7 @@ export default function GermanyUniversitiesPage() {
             className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Top German <span className="text-blue-600">Universities</span>
+              Top German <span className="text-blue-600">Public Universities</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               Explore world-renowned universities with exceptional international student support
