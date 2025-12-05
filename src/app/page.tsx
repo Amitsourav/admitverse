@@ -68,6 +68,9 @@ export default function HomePage() {
   const [videoError, setVideoError] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   
+  // Carousel state for ads
+  const [currentAdIndex, setCurrentAdIndex] = useState(0)
+  
   // Form state
   const [formData, setFormData] = useState({
     name: '',
@@ -377,6 +380,19 @@ export default function HomePage() {
       setIsVideoMuted(!isVideoMuted)
     }
   }
+
+  // Auto-slide effect for ad carousel
+  const [isCarouselPaused, setIsCarouselPaused] = useState(false)
+  
+  useEffect(() => {
+    if (isCarouselPaused) return
+    
+    const interval = setInterval(() => {
+      setCurrentAdIndex((prev) => (prev + 1) % 2)
+    }, 3000) // Change slide every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [isCarouselPaused])
 
   // Video initialization effect
   useEffect(() => {
@@ -783,91 +799,198 @@ export default function HomePage() {
           </div>
         </motion.section>
 
-        {/* Germany Universities Ad Section */}
+        {/* Combined Ad Carousel Section */}
         <section className="py-8 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+            <div 
+              className="relative overflow-hidden rounded-2xl"
+              onMouseEnter={() => setIsCarouselPaused(true)}
+              onMouseLeave={() => setIsCarouselPaused(false)}
             >
-              <Link href="/services/germany-universities">
-                <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 relative overflow-hidden cursor-pointer hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-lg hover:shadow-xl group">
-                  {/* Background Elements */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400/20 rounded-full filter blur-2xl"></div>
-                  <div className="absolute bottom-0 left-0 text-6xl opacity-10 select-none">🇩🇪</div>
-                  
-                  <div className="relative">
-                    {/* Top Row */}
-                    <div className="flex items-center justify-between mb-4">
-                      {/* Left Content */}
-                      <div className="flex items-center space-x-6">
-                        <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                          <GraduationCap className="w-8 h-8 text-blue-900" />
-                        </div>
-                        <div>
-                          <div className="inline-flex items-center bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-xs font-bold mb-2">
-                            🎓 NOW OPEN: Admissions in Germany
+              {/* Carousel Indicators */}
+              <div className="absolute top-4 right-4 z-10 flex gap-2">
+                <button
+                  onClick={() => setCurrentAdIndex(0)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    currentAdIndex === 0 ? 'w-8 bg-white' : 'bg-white/50'
+                  }`}
+                />
+                <button
+                  onClick={() => setCurrentAdIndex(1)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    currentAdIndex === 1 ? 'w-8 bg-white' : 'bg-white/50'
+                  }`}
+                />
+              </div>
+
+              {/* Carousel Content */}
+              <AnimatePresence mode="wait" initial={false}>
+                {currentAdIndex === 0 ? (
+                  // Germany Universities Ad
+                  <motion.div
+                    key="germany-ad"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                  >
+                    <Link href="/services/germany-universities">
+                      <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 relative overflow-hidden cursor-pointer hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-lg hover:shadow-xl group">
+                        {/* Background Elements */}
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400/20 rounded-full filter blur-2xl"></div>
+                        <div className="absolute bottom-0 left-0 text-6xl opacity-10 select-none">🇩🇪</div>
+                        
+                        <div className="relative">
+                          {/* Top Row */}
+                          <div className="flex items-center justify-between mb-4">
+                            {/* Left Content */}
+                            <div className="flex items-center space-x-6">
+                              <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                <GraduationCap className="w-8 h-8 text-blue-900" />
+                              </div>
+                              <div>
+                                <div className="inline-flex items-center bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-xs font-bold mb-2">
+                                  🎓 NOW OPEN: Admissions in Germany
+                                </div>
+                                <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
+                                  Germany's Top Education Destination
+                                </h3>
+                                <p className="text-blue-100 text-sm md:text-base">
+                                  World-class universities • No tuition fees • 18-month post-study visa
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Arrow */}
+                            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300 flex-shrink-0">
+                              <ArrowRight className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
+                            </div>
                           </div>
-                          <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
-                            Germany's Top Education Destination
-                          </h3>
-                          <p className="text-blue-100 text-sm md:text-base">
-                            World-class universities • No tuition fees • 18-month post-study visa
+
+                          {/* Bottom Row - Stats and Benefits */}
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div className="text-center bg-white/10 rounded-xl p-3">
+                              <div className="text-lg font-bold text-yellow-400">€0</div>
+                              <div className="text-blue-100 text-xs">Tuition Fees</div>
+                            </div>
+                            <div className="text-center bg-white/10 rounded-xl p-3">
+                              <div className="text-lg font-bold text-yellow-400">400+</div>
+                              <div className="text-blue-100 text-xs">Universities</div>
+                            </div>
+                            <div className="text-center bg-white/10 rounded-xl p-3">
+                              <div className="text-lg font-bold text-yellow-400">92%</div>
+                              <div className="text-blue-100 text-xs">Visa Success</div>
+                            </div>
+                            <div className="text-center bg-white/10 rounded-xl p-3">
+                              <div className="text-lg font-bold text-yellow-400">26</div>
+                              <div className="text-blue-100 text-xs">EU Countries</div>
+                            </div>
+                          </div>
+
+                          {/* Additional Benefits */}
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            <div className="inline-flex items-center bg-green-500/20 text-green-200 px-3 py-1 rounded-full text-xs font-medium">
+                              ✓ Work 20 hrs/week
+                            </div>
+                            <div className="inline-flex items-center bg-purple-500/20 text-purple-200 px-3 py-1 rounded-full text-xs font-medium">
+                              ✓ English programs
+                            </div>
+                            <div className="inline-flex items-center bg-orange-500/20 text-orange-200 px-3 py-1 rounded-full text-xs font-medium">
+                              ✓ €800-1200/month living
+                            </div>
+                            <div className="inline-flex items-center bg-pink-500/20 text-pink-200 px-3 py-1 rounded-full text-xs font-medium">
+                              ✓ Top global rankings
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ) : (
+                  // Special Offer Ad
+                  <motion.div
+                    key="offer-ad"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                  >
+                    <div className="bg-gradient-to-r from-indigo-600 to-blue-700 rounded-2xl p-6 md:p-8 relative overflow-hidden shadow-xl">
+                      {/* Background Elements */}
+                      <div className="absolute top-0 right-0 w-40 h-40 bg-yellow-400/20 rounded-full filter blur-3xl"></div>
+                      <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full filter blur-2xl"></div>
+                      
+                      {/* Sparkle Effects */}
+                      <div className="absolute top-4 left-10 text-3xl animate-pulse">✨</div>
+                      <div className="absolute bottom-4 right-10 text-3xl animate-pulse" style={{ animationDelay: '0.5s' }}>🎉</div>
+                      <div className="absolute top-1/2 right-20 text-2xl animate-pulse" style={{ animationDelay: '1s' }}>💰</div>
+                      
+                      <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
+                        {/* Left Content */}
+                        <div className="flex-1 text-center md:text-left">
+                          <h2 className="text-3xl md:text-4xl font-black text-white mb-2">
+                            Get Up To <span className="text-yellow-300 text-4xl md:text-5xl">₹50,000 OFF</span>
+                          </h2>
+                          <p className="text-white/90 text-lg md:text-xl font-semibold mb-1">
+                            On Your Study Abroad Journey!
                           </p>
+                          <div className="flex flex-wrap gap-3 justify-center md:justify-start mt-4">
+                            <span className="inline-flex items-center bg-white/20 backdrop-blur px-3 py-1 rounded-full text-white text-sm font-medium">
+                              ✓ Application Fees
+                            </span>
+                            <span className="inline-flex items-center bg-white/20 backdrop-blur px-3 py-1 rounded-full text-white text-sm font-medium">
+                              ✓ Visa Processing
+                            </span>
+                            <span className="inline-flex items-center bg-white/20 backdrop-blur px-3 py-1 rounded-full text-white text-sm font-medium">
+                              ✓ IELTS Coaching
+                            </span>
+                            <span className="inline-flex items-center bg-white/20 backdrop-blur px-3 py-1 rounded-full text-white text-sm font-medium">
+                              ✓ Flight Tickets
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Right Content - CTA */}
+                        <div className="flex flex-col items-center gap-3">
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              const counselingSection = document.getElementById('book-counseling')
+                              if (counselingSection) {
+                                counselingSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                              }
+                            }}
+                            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all duration-200 shadow-lg animate-pulse"
+                          >
+                            CLAIM OFFER NOW →
+                          </motion.button>
+                          <p className="text-xs text-white/80 text-center">*T&C Apply | No Hidden Charges</p>
                         </div>
                       </div>
 
-                      {/* Arrow */}
-                      <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300 flex-shrink-0">
-                        <ArrowRight className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
+                      {/* Trust Badges */}
+                      <div className="mt-4 pt-4 border-t border-white/20 flex flex-wrap items-center justify-center gap-4">
+                        <div className="flex items-center text-white/80 text-sm">
+                          <Star className="w-4 h-4 text-yellow-300 mr-1" />
+                          <span className="font-medium">4.9/5 Rating</span>
+                        </div>
+                        <div className="flex items-center text-white/80 text-sm">
+                          <Users className="w-4 h-4 mr-1" />
+                          <span className="font-medium">10,000+ Students Benefited</span>
+                        </div>
+                        <div className="flex items-center text-white/80 text-sm">
+                          <Award className="w-4 h-4 mr-1" />
+                          <span className="font-medium">100% Genuine Offer</span>
+                        </div>
                       </div>
                     </div>
-
-                    {/* Bottom Row - Stats and Benefits */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="text-center bg-white/10 rounded-xl p-3">
-                        <div className="text-lg font-bold text-yellow-400">€0</div>
-                        <div className="text-blue-100 text-xs">Tuition Fees</div>
-                      </div>
-                      <div className="text-center bg-white/10 rounded-xl p-3">
-                        <div className="text-lg font-bold text-yellow-400">400+</div>
-                        <div className="text-blue-100 text-xs">Universities</div>
-                      </div>
-                      <div className="text-center bg-white/10 rounded-xl p-3">
-                        <div className="text-lg font-bold text-yellow-400">92%</div>
-                        <div className="text-blue-100 text-xs">Visa Success</div>
-                      </div>
-                      <div className="text-center bg-white/10 rounded-xl p-3">
-                        <div className="text-lg font-bold text-yellow-400">26</div>
-                        <div className="text-blue-100 text-xs">EU Countries</div>
-                      </div>
-                    </div>
-
-                    {/* Additional Benefits */}
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      <div className="inline-flex items-center bg-green-500/20 text-green-200 px-3 py-1 rounded-full text-xs font-medium">
-                        ✓ Work 20 hrs/week
-                      </div>
-                      <div className="inline-flex items-center bg-purple-500/20 text-purple-200 px-3 py-1 rounded-full text-xs font-medium">
-                        ✓ English programs
-                      </div>
-                      <div className="inline-flex items-center bg-orange-500/20 text-orange-200 px-3 py-1 rounded-full text-xs font-medium">
-                        ✓ €800-1200/month living
-                      </div>
-                      <div className="inline-flex items-center bg-pink-500/20 text-pink-200 px-3 py-1 rounded-full text-xs font-medium">
-                        ✓ Top global rankings
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
-        </section>
-
-        {/* How It Works Section */}
+        </section>        {/* How It Works Section */}
         <section className="py-12 sm:py-16 md:py-20 bg-blue-50/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <motion.div
