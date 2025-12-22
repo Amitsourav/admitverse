@@ -43,6 +43,14 @@ export default function GDPIPreparationPage() {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [name, setName] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  
+  // Hero form state
+  const [heroForm, setHeroForm] = useState({
+    name: '',
+    phone: '',
+    email: ''
+  })
+  const [heroFormSubmitting, setHeroFormSubmitting] = useState(false)
 
   const openModal = (packageName: string) => {
     setSelectedPackage(packageName)
@@ -80,6 +88,37 @@ export default function GDPIPreparationPage() {
       console.error('Form submission error:', error)
       alert('Sorry, there was an error submitting your request. Please try again.')
       setIsSubmitting(false)
+    }
+  }
+
+  const handleHeroFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!heroForm.name.trim() || !heroForm.phone.trim() || !heroForm.email.trim()) return
+    
+    setHeroFormSubmitting(true)
+    
+    try {
+      // Import the data collection service
+      const { submitHomepageForm } = await import('@/services/dataCollection')
+      
+      const success = await submitHomepageForm(
+        heroForm.name.trim(),
+        heroForm.email.trim(),
+        heroForm.phone.trim(),
+        `GDPI Hero Form Submission - Interested in GDPI Preparation consultation`
+      )
+
+      if (success) {
+        alert(`Thank you ${heroForm.name}! Our consultant will contact you at ${heroForm.phone} regarding GDPI preparation.`)
+        setHeroForm({ name: '', phone: '', email: '' })
+      } else {
+        throw new Error('Failed to submit form')
+      }
+    } catch (error) {
+      console.error('Hero form submission error:', error)
+      alert('Sorry, there was an error submitting your request. Please try again.')
+    } finally {
+      setHeroFormSubmitting(false)
     }
   }
 
@@ -194,7 +233,7 @@ export default function GDPIPreparationPage() {
       <TopBanner />
       <Navigation />
       <FloatingActions />
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50/30 pt-20 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50/30 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Floating Particles */}
@@ -269,38 +308,124 @@ export default function GDPIPreparationPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="py-16 px-4 relative z-20">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center bg-gradient-to-br from-blue-500/90 to-blue-800/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg text-white"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              GD-PI <span className="text-blue-100">Preparation</span>
-            </h1>
-            <p className="text-xl text-blue-50 max-w-3xl mx-auto">
-              Comprehensive Group Discussion and Personal Interview preparation for top B-Schools in India
-            </p>
-          </motion.div>
+      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative z-20 bg-gradient-to-br from-blue-600 to-blue-800">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="space-y-8"
+            >
+              {/* Main Title */}
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+                GD-PI <span className="text-yellow-400">Preparation</span>
+              </h1>
+              
+              {/* Subtitle */}
+              <p className="text-xl md:text-2xl text-blue-100 leading-relaxed">
+                Comprehensive Group Discussion and Personal Interview preparation for top B-Schools in India
+              </p>
+              
+              {/* Feature Badges */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex flex-wrap gap-4 pt-6"
+              >
+                <div className="bg-blue-500/30 backdrop-blur-sm text-white px-6 py-3 rounded-full border border-blue-400/50">
+                  🏆 90% Conversion Rate
+                </div>
+                <div className="bg-blue-500/30 backdrop-blur-sm text-white px-6 py-3 rounded-full border border-blue-400/50">
+                  📚 1000+ Students Trained
+                </div>
+                <div className="bg-blue-500/30 backdrop-blur-sm text-white px-6 py-3 rounded-full border border-blue-400/50">
+                  🎯 Expert Alumni Mentors
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              className="flex justify-center lg:justify-end"
+            >
+              <form onSubmit={handleHeroFormSubmit} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 w-full max-w-md border border-white/20 shadow-2xl">
+                <h3 className="text-xl font-semibold text-white mb-4 text-center">Get Free GDPI Consultation</h3>
+                
+                <div className="space-y-4">
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Your Name"
+                      value={heroForm.name}
+                      onChange={(e) => setHeroForm(prev => ({ ...prev, name: e.target.value }))}
+                      className="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-600 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <input
+                      type="tel"
+                      placeholder="Phone Number"
+                      value={heroForm.phone}
+                      onChange={(e) => setHeroForm(prev => ({ ...prev, phone: e.target.value }))}
+                      className="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-600 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <input
+                      type="email"
+                      placeholder="Email Address"
+                      value={heroForm.email}
+                      onChange={(e) => setHeroForm(prev => ({ ...prev, email: e.target.value }))}
+                      className="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-600 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      required
+                    />
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    disabled={heroFormSubmitting || !heroForm.name.trim() || !heroForm.phone.trim() || !heroForm.email.trim()}
+                    className="w-full bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white px-6 py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  >
+                    {heroFormSubmitting ? (
+                      <div className="flex items-center justify-center">
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                        Submitting...
+                      </div>
+                    ) : (
+                      'Get Free Consultation'
+                    )}
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Preparation Modules */}
-      <section className="py-12 px-4 relative z-10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative z-10 bg-gradient-to-r from-gray-900 to-gray-800">
+        <div className="max-w-[1400px] mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl font-bold text-center text-gray-900 mb-12"
+            className="text-3xl font-bold text-center text-white mb-12"
           >
-            Our Preparation Modules
+            Our <span className="text-orange-400">Preparation</span> Modules
           </motion.h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
             {preparationModules.map((module, index) => (
               <motion.div
                 key={module.title}
@@ -314,15 +439,15 @@ export default function GDPIPreparationPage() {
                   boxShadow: "0 25px 50px rgba(0,0,0,0.15)", 
                   transition: { duration: 0.3, ease: "easeOut" } 
                 }}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
+                className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 cursor-pointer group border-2 border-gray-200 hover:border-orange-300"
               >
-                <div className="bg-blue-100 group-hover:bg-blue-200 rounded-lg p-3 inline-block mb-4 transition-colors duration-300">
+                <div className="bg-gradient-to-br from-orange-100 to-orange-200 group-hover:bg-gradient-to-br group-hover:from-orange-200 group-hover:to-orange-300 rounded-lg p-3 inline-block mb-4 transition-all duration-300 shadow-md">
                   {module.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors duration-300">
                   {module.title}
                 </h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-gray-800 text-lg group-hover:text-gray-900 transition-colors duration-300">
                   {module.description}
                 </p>
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-4">
@@ -341,9 +466,9 @@ export default function GDPIPreparationPage() {
       </section>
 
       {/* Topics Coverage */}
-      <section className="py-12 px-4 bg-white relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white relative z-10">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -40, scale: 0.9 }}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -358,7 +483,7 @@ export default function GDPIPreparationPage() {
                 {gdTopics.map((topic) => (
                   <li key={topic} className="flex items-start">
                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0" />
-                    <span className="text-gray-700">{topic}</span>
+                    <span className="text-gray-900 text-lg">{topic}</span>
                   </li>
                 ))}
               </ul>
@@ -378,7 +503,7 @@ export default function GDPIPreparationPage() {
                 {piQuestions.map((question) => (
                   <li key={question} className="flex items-start">
                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0" />
-                    <span className="text-gray-700">{question}</span>
+                    <span className="text-gray-900 text-lg">{question}</span>
                   </li>
                 ))}
               </ul>
@@ -388,8 +513,8 @@ export default function GDPIPreparationPage() {
       </section>
 
       {/* Course Highlights Comparison */}
-      <section className="py-16 px-4 bg-gradient-to-b from-gray-50 to-white relative z-10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 relative z-10">
+        <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center mb-12">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -398,7 +523,7 @@ export default function GDPIPreparationPage() {
               transition={{ duration: 0.8 }}
               className="text-4xl font-bold text-center md:text-left text-gray-900 mb-6 md:mb-0"
             >
-              Course <span className="text-blue-600">Highlights</span>
+              Course <span className="text-orange-600">Highlights</span>
             </motion.h2>
             
             {/* View Mode Toggle */}
@@ -456,19 +581,27 @@ export default function GDPIPreparationPage() {
                     {/* Features Column */}
                     <div className="bg-blue-700 p-6 text-center">
                       <h3 className="text-xl font-bold text-white mb-2">Feature</h3>
-                      <p className="text-blue-100 text-sm">Most Suitable For Package Value</p>
+                      <p className="text-blue-100 text-base font-medium">Most Suitable For Package Value</p>
                     </div>
                     
                     {/* Elite Package */}
                     <div className="bg-blue-600 p-6 text-center border-l border-blue-500">
-                      <h3 className="text-xl font-bold text-white mb-2">Elite IIM Advantage - Online*</h3>
-                      <p className="text-blue-100 text-sm">IIM Call Getters ₹12000 (inc. GST)</p>
+                      <h3 className="text-xl font-bold text-white mb-3">Elite IIM Advantage - Online*</h3>
+                      <div className="bg-white/20 rounded-lg py-3 px-4 mb-3">
+                        <div className="text-3xl font-bold text-orange-300">₹12,000</div>
+                        <div className="text-base text-blue-100 font-medium">(inc. GST)</div>
+                      </div>
+                      <p className="text-blue-100 text-base font-medium">Perfect for IIM Call Getters</p>
                     </div>
                     
                     {/* B-School Ready Package */}
                     <div className="bg-blue-600 p-6 text-center border-l border-blue-500">
-                      <h3 className="text-xl font-bold text-white mb-2">B-School Ready Package</h3>
-                      <p className="text-blue-100 text-sm">General B-School Aspirants<br/>₹10,000 (inc. GST)</p>
+                      <h3 className="text-xl font-bold text-white mb-3">B-School Ready Package</h3>
+                      <div className="bg-white/20 rounded-lg py-3 px-4 mb-3">
+                        <div className="text-3xl font-bold text-orange-300">₹10,000</div>
+                        <div className="text-base text-blue-100 font-medium">(inc. GST)</div>
+                      </div>
+                      <p className="text-blue-100 text-base font-medium">For General B-School Aspirants</p>
                     </div>
                   </motion.div>
 
@@ -636,7 +769,7 @@ export default function GDPIPreparationPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="grid md:grid-cols-2 gap-8"
+                className="grid lg:grid-cols-2 gap-6 lg:gap-8"
               >
                 {/* Elite Package Card */}
                 <motion.div
@@ -646,7 +779,7 @@ export default function GDPIPreparationPage() {
                   <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-white">
                     <h3 className="text-2xl font-bold mb-2">Elite IIM Advantage - Online*</h3>
                     <p className="text-blue-100 mb-4">Perfect for IIM Call Getters</p>
-                    <div className="text-3xl font-bold">₹12,000 <span className="text-sm font-normal">(inc. GST)</span></div>
+                    <div className="text-3xl font-bold">₹12,000 <span className="text-lg font-medium">(inc. GST)</span></div>
                   </div>
                   
                   <div className="p-6">
@@ -667,7 +800,7 @@ export default function GDPIPreparationPage() {
                           <CheckCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                           <div>
                             <span className="font-medium text-gray-800">{item.feature}:</span>
-                            <span className="text-gray-600 ml-2">{item.value}</span>
+                            <span className="text-gray-800 ml-2 text-lg font-medium">{item.value}</span>
                           </div>
                         </li>
                       ))}
@@ -693,7 +826,7 @@ export default function GDPIPreparationPage() {
                   <div className="bg-gradient-to-r from-blue-500 to-blue-700 p-6 text-white">
                     <h3 className="text-2xl font-bold mb-2">B-School Ready Package</h3>
                     <p className="text-blue-100 mb-4">For General B-School Aspirants</p>
-                    <div className="text-3xl font-bold">₹10,000 <span className="text-sm font-normal">(inc. GST)</span></div>
+                    <div className="text-3xl font-bold">₹10,000 <span className="text-lg font-medium">(inc. GST)</span></div>
                   </div>
                   
                   <div className="p-6">
@@ -714,7 +847,7 @@ export default function GDPIPreparationPage() {
                           <CheckCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                           <div>
                             <span className="font-medium text-gray-800">{item.feature}:</span>
-                            <span className="text-gray-600 ml-2">{item.value}</span>
+                            <span className="text-gray-800 ml-2 text-lg font-medium">{item.value}</span>
                           </div>
                         </li>
                       ))}
@@ -738,19 +871,19 @@ export default function GDPIPreparationPage() {
       </section>
 
       {/* Session Structure */}
-      <section className="py-12 px-4 relative z-10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative z-10 bg-gradient-to-r from-emerald-900 to-teal-900">
+        <div className="max-w-[1400px] mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl font-bold text-center text-gray-900 mb-12"
+            className="text-3xl font-bold text-center text-white mb-12"
           >
-            8-Week Intensive Program
+            8-Week <span className="text-emerald-400">Intensive</span> Program
           </motion.h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
             {sessionStructure.map((session, index) => (
               <motion.div
                 key={session.week}
@@ -759,13 +892,13 @@ export default function GDPIPreparationPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
                 whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.1)", transition: { duration: 0.2 } }}
-                className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6"
+                className="bg-gradient-to-br from-white to-emerald-50 rounded-xl p-6 shadow-xl border-2 border-emerald-200 hover:border-emerald-400 transition-all duration-300"
               >
-                <div className="text-blue-600 font-bold mb-2">{session.week}</div>
+                <div className="text-emerald-700 font-bold mb-2 text-lg">{session.week}</div>
                 <h4 className="text-xl font-semibold text-gray-900 mb-3">{session.focus}</h4>
                 <ul className="space-y-2">
                   {session.activities.map((activity) => (
-                    <li key={activity} className="text-sm text-gray-600">
+                    <li key={activity} className="text-base text-gray-800 font-medium">
                       • {activity}
                     </li>
                   ))}
@@ -777,8 +910,8 @@ export default function GDPIPreparationPage() {
       </section>
 
       {/* 3-Step GDPI Prep Plan */}
-      <section className="py-16 px-4 bg-white relative z-10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white relative z-10">
+        <div className="max-w-[1400px] mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div>
@@ -789,7 +922,7 @@ export default function GDPIPreparationPage() {
                 transition={{ duration: 0.8 }}
                 className="text-4xl font-bold text-gray-900 mb-12"
               >
-                The AdmitVerse 3-Step <span className="text-blue-600">GDPI Prep Plan</span>
+                The AdmitVerse 3-Step <span className="text-green-600">GDPI Prep Plan</span>
               </motion.h2>
               
               <div className="space-y-8">
@@ -808,8 +941,8 @@ export default function GDPIPreparationPage() {
                     <div className="w-px h-16 bg-blue-200 mx-auto mt-4"></div>
                   </div>
                   <div className="pt-2">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Foundation Building</h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <h3 className="text-xl font-bold text-green-700 mb-3">Foundation Building</h3>
+                    <p className="text-gray-800 text-lg leading-relaxed font-medium">
                       Comprehensive coverage of current affairs, MBA concepts, and foundational interview skills.
                     </p>
                   </div>
@@ -830,8 +963,8 @@ export default function GDPIPreparationPage() {
                     <div className="w-px h-16 bg-blue-200 mx-auto mt-4"></div>
                   </div>
                   <div className="pt-2">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Intensive Training</h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <h3 className="text-xl font-bold text-purple-700 mb-3">Intensive Training</h3>
+                    <p className="text-gray-800 text-lg leading-relaxed font-medium">
                       Mock PI sessions, group discussions, and personalized feedback from alumni.
                     </p>
                   </div>
@@ -851,8 +984,8 @@ export default function GDPIPreparationPage() {
                     </div>
                   </div>
                   <div className="pt-2">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Confidence Building</h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <h3 className="text-xl font-bold text-orange-700 mb-3">Confidence Building</h3>
+                    <p className="text-gray-800 text-lg leading-relaxed font-medium">
                       Final phase of mentoring, case study practice, and ensuring readiness for the big day.
                     </p>
                   </div>
@@ -923,19 +1056,19 @@ export default function GDPIPreparationPage() {
       </section>
 
       {/* Target Institutions */}
-      <section className="py-12 px-4 bg-gray-50 relative z-10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 relative z-10">
+        <div className="max-w-[1400px] mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl font-bold text-center text-gray-900 mb-12"
+            className="text-3xl font-bold text-center text-white mb-12"
           >
-            Prepare for Top B-Schools
+            Prepare for <span className="text-yellow-400">Top B-Schools</span>
           </motion.h2>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
             {institutions.map((inst, index) => (
               <motion.div
                 key={inst.name}
@@ -944,10 +1077,10 @@ export default function GDPIPreparationPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                className="bg-white rounded-lg p-6 text-center hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl"
+                className="bg-gradient-to-br from-white to-purple-50 rounded-lg p-6 text-center hover:bg-gradient-to-br hover:from-purple-50 hover:to-indigo-100 transition-all duration-300 shadow-2xl hover:shadow-3xl border-2 border-purple-200 hover:border-yellow-400"
               >
-                <h3 className="text-xl font-bold text-blue-600 mb-2">{inst.name}</h3>
-                <p className="text-gray-600 text-sm">{inst.description}</p>
+                <h3 className="text-xl font-bold text-purple-600 mb-2">{inst.name}</h3>
+                <p className="text-gray-800 text-base font-medium">{inst.description}</p>
               </motion.div>
             ))}
           </div>
@@ -955,15 +1088,16 @@ export default function GDPIPreparationPage() {
       </section>
 
       {/* Special Offers */}
-      <section className="py-16 px-4 bg-gradient-to-r from-blue-600 to-blue-800 relative z-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-blue-800 relative z-10 overflow-hidden">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="max-w-7xl mx-auto">
+            {/* Content */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              className="text-center mb-12"
             >
               <h2 className="text-4xl font-bold text-white mb-6">
                 Special Offers
@@ -971,116 +1105,58 @@ export default function GDPIPreparationPage() {
               <p className="text-xl text-blue-100 mb-8">
                 Complementary Inclusions for AdmitVerse GDPI students
               </p>
-              
-              <div className="space-y-6">
-                {[
-                  {
-                    icon: <Gift className="w-6 h-6" />,
-                    title: "100% Free Education Loan Support",
-                    description: "Complete assistance through our partner banks with zero processing fees"
-                  },
-                  {
-                    icon: <Star className="w-6 h-6" />,
-                    title: "Priority Application Support",
-                    description: "Fast-track your B-School applications with dedicated counselor assistance"
-                  },
-                  {
-                    icon: <Percent className="w-6 h-6" />,
-                    title: "Scholarship Guidance",
-                    description: "Expert guidance to maximize your scholarship opportunities"
-                  },
-                  {
-                    icon: <Trophy className="w-6 h-6" />,
-                    title: "Alumni Network Access",
-                    description: "Connect with successful graduates from top B-Schools for mentorship"
-                  }
-                ].map((offer, index) => (
-                  <motion.div
-                    key={offer.title}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="flex items-start space-x-4"
-                  >
+            </motion.div>
+            
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+              {[
+                {
+                  icon: <Gift className="w-6 h-6" />,
+                  title: "100% Free Education Loan Support",
+                  description: "Complete assistance through our partner banks with zero processing fees"
+                },
+                {
+                  icon: <Star className="w-6 h-6" />,
+                  title: "Priority Application Support",
+                  description: "Fast-track your B-School applications with dedicated counselor assistance"
+                },
+                {
+                  icon: <Percent className="w-6 h-6" />,
+                  title: "Scholarship Guidance",
+                  description: "Expert guidance to maximize your scholarship opportunities"
+                },
+                {
+                  icon: <Trophy className="w-6 h-6" />,
+                  title: "Alumni Network Access",
+                  description: "Connect with successful graduates from top B-Schools for mentorship"
+                }
+              ].map((offer, index) => (
+                <motion.div
+                  key={offer.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-blue-500/20 backdrop-blur-sm rounded-xl p-6 border border-blue-400/30"
+                >
+                  <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                      <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white">
                         {offer.icon}
                       </div>
                     </div>
-                    <div>
-                      <div className="flex items-center mb-2">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
-                        <h3 className="text-lg font-semibold text-white">
-                          {offer.title}
-                        </h3>
-                      </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-2" />
+                        {offer.title}
+                      </h3>
                       <p className="text-blue-100">
                         {offer.description}
                       </p>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Right Illustration */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="relative">
-                {/* Background Elements */}
-                <div className="absolute inset-0">
-                  {/* Floating Shapes */}
-                  {[...Array(8)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className={`absolute ${
-                        i % 3 === 0 ? 'w-4 h-4 bg-yellow-400' : 
-                        i % 3 === 1 ? 'w-3 h-3 bg-white' : 'w-2 h-2 bg-blue-300'
-                      } rounded-full opacity-20`}
-                      style={{
-                        left: `${(i * 12 + 10) % 80}%`,
-                        top: `${(i * 15 + 5) % 70}%`,
-                      }}
-                      animate={{
-                        y: [0, -20, 0],
-                        opacity: [0.2, 0.6, 0.2],
-                        scale: [1, 1.2, 1],
-                      }}
-                      transition={{
-                        duration: 3 + (i % 3),
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                      }}
-                    />
-                  ))}
-                </div>
-                
-                {/* Special Offers Badge */}
-                <div className="relative z-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-8 transform rotate-3 shadow-2xl">
-                  <div className="bg-red-600 text-white px-4 py-2 rounded-lg inline-block mb-4 font-bold text-sm transform -rotate-2">
-                    AdmitVerse
                   </div>
-                  <div className="bg-yellow-300 text-gray-900 px-6 py-4 rounded-xl font-bold text-2xl transform rotate-1 shadow-lg">
-                    Special offers
-                  </div>
-                  
-                  {/* Decorative elements */}
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full opacity-80"></div>
-                  <div className="absolute -bottom-3 -left-2 w-6 h-6 bg-blue-400 rounded-full opacity-60"></div>
-                  <div className="absolute top-1/2 -right-4 w-4 h-4 bg-green-400 rounded-full opacity-70"></div>
-                  
-                  {/* Lightning bolts */}
-                  <div className="absolute -top-4 right-8 text-white text-2xl transform rotate-12">⚡</div>
-                  <div className="absolute -bottom-2 right-2 text-yellow-200 text-xl transform -rotate-12">⚡</div>
-                </div>
-              </div>
-            </motion.div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
         
@@ -1093,28 +1169,28 @@ export default function GDPIPreparationPage() {
       </section>
 
       {/* Success Stats */}
-      <section className="py-12 px-4 bg-white relative z-10">
-        <div className="max-w-7xl mx-auto text-center">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50 relative z-10">
+        <div className="max-w-[1400px] mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            Our Success Record
+            Our <span className="text-blue-600">Success</span> Record
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-blue-50 rounded-lg p-6 text-blue-900">
-              <Trophy className="w-12 h-12 mx-auto mb-4 text-blue-600" />
+          <div className="grid sm:grid-cols-3 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+              <Trophy className="w-12 h-12 mx-auto mb-4 text-orange-600" />
               <h3 className="text-3xl font-bold mb-2">
                 <AnimatedCounter value="90%" />
               </h3>
               <p>Conversion Rate</p>
             </div>
-            <div className="bg-blue-50 rounded-lg p-6 text-blue-900">
-              <Target className="w-12 h-12 mx-auto mb-4 text-blue-600" />
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+              <Target className="w-12 h-12 mx-auto mb-4 text-green-600" />
               <h3 className="text-3xl font-bold mb-2">
                 <AnimatedCounter value="1000+" />
               </h3>
               <p>Students Trained</p>
             </div>
-            <div className="bg-blue-50 rounded-lg p-6 text-blue-900">
-              <BookOpen className="w-12 h-12 mx-auto mb-4 text-blue-600" />
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+              <BookOpen className="w-12 h-12 mx-auto mb-4 text-purple-600" />
               <h3 className="text-3xl font-bold mb-2">
                 <AnimatedCounter value="50+" />
               </h3>
@@ -1125,8 +1201,8 @@ export default function GDPIPreparationPage() {
       </section>
 
       {/* Success Stories */}
-      <section className="py-16 px-4 bg-gray-50 relative z-10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 relative z-10">
+        <div className="max-w-[1400px] mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1134,7 +1210,7 @@ export default function GDPIPreparationPage() {
             transition={{ duration: 0.8 }}
             className="text-4xl font-bold text-center text-gray-900 mb-4"
           >
-            Success <span className="text-blue-600">Stories</span>
+            Success <span className="text-green-600">Stories</span>
           </motion.h2>
           
           <motion.p
@@ -1142,13 +1218,13 @@ export default function GDPIPreparationPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto"
+            className="text-2xl text-gray-800 text-center mb-12 max-w-3xl mx-auto font-medium"
           >
             Hear from our students who successfully cracked their GD-PI rounds
           </motion.p>
 
           {/* Testimonials Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 mb-12">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.name}
@@ -1173,7 +1249,7 @@ export default function GDPIPreparationPage() {
                   </div>
                 </div>
                 
-                <p className="text-gray-600 leading-relaxed italic">
+                <p className="text-gray-800 text-lg leading-relaxed italic font-medium">
                   "{testimonial.review}"
                 </p>
               </motion.div>
@@ -1184,8 +1260,8 @@ export default function GDPIPreparationPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -1195,12 +1271,12 @@ export default function GDPIPreparationPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
               Ace Your GD-PI Rounds
             </h2>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-2xl text-gray-800 mb-8 font-medium">
               Join our comprehensive preparation program and convert your B-School calls
             </p>
             <Link
               href="/#book-counseling"
-              className="inline-block bg-gradient-to-r from-blue-500 to-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
+              className="inline-block bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
             >
               Enroll Now
             </Link>

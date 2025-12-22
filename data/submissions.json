@@ -145,5 +145,22 @@
     "timestamp": "2025-12-03T09:52:26.816Z",
     "page": "/services/gdpi-preparation",
     "sessionId": "session_1764755546817_5rsy5hwg3"
+  },
+  {
+    "type": "mobile_popup",
+    "mobile": "7004428198",
+    "timestamp": "2025-12-09T06:49:47.641Z",
+    "page": "/",
+    "sessionId": "session_1765262987641_kbfjpjb5t"
+  },
+  {
+    "type": "homepage_form",
+    "name": "Amit Kumar Sourav",
+    "email": "amitsourav0407@gmail.com",
+    "phone": "7004428198",
+    "message": "GDPI Hero Form Submission - Interested in GDPI Preparation consultation",
+    "timestamp": "2025-12-22T18:11:49.947Z",
+    "page": "/services/gdpi-preparation",
+    "sessionId": "session_1766427109949_x2q9si9os"
   }
 ]
