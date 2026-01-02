@@ -26,7 +26,7 @@ export default function Footer() {
       { href: '/news', label: 'News' },
     ],
     'Legal': [
-      { href: '/privacy', label: 'Privacy Policy' },
+      { href: '/privacy-policy', label: 'Privacy Policy' },
       { href: '/terms', label: 'Terms of Service' },
       { href: '/cookies', label: 'Cookie Policy' },
       { href: '/disclaimer', label: 'Disclaimer' },
