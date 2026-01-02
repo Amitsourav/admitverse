@@ -498,7 +498,7 @@ export default function HomePage() {
         
         {/* Hero Section with Video Background */}
         <motion.section 
-          className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-gray-900 pt-20 md:pt-24 pb-8"
+          className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-gray-900 pt-32 md:pt-32 pb-8"
           style={{ 
             opacity: heroOpacity, 
             transform: `scale(${heroScale})`,

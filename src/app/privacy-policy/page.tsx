@@ -9,7 +9,7 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen bg-white">
       <Navigation />
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 pt-32">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 pt-24">
         <div className="max-w-[1400px] mx-auto px-4">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}

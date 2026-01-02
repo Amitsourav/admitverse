@@ -205,7 +205,7 @@ export default function CareerPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden">
+      <section className="relative py-20 pt-32 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
