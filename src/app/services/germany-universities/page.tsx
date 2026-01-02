@@ -93,6 +93,10 @@ export default function GermanyUniversitiesPage() {
   // Tool Modal State
   const [activeToolModal, setActiveToolModal] = useState<string | null>(null)
 
+  // Passport States
+  const [hasValidPassport, setHasValidPassport] = useState<string>('')
+  const [hasAppliedForPassport, setHasAppliedForPassport] = useState<string>('')
+
   // Cost Calculator Function
   const calculateCost = () => {
     const cityMultipliers: { [key: string]: number } = {
@@ -1201,6 +1205,30 @@ export default function GermanyUniversitiesPage() {
                 <ArrowRight className="w-4 h-4 ml-1" />
               </div>
             </motion.div>
+
+            {/* Passport Checker Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              viewport={{ once: true }}
+              onClick={() => openToolModal('passport-checker')}
+              className="group bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
+            >
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-4">
+                  <Globe className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900">Passport Checker</h3>
+                  <p className="text-sm text-gray-600">Check passport requirements</p>
+                </div>
+              </div>
+              <div className="flex items-center text-purple-600 text-sm font-medium group-hover:text-purple-700">
+                <span>Check passport</span>
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </div>
+            </motion.div>
           </div>
 
           {/* Tools CTA */}
@@ -1365,6 +1393,7 @@ export default function GermanyUniversitiesPage() {
                   {activeToolModal === 'ielts-predictor' && 'IELTS Score Predictor'}
                   {activeToolModal === 'visa-checker' && 'Visa Requirements Checker'}
                   {activeToolModal === 'document-checklist' && 'Document Checklist Generator'}
+                  {activeToolModal === 'passport-checker' && 'Passport Checker'}
                 </h3>
                 <button 
                   onClick={closeToolModal}
@@ -1797,6 +1826,153 @@ export default function GermanyUniversitiesPage() {
                       >
                         Generate Checklist
                       </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Passport Checker Modal Content */}
+                {activeToolModal === 'passport-checker' && (
+                  <div className="space-y-6">
+                    <div className="text-center mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <Globe className="w-8 h-8 text-white" />
+                      </div>
+                      <p className="text-gray-600">Check your passport requirements for studying in Germany</p>
+                    </div>
+                    
+                    <div className="space-y-6">
+                      {/* Main Passport Question */}
+                      <div className="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                        <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                          Do you have a passport with validity exceeding 6 months?
+                        </h4>
+                        
+                        <div className="flex gap-4">
+                          <label className="flex items-center cursor-pointer">
+                            <input
+                              type="radio"
+                              name="hasValidPassport"
+                              value="yes"
+                              checked={hasValidPassport === 'yes'}
+                              onChange={(e) => {
+                                setHasValidPassport(e.target.value)
+                                setHasAppliedForPassport('') // Reset secondary question
+                              }}
+                              className="mr-2 text-purple-600"
+                            />
+                            <span className="text-gray-700 font-medium">Yes</span>
+                          </label>
+                          
+                          <label className="flex items-center cursor-pointer">
+                            <input
+                              type="radio"
+                              name="hasValidPassport"
+                              value="no"
+                              checked={hasValidPassport === 'no'}
+                              onChange={(e) => {
+                                setHasValidPassport(e.target.value)
+                                setHasAppliedForPassport('') // Reset secondary question
+                              }}
+                              className="mr-2 text-purple-600"
+                            />
+                            <span className="text-gray-700 font-medium">No</span>
+                          </label>
+                        </div>
+                      </div>
+
+                      {/* Conditional Secondary Question */}
+                      {hasValidPassport === 'no' && (
+                        <div className="bg-orange-50 p-6 rounded-xl border border-orange-100">
+                          <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                            Have you applied for a passport?
+                          </h4>
+                          
+                          <div className="flex gap-4">
+                            <label className="flex items-center cursor-pointer">
+                              <input
+                                type="radio"
+                                name="hasAppliedForPassport"
+                                value="yes"
+                                checked={hasAppliedForPassport === 'yes'}
+                                onChange={(e) => setHasAppliedForPassport(e.target.value)}
+                                className="mr-2 text-orange-600"
+                              />
+                              <span className="text-gray-700 font-medium">Yes, I've applied</span>
+                            </label>
+                            
+                            <label className="flex items-center cursor-pointer">
+                              <input
+                                type="radio"
+                                name="hasAppliedForPassport"
+                                value="no"
+                                checked={hasAppliedForPassport === 'no'}
+                                onChange={(e) => setHasAppliedForPassport(e.target.value)}
+                                className="mr-2 text-orange-600"
+                              />
+                              <span className="text-gray-700 font-medium">No, not yet</span>
+                            </label>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Results based on answers */}
+                      {hasValidPassport && (
+                        <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
+                          <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                            📋 Passport Status & Recommendations
+                          </h4>
+                          
+                          {hasValidPassport === 'yes' ? (
+                            <div className="space-y-3">
+                              <div className="flex items-start space-x-3">
+                                <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+                                <div>
+                                  <p className="font-medium text-green-800">Great! Your passport meets the requirements.</p>
+                                  <p className="text-green-600 text-sm">You can proceed with your Germany study visa application.</p>
+                                </div>
+                              </div>
+                              <div className="bg-green-100 p-4 rounded-lg">
+                                <h5 className="font-medium text-green-800 mb-2">Next Steps:</h5>
+                                <ul className="text-green-700 text-sm space-y-1">
+                                  <li>• Ensure your passport has at least 12+ months validity</li>
+                                  <li>• Keep multiple photocopies ready</li>
+                                  <li>• Check if you need additional passport photos</li>
+                                </ul>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="space-y-3">
+                              {hasAppliedForPassport === 'yes' ? (
+                                <div className="flex items-start space-x-3">
+                                  <Clock className="w-5 h-5 text-yellow-500 mt-1 flex-shrink-0" />
+                                  <div>
+                                    <p className="font-medium text-yellow-800">Application in progress</p>
+                                    <p className="text-yellow-600 text-sm">Track your application status and apply for visa once received.</p>
+                                  </div>
+                                </div>
+                              ) : (
+                                <div className="flex items-start space-x-3">
+                                  <ArrowRight className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                  <div>
+                                    <p className="font-medium text-red-800">Action Required</p>
+                                    <p className="text-red-600 text-sm">You need to apply for a passport immediately.</p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              <div className="bg-blue-100 p-4 rounded-lg">
+                                <h5 className="font-medium text-blue-800 mb-2">Important Timeline:</h5>
+                                <ul className="text-blue-700 text-sm space-y-1">
+                                  <li>• Passport processing: 7-30 days (depending on location)</li>
+                                  <li>• Germany student visa processing: 4-8 weeks</li>
+                                  <li>• Apply for passport ASAP to avoid delays</li>
+                                  <li>• Consider Tatkal service if urgent</li>
+                                </ul>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
