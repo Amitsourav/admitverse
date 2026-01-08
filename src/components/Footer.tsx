@@ -15,7 +15,7 @@ export default function Footer() {
     ],
     'Support': [
       { href: '/contact', label: 'Contact Us' },
-      { href: '/faq', label: 'FAQ' },
+      { href: '/contact#faq', label: 'FAQ' },
       { href: '/help', label: 'Help Center' },
       { href: '/support', label: 'Student Support' },
     ],

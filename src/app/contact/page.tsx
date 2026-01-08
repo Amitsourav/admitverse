@@ -826,7 +826,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50 relative overflow-hidden">
+      <section id="faq" className="py-20 bg-gray-50 relative overflow-hidden">
         {/* Animated Background Pattern */}
         <div className="absolute inset-0">
           {[...Array(12)].map((_, i) => (
@@ -891,6 +891,31 @@ export default function ContactPage() {
           <div className="space-y-6">
             {[
               {
+                question: "Is AdmitVerse a trusted study abroad consultant in India?",
+                answer: "Yes. AdmitVerse is a trusted and transparent study abroad consultancy in India, founded by an IIM Bangalore alumnus with years of experience in education and mentoring students globally.",
+                icon: "✅"
+              },
+              {
+                question: "Does AdmitVerse charge for study abroad counselling?",
+                answer: "AdmitVerse follows a transparent fee model. Some services are paid for quality delivery, ensuring students receive genuine, unbiased guidance without push-selling.",
+                icon: "💰"
+              },
+              {
+                question: "Which countries does AdmitVerse support?",
+                answer: "AdmitVerse supports UK, Germany (Public & Private), USA, Canada, Europe, MBBS abroad, and affordable study destinations.",
+                icon: "🌍"
+              },
+              {
+                question: "Does AdmitVerse help with education loans and accommodation?",
+                answer: "Yes. AdmitVerse provides education loan assistance, forex support, accommodation booking, visa filing, and post-arrival services under one roof.",
+                icon: "🏦"
+              },
+              {
+                question: "Is AdmitVerse suitable for average profile students?",
+                answer: "Absolutely. AdmitVerse specializes in profile-based counselling, helping average to strong profiles find realistic and high-ROI study abroad options.",
+                icon: "🎓"
+              },
+              {
                 question: "How quickly will I get a response?",
                 answer: "We typically respond to all inquiries within 24 hours during business days. For urgent matters, you can call us directly.",
                 icon: "⏰"
@@ -899,11 +924,6 @@ export default function ContactPage() {
                 question: "Is the consultation really free?",
                 answer: "Yes! Our initial consultation is completely free with no obligations. We believe in providing value upfront.",
                 icon: "💯"
-              },
-              {
-                question: "Which countries do you specialize in?",
-                answer: "We have expertise in all major study destinations including USA, UK, Canada, Australia, Germany, Netherlands, and many more.",
-                icon: "🌍"
               },
               {
                 question: "Do you help with visa applications?",
